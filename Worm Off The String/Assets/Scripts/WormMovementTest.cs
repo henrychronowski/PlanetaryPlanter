@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WormMovementTest : MonoBehaviour
 {
+    public List<Rigidbody> parts;
     private Rigidbody rgd;
 
     [SerializeField]
@@ -11,8 +12,33 @@ public class WormMovementTest : MonoBehaviour
 
     [SerializeField]
     float clamp = 15f;
+
+    [SerializeField]
+    bool canGoUp;
+
+    [SerializeField]
+    LayerMask groundLayer;
+
+    void isTouchingGround()
+    {
+        foreach(Rigidbody part in parts)
+        {
+            if(Physics.CheckSphere(part.gameObject.transform.position, 1.5f, groundLayer))
+            {
+                canGoUp = true;
+                return;
+            }
+        }
+        canGoUp = false;
+    }
+
     void CheckInput()
     {
+        
+
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        //Camera.main.transform.
         Vector3 direction = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
         {
@@ -62,6 +88,7 @@ public class WormMovementTest : MonoBehaviour
 
     private void FixedUpdate()
     {
+        isTouchingGround();
         CheckInput();
     }
 }
