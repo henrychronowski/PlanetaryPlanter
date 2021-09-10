@@ -55,7 +55,7 @@ public class WormMovementTest : MonoBehaviour
         if(flyingEnergy > 0)
         {
             flyingEnergy -= flyingEnergyDrain;
-            vec += new Vector3(0, 1.0f, 0);
+            vec += (new Vector3(0, 1.0f, 0) * flightForce);
             return vec;
         }
         else
@@ -100,7 +100,7 @@ public class WormMovementTest : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            direction += new Vector3(0f, 1f, 0f);
+            //direction += new Vector3(0f, 1f, 0f);
             direction = Fly(direction);
         }
         else
