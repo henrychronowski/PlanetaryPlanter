@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WormMovementTest : MonoBehaviour
@@ -11,14 +12,31 @@ public class WormMovementTest : MonoBehaviour
     float force = 10f;
 
     [SerializeField]
-    float clamp = 15f;
+    float flightForce = 5f;
 
     [SerializeField]
-    bool canGoUp;
+    float clamp = 15f;
+
+    //Unused
+    [SerializeField]
+    bool canGoUp = true;
 
     [SerializeField]
     LayerMask groundLayer;
 
+    [SerializeField]
+    float flyingEnergy = 100f;
+
+    [SerializeField]
+    float flyingEnergyDrain = 0.5f;
+
+    [SerializeField]
+    float flyingEnergyRegen = 0.1f;
+
+    [SerializeField]
+    float flyingEnergyMax = 100f;
+
+    //Unused
     void isTouchingGround()
     {
         foreach(Rigidbody part in parts)
@@ -32,7 +50,22 @@ public class WormMovementTest : MonoBehaviour
         canGoUp = false;
     }
 
-    void CheckInput()
+    Vector3 Fly(Vector3 vec)
+    {
+        if(flyingEnergy > 0)
+        {
+            flyingEnergy -= flyingEnergyDrain;
+            vec += new Vector3(0, 1.0f, 0);
+            return vec;
+        }
+        else
+        {
+
+            return vec;
+        }
+    }
+
+    void Move()
     {
         
 
@@ -68,10 +101,30 @@ public class WormMovementTest : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             direction += new Vector3(0f, 1f, 0f);
+            direction = Fly(direction);
         }
+        else
+        {
+            if(flyingEnergy < flyingEnergyMax)
+            {
+                flyingEnergy += flyingEnergyRegen;
+
+            }
+            else if (flyingEnergy > flyingEnergyMax)
+            {
+                flyingEnergy = flyingEnergyMax;
+            }
+        }
+        
+        
         Vector3 vel = direction * force;
         Vector3.ClampMagnitude(vel, 15f);
         rgd.AddForce(vel);
+    }
+
+    void UpdateText()
+    {
+        GameObject.Find("FuelText").GetComponent<TextMeshProUGUI>().text = "Fuel: " + (int)flyingEnergy;
     }
 
     // Start is called before the first frame update
@@ -83,12 +136,12 @@ public class WormMovementTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateText();
     }
 
     private void FixedUpdate()
     {
         isTouchingGround();
-        CheckInput();
+        Move();
     }
 }
