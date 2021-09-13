@@ -5,6 +5,18 @@ using UnityEngine;
 
 public class WormMovementTest : MonoBehaviour
 {
+    
+    public enum Joystick
+    {
+        P1,
+        P2,
+        P3,
+        P4
+    }
+
+
+    public Joystick player;
+
     public List<Rigidbody> parts;
     private Rigidbody rgd;
 
@@ -69,52 +81,85 @@ public class WormMovementTest : MonoBehaviour
     {
         
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis(player + "Horizontal");
+        float vertical = Input.GetAxis(player + "Vertical");
+
+
         //Camera.main.transform.
         Vector3 direction = Vector3.zero;
-        if (Input.GetKey(KeyCode.W))
+
+        //direction += (new Vector3(horizontal, 0f, vertical));
+        if(player == Joystick.P1)
         {
-            direction += new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
-            
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            direction += new Vector3(Camera.main.transform.right.x * -1f, 0f, Camera.main.transform.right.z * -1f);
-
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            direction += new Vector3(Camera.main.transform.forward.x *-1f, 0f, Camera.main.transform.forward.z * -1f);
-
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            direction += new Vector3(Camera.main.transform.right.x, 0f, Camera.main.transform.right.z);
-
-        }
-
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            //direction += new Vector3(0f, 1f, 0f);
-            direction = Fly(direction);
-        }
-        else
-        {
-            if(flyingEnergy < flyingEnergyMax)
+            if (Input.GetKey(KeyCode.W))
             {
-                flyingEnergy += flyingEnergyRegen;
-
+                direction += new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
             }
-            else if (flyingEnergy > flyingEnergyMax)
+            if (Input.GetKey(KeyCode.A))
             {
-                flyingEnergy = flyingEnergyMax;
+                direction += new Vector3(Camera.main.transform.right.x * -1f, 0f, Camera.main.transform.right.z * -1f);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                direction += new Vector3(Camera.main.transform.forward.x *-1f, 0f, Camera.main.transform.forward.z * -1f);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                direction += new Vector3(Camera.main.transform.right.x, 0f, Camera.main.transform.right.z);
+            }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                direction = Fly(direction);
+            }
+            else
+            {
+                if (flyingEnergy < flyingEnergyMax)
+                {
+                    flyingEnergy += flyingEnergyRegen;
+                }
+                else if (flyingEnergy > flyingEnergyMax)
+                {
+                    flyingEnergy = flyingEnergyMax;
+                }
             }
         }
+
+        if(player == Joystick.P2)
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                direction += new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                direction += new Vector3(Camera.main.transform.right.x * -1f, 0f, Camera.main.transform.right.z * -1f);
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                direction += new Vector3(Camera.main.transform.forward.x * -1f, 0f, Camera.main.transform.forward.z * -1f);
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                direction += new Vector3(Camera.main.transform.right.x, 0f, Camera.main.transform.right.z);
+            }
+            if (Input.GetKey(KeyCode.RightControl))
+            {
+                direction = Fly(direction);
+            }
+            else
+            {
+                if(flyingEnergy < flyingEnergyMax)
+                {
+                    flyingEnergy += flyingEnergyRegen;
+                }
+                else if (flyingEnergy > flyingEnergyMax)
+                {
+                    flyingEnergy = flyingEnergyMax;
+                }
+            }
+        }
+
+
         
         
         Vector3 vel = direction * force;
@@ -124,7 +169,7 @@ public class WormMovementTest : MonoBehaviour
 
     void UpdateText()
     {
-        GameObject.Find("FuelText").GetComponent<TextMeshProUGUI>().text = "Fuel: " + (int)flyingEnergy;
+        GameObject.Find(player + "FuelText").GetComponent<TextMeshProUGUI>().text = "Fuel: " + (int)flyingEnergy;
     }
 
     // Start is called before the first frame update
