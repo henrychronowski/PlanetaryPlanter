@@ -13,7 +13,7 @@ public class CameraRotateScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = new Vector3(player.position.x, player.position.y + 12.0f, player.position.z + 5.0f);
+        offset = new Vector3(player.position.x - 10.0f, player.position.y + 12.0f, player.position.z - 10.0f);
     }
 
     // Update is called once per frame

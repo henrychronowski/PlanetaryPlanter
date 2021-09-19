@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PressureSwitchScript : MonoBehaviour
 {
+    public GameObject obj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,13 @@ public class PressureSwitchScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnCollisionEnter(Collision key)
+    {
+        if(key.gameObject.tag == "PressureSwitchKey")
+        {
+            Destroy(obj);
+        }
     }
 }
