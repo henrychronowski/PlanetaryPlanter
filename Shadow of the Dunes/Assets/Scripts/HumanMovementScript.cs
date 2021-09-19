@@ -5,51 +5,44 @@ using UnityEngine;
 
 public class HumanMovementScript : MonoBehaviour
 {
-    private Rigidbody rBody;
-    public float xMoveSpeed = 5.0f;
-    public float zMoveSpeed = 5.0f;
-
+    float horizontal = 0f;
+    float vertical = 0f;
+    public float xSpeed = 5f;
+    public float zSpeed = 5f;
+    Rigidbody rBody;
     // Start is called before the first frame update
     void Start()
     {
         rBody = gameObject.GetComponent<Rigidbody>();
     }
-
     // Update is called once per frame
     void Update()
     {
-        
+        CheckInput();
     }
-
     void FixedUpdate()
     {
         Move();
     }
-
+    void CheckInput()
+    {
+        horizontal = Input.GetAxis("Horizontal") * xSpeed;
+        vertical = Input.GetAxis("Vertical") * zSpeed;
+    }
     void Move()
     {
-        float horizontal = Input.GetAxis("Horizontal") * xMoveSpeed;
-        float vertical = Input.GetAxis("Vertical") * zMoveSpeed;
+        Vector3 forward = Camera.main.transform.forward;
+        forward.y = 0f;
 
-        Vector3 direction = Vector3.zero;
+        Vector3 right = Camera.main.transform.right;
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            direction += new Vector3(Camera.main.transform.forward.x * horizontal, 0f, Camera.main.transform.forward.z * vertical);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            direction += new Vector3(-Camera.main.transform.forward.x * -horizontal, 0f, -Camera.main.transform.forward.z * -vertical);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            direction += new Vector3(-Camera.main.transform.right.x * -horizontal, 0f, -Camera.main.transform.right.z * -vertical);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            direction += new Vector3(Camera.main.transform.right.x * horizontal, 0f, Camera.main.transform.right.z * vertical);
-        }
+        Vector3 finalVel = right * horizontal + forward * vertical;
 
-        rBody.velocity = direction;
+        if (horizontal != 0 && vertical != 0)
+        {
+            finalVel.z *= 0.77f;
+            finalVel.x *= 0.77f;
+        }
+        rBody.velocity = finalVel;
     }
 }
