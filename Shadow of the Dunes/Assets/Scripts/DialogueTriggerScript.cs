@@ -46,4 +46,9 @@ public class DialogueTriggerScript : MonoBehaviour
             StartCoroutine(dialogue.Type());
         }
     }
+
+    public void CutsceneDialogue()
+    {
+        StartCoroutine(dialogue.Type());
+    }
 }
