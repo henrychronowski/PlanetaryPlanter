@@ -8,7 +8,8 @@ public class DialogueTriggerScript : MonoBehaviour
     public string NPCName;
     public string PlayerName;
     public DialogueScript dialogue;
-    public TextMesh prompt;
+    //public TextMesh prompt;
+
     void Start()
     {
         dialogue = GetComponent<DialogueScript>();
@@ -39,12 +40,10 @@ public class DialogueTriggerScript : MonoBehaviour
 
     void ActivateDialogue()
     {
-        prompt.gameObject.SetActive(canInteract);
         if (canInteract == true && Input.GetKeyDown(KeyCode.G))
         {
             canInteract = false;
             StartCoroutine(dialogue.Type());
-            //dialogue.NextSentence();
         }
     }
 }
