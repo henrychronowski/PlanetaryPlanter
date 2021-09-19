@@ -11,6 +11,7 @@ public class ThirdPersonMovement : MonoBehaviour
     float horizontal;
     float vertical;
     Vector3 dir = Vector3.zero;
+    bool lockMovement;
 
     //player rotation smoothness
     public Transform cam;
@@ -19,12 +20,22 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void CheckInput()
     {
+        if(!lockMovement)
+        {
+
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
             rgd.AddForce(Vector3.up * jumpPower);
+        }
+        }
+        else
+        {
+            horizontal = 0;
+            vertical = 0;
+            rgd.velocity = new Vector3(rgd.velocity.x / 2, rgd.velocity.y, rgd.velocity.z / 2); //lowers x and z velocity quickly but keeps the ship bobbing in water
         }
     }
 
