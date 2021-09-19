@@ -40,7 +40,6 @@ public class DialogueTriggerScript : MonoBehaviour
 
     void ActivateDialogue()
     {
-        //prompt.gameObject.SetActive(canInteract);
         if (canInteract == true && Input.GetKeyDown(KeyCode.G))
         {
             canInteract = false;
