@@ -6,8 +6,8 @@ using UnityEngine;
 public class HumanMovementScript : MonoBehaviour
 {
     private Rigidbody rBody;
-    public float xMoveSpeed = 20.0f;
-    public float zMoveSpeed = 20.0f;
+    public float xMoveSpeed = 5.0f;
+    public float zMoveSpeed = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,19 +35,19 @@ public class HumanMovementScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            direction += new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
+            direction += new Vector3(Camera.main.transform.forward.x * horizontal, 0f, Camera.main.transform.forward.z * vertical);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            direction += new Vector3(Camera.main.transform.forward.x * -1f, 0f, Camera.main.transform.forward.z * -1f);
+            direction += new Vector3(-Camera.main.transform.forward.x * -horizontal, 0f, -Camera.main.transform.forward.z * -vertical);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            direction += new Vector3(Camera.main.transform.right.x * -1f, 0f, Camera.main.transform.right.z * -1f);
+            direction += new Vector3(-Camera.main.transform.right.x * -horizontal, 0f, -Camera.main.transform.right.z * -vertical);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            direction += new Vector3(Camera.main.transform.right.x, 0f, Camera.main.transform.right.z);
+            direction += new Vector3(Camera.main.transform.right.x * horizontal, 0f, Camera.main.transform.right.z * vertical);
         }
 
         rBody.velocity = direction;
