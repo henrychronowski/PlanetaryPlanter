@@ -11,7 +11,7 @@ public class ThirdPersonMovement : MonoBehaviour
     float horizontal;
     float vertical;
     Vector3 dir = Vector3.zero;
-    bool lockMovement;
+    public bool lockMovement;
 
     //player rotation smoothness
     public Transform cam;
@@ -39,6 +39,12 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+    public void LockMovement(bool setLock)
+    {
+        lockMovement = setLock;
+        Debug.Log("Locking Movement: " + setLock);
+    }
+
     private void Move()
     {
 
@@ -48,13 +54,12 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             //Rotate
             float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            Debug.Log("Target angle: " + targetAngle);
+            //Debug.Log("Target angle: " + targetAngle);
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle + yRotOffset, ref turnSmoothVelocity, turnSmoothness);
             transform.rotation = Quaternion.Euler(0, angle, 0);
 
             //Moving
             Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-
             rgd.AddForce(moveDir.normalized * speed);
 
         }

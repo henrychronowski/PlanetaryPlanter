@@ -37,8 +37,9 @@ public class BuoyancyTest : MonoBehaviour
         if(bFactorTotal == 0)
         {
             //Vector3.ClampMagnitude(rgd.velocity, clampValue);
+            rgd.AddForce(Vector3.down * Physics.gravity.y * 10 * -1f);
+            //rgd.
             //rgd.drag = 0;
-            Debug.Log(rgd.velocity.magnitude);
         }
         else
         {
@@ -63,7 +64,7 @@ public class BuoyancyTest : MonoBehaviour
     private void FixedUpdate()
     {
         UpdateBuoyancy();
-        //Vector3.ClampMagnitude(rgd.velocity, clampValue);
+        rgd.velocity = Vector3.ClampMagnitude(rgd.velocity, clampValue);
 
     }
 }
