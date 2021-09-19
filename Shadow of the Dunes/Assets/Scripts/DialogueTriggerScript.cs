@@ -40,7 +40,7 @@ public class DialogueTriggerScript : MonoBehaviour
 
     void ActivateDialogue()
     {
-        if (canInteract == true && Input.GetKeyDown(KeyCode.G))
+        if (canInteract == true && Input.GetKeyDown(KeyCode.E))
         {
             canInteract = false;
             StartCoroutine(dialogue.Type());
