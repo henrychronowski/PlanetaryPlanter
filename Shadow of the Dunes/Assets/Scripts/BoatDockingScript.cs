@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BoatDockingScript : MonoBehaviour
 {
-    bool canDock;
-    bool isDocked;
+    public bool canDock;
+    public bool isDocked;
 
     // Start is called before the first frame update
     void Start()
@@ -17,20 +17,20 @@ public class BoatDockingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        DockBoat();
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider col)
     {
-        if(gameObject.layer == 8)
+        if(col.gameObject.tag == "Player")
         {
             canDock = true;
         }
     }
 
-    void OnTriggerExit()
+    void OnTriggerExit(Collider col)
     {
-        if(gameObject.layer == 8)
+        if (col.gameObject.tag == "Player")
         {
             canDock = false;
         }
@@ -38,7 +38,7 @@ public class BoatDockingScript : MonoBehaviour
 
     void DockBoat()
     {
-        if(canDock == true && Input.GetKeyDown("Spacebar"))
+        if(canDock == true && Input.GetKeyDown("space"))
         {
             if(isDocked == true)
             {
