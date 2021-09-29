@@ -33,6 +33,7 @@ public class CollectSeedScript : MonoBehaviour
     {
         if(canCollect == true && Input.GetKeyDown(KeyCode.E))
         {
+            //GetComponent<Inventory>().AddItem(seed);
             Destroy(seed);
         }
     }
