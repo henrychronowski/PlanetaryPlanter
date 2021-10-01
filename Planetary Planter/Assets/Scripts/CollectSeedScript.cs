@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class CollectSeedScript : MonoBehaviour
@@ -33,7 +34,9 @@ public class CollectSeedScript : MonoBehaviour
     {
         if(canCollect == true && Input.GetKeyDown(KeyCode.E))
         {
-            //GetComponent<Inventory>().AddItem(seed);
+            UnityEngine.Debug.Log("1");
+            SeedInventoryScript inventory = gameObject.GetComponent<SeedInventoryScript>();
+            inventory.AddSeed(seed);
             Destroy(seed);
         }
     }
