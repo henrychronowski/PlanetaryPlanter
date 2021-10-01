@@ -10,7 +10,6 @@ public class SandOceanTest : MonoBehaviour
         {
             other.GetComponent<BuoyancyPoint>().submerged = true;
         }
-        //Debug.Log("Trigger Enter " + other.name);
     }
 
     private void OnTriggerExit(Collider other)
@@ -19,12 +18,10 @@ public class SandOceanTest : MonoBehaviour
         {
             other.GetComponent<BuoyancyPoint>().submerged = false;
         }
-        //Debug.Log("Trigger Exit " + other.name);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision " + collision.gameObject.name);
     }
     // Start is called before the first frame update
     void Start()
