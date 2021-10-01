@@ -14,7 +14,7 @@ public class RestartSceneScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        RestartScene();
     }
 
     void RestartScene()
