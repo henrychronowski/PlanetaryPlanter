@@ -133,10 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 31049574}
   - component: {fileID: 31049573}
-  - component: {fileID: 31049575}
   m_Layer: 0
   m_Name: DockingRange (15)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,21 +168,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &31049575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31049572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &45360514
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +183,7 @@ GameObject:
   - component: {fileID: 45360522}
   - component: {fileID: 45360521}
   - component: {fileID: 45360520}
+  - component: {fileID: 45360526}
   - component: {fileID: 45360519}
   - component: {fileID: 45360518}
   - component: {fileID: 45360517}
@@ -4973,6 +4958,22 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!114 &45360526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45360514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDock: 0
+  isDocked: 0
+  boat: {fileID: 45360517}
+  human: {fileID: 0}
 --- !u!1 &64770969
 GameObject:
   m_ObjectHideFlags: 0
@@ -4983,10 +4984,9 @@ GameObject:
   m_Component:
   - component: {fileID: 64770971}
   - component: {fileID: 64770970}
-  - component: {fileID: 64770972}
   m_Layer: 0
   m_Name: DockingRange (18)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5019,21 +5019,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &64770972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64770969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &106888006
 GameObject:
   m_ObjectHideFlags: 0
@@ -5044,10 +5029,9 @@ GameObject:
   m_Component:
   - component: {fileID: 106888008}
   - component: {fileID: 106888007}
-  - component: {fileID: 106888009}
   m_Layer: 0
   m_Name: DockingRange (28)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5080,21 +5064,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &106888009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106888006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &123390053
 GameObject:
   m_ObjectHideFlags: 0
@@ -5167,10 +5136,9 @@ GameObject:
   m_Component:
   - component: {fileID: 156076874}
   - component: {fileID: 156076873}
-  - component: {fileID: 156076875}
   m_Layer: 0
   m_Name: DockingRange (11)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5203,21 +5171,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &156076875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156076872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!43 &172603908
 Mesh:
   m_ObjectHideFlags: 0
@@ -5392,10 +5345,9 @@ GameObject:
   m_Component:
   - component: {fileID: 273266209}
   - component: {fileID: 273266208}
-  - component: {fileID: 273266210}
   m_Layer: 0
   m_Name: DockingRange (3)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5428,21 +5380,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &273266210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 273266207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &356265854
 GameObject:
   m_ObjectHideFlags: 0
@@ -5453,10 +5390,9 @@ GameObject:
   m_Component:
   - component: {fileID: 356265856}
   - component: {fileID: 356265855}
-  - component: {fileID: 356265857}
   m_Layer: 0
   m_Name: DockingRange (27)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5489,21 +5425,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &356265857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 356265854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &388082500
 GameObject:
   m_ObjectHideFlags: 0
@@ -5514,10 +5435,9 @@ GameObject:
   m_Component:
   - component: {fileID: 388082502}
   - component: {fileID: 388082501}
-  - component: {fileID: 388082503}
   m_Layer: 0
   m_Name: DockingRange (25)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5550,21 +5470,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &388082503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388082500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &439612164
 GameObject:
   m_ObjectHideFlags: 0
@@ -5575,10 +5480,9 @@ GameObject:
   m_Component:
   - component: {fileID: 439612166}
   - component: {fileID: 439612165}
-  - component: {fileID: 439612167}
   m_Layer: 0
   m_Name: DockingRange (5)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5611,21 +5515,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &439612167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439612164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &508310528
 GameObject:
   m_ObjectHideFlags: 0
@@ -5746,10 +5635,9 @@ GameObject:
   m_Component:
   - component: {fileID: 526209440}
   - component: {fileID: 526209439}
-  - component: {fileID: 526209441}
   m_Layer: 0
   m_Name: DockingRange (26)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5782,21 +5670,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &526209441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 526209438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &530128193
 GameObject:
   m_ObjectHideFlags: 0
@@ -6100,10 +5973,9 @@ GameObject:
   m_Component:
   - component: {fileID: 559678586}
   - component: {fileID: 559678585}
-  - component: {fileID: 559678587}
   m_Layer: 0
   m_Name: DockingRange (9)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6136,21 +6008,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &559678587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559678584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &568796291
 GameObject:
   m_ObjectHideFlags: 0
@@ -6161,10 +6018,9 @@ GameObject:
   m_Component:
   - component: {fileID: 568796293}
   - component: {fileID: 568796292}
-  - component: {fileID: 568796294}
   m_Layer: 0
   m_Name: DockingRange (2)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6197,21 +6053,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &568796294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 568796291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &592764291
 GameObject:
   m_ObjectHideFlags: 0
@@ -6222,10 +6063,9 @@ GameObject:
   m_Component:
   - component: {fileID: 592764293}
   - component: {fileID: 592764292}
-  - component: {fileID: 592764294}
   m_Layer: 0
   m_Name: DockingRange (40)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6258,21 +6098,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 56
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &592764294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 592764291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &625049434
 GameObject:
   m_ObjectHideFlags: 0
@@ -6283,10 +6108,9 @@ GameObject:
   m_Component:
   - component: {fileID: 625049436}
   - component: {fileID: 625049435}
-  - component: {fileID: 625049437}
   m_Layer: 0
   m_Name: DockingRange (33)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6319,21 +6143,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &625049437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625049434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &667268510
 GameObject:
   m_ObjectHideFlags: 0
@@ -6344,10 +6153,9 @@ GameObject:
   m_Component:
   - component: {fileID: 667268512}
   - component: {fileID: 667268511}
-  - component: {fileID: 667268513}
   m_Layer: 0
   m_Name: DockingRange (39)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6380,21 +6188,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 55
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &667268513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667268510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &699941117
 GameObject:
   m_ObjectHideFlags: 0
@@ -6665,10 +6458,9 @@ GameObject:
   m_Component:
   - component: {fileID: 773640559}
   - component: {fileID: 773640558}
-  - component: {fileID: 773640560}
   m_Layer: 0
   m_Name: DockingRange (6)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6701,21 +6493,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &773640560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773640557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &783466220
 GameObject:
   m_ObjectHideFlags: 0
@@ -6822,10 +6599,9 @@ GameObject:
   m_Component:
   - component: {fileID: 830934349}
   - component: {fileID: 830934348}
-  - component: {fileID: 830934350}
   m_Layer: 0
   m_Name: DockingRange (16)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6858,21 +6634,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &830934350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830934347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &858188105
 GameObject:
   m_ObjectHideFlags: 0
@@ -6979,10 +6740,9 @@ GameObject:
   m_Component:
   - component: {fileID: 888572678}
   - component: {fileID: 888572677}
-  - component: {fileID: 888572679}
   m_Layer: 0
   m_Name: DockingRange (37)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7015,21 +6775,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &888572679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888572676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &896676114
 GameObject:
   m_ObjectHideFlags: 0
@@ -7370,6 +7115,7 @@ MonoBehaviour:
   canDock: 0
   isDocked: 0
   boat: {fileID: 0}
+  human: {fileID: 0}
 --- !u!65 &942092903
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7457,10 +7203,9 @@ GameObject:
   m_Component:
   - component: {fileID: 970741825}
   - component: {fileID: 970741824}
-  - component: {fileID: 970741826}
   m_Layer: 0
   m_Name: DockingRange (7)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7493,21 +7238,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &970741826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 970741823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &972389950
 GameObject:
   m_ObjectHideFlags: 0
@@ -7518,10 +7248,9 @@ GameObject:
   m_Component:
   - component: {fileID: 972389952}
   - component: {fileID: 972389951}
-  - component: {fileID: 972389953}
   m_Layer: 0
   m_Name: DockingRange
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7554,21 +7283,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &972389953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972389950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!43 &1038255790
 Mesh:
   m_ObjectHideFlags: 0
@@ -7743,10 +7457,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1069778639}
   - component: {fileID: 1069778638}
-  - component: {fileID: 1069778640}
   m_Layer: 0
   m_Name: DockingRange (31)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7779,21 +7492,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1069778640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069778637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1142590491
 GameObject:
   m_ObjectHideFlags: 0
@@ -7900,10 +7598,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1149909703}
   - component: {fileID: 1149909702}
-  - component: {fileID: 1149909704}
   m_Layer: 0
   m_Name: DockingRange (41)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7936,21 +7633,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 57
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1149909704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149909701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1224162195
 GameObject:
   m_ObjectHideFlags: 0
@@ -8057,10 +7739,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1233761426}
   - component: {fileID: 1233761425}
-  - component: {fileID: 1233761427}
   m_Layer: 0
   m_Name: DockingRange (35)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8093,21 +7774,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 51
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1233761427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1233761424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1237638557
 GameObject:
   m_ObjectHideFlags: 0
@@ -8118,10 +7784,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1237638559}
   - component: {fileID: 1237638558}
-  - component: {fileID: 1237638560}
   m_Layer: 0
   m_Name: DockingRange (22)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8154,21 +7819,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1237638560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237638557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1258121358
 GameObject:
   m_ObjectHideFlags: 0
@@ -8179,10 +7829,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1258121360}
   - component: {fileID: 1258121359}
-  - component: {fileID: 1258121361}
   m_Layer: 0
   m_Name: DockingRange (8)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8215,21 +7864,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1258121361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258121358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1285376845
 GameObject:
   m_ObjectHideFlags: 0
@@ -8240,10 +7874,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1285376847}
   - component: {fileID: 1285376846}
-  - component: {fileID: 1285376848}
   m_Layer: 0
   m_Name: DockingRange (24)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8276,21 +7909,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1285376848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1285376845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1317842684
 GameObject:
   m_ObjectHideFlags: 0
@@ -8494,10 +8112,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1421218073}
   - component: {fileID: 1421218072}
-  - component: {fileID: 1421218074}
   m_Layer: 0
   m_Name: DockingRange (19)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8530,21 +8147,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1421218074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421218071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1432632889
 GameObject:
   m_ObjectHideFlags: 0
@@ -8555,10 +8157,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1432632891}
   - component: {fileID: 1432632890}
-  - component: {fileID: 1432632892}
   m_Layer: 0
   m_Name: DockingRange (12)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8591,21 +8192,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1432632892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1432632889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1442574231
 GameObject:
   m_ObjectHideFlags: 0
@@ -8616,10 +8202,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1442574233}
   - component: {fileID: 1442574232}
-  - component: {fileID: 1442574234}
   m_Layer: 0
   m_Name: DockingRange (34)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8652,21 +8237,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1442574234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442574231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1448558955
 GameObject:
   m_ObjectHideFlags: 0
@@ -8677,10 +8247,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1448558957}
   - component: {fileID: 1448558956}
-  - component: {fileID: 1448558958}
   m_Layer: 0
   m_Name: DockingRange (21)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8713,21 +8282,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1448558958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448558955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1466760751
 GameObject:
   m_ObjectHideFlags: 0
@@ -8738,10 +8292,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1466760753}
   - component: {fileID: 1466760752}
-  - component: {fileID: 1466760754}
   m_Layer: 0
   m_Name: DockingRange (1)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8774,21 +8327,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1466760754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1466760751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1488303886
 GameObject:
   m_ObjectHideFlags: 0
@@ -9008,10 +8546,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1520565916}
   - component: {fileID: 1520565915}
-  - component: {fileID: 1520565917}
   m_Layer: 0
   m_Name: DockingRange (36)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9044,21 +8581,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1520565917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520565914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1532322639
 GameObject:
   m_ObjectHideFlags: 0
@@ -9069,10 +8591,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1532322641}
   - component: {fileID: 1532322640}
-  - component: {fileID: 1532322642}
   m_Layer: 0
   m_Name: DockingRange (30)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9105,21 +8626,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1532322642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1532322639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1576057424
 GameObject:
   m_ObjectHideFlags: 0
@@ -9130,10 +8636,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1576057426}
   - component: {fileID: 1576057425}
-  - component: {fileID: 1576057427}
   m_Layer: 0
   m_Name: DockingRange (29)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9166,21 +8671,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1576057427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576057424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1589050173
 GameObject:
   m_ObjectHideFlags: 0
@@ -43578,10 +43068,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1797551310}
   - component: {fileID: 1797551309}
-  - component: {fileID: 1797551311}
   m_Layer: 0
   m_Name: DockingRange (38)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43614,21 +43103,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 54
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1797551311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1797551308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1829839723
 GameObject:
   m_ObjectHideFlags: 0
@@ -43639,10 +43113,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1829839725}
   - component: {fileID: 1829839724}
-  - component: {fileID: 1829839726}
   m_Layer: 0
   m_Name: DockingRange (17)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43675,21 +43148,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1829839726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829839723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1855947591
 GameObject:
   m_ObjectHideFlags: 0
@@ -43700,10 +43158,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1855947593}
   - component: {fileID: 1855947592}
-  - component: {fileID: 1855947594}
   m_Layer: 0
   m_Name: DockingRange (14)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43736,21 +43193,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1855947594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855947591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1922894813
 GameObject:
   m_ObjectHideFlags: 0
@@ -43956,10 +43398,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1934236372}
   - component: {fileID: 1934236371}
-  - component: {fileID: 1934236373}
   m_Layer: 0
   m_Name: DockingRange (32)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43992,21 +43433,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1934236373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934236370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &1991331449
 GameObject:
   m_ObjectHideFlags: 0
@@ -44059,6 +43485,7 @@ MonoBehaviour:
   canDock: 0
   isDocked: 0
   boat: {fileID: 0}
+  human: {fileID: 0}
 --- !u!65 &1991331452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44208,10 +43635,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2020988492}
   - component: {fileID: 2020988491}
-  - component: {fileID: 2020988493}
   m_Layer: 0
   m_Name: DockingRange (20)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44244,21 +43670,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2020988493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020988490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &2027464194
 GameObject:
   m_ObjectHideFlags: 0
@@ -44269,10 +43680,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2027464196}
   - component: {fileID: 2027464195}
-  - component: {fileID: 2027464197}
   m_Layer: 0
   m_Name: DockingRange (10)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44305,21 +43715,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2027464197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027464194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &2030786107
 GameObject:
   m_ObjectHideFlags: 0
@@ -44330,10 +43725,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2030786109}
   - component: {fileID: 2030786108}
-  - component: {fileID: 2030786110}
   m_Layer: 0
   m_Name: DockingRange (13)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44366,21 +43760,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2030786110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2030786107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &2034528779
 GameObject:
   m_ObjectHideFlags: 0
@@ -78864,10 +78243,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2127330792}
   - component: {fileID: 2127330791}
-  - component: {fileID: 2127330793}
   m_Layer: 0
   m_Name: DockingRange (4)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78900,21 +78278,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2127330793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127330790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
 --- !u!1 &2140297958
 GameObject:
   m_ObjectHideFlags: 0
@@ -78925,10 +78288,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2140297960}
   - component: {fileID: 2140297959}
-  - component: {fileID: 2140297961}
   m_Layer: 0
   m_Name: DockingRange (23)
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78961,18 +78323,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2140297961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140297958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 45360517}
