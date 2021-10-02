@@ -7,11 +7,14 @@ public class BoatDockingScript : MonoBehaviour
     public bool canDock;
     public bool isDocked;
 
+    public ThirdPersonMovement boat;
+
     // Start is called before the first frame update
     void Start()
     {
         canDock = false;
         isDocked = false;
+        boat = gameObject.GetComponent<ThirdPersonMovement>();
     }
 
     // Update is called once per frame
@@ -43,12 +46,12 @@ public class BoatDockingScript : MonoBehaviour
             if(isDocked == true)
             {
                 isDocked = false;
-                GetComponent<ThirdPersonMovement>().LockMovement(isDocked);
+                boat.LockMovement(isDocked);
             }
             else
             {
                 isDocked = true;
-                GetComponent<ThirdPersonMovement>().LockMovement(isDocked);
+                boat.LockMovement(isDocked);
             }
         }
     }
