@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class SeedInventoryScript : MonoBehaviour
 {
-    public int inventorySlots = 10;
+    public static SeedInventoryScript instance;
+
+    public List<Transform> inventorySpots;
+
     public int slotsTaken = 0;
     public GameObject[] seedInventory;
+
+    private void Awake()
+    {
+        if (instance != null)
+            Destroy(instance);
+        else
+            instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        seedInventory = new GameObject[inventorySlots];
     }
 
     // Update is called once per frame
@@ -20,23 +30,43 @@ public class SeedInventoryScript : MonoBehaviour
         
     }
 
-    public void AddSeed(GameObject seed)
+    public bool AddSeed(GameObject seed)
     {
-        for(int i = 0; i < inventorySlots; i++)
+        for(int i = 0; i < seedInventory.Length; i++)
         {
-            UnityEngine.Debug.Log("3");
-            if(inventorySlots > slotsTaken)
+            if(seedInventory.Length > slotsTaken)
             {
-                UnityEngine.Debug.Log("4");
-                if (seedInventory[i] != null)
+                if (seedInventory[i] == null)
                 {
-                    UnityEngine.Debug.Log("5");
-                    seed = seedInventory[i];
-                    UnityEngine.Debug.Log("6");
+                    seedInventory[i] = seed;
                     slotsTaken++;
+                    seed.transform.parent = inventorySpots[i];
+                    seed.transform.localPosition = Vector3.zero;
+                    return true;
                 }
             }
         }
+        return false;
+    }
+
+    public bool UseSeed()
+    {
+        if (slotsTaken > 0)
+        {
+            for (int i = seedInventory.Length-1; i >= 0; i--)
+            {
+                if (seedInventory[i] != null)
+                {
+                    GameObject temp = seedInventory[i];
+                    seedInventory[i].transform.parent = null;
+                    seedInventory[i] = null;
+                    slotsTaken--;
+                    Destroy(temp);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     void RemoveSeed(GameObject seed)
