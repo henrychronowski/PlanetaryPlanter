@@ -25,7 +25,7 @@ public class BoatDockingScript : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.tag == "Player")
+        if(col.gameObject.tag == "Dock")
         {
             canDock = true;
         }
@@ -33,7 +33,7 @@ public class BoatDockingScript : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Dock")
         {
             canDock = false;
         }
