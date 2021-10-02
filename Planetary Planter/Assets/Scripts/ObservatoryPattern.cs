@@ -7,7 +7,7 @@ public class ObservatoryPattern : MonoBehaviour
     public int width; //how many chars in each string?
 
     public List<string> patternRows;
-    
+    public GameObject success;
 
     public bool[,] boolPattern;
 
@@ -60,20 +60,17 @@ public class ObservatoryPattern : MonoBehaviour
         {
             for(int j = 0; j < patternRows.Count; j++)
             {
-
+                if (tempArray[i, j] != boolPattern[i, j])
+                {
+                    Debug.Log("False");
+                    return false;
+                }
             }
         }
 
-        if(tempArray == boolPattern)
-        {
-            Debug.Log("Potassium");
-            return true;
-        }
-        else
-        {
-            Debug.Log("False");
-            return false;
-        }
+        Debug.Log("Potassium");
+        success.SetActive(true);
+        return true;
     }
 
 

@@ -18,6 +18,17 @@ public class ThrowPlanet : MonoBehaviour
                 }
             }
         }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hitInfo))
+            {
+                if (hitInfo.collider.gameObject.layer == 8 && hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().filled == true)
+                {
+                    hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().RemoveObject();
+                }
+            }
+        }
     }
 
     // Start is called before the first frame update

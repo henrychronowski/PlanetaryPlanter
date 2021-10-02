@@ -22,7 +22,7 @@ public class Observatory : MonoBehaviour
 
     void CheckInput()
     {
-        if(Input.GetKeyDown(KeyCode.O))
+        if(Input.GetKeyDown(KeyCode.F))
         {
             if (playerCam.activeInHierarchy)
             {
