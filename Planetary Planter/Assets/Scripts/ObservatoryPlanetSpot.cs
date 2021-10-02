@@ -28,6 +28,17 @@ public class ObservatoryPlanetSpot : MonoBehaviour
 
     }
 
+    public void RemoveObject()
+    {
+        if(filled)
+        {
+            Destroy(heldObject);
+            filled = false;
+            GetComponent<MeshRenderer>().enabled = true;
+
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
