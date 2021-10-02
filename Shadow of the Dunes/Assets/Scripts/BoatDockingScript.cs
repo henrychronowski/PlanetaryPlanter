@@ -41,7 +41,7 @@ public class BoatDockingScript : MonoBehaviour
 
     void DockBoat()
     {
-        if(canDock == true && Input.GetKeyDown("space"))
+        if(canDock == true && Input.GetKeyDown(KeyCode.E))
         {
             if(isDocked == true)
             {
