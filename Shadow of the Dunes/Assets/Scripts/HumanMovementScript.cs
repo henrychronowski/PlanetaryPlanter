@@ -15,6 +15,8 @@ public class HumanMovementScript : MonoBehaviour
     void Start()
     {
         rBody = gameObject.GetComponent<Rigidbody>();
+        rBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ 
+            | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
     }
     // Update is called once per frame
     void Update()
@@ -56,5 +58,14 @@ public class HumanMovementScript : MonoBehaviour
     public void LockMovement(bool isLocked)
     {
         lockMovement = isLocked;
+        if(lockMovement)
+        {
+            rBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ
+            | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+        }
+        else
+        {
+            rBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+        }
     }
 }
