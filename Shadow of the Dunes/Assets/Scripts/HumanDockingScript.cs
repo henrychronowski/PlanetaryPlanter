@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.Renderer;
 
 public class HumanDockingScript : MonoBehaviour
 {
@@ -10,7 +11,10 @@ public class HumanDockingScript : MonoBehaviour
     public bool isDocked;
     public bool isSailing;
 
-    public HumanMovementScript human;
+    public GameObject player;
+    public HumanMovementScript movement;
+
+    Renderer render;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +25,9 @@ public class HumanDockingScript : MonoBehaviour
         canReturn = true;
         isSailing = true;
 
-        human = gameObject.GetComponent<HumanMovementScript>();
+        movement = gameObject.GetComponent<HumanMovementScript>();
+        render = player.GetComponent<Renderer>();
+        render.enabled = false;
     }
 
     // Update is called once per frame
@@ -50,7 +56,7 @@ public class HumanDockingScript : MonoBehaviour
         }
         else if (col.gameObject.tag == "Boat")
         {
-            canReturn = true;
+            canReturn = false;
         }
     }
 
@@ -60,13 +66,15 @@ public class HumanDockingScript : MonoBehaviour
         {
             isDocked = false;
             isSailing = true;
-            human.LockMovement(isSailing);
+            movement.LockMovement(isSailing);
+            render.enabled = isDocked;
         }
         else if(isSailing && canDock && Input.GetKeyDown(KeyCode.E))
         {
             isDocked = true;
             isSailing = false;
-            human.LockMovement(isSailing);
+            movement.LockMovement(isSailing);
+            render.enabled = isDocked;
         }
     }
 }
