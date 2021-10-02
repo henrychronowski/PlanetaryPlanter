@@ -11,9 +11,21 @@ public class ObservatoryPlanetSpot : MonoBehaviour
 
     public void PlaceObject(GameObject newObject)
     {
-        newObject.transform.position = transform.position;
-        newObject.transform.localScale = Vector3.one * 2f;
-        GetComponent<MeshRenderer>().enabled = false;
+        if (newObject == null)
+            return;
+
+        if(!filled)
+        {
+            newObject.transform.position = transform.position;
+            newObject.transform.localScale = Vector3.one * 2f;
+            GetComponent<MeshRenderer>().enabled = false;
+            filled = true;
+        }
+        else
+        {
+            Debug.Log("Filled");
+        }
+
     }
 
     // Start is called before the first frame update

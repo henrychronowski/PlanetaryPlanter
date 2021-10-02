@@ -12,7 +12,7 @@ public class ThrowPlanet : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hitInfo))
             {
-                if(hitInfo.collider.gameObject.layer == 8)
+                if(hitInfo.collider.gameObject.layer == 8 && hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().filled == false)
                 {
                     hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().PlaceObject(Inventory.instance.PopItem());
                 }

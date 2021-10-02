@@ -7,6 +7,7 @@ public class CollectSeedScript : MonoBehaviour
 {
     public bool canCollect = false;
     public GameObject seed;
+    //public bool collected = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +33,13 @@ public class CollectSeedScript : MonoBehaviour
 
     void CollectSeed()
     {
-        if(canCollect == true && Input.GetKeyDown(KeyCode.E))
+        if(canCollect && Input.GetKeyDown(KeyCode.E))
         {
             UnityEngine.Debug.Log("1");
-            SeedInventoryScript inventory = gameObject.GetComponent<SeedInventoryScript>();
-            inventory.AddSeed(seed);
-            Destroy(seed);
+            //SeedInventoryScript inventory = gameObject.GetComponent<SeedInventoryScript>();
+            GameObject temp = Instantiate(seed, transform.parent, false);
+            SeedInventoryScript.instance.AddSeed(temp);
+            //Destroy(seed);
         }
     }
 }

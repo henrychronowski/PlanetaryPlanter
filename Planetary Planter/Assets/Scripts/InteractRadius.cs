@@ -65,8 +65,8 @@ public class InteractRadius : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = new Color(255f, 255f, 0f, 5f);
-        Gizmos.DrawSphere(transform.position, radius);
+        //Gizmos.color = new Color(255f, 255f, 0f, 5f);
+        //Gizmos.DrawSphere(transform.position, radius);
 
     }
 }

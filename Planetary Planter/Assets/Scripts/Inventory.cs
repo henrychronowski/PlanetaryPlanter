@@ -8,7 +8,6 @@ public class Inventory : MonoBehaviour
 
     public List<GameObject> inventory;
     public List<Transform> inventorySpots;
-    public int inventoryCapacity;
     public int itemsInInventory = 0;
     public bool AddItem(GameObject item)
     {
@@ -60,7 +59,6 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventory.Capacity = inventoryCapacity;
     }
 
     // Update is called once per frame
