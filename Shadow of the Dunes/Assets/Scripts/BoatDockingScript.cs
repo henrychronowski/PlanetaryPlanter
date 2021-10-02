@@ -43,10 +43,12 @@ public class BoatDockingScript : MonoBehaviour
             if(isDocked == true)
             {
                 isDocked = false;
+                GetComponent<ThirdPersonMovement>().LockMovement(isDocked);
             }
             else
             {
                 isDocked = true;
+                GetComponent<ThirdPersonMovement>().LockMovement(isDocked);
             }
         }
     }
