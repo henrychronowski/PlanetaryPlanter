@@ -5775,7 +5775,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530128193}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -80, y: 3.59, z: -29.1}
+  m_LocalPosition: {x: -53.5, y: 2.79, z: 79.5}
   m_LocalScale: {x: 12, y: 0.00762818, z: 12}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5887,8 +5887,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 45360515}
-  height: 95
-  heightUpperLimit: 142.41
+  height: 300
+  heightUpperLimit: 300
   heightLowerLimit: -1
   distance: 65
   distanceLowerLimit: 1
@@ -6743,7 +6743,7 @@ GameObject:
   - component: {fileID: 879354174}
   m_Layer: 7
   m_Name: BoatReturn
-  m_TagString: Untagged
+  m_TagString: Boat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6770,7 +6770,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879354172}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.2
@@ -7120,7 +7120,6 @@ GameObject:
   - component: {fileID: 942092905}
   - component: {fileID: 942092904}
   - component: {fileID: 942092903}
-  - component: {fileID: 942092902}
   - component: {fileID: 942092901}
   m_Layer: 0
   m_Name: Dock
@@ -7137,29 +7136,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942092900}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 9999
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &942092902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942092900}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 0}
 --- !u!65 &942092903
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7232,7 +7216,7 @@ Transform:
   m_GameObject: {fileID: 942092900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.4155, y: -4.0358, z: -257.1}
-  m_LocalScale: {x: 548.27954, y: 15.259012, z: 180.74655}
+  m_LocalScale: {x: 548.27954, y: 13.5, z: 180.74655}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -8495,7 +8479,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504676673}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -8574,7 +8558,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504676673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -194.8, y: 8.91, z: -204.1}
+  m_LocalPosition: {x: -209.1, y: 7.6, z: -204.1}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8687,7 +8671,7 @@ GameObject:
   - component: {fileID: 1568416342}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8815,8 +8799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6216be992d292924b88c7cd7e5845a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpeed: 5
-  zSpeed: 5
+  xSpeed: 30
+  zSpeed: 30
   lockMovement: 1
 --- !u!1 &1576057424
 GameObject:
@@ -43244,7 +43228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719295798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -208.95, y: 3.59, z: -230}
+  m_LocalPosition: {x: -208.95, y: 2.74, z: -230}
   m_LocalScale: {x: 12, y: 0.00762818, z: 12}
   m_Children: []
   m_Father: {fileID: 0}
@@ -43680,7 +43664,6 @@ GameObject:
   - component: {fileID: 1991331454}
   - component: {fileID: 1991331453}
   - component: {fileID: 1991331452}
-  - component: {fileID: 1991331451}
   - component: {fileID: 1991331450}
   m_Layer: 0
   m_Name: Dock (1)
@@ -43705,21 +43688,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1991331451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991331449}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63cb112352b6b4d96823451da6f4aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDock: 0
-  isDocked: 0
-  boat: {fileID: 0}
 --- !u!65 &1991331452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43792,7 +43760,7 @@ Transform:
   m_GameObject: {fileID: 1991331449}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.4155, y: -4.0358, z: 1}
-  m_LocalScale: {x: 548.27954, y: 15.259012, z: 180.74655}
+  m_LocalScale: {x: 548.27954, y: 13.5, z: 180.74655}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -44022,7 +43990,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034528779}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -78458,7 +78426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104528058}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -39.7, y: 3.73, z: -303.49}
+  m_LocalPosition: {x: -39.7, y: 3.73, z: -224}
   m_LocalScale: {x: 2.5, y: 1.5, z: 3.25}
   m_Children:
   - {fileID: 2058913355}

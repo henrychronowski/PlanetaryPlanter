@@ -51,6 +51,7 @@ public class HumanMovementScript : MonoBehaviour
                 finalVel.z *= 0.77f;
                 finalVel.x *= 0.77f;
             }
+
             rBody.velocity = finalVel;
         }
     }
@@ -58,6 +59,7 @@ public class HumanMovementScript : MonoBehaviour
     public void LockMovement(bool isLocked)
     {
         lockMovement = isLocked;
+
         if(lockMovement)
         {
             rBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ
