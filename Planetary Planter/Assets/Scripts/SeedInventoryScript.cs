@@ -10,13 +10,18 @@ public class SeedInventoryScript : MonoBehaviour
 
     public int slotsTaken = 0;
     public GameObject[] seedInventory;
-
+    private Camera inventoryCam;
     private void Awake()
     {
         if (instance != null)
             Destroy(instance);
         else
             instance = this;
+    }
+
+    void CheckInput()
+    {
+        Ray mouse = inventoryCam.ScreenPointToRay(Input.mousePosition);
     }
 
     // Start is called before the first frame update
