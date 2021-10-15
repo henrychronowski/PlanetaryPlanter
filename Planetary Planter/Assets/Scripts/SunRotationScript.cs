@@ -45,7 +45,5 @@ public class SunRotationScript : MonoBehaviour
             CurrentDay++;
             DayCounter.text = "Day " + CurrentDay;
         }
-
-
     }
 }
