@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8841713188083676948}
   - component: {fileID: 8841713188083676949}
   - component: {fileID: 8841713188083676938}
+  - component: {fileID: 1798445749261963167}
   m_Layer: 7
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -96,6 +97,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1798445749261963167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841713188083676939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8acd5820a94af4492eb7e8df37605f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 3796f9cd8113e554cb982bfc3a7fd1c6, type: 3}
 --- !u!1 &8841713188206741908
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +122,7 @@ GameObject:
   - component: {fileID: 8841713188206741905}
   - component: {fileID: 8841713188206741910}
   - component: {fileID: 8841713188206741911}
+  - component: {fileID: 3499083562481793171}
   m_Layer: 7
   m_Name: Final
   m_TagString: Untagged
@@ -192,6 +207,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3499083562481793171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841713188206741908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8acd5820a94af4492eb7e8df37605f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 6ce1592e5efebdf45a611bb707d7437f, type: 3}
 --- !u!1 &8841713188656505743
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +232,7 @@ GameObject:
   - component: {fileID: 8841713188656505736}
   - component: {fileID: 8841713188656505737}
   - component: {fileID: 8841713188656505742}
+  - component: {fileID: 5346510264679046892}
   m_Layer: 7
   m_Name: Sphere (3)
   m_TagString: Untagged
@@ -288,6 +317,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5346510264679046892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841713188656505743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8acd5820a94af4492eb7e8df37605f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 3796f9cd8113e554cb982bfc3a7fd1c6, type: 3}
 --- !u!1 &8841713188997342954
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,9 +341,10 @@ GameObject:
   - component: {fileID: 8841713188997342964}
   - component: {fileID: 8841713188997342965}
   - component: {fileID: 8841713188997342967}
+  - component: {fileID: 8750847979867387638}
   m_Layer: 7
   m_Name: Plant
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,6 +409,19 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8750847979867387638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841713188997342954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8acd5820a94af4492eb7e8df37605f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
 --- !u!1 &8841713189769588277
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +434,7 @@ GameObject:
   - component: {fileID: 8841713189769588278}
   - component: {fileID: 8841713189769588279}
   - component: {fileID: 8841713189769588276}
+  - component: {fileID: 4750835627175626613}
   m_Layer: 7
   m_Name: Sphere (2)
   m_TagString: Untagged
@@ -462,3 +519,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4750835627175626613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841713189769588277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8acd5820a94af4492eb7e8df37605f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 3796f9cd8113e554cb982bfc3a7fd1c6, type: 3}

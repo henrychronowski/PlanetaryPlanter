@@ -39,6 +39,7 @@ public class CollectSeedScript : MonoBehaviour
             //SeedInventoryScript inventory = gameObject.GetComponent<SeedInventoryScript>();
             GameObject temp = Instantiate(seed, transform.parent, false);
             SeedInventoryScript.instance.AddSeed(temp);
+            GameObject.FindObjectOfType<NewInventory>().AddItem(temp);
             //Destroy(seed);
         }
     }
