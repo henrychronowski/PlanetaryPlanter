@@ -9,15 +9,21 @@ public class SunRotationScript : MonoBehaviour
     float CurrentAngle = -30.0f;
     float RotationScale = 0.1f;
     public int CurrentDay = 1;
+    public int CurrentHour = 0;
 
     float FullRevolutionAngle;
+    float HourAngle;
     public Text DayCounter;
+    public Text HourCounter;
 
     // Start is called before the first frame update
     void Start()
     {
         FullRevolutionAngle = CurrentAngle;
+        HourAngle = CurrentAngle + 15.0f;
+
         DayCounter.text = "Day " + CurrentDay;
+        HourCounter.text = "Time: " + CurrentHour + ":00";
     }
 
     // Update is called once per frame
@@ -25,6 +31,7 @@ public class SunRotationScript : MonoBehaviour
     {
         Rotation();
         CheckDay();
+        CheckHour();
     }
 
     void Rotation()
@@ -44,6 +51,28 @@ public class SunRotationScript : MonoBehaviour
         {
             CurrentDay++;
             DayCounter.text = "Day " + CurrentDay;
+        }
+    }
+
+    void CheckHour()
+    {
+        if(CurrentAngle <= HourAngle + 0.01 &&
+            CurrentAngle >= HourAngle - 0.01)
+        {
+            HourAngle += 15.0f;
+            CurrentHour++;
+
+            if(HourAngle >= 180.0f)
+            {
+                HourAngle = -HourAngle;
+            }
+
+            if(CurrentHour == 24)
+            {
+                CurrentHour = 0;
+            }
+
+            HourCounter.text = "Time: " + CurrentHour + ":00";
         }
     }
 }
