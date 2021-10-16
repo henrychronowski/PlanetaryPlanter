@@ -17,10 +17,12 @@ public class PlantSpot : MonoBehaviour
     {
         if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject))
         {
-            transform.GetChild(0).transform.gameObject.GetComponent<Plant>().inPot = false;
+            GameObject temp = transform.GetChild(0).transform.gameObject;
+            temp.GetComponent<Plant>().inPot = false;
             //Destroy(transform.GetChild(0).gameObject);
-            transform.GetChild(0).transform.gameObject.SetActive(false);
-            transform.GetChild(0).parent = null;
+            //transform.GetChild(0).transform.gameObject.SetActive(false);
+            temp.transform.parent = null;
+            temp.transform.position = new Vector3(10000, 100000); //this is dumb but its 4:30am
             Debug.Log("Added to inv");
         }
     }
