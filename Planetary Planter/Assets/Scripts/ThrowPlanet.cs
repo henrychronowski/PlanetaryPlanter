@@ -14,10 +14,11 @@ public class ThrowPlanet : MonoBehaviour
             {
                 if(hitInfo.collider.gameObject.layer == 8 && hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().filled == false)
                 {
-                    hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().PlaceObject(Inventory.instance.PopItem());
+                    hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().PlaceObject(NewInventory.instance.PopItemOfTag("Planet"));
                 }
             }
         }
+
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -25,6 +26,7 @@ public class ThrowPlanet : MonoBehaviour
             {
                 if (hitInfo.collider.gameObject.layer == 8 && hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().filled == true)
                 {
+                    
                     hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().RemoveObject();
                 }
             }

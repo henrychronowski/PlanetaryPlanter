@@ -40,6 +40,11 @@ public class Plant : MonoBehaviour
 
     public Vector3 originalScale;
 
+    public Sprite smallIcon;
+
+    public Sprite grownIcon;
+
+
     [SerializeField]
     float sinFactor;
 
@@ -55,6 +60,11 @@ public class Plant : MonoBehaviour
                 plantModels[(int)stage].SetActive(false);
                 stage++;
                 plantModels[(int)stage].SetActive(true);
+
+                if (stage == Stage.Final)
+                {
+                    GetComponent<IconHolder>().icon = grownIcon;
+                }
             }
         }
     }

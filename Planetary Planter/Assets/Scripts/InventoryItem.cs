@@ -13,17 +13,6 @@ public class InventoryItem : MonoBehaviour
     {
         itemObject = obj;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        iconDisplay = GetComponent<Image>();
-        if(itemObject)
-        {
-            //check to see if it has an image component to use as its icon in the inventory screen
-            iconDisplay.sprite = GetComponent<IconHolder>().icon;
-            
-        }
-    }
 
     public void Init(GameObject item)
     {
