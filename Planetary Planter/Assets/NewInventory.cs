@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class NewInventory : MonoBehaviour
 {
+    public static NewInventory instance;
     public InventoryItem selectedItem;
     public List<InventorySpace> spaces;
     public bool itemInCursor;
@@ -13,13 +14,13 @@ public class NewInventory : MonoBehaviour
     public GameObject selectionIndicator;
     void CheckInput()
     {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            if(gameObject.activeInHierarchy)
-                gameObject.SetActive(false);
-            else
-                gameObject.SetActive(false);
-        }
+        //if(Input.GetKeyDown(KeyCode.E))
+        //{
+        //    if(gameObject.activeInHierarchy)
+        //        gameObject.SetActive(false);
+        //    else
+        //        gameObject.SetActive(false);
+        //}
     }
 
     public void Click(InventorySpace space)
@@ -31,24 +32,28 @@ public class NewInventory : MonoBehaviour
         }
         selectedSpace = space;
         selectionIndicator.transform.position = space.gameObject.transform.position;
-        if(!itemInCursor)
+
+        if(Input.GetKey(KeyCode.Mouse1))
         {
-            selectedItem = space.item;
-            space.item = null;
-            space.filled = false;
-            selectedItem.gameObject.transform.parent = transform;
-            itemInCursor = true;
-        }
-        else
-        {
-            if(space.item == null)
+            if(!itemInCursor)
             {
-                space.item = selectedItem;
-                //selectedItem = null;
-                itemInCursor = false;
-                space.filled = true;
-                space.item.transform.parent = space.transform;
-                space.item.transform.localPosition = Vector3.zero;
+                selectedItem = space.item;
+                space.item = null;
+                space.filled = false;
+                selectedItem.gameObject.transform.parent = transform;
+                itemInCursor = true;
+            }
+            else
+            {
+                if(space.item == null)
+                {
+                    space.item = selectedItem;
+                    //selectedItem = null;
+                    itemInCursor = false;
+                    space.filled = true;
+                    space.item.transform.parent = space.transform;
+                    space.item.transform.localPosition = Vector3.zero;
+                }
             }
         }
     }
@@ -57,7 +62,7 @@ public class NewInventory : MonoBehaviour
     {
         for(int i = 0; i < spaces.Count; i++)
         {
-            if(!spaces[i].filled)
+            if(!spaces[i].item)
             {
                 GameObject inventoryObject = Instantiate(emptyInventoryObject, spaces[i].gameObject.transform);
 
@@ -87,6 +92,7 @@ public class NewInventory : MonoBehaviour
         if (slot.item)
         {
             GameObject temp = slot.item.itemObject;
+            slot.filled = false;
             Destroy(slot.item.gameObject);
             
             return temp;
@@ -94,12 +100,12 @@ public class NewInventory : MonoBehaviour
         return null;
     }
 
-    public GameObject PopItemOfTag(InventorySpace slot, string tag)
+    public GameObject PopItemOfTag(string tag)
     {
-        if (slot.item && slot.item.itemObject.tag == tag)
+        if (selectedSpace.item && selectedSpace.item.itemObject.tag == tag)
         {
-            GameObject temp = slot.item.itemObject;
-            Destroy(slot.item.gameObject);
+            GameObject temp = selectedSpace.item.itemObject;
+            Destroy(selectedSpace.item.gameObject);
 
             return temp;
         }
@@ -111,7 +117,7 @@ public class NewInventory : MonoBehaviour
         if(itemInCursor)
         {
             RectTransform itemTransform = selectedItem.gameObject.GetComponent<RectTransform>();
-            selectedItem.gameObject.transform.position = new Vector3(Input.mousePosition.x + (itemTransform.rect.width), Input.mousePosition.y + (itemTransform.rect.height), Input.mousePosition.z);
+            selectedItem.gameObject.transform.position = new Vector3(Input.mousePosition.x + (itemTransform.rect.width/2), Input.mousePosition.y + (itemTransform.rect.height / 2 + 25), Input.mousePosition.z);
         }
     }
 
@@ -126,4 +132,12 @@ public class NewInventory : MonoBehaviour
     {
         UpdateHeldItemPos();
     }
+    private void Awake()
+    {
+        if (instance != null)
+            Destroy(instance);
+        else
+            instance = this;
+    }
+
 }

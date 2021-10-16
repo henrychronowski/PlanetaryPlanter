@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 8841713188997342964}
   - component: {fileID: 8841713188997342965}
   - component: {fileID: 8841713188997342967}
-  - component: {fileID: 8750847979867387638}
+  - component: {fileID: 3295720273854982070}
   m_Layer: 7
   m_Name: Plant
   m_TagString: Planet
@@ -393,6 +393,8 @@ MonoBehaviour:
   timeSinceLastGrowth: 0
   timeBetweenGrowths: 1
   originalScale: {x: 0, y: 0, z: 0}
+  smallIcon: {fileID: 21300000, guid: 3796f9cd8113e554cb982bfc3a7fd1c6, type: 3}
+  grownIcon: {fileID: 21300000, guid: 6ce1592e5efebdf45a611bb707d7437f, type: 3}
   sinFactor: 0.2
 --- !u!114 &8841713188997342967
 MonoBehaviour:
@@ -409,7 +411,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8750847979867387638
+--- !u!114 &3295720273854982070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -421,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8acd5820a94af4492eb7e8df37605f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3796f9cd8113e554cb982bfc3a7fd1c6, type: 3}
 --- !u!1 &8841713189769588277
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,14 +9,18 @@ public class PlantSpot : MonoBehaviour
 
     public void PlacePlant()
     {
-        if (SeedInventoryScript.instance.UseSeed())
+        if (NewInventory.instance.PopItemOfTag("Seed"))
             Instantiate(basicPlantObject, transform);
     }
 
     void TakePlant()
     {
-        if (Inventory.instance.AddItem(transform.GetChild(0).gameObject))
-        {    
+        if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject))
+        {
+            transform.GetChild(0).transform.gameObject.GetComponent<Plant>().inPot = false;
+            //Destroy(transform.GetChild(0).gameObject);
+            transform.GetChild(0).transform.gameObject.SetActive(false);
+            transform.GetChild(0).parent = null;
             Debug.Log("Added to inv");
         }
     }

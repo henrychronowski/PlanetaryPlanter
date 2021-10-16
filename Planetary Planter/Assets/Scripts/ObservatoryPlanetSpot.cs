@@ -16,6 +16,7 @@ public class ObservatoryPlanetSpot : MonoBehaviour
 
         if(!filled)
         {
+            heldObject = newObject;
             newObject.transform.position = transform.position;
             newObject.transform.localScale = Vector3.one * 2f;
             GetComponent<MeshRenderer>().enabled = false;
