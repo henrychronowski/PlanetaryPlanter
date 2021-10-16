@@ -62,7 +62,7 @@ public class ObservatoryPattern : MonoBehaviour
             {
                 if (tempArray[i, j] != boolPattern[i, j])
                 {
-                    Debug.Log("False");
+                    //Debug.Log("False");
                     return false;
                 }
             }
