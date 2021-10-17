@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerGravityScript : MonoBehaviour
 {
     public PlanetGravityScript planet;
-    public bool onCylinder = false;
     public Vector3 gravityDir;
     // Start is called before the first frame update
     void Start()
@@ -16,12 +15,13 @@ public class PlayerGravityScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (onCylinder)
-            gravityDir = planet.AttractCylinder(transform);
-        else
-            gravityDir = planet.Attract(transform);
+        gravityDir = planet.Attract(transform);
     }
 
+    public void SetNewPlanet(PlanetGravityScript newPlanet)
+    {
+        planet = newPlanet;
+    }
     private void OnDrawGizmos()
     {
         Ray ray = new Ray(transform.position, -gravityDir);
