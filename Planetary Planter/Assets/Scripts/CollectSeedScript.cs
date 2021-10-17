@@ -38,7 +38,7 @@ public class CollectSeedScript : MonoBehaviour
             UnityEngine.Debug.Log("1");
             //SeedInventoryScript inventory = gameObject.GetComponent<SeedInventoryScript>();
             GameObject temp = Instantiate(seed, transform.parent, false);
-            SeedInventoryScript.instance.AddSeed(temp);
+            //SeedInventoryScript.instance.AddSeed(temp);
             GameObject.FindObjectOfType<NewInventory>().AddItem(temp);
             //Destroy(seed);
         }
