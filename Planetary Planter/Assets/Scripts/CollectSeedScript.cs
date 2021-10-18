@@ -21,14 +21,20 @@ public class CollectSeedScript : MonoBehaviour
         CollectSeed();
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider col)
     {
-        canCollect = true;
+        if (col.gameObject.tag == "Player")
+        {
+            canCollect = true;
+        }
     }
 
-    void OnTriggerExit()
+    void OnTriggerExit(Collider col)
     {
-        canCollect = false;
+        if (col.gameObject.tag == "Player")
+        {
+            canCollect = false;
+        }
     }
 
     void CollectSeed()
