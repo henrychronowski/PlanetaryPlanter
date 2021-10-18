@@ -124,7 +124,7 @@ public class NewInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
@@ -135,7 +135,7 @@ public class NewInventory : MonoBehaviour
     private void Awake()
     {
         if (instance != null)
-            Destroy(instance);
+            Destroy(this.gameObject);
         else
             instance = this;
     }

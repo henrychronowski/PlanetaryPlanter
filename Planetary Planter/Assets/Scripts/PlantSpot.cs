@@ -6,7 +6,6 @@ public class PlantSpot : MonoBehaviour
 {
     public Plant placedPlant;
     public GameObject basicPlantObject;
-
     public void PlacePlant()
     {
         if (NewInventory.instance.PopItemOfTag("Seed"))
@@ -15,10 +14,16 @@ public class PlantSpot : MonoBehaviour
 
     void TakePlant()
     {
+            GameObject temp = transform.GetChild(0).transform.gameObject;
+        Plant p = temp.GetComponent<Plant>();
+        if(p.stage != Plant.Stage.Final)
+        {
+            p.AddWater(10);
+            return;
+        }
         if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject))
         {
-            GameObject temp = transform.GetChild(0).transform.gameObject;
-            temp.GetComponent<Plant>().inPot = false;
+            p.inPot = false;
             //Destroy(transform.GetChild(0).gameObject);
             //transform.GetChild(0).transform.gameObject.SetActive(false);
             temp.transform.parent = null;

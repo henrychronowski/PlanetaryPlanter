@@ -31,7 +31,11 @@ public class ActiveInScene : MonoBehaviour
         }
         else
         {
-
+            MonoBehaviour[] components = GetComponents<MonoBehaviour>();
+            foreach (MonoBehaviour m in components)
+            {
+                m.enabled = true;
+            }
         }
     }
 
