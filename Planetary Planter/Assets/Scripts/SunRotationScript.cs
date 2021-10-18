@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class SunRotationScript : MonoBehaviour
 {
+    public static SunRotationScript instance;
     public GameObject sun;
+    [SerializeField]
     float CurrentAngle = -30.0f;
+    [SerializeField]
     float RotationScale = 0.1f;
     public int CurrentDay = 1;
     public int CurrentHour = 0;
@@ -15,10 +18,20 @@ public class SunRotationScript : MonoBehaviour
     float HourAngle;
     public Text DayCounter;
     public Text HourCounter;
+    public int totalElapsedTime;
+
+    private void Awake()
+    {
+        if (instance != null)
+            Destroy(this.gameObject);
+        else
+            instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
         FullRevolutionAngle = CurrentAngle;
         HourAngle = CurrentAngle + 15.0f;
 
@@ -28,6 +41,11 @@ public class SunRotationScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+
+    private void FixedUpdate()
     {
         Rotation();
         CheckDay();
@@ -61,8 +79,9 @@ public class SunRotationScript : MonoBehaviour
         {
             HourAngle += 15.0f;
             CurrentHour++;
+            totalElapsedTime++;
 
-            if(HourAngle >= 180.0f)
+            if (HourAngle >= 180.0f)
             {
                 HourAngle = -HourAngle;
             }
@@ -72,7 +91,24 @@ public class SunRotationScript : MonoBehaviour
                 CurrentHour = 0;
             }
 
+            Debug.Log(((CurrentDay - 1) * 24) + CurrentHour);
             HourCounter.text = "Time: " + CurrentHour + ":00";
         }
+    }
+
+    public int GetHoursPassedSinceTime(int dayToCompare, int hourToCompare)
+    {
+        if(dayToCompare == CurrentDay && hourToCompare == CurrentHour)
+        return 0;
+
+
+        int hoursPassedAtComparedTime = ((dayToCompare - 1) * 24) + hourToCompare;
+
+        return totalElapsedTime - hoursPassedAtComparedTime;
+    }
+
+    public int GetTotalElapsedTime()
+    {
+        return totalElapsedTime;
     }
 }

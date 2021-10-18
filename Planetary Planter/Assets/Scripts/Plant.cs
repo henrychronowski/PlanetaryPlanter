@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Plant : MonoBehaviour
@@ -13,8 +14,7 @@ public class Plant : MonoBehaviour
         Final
     }
 
-    [SerializeField]
-    Stage stage;
+    public Stage stage;
 
     [SerializeField]
     List<GameObject> plantModels;
@@ -31,6 +31,8 @@ public class Plant : MonoBehaviour
     [SerializeField]
     float growthProgress;
 
+    public int hoursElapsed;
+
     IEnumerator growthTime;
 
     [SerializeField]
@@ -44,6 +46,10 @@ public class Plant : MonoBehaviour
 
     public Sprite grownIcon;
 
+    public TextMeshProUGUI waterText;
+
+    [SerializeField]
+    int lastRecordedHour;
 
     [SerializeField]
     float sinFactor;
@@ -52,6 +58,7 @@ public class Plant : MonoBehaviour
     {
         if(currentWater > 0)
         {
+            UpdateUI();
             growthProgress++;
             currentWater--;
             if(growthProgress % growthNeededForEachStage == 0 && stage != Stage.Final)
@@ -69,21 +76,37 @@ public class Plant : MonoBehaviour
         }
     }
 
-    void AddWater(float waterToAdd)
+    public void AddElapsedHours(int hoursToAdd)
+    {
+        for(int i = 0; i < hoursToAdd; i++)
+        {
+            Growth();
+        }
+    }
+
+    void UpdateUI()
+    {
+        waterText.text = currentWater + "/" + maxWater;
+    }
+
+    public void AddWater(float waterToAdd)
     {
         currentWater += waterToAdd;
         if(currentWater > maxWater)
         {
             currentWater = maxWater;
         }
+        UpdateUI();
     }
     
 
     // Start is called before the first frame update
     void Start()
     {
+        lastRecordedHour = -1;
         originalScale = plantModels[(int)stage].transform.localScale;
         timeSinceLastGrowth = 0;
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -91,14 +114,19 @@ public class Plant : MonoBehaviour
     {
         if(inPot)
         {
-
-        timeSinceLastGrowth += Time.deltaTime;
-        if(timeBetweenGrowths <= timeSinceLastGrowth)
-        {
-            Growth();
-            timeSinceLastGrowth = 0;
-        }
-        //plantModels[(int)stage].transform.localScale = new Vector3(originalScale.x + (Mathf.Sin(Time.time) * sinFactor), originalScale.y, originalScale.z);
+            //timeSinceLastGrowth += Time.deltaTime;
+            //if(timeBetweenGrowths <= timeSinceLastGrowth)
+            //{
+            //    Growth();
+            //    timeSinceLastGrowth = 0;
+            //}
+            
+            if (lastRecordedHour != SunRotationScript.instance.CurrentHour) 
+            {
+                lastRecordedHour = SunRotationScript.instance.CurrentHour;
+                Growth();
+            }
+            //plantModels[(int)stage].transform.localScale = new Vector3(originalScale.x + (Mathf.Sin(Time.time) * sinFactor), originalScale.y, originalScale.z);
         }
     }
 }
