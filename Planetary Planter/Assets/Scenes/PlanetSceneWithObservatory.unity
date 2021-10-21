@@ -498,6 +498,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -8.825
       objectReference: {fileID: 0}
+    - target: {fileID: 7254829409676039390, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: basicPlantObject
+      value: 
+      objectReference: {fileID: 8841713188997342954, guid: c599c26dbbbf57a49b03b727480436e7, type: 3}
     - target: {fileID: 7254829409676039391, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
       propertyPath: m_Name
       value: PlantSpot (1)
@@ -832,7 +836,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26800
+  m_Name: pb_Mesh26370
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8332,7 +8336,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783883, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8488,7 +8492,7 @@ GameObject:
   - component: {fileID: 1910898528}
   m_Layer: 0
   m_Name: CollectArea
-  m_TagString: Untagged
+  m_TagString: CollectArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8521,6 +8525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canCollect: 0
   seed: {fileID: 1275811182132510642, guid: 28fcd96306b94dd45b8006ec697c5947, type: 3}
+  plant: {fileID: 8841713188997342954, guid: c599c26dbbbf57a49b03b727480436e7, type: 3}
 --- !u!135 &1910898529
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10156,6 +10161,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 16.154
       objectReference: {fileID: 0}
+    - target: {fileID: 2722661536440291437, guid: 7828c9a7720171a4081255358b7d8927, type: 3}
+      propertyPath: plant
+      value: 
+      objectReference: {fileID: 6000718269650960526, guid: 3cec3e5ca621df346abd5b5b2aac3c13, type: 3}
+    - target: {fileID: 2722661536440291439, guid: 7828c9a7720171a4081255358b7d8927, type: 3}
+      propertyPath: m_TagString
+      value: CollectArea
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7828c9a7720171a4081255358b7d8927, type: 3}
 --- !u!1001 &3614416016266055682
@@ -10165,6 +10178,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3614416016418451421, guid: d976fb48f14bdd6409926936956fbb4d, type: 3}
+      propertyPath: m_TagString
+      value: CollectArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614416016418451427, guid: d976fb48f14bdd6409926936956fbb4d, type: 3}
+      propertyPath: plant
+      value: 
+      objectReference: {fileID: 7049538873285007057, guid: ac6221379375a2b43981934beaaec8d4, type: 3}
     - target: {fileID: 3614416016795324348, guid: d976fb48f14bdd6409926936956fbb4d, type: 3}
       propertyPath: m_Name
       value: Pillar (4)

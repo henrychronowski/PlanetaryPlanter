@@ -5,18 +5,24 @@ using UnityEngine;
 public class PlantSpot : MonoBehaviour
 {
     public Plant placedPlant;
-    public GameObject basicPlantObject;
+    GameObject basicPlantObject;
+
+    private CollectSeedScript collectSeed;
+
     public void PlacePlant()
     {
         if (NewInventory.instance.PopItemOfTag("Seed"))
+        {
+            collectSeed = GameObject.FindGameObjectWithTag("CollectArea").GetComponent<CollectSeedScript>();
+            basicPlantObject = collectSeed.plant;
             Instantiate(basicPlantObject, transform);
+        }
     }
-
     void TakePlant()
     {
-            GameObject temp = transform.GetChild(0).transform.gameObject;
+        GameObject temp = transform.GetChild(0).transform.gameObject;
         Plant p = temp.GetComponent<Plant>();
-        if(p.stage != Plant.Stage.Final)
+        if (p.stage != Plant.Stage.Final)
         {
             p.AddWater(10);
             return;
@@ -31,7 +37,6 @@ public class PlantSpot : MonoBehaviour
             Debug.Log("Added to inv");
         }
     }
-
     public void Interact()
     {
         if (transform.childCount == 0)
@@ -43,16 +48,14 @@ public class PlantSpot : MonoBehaviour
             TakePlant();
         }
     }
-
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
