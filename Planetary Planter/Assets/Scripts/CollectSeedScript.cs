@@ -7,6 +7,8 @@ public class CollectSeedScript : MonoBehaviour
 {
     public bool canCollect = false;
     public GameObject seed;
+
+    public GameObject plant;
     //public bool collected = false;
 
     // Start is called before the first frame update
