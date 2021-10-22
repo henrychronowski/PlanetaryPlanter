@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlantSpot : MonoBehaviour
 {
     public Plant placedPlant;
-    GameObject basicPlantObject;
+    public GameObject basicPlantObject;
 
     private CollectSeedScript collectSeed;
     public CompostPlantScript compost;
