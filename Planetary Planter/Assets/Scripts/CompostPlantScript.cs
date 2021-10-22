@@ -18,7 +18,7 @@ public class CompostPlantScript : MonoBehaviour
         
     }
 
-    void CompostPlant()
+    public void CompostPlant()
     {
         Destroy(plant);
     }
