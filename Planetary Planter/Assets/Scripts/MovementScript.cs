@@ -6,7 +6,7 @@ public class MovementScript : MonoBehaviour
 {
     public float moveSpeed = 15.0f;
     private Vector3 moveDir;
-
+    private Rigidbody rgd;
     // Update is called once per frame
     void Update()
     {
