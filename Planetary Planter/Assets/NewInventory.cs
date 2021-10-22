@@ -29,9 +29,19 @@ public class NewInventory : MonoBehaviour
         {
             selectedSpace = null;
             
+            selectionIndicator.GetComponent<Image>().enabled = false;
+            return;
         }
-        selectedSpace = space;
-        selectionIndicator.transform.position = space.gameObject.transform.position;
+        else
+        {
+            selectionIndicator.GetComponent<Image>().enabled = true;
+        }
+
+        if (space.location == SpaceLocation.PlayerInventory)
+        {
+            selectedSpace = space;
+            selectionIndicator.transform.position = space.gameObject.transform.position;
+        }
 
         if(Input.GetKey(KeyCode.Mouse1))
         {
@@ -124,7 +134,7 @@ public class NewInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame

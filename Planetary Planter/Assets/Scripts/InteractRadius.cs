@@ -45,7 +45,8 @@ public class InteractRadius : MonoBehaviour
         {
             if(inRange)
             {
-                closestInteractable.gameObject.GetComponent<PlantSpot>().Interact();
+                //closestInteractable.gameObject.GetComponent<PlantSpot>().Interact();
+                closestInteractable.gameObject.GetComponent<InteractableObject>().InteractableEventTriggered();
             }
         }
     }
