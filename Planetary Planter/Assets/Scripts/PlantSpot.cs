@@ -11,11 +11,10 @@ public class PlantSpot : MonoBehaviour
 
     public void PlacePlant()
     {
-        if (NewInventory.instance.PopItemOfTag("Seed"))
+        GameObject temp = NewInventory.instance.PopItemOfTag("Seed");
+        if (temp) //if the object is not null this will run
         {
-            collectSeed = GameObject.FindGameObjectWithTag("CollectArea").GetComponent<CollectSeedScript>();
-            basicPlantObject = collectSeed.plant;
-            Instantiate(basicPlantObject, transform);
+            Instantiate(temp.GetComponent<Seed>().plantObject, transform);
         }
     }
     void TakePlant()
