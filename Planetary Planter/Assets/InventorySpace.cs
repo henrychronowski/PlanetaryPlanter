@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum SpaceLocation
+{
+    PlayerInventory,
+    SiloInventory
+}
+
 public class InventorySpace : MonoBehaviour
 {
     public bool filled;
+    public SpaceLocation location;
     //public List<InventoryItem> itemStack;
     public InventoryItem item;
     NewInventory newInv;
