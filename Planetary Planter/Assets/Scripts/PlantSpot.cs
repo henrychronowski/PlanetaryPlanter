@@ -8,6 +8,7 @@ public class PlantSpot : MonoBehaviour
     GameObject basicPlantObject;
 
     private CollectSeedScript collectSeed;
+    public CompostPlantScript compost;
 
     public void PlacePlant()
     {
@@ -22,9 +23,15 @@ public class PlantSpot : MonoBehaviour
     {
         GameObject temp = transform.GetChild(0).transform.gameObject;
         Plant p = temp.GetComponent<Plant>();
-        if (p.stage != Plant.Stage.Final)
+        if (p.stage != Plant.Stage.Ripe && p.stage != Plant.Stage.Rotten)
         {
             p.AddWater(10);
+            return;
+        }
+        if (p.stage == Plant.Stage.Rotten)
+        {
+            compost = gameObject.GetComponent<CompostPlantScript>();
+            compost.CompostPlant();
             return;
         }
         if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject))
