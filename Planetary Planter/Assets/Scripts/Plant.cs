@@ -68,7 +68,7 @@ public class Plant : MonoBehaviour
                 stage++;
                 plantModels[(int)stage].SetActive(true);
 
-                if (stage == Stage.Final)
+                if (stage == Stage.Stage3)
                 {
                     GetComponent<IconHolder>().icon = grownIcon;
                 }
