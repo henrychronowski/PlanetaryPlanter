@@ -6,6 +6,7 @@ public class PlantSpot : MonoBehaviour
 {
     public Plant placedPlant;
     public GameObject basicPlantObject;
+    public GameObject fertilizer;
 
     private CollectSeedScript collectSeed;
     public CompostPlantScript compost;
@@ -18,6 +19,21 @@ public class PlantSpot : MonoBehaviour
             Instantiate(basicPlantObject.GetComponent<Seed>().plantObject, transform);
         }
     }
+
+    public void PlaceFertilizer()
+    {
+        GameObject temp = transform.GetChild(0).transform.gameObject;
+        Plant p = temp.GetComponent<Plant>();
+        if (p.inPot == true)
+        {
+            fertilizer = NewInventory.instance.PopItemOfTag("Fertilizer");
+            if(fertilizer)
+            {
+                p.growthNeededForEachStage -= 3;
+            }
+        }
+    }
+
     void TakePlant()
     {
         GameObject temp = transform.GetChild(0).transform.gameObject;
@@ -33,8 +49,9 @@ public class PlantSpot : MonoBehaviour
             temp.transform.parent = null;
             temp.transform.position = new Vector3(10000, 100000);
 
-            compost = gameObject.GetComponent<CompostPlantScript>();
-            compost.CompostPlant();
+            //compost = gameObject.GetComponent<CompostPlantScript>();
+            //compost.CompostPlant();
+            NewInventory.instance.AddItem(fertilizer);
             return;
         }
         if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject))
@@ -55,13 +72,13 @@ public class PlantSpot : MonoBehaviour
         }
         else
         {
+            PlaceFertilizer();
             TakePlant();
         }
     }
     // Start is called before the first frame update
     void Start()
     {
-        
     }
     // Update is called once per frame
     void Update()
