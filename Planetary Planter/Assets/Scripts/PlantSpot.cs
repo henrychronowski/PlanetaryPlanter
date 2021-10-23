@@ -5,18 +5,17 @@ using UnityEngine;
 public class PlantSpot : MonoBehaviour
 {
     public Plant placedPlant;
-    GameObject basicPlantObject;
+    public GameObject basicPlantObject;
 
     private CollectSeedScript collectSeed;
     public CompostPlantScript compost;
 
     public void PlacePlant()
     {
-        if (NewInventory.instance.PopItemOfTag("Seed"))
+        basicPlantObject = NewInventory.instance.PopItemOfTag("Seed");
+        if (basicPlantObject) //if the object is not null this will run
         {
-            collectSeed = GameObject.FindGameObjectWithTag("CollectArea").GetComponent<CollectSeedScript>();
-            basicPlantObject = collectSeed.plant;
-            Instantiate(basicPlantObject, transform);
+            Instantiate(basicPlantObject.GetComponent<Seed>().plantObject, transform);
         }
     }
     void TakePlant()
@@ -30,6 +29,10 @@ public class PlantSpot : MonoBehaviour
         }
         if (p.stage == Plant.Stage.Rotten)
         {
+            p.inPot = false;
+            temp.transform.parent = null;
+            temp.transform.position = new Vector3(10000, 100000);
+
             compost = gameObject.GetComponent<CompostPlantScript>();
             compost.CompostPlant();
             return;
