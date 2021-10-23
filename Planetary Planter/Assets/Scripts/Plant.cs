@@ -26,7 +26,7 @@ public class Plant : MonoBehaviour
     float maxWater;
 
     [SerializeField]
-    float growthNeededForEachStage;
+    public float growthNeededForEachStage;
 
     [SerializeField]
     float growthProgress;

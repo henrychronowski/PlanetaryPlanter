@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FertilizerScript : MonoBehaviour
 {
+    public GameObject Fertilizer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +17,6 @@ public class FertilizerScript : MonoBehaviour
     {
         
     }
+
+
 }
