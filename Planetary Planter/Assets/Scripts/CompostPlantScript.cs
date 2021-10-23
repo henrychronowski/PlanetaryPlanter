@@ -20,6 +20,7 @@ public class CompostPlantScript : MonoBehaviour
 
     public void CompostPlant()
     {
-        DestroyImmediate(plant, true);
+        Debug.Log("Composting Plant");
+        Destroy(this.plant);
     }
 }
