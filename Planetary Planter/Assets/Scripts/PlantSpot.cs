@@ -12,10 +12,10 @@ public class PlantSpot : MonoBehaviour
 
     public void PlacePlant()
     {
-        GameObject temp = NewInventory.instance.PopItemOfTag("Seed");
-        if (temp) //if the object is not null this will run
+        basicPlantObject = NewInventory.instance.PopItemOfTag("Seed");
+        if (basicPlantObject) //if the object is not null this will run
         {
-            Instantiate(temp.GetComponent<Seed>().plantObject, transform);
+            Instantiate(basicPlantObject.GetComponent<Seed>().plantObject, transform);
         }
     }
     void TakePlant()
@@ -29,6 +29,10 @@ public class PlantSpot : MonoBehaviour
         }
         if (p.stage == Plant.Stage.Rotten)
         {
+            p.inPot = false;
+            temp.transform.parent = null;
+            temp.transform.position = new Vector3(10000, 100000);
+
             compost = gameObject.GetComponent<CompostPlantScript>();
             compost.CompostPlant();
             return;
