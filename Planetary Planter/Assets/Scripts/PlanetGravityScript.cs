@@ -5,16 +5,17 @@ using UnityEngine;
 public class PlanetGravityScript : MonoBehaviour
 {
     public float gravity = -10;
+    public float gravityStrength;
     public Vector3 updatedPosForZ;
     public Transform center;
     public float range;
     public bool isCylinder;
     public Vector3 AttractSphere(Transform body)
     {
-        
         Vector3 gravityUp = (body.position - transform.position).normalized;
         Vector3 bodyUp = body.up;
 
+        
         body.GetComponent<Rigidbody>().AddForce(gravityUp * gravity);
 
         Quaternion targetRotation = Quaternion.FromToRotation(bodyUp, gravityUp) * body.rotation;
