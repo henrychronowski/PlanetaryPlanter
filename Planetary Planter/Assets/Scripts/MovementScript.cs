@@ -13,6 +13,7 @@ public class MovementScript : MonoBehaviour
     public float groundCheckRadius;
 
     public float jumpPower;
+    public float maxSpeed;
 
     [SerializeField]
     bool grounded;
@@ -49,9 +50,15 @@ public class MovementScript : MonoBehaviour
     {
         //rgd.MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(moveDir) * moveSpeed * Time.deltaTime);
         rgd.AddForce(transform.TransformDirection(moveDir) * moveSpeed);
-        Vector3.ClampMagnitude(rgd.velocity, 50f);
+       
+        if(grounded)
+            rgd.velocity = Vector3.ClampMagnitude(rgd.velocity, maxSpeed); 
+        else
+            rgd.velocity = Vector3.ClampMagnitude(rgd.velocity, maxSpeed*2);
+
+
         //GetComponent<PlayerGravityScript>().planet.Attract(transform);
-        
+
         //transform.LookAt(new Ray(transform.position, moveDir).GetPoint(5f));
         //transform.RotateAround(transform.position, new Vector3(0, 1, 0));
         //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.FromToRotation(transform.up, moveDir), Time.deltaTime * 50);
