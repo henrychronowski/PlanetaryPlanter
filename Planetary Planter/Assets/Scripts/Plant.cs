@@ -54,6 +54,8 @@ public class Plant : MonoBehaviour
     [SerializeField]
     float sinFactor;
 
+    public GameObject fertilizer;
+
     void Growth()
     {
         if(currentWater > 0)

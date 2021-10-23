@@ -45,13 +45,14 @@ public class PlantSpot : MonoBehaviour
         }
         if (p.stage == Plant.Stage.Rotten)
         {
+            //NewInventory.instance.AddItem(fertilizer);
+
             p.inPot = false;
             temp.transform.parent = null;
             temp.transform.position = new Vector3(10000, 100000);
 
             //compost = gameObject.GetComponent<CompostPlantScript>();
             //compost.CompostPlant();
-            NewInventory.instance.AddItem(fertilizer);
             return;
         }
         if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject))
@@ -79,6 +80,7 @@ public class PlantSpot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //NewInventory.instance.AddItem(fertilizer);
     }
     // Update is called once per frame
     void Update()
