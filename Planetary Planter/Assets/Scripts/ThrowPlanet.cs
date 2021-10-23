@@ -14,7 +14,7 @@ public class ThrowPlanet : MonoBehaviour
             {
                 if(hitInfo.collider.gameObject.layer == 8 && hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().filled == false)
                 {
-                    hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().PlaceObject(NewInventory.instance.PopItemOfTag("Planet"));
+                    hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().PlaceObject(NewInventory.instance.PopItemOfTag("Plant"));
                 }
             }
         }

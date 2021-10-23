@@ -12,11 +12,18 @@ public class MovementScript : MonoBehaviour
     public LayerMask ground;
     public float groundCheckRadius;
 
+
     public float jumpPower;
     public float maxSpeed;
+    public float jumpGravityMod;
 
     [SerializeField]
     bool grounded;
+
+    float mouseX;
+
+    [SerializeField]
+    float rotSpeed;
     // Update is called once per frame
 
     private void Start()
@@ -44,18 +51,44 @@ public class MovementScript : MonoBehaviour
         {
             rgd.AddForce(transform.up * jumpPower);
         }
+        if(Input.GetKey(KeyCode.Space) && !grounded)
+        {
+            GetComponent<PlayerGravityScript>().gravityModifier = jumpGravityMod;
+        }
+        else
+        {
+            GetComponent<PlayerGravityScript>().gravityModifier = 1.0f;
+
+        }
+        if (Input.GetKey(KeyCode.Mouse2))
+        {
+            mouseX = Input.GetAxis("Mouse X");
+        }
+        else
+        {
+            mouseX = 0;
+        }
     }
 
     void FixedUpdate()
     {
         //rgd.MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(moveDir) * moveSpeed * Time.deltaTime);
-        rgd.AddForce(transform.TransformDirection(moveDir) * moveSpeed);
-       
-        if(grounded)
-            rgd.velocity = Vector3.ClampMagnitude(rgd.velocity, maxSpeed); 
-        else
-            rgd.velocity = Vector3.ClampMagnitude(rgd.velocity, maxSpeed*2);
+        
+        
 
+        if (grounded)
+        {
+            rgd.AddForce(transform.TransformDirection(moveDir) * moveSpeed);
+            rgd.velocity = Vector3.ClampMagnitude(rgd.velocity, maxSpeed);
+
+        }
+        else
+        {
+            rgd.AddForce(transform.TransformDirection(moveDir) * (moveSpeed/4));
+            rgd.velocity = Vector3.ClampMagnitude(rgd.velocity, maxSpeed * 2);
+        }
+
+        transform.RotateAround(transform.position, new Vector3(0, 1, 0), mouseX*rotSpeed);
 
         //GetComponent<PlayerGravityScript>().planet.Attract(transform);
 
