@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class InteractRadius : MonoBehaviour
 {
@@ -15,9 +16,14 @@ public class InteractRadius : MonoBehaviour
 
     [SerializeField]
     bool inRange;
+
+
+    public GameObject highlight;
+    public Transform interactBubble;
+
     void SetClosestInteractable()
     {
-        Collider[] interactables = Physics.OverlapSphere(transform.position, radius, interactable);
+        Collider[] interactables = Physics.OverlapSphere(interactBubble.position, radius, interactable);
         if (interactables.Length <= 0)
         {
             inRange = false;
@@ -25,29 +31,40 @@ public class InteractRadius : MonoBehaviour
         }
         inRange = true;
 
-        float closestDistance = Vector3.Distance(interactables[0].transform.position, transform.position);
+        float closestDistance = Vector3.Distance(interactables[0].transform.position, interactBubble.position);
         int closestIndex = 0;
         for(int i = 1; i < interactables.Length; i++)
         {
-            if (Vector3.Distance(interactables[0].transform.position, transform.position) < closestDistance)
+            if (Vector3.Distance(interactables[i].transform.position, interactBubble.position) < closestDistance)
             {
-                closestDistance = Vector3.Distance(interactables[0].transform.position, transform.position);
+                closestDistance = Vector3.Distance(interactables[i].transform.position, interactBubble.position);
                 closestIndex = i;
             }
         }
         closestInteractable = interactables[closestIndex].gameObject.GetComponent<InteractableObject>();
+
         
     }
 
     void CheckInput()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(inRange)
         {
-            if(inRange)
+            highlight.SetActive(true);
+            
+            
+            highlight.transform.position = closestInteractable.transform.position;
+            highlight.transform.rotation = closestInteractable.transform.rotation;
+            highlight.transform.Rotate(90, 0, 0);
+            if(Input.GetKeyDown(KeyCode.E))
             {
                 //closestInteractable.gameObject.GetComponent<PlantSpot>().Interact();
                 closestInteractable.gameObject.GetComponent<InteractableObject>().InteractableEventTriggered();
             }
+        }
+        else
+        {
+            highlight.SetActive(false);
         }
     }
 
@@ -66,8 +83,8 @@ public class InteractRadius : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //Gizmos.color = new Color(255f, 255f, 0f, 5f);
-        //Gizmos.DrawSphere(transform.position, radius);
+        Gizmos.color = new Color(255f, 255f, 0f, .4f);
+        Gizmos.DrawSphere(interactBubble.position, radius);
 
     }
 }

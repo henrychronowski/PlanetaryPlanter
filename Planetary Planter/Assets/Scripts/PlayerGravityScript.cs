@@ -16,7 +16,7 @@ public class PlayerGravityScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       gravityDir = planet.Attract(transform, gravityModifier);
+        gravityDir = planet.Attract(transform, gravityModifier);
     }
 
     public void SetNewPlanet(PlanetGravityScript newPlanet)
