@@ -26,8 +26,9 @@ public class PlantSpot : MonoBehaviour
         Plant p = temp.GetComponent<Plant>();
         if (p.inPot == true)
         {
-            fertilizer = NewInventory.instance.PopItemOfTag("Fertilizer");
-            if(fertilizer)
+            GameObject fertilizerCheck;
+            fertilizerCheck = NewInventory.instance.PopItemOfTag("Fertilizer");
+            if(fertilizerCheck)
             {
                 p.growthNeededForEachStage -= 3;
             }
@@ -46,6 +47,8 @@ public class PlantSpot : MonoBehaviour
         if (p.stage == Plant.Stage.Rotten)
         {
             //NewInventory.instance.AddItem(fertilizer);
+            GameObject temp2 = Instantiate(fertilizer);
+            NewInventory.instance.AddItem(temp2);
 
             p.inPot = false;
             temp.transform.parent = null;
@@ -85,6 +88,6 @@ public class PlantSpot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        fertilizer = gameObject.GetComponent<FertilizerScript>().Fertilizer;
     }
 }
