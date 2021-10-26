@@ -7,7 +7,7 @@ public class CollectSeedScript : MonoBehaviour
 {
     public bool canCollect = false;
     public GameObject seed;
-    public GameObject fertilizer;
+    //public GameObject fertilizer;
 
     public GameObject plant;
     //public bool collected = false;
@@ -15,7 +15,7 @@ public class CollectSeedScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NewInventory.instance.AddItem(fertilizer);
+        //NewInventory.instance.AddItem(fertilizer);
     }
 
     // Update is called once per frame
