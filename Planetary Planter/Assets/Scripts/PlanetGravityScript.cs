@@ -5,17 +5,18 @@ using UnityEngine;
 public class PlanetGravityScript : MonoBehaviour
 {
     public float gravity = -10;
+    public float gravityStrength;
     public Vector3 updatedPosForZ;
     public Transform center;
     public float range;
     public bool isCylinder;
-    public Vector3 AttractSphere(Transform body)
+    public Vector3 AttractSphere(Transform body, float gravityModifier = 1.0f)
     {
-        
-        Vector3 gravityUp = (body.position - transform.position).normalized;
+        Vector3 gravityUp = (body.position - center.position).normalized;
         Vector3 bodyUp = body.up;
 
-        body.GetComponent<Rigidbody>().AddForce(gravityUp * gravity);
+        
+        body.GetComponent<Rigidbody>().AddForce(gravityUp * gravity * gravityModifier);
 
         Quaternion targetRotation = Quaternion.FromToRotation(bodyUp, gravityUp) * body.rotation;
         body.rotation = Quaternion.Slerp(body.rotation, targetRotation, 50 * Time.deltaTime);
@@ -36,12 +37,12 @@ public class PlanetGravityScript : MonoBehaviour
         return gravityUp;
     }
 
-    public Vector3 Attract(Transform body)
+    public Vector3 Attract(Transform body, float gravityMod = 1.0f)
     {
         if (isCylinder)
             return AttractCylinder(body);
         else
-            return AttractSphere(body);
+            return AttractSphere(body, gravityMod);
     }
 
     private void OnDrawGizmos()

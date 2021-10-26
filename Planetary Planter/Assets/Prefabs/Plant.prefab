@@ -266,7 +266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8841713188083676951
 Transform:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ Transform:
   m_LocalScale: {x: 0.549809, y: 0.549809, z: 0.549809}
   m_Children: []
   m_Father: {fileID: 8841713188997342964}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8841713188083676948
 MeshFilter:
@@ -389,7 +389,7 @@ Transform:
   m_LocalScale: {x: 1.8458443, y: 1.8458443, z: 1.8458443}
   m_Children: []
   m_Father: {fileID: 8841713188997342964}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8841713188206741905
 MeshFilter:
@@ -499,7 +499,7 @@ Transform:
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children: []
   m_Father: {fileID: 8841713188997342964}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8841713188656505736
 MeshFilter:
@@ -607,10 +607,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8841713188083676951}
   - {fileID: 8841713189769588273}
   - {fileID: 8841713188656505739}
   - {fileID: 8841713188206741904}
+  - {fileID: 8841713188083676951}
   - {fileID: 3997506244459796106}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -630,10 +630,10 @@ MonoBehaviour:
   inPot: 1
   stage: 0
   plantModels:
-  - {fileID: 8841713188083676939}
   - {fileID: 8841713189769588277}
   - {fileID: 8841713188656505743}
   - {fileID: 8841713188206741908}
+  - {fileID: 8841713188083676939}
   currentWater: 80
   maxWater: 100
   growthNeededForEachStage: 10
@@ -647,6 +647,7 @@ MonoBehaviour:
   waterText: {fileID: 7915676949892323781}
   lastRecordedHour: 0
   sinFactor: 0.2
+  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
 --- !u!114 &8841713188997342967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,7 +695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8841713189769588273
 Transform:
   m_ObjectHideFlags: 0
@@ -707,7 +708,7 @@ Transform:
   m_LocalScale: {x: 0.73586, y: 0.73586, z: 0.73586}
   m_Children: []
   m_Father: {fileID: 8841713188997342964}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8841713189769588278
 MeshFilter:

@@ -5,26 +5,57 @@ using UnityEngine;
 public class PlantSpot : MonoBehaviour
 {
     public Plant placedPlant;
-    GameObject basicPlantObject;
+    public GameObject basicPlantObject;
+    public GameObject fertilizer;
 
     private CollectSeedScript collectSeed;
+    public CompostPlantScript compost;
 
     public void PlacePlant()
     {
-        if (NewInventory.instance.PopItemOfTag("Seed"))
+        basicPlantObject = NewInventory.instance.PopItemOfTag("Seed");
+        if (basicPlantObject) //if the object is not null this will run
         {
-            collectSeed = GameObject.FindGameObjectWithTag("CollectArea").GetComponent<CollectSeedScript>();
-            basicPlantObject = collectSeed.plant;
-            Instantiate(basicPlantObject, transform);
+            Instantiate(basicPlantObject.GetComponent<Seed>().plantObject, transform);
         }
     }
+
+    public void PlaceFertilizer()
+    {
+        GameObject temp = transform.GetChild(0).transform.gameObject;
+        Plant p = temp.GetComponent<Plant>();
+        if (p.inPot == true)
+        {
+            GameObject fertilizerCheck;
+            fertilizerCheck = NewInventory.instance.PopItemOfTag("Fertilizer");
+            if(fertilizerCheck)
+            {
+                p.growthNeededForEachStage -= 3;
+            }
+        }
+    }
+
     void TakePlant()
     {
         GameObject temp = transform.GetChild(0).transform.gameObject;
         Plant p = temp.GetComponent<Plant>();
-        if (p.stage != Plant.Stage.Final)
+        if (p.stage != Plant.Stage.Ripe && p.stage != Plant.Stage.Rotten)
         {
             p.AddWater(10);
+            return;
+        }
+        if (p.stage == Plant.Stage.Rotten)
+        {
+            //NewInventory.instance.AddItem(fertilizer);
+            GameObject temp2 = Instantiate(fertilizer);
+            NewInventory.instance.AddItem(temp2);
+
+            p.inPot = false;
+            temp.transform.parent = null;
+            temp.transform.position = new Vector3(10000, 100000);
+
+            //compost = gameObject.GetComponent<CompostPlantScript>();
+            //compost.CompostPlant();
             return;
         }
         if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject))
@@ -45,17 +76,18 @@ public class PlantSpot : MonoBehaviour
         }
         else
         {
+            PlaceFertilizer();
             TakePlant();
         }
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        //NewInventory.instance.AddItem(fertilizer);
     }
     // Update is called once per frame
     void Update()
     {
-
+        fertilizer = gameObject.GetComponent<FertilizerScript>().Fertilizer;
     }
 }

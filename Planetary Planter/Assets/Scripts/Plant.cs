@@ -10,8 +10,8 @@ public class Plant : MonoBehaviour
     {
         Stage1,
         Stage2,
-        Stage3,
-        Final
+        Ripe,
+        Rotten
     }
 
     public Stage stage;
@@ -26,7 +26,7 @@ public class Plant : MonoBehaviour
     float maxWater;
 
     [SerializeField]
-    float growthNeededForEachStage;
+    public float growthNeededForEachStage;
 
     [SerializeField]
     float growthProgress;
@@ -54,6 +54,8 @@ public class Plant : MonoBehaviour
     [SerializeField]
     float sinFactor;
 
+    public GameObject fertilizer;
+
     void Growth()
     {
         if(currentWater > 0)
@@ -61,14 +63,14 @@ public class Plant : MonoBehaviour
             UpdateUI();
             growthProgress++;
             currentWater--;
-            if(growthProgress % growthNeededForEachStage == 0 && stage != Stage.Final)
+            if(growthProgress % growthNeededForEachStage == 0 && stage != Stage.Rotten)
             {
                 Debug.Log("Next Stage");
                 plantModels[(int)stage].SetActive(false);
                 stage++;
                 plantModels[(int)stage].SetActive(true);
 
-                if (stage == Stage.Stage3)
+                if (stage == Stage.Ripe)
                 {
                     GetComponent<IconHolder>().icon = grownIcon;
                 }

@@ -6,16 +6,17 @@ public class PlayerGravityScript : MonoBehaviour
 {
     public PlanetGravityScript planet;
     public Vector3 gravityDir;
+    public float gravityModifier = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        gravityDir = planet.Attract(transform);
+        gravityDir = planet.Attract(transform, gravityModifier);
     }
 
     public void SetNewPlanet(PlanetGravityScript newPlanet)

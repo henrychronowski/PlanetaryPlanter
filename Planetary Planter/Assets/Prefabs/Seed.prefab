@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1275811182132510647}
   - component: {fileID: 1275811182132510644}
   - component: {fileID: 4901421527183241012}
+  - component: {fileID: -4792773538729942733}
   m_Layer: 9
   m_Name: Seed
   m_TagString: Seed
@@ -110,3 +111,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 3cb15fd824f410d488526174d4b429f1, type: 3}
+--- !u!114 &-4792773538729942733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275811182132510642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed0639668c5ecc4fbfba10cb252da49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantObject: {fileID: 8841713188997342954, guid: c599c26dbbbf57a49b03b727480436e7, type: 3}
+  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
