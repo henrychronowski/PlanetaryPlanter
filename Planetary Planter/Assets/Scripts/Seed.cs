@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Seed : MonoBehaviour
 {
+    public GameObject plantObject;
+
     // Start is called before the first frame update
     void Start()
     {
