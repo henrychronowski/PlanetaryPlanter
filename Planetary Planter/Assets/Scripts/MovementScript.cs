@@ -66,7 +66,11 @@ public class MovementScript : MonoBehaviour
             GetComponent<PlayerGravityScript>().gravityModifier = 1.0f;
 
         }
-        mouseX = Input.GetAxis("Mouse X");
+
+        if (Input.GetMouseButton(2))
+        {
+            mouseX = Input.GetAxis("Mouse X");
+        }
     }
 
     void FixedUpdate()
