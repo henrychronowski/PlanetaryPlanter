@@ -13,15 +13,18 @@ public class MouseLook : MonoBehaviour
 
     void Look()
     {
-        //rotating the players body left and right
-        mouseX = Input.GetAxis("Mouse X") * mouseSpeed * Time.deltaTime;
-        player.Rotate(Vector3.up * mouseX);
-        
-        //rotating the camera up and down
-        mouseY = Input.GetAxis("Mouse Y") * mouseSpeed * Time.deltaTime;
-        xRot -= mouseY;
-        xRot = Mathf.Clamp(xRot, -90f, 90f);
-        transform.localRotation = Quaternion.Euler(xRot * 1.5f, 0f, 0f);
+        if(Input.GetMouseButton(2))
+        {
+            //rotating the players body left and right
+            mouseX = Input.GetAxis("Mouse X") * mouseSpeed * Time.deltaTime;
+            player.Rotate(Vector3.up * mouseX);
+
+            //rotating the camera up and down
+            mouseY = Input.GetAxis("Mouse Y") * mouseSpeed * Time.deltaTime;
+            xRot -= mouseY;
+            xRot = Mathf.Clamp(xRot, -90f, 90f);
+            transform.localRotation = Quaternion.Euler(xRot * 1.5f, 0f, 0f);
+        }
     }
 
     // Start is called before the first frame update
