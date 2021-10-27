@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7254829409676039385}
   - component: {fileID: 7254829409676039390}
   - component: {fileID: 7254829409676039381}
+  - component: {fileID: 4409267629990056464}
   m_Layer: 3
   m_Name: PlantSpot
   m_TagString: Untagged
@@ -111,6 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placedPlant: {fileID: 0}
+  basicPlantObject: {fileID: 0}
+  fertilizer: {fileID: 0}
   compost: {fileID: 0}
 --- !u!114 &7254829409676039381
 MonoBehaviour:
@@ -139,3 +142,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4409267629990056464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7254829409676039391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806bdb8cf2a161840858fe44af8d870b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
