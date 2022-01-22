@@ -14,14 +14,11 @@ public class RestartSceneScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RestartScene();
     }
 
-    void RestartScene()
+    public void RestartScene()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 }

@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -88,4 +88,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133c7c6fc62850a49b7484ba48877ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initted: 0
   itemObject: {fileID: 0}
+  fireAsteroid: {fileID: 21300000, guid: 3900ef90313debf47951ec68678cc2e0, type: 3}
+  iceAsteroid: {fileID: 21300000, guid: 89f76ccf891c4d64a906512b063e4388, type: 3}
+  firePlanet: {fileID: 21300000, guid: cbb11c7434503704d8cf60bc696558de, type: 3}
+  icePlanet: {fileID: 21300000, guid: 1c3c54c19f8ac0e4c8ad891f355410d8, type: 3}
+  fireStar: {fileID: 21300000, guid: f7343dcb350ed2f42bfe59bc899a7245, type: 3}
+  iceStar: {fileID: 21300000, guid: d7601e92502691d49a3fc796a9976cff, type: 3}

@@ -11,17 +11,27 @@ public class PlantSpot : MonoBehaviour
     private CollectSeedScript collectSeed;
     public CompostPlantScript compost;
 
+    public string placePlantInteract;
+    public string harvestPlantInteract;
+    public string waterPlantInteract;
+
+    InteractableObject interactable;
+
+    public GameObject fertilizerParticles;
+
     public void PlacePlant()
     {
         basicPlantObject = NewInventory.instance.PopItemOfTag("Seed");
         if (basicPlantObject) //if the object is not null this will run
         {
             Instantiate(basicPlantObject.GetComponent<Seed>().plantObject, transform);
+            TutorialManagerScript.instance.Unlock("Maintaining Plants");
         }
     }
 
-    public void PlaceFertilizer()
+    public bool PlaceFertilizer()
     {
+
         GameObject temp = transform.GetChild(0).transform.gameObject;
         Plant p = temp.GetComponent<Plant>();
         if (p.inPot == true)
@@ -31,8 +41,11 @@ public class PlantSpot : MonoBehaviour
             if(fertilizerCheck)
             {
                 p.growthNeededForEachStage -= 3;
+                Instantiate(fertilizerParticles, transform);
+                return true;
             }
         }
+        return false;
     }
 
     void TakePlant()
@@ -41,12 +54,19 @@ public class PlantSpot : MonoBehaviour
         Plant p = temp.GetComponent<Plant>();
         if (p.stage != Plant.Stage.Ripe && p.stage != Plant.Stage.Rotten)
         {
-            p.AddWater(10);
-            return;
+            if (PlaceFertilizer())
+                return;
+            else
+            {
+                p.AddWater(10);
+                return;
+            }
         }
         if (p.stage == Plant.Stage.Rotten)
         {
             //NewInventory.instance.AddItem(fertilizer);
+            AlmanacProgression.instance.Unlock("GetFertilizer");
+            TutorialManagerScript.instance.Unlock("Fertilizer");
             GameObject temp2 = Instantiate(fertilizer);
             NewInventory.instance.AddItem(temp2);
 
@@ -76,18 +96,36 @@ public class PlantSpot : MonoBehaviour
         }
         else
         {
-            PlaceFertilizer();
             TakePlant();
+            PlaceFertilizer();
+        }
+    }
+
+    string UpdateInteractTip()
+    {
+        if (transform.childCount == 0)
+        {
+            return placePlantInteract;
+        }
+        if(GetComponentInChildren<Plant>().stage == Plant.Stage.Ripe || (GetComponentInChildren<Plant>().stage == Plant.Stage.Rotten))
+        {
+            return harvestPlantInteract;
+        }
+        else
+        {
+            return waterPlantInteract;
         }
     }
     // Start is called before the first frame update
     void Start()
     {
         //NewInventory.instance.AddItem(fertilizer);
+        interactable = GetComponent<InteractableObject>();
+        fertilizer = gameObject.GetComponent<FertilizerScript>().Fertilizer;
     }
     // Update is called once per frame
     void Update()
     {
-        fertilizer = gameObject.GetComponent<FertilizerScript>().Fertilizer;
+        interactable.interactText = UpdateInteractTip();
     }
 }

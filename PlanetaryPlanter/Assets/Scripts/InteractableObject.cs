@@ -12,6 +12,10 @@ public class InteractableObject : MonoBehaviour
 
     public InteractableEvent onInteractableEvent { get { return interactableEvent; } set { interactableEvent = value; } }
 
+    public string interactText = "Test";
+
+    public float interactLightAngle = 10f;
+    
     public void InteractableEventTriggered()
     {
         ((MonoBehaviour)interactableEvent.GetPersistentTarget(0)).SendMessage(interactableEvent.GetPersistentMethodName(0));

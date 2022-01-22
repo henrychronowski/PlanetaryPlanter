@@ -26,10 +26,13 @@ public class Plant : MonoBehaviour
     float maxWater;
 
     [SerializeField]
+    float waterWarningValue;
+
+    [SerializeField]
     public float growthNeededForEachStage;
 
     [SerializeField]
-    float growthProgress;
+    public float growthProgress;
 
     public int hoursElapsed;
 
@@ -40,6 +43,8 @@ public class Plant : MonoBehaviour
     [SerializeField]
     float timeBetweenGrowths;
 
+    public float growthRequiredToRot;
+
     public Vector3 originalScale;
 
     public Sprite smallIcon;
@@ -48,6 +53,11 @@ public class Plant : MonoBehaviour
 
     public TextMeshProUGUI waterText;
 
+    public GameObject waterIcon;
+    public GameObject waterParticles;
+
+    public AudioSource waterSound;
+
     [SerializeField]
     int lastRecordedHour;
 
@@ -55,6 +65,10 @@ public class Plant : MonoBehaviour
     float sinFactor;
 
     public GameObject fertilizer;
+
+    public PlanetSpecies species;
+
+    public PlanetType type;
 
     void Growth()
     {
@@ -65,17 +79,30 @@ public class Plant : MonoBehaviour
             currentWater--;
             if(growthProgress % growthNeededForEachStage == 0 && stage != Stage.Rotten)
             {
-                Debug.Log("Next Stage");
-                plantModels[(int)stage].SetActive(false);
-                stage++;
-                plantModels[(int)stage].SetActive(true);
-
                 if (stage == Stage.Ripe)
                 {
                     GetComponent<IconHolder>().icon = grownIcon;
+                    AlmanacProgression.instance.Unlock(species.ToString() + "CropGrown");
+                    if(growthProgress >= growthRequiredToRot)
+                    {
+                        Debug.Log("Next Stage");
+                        plantModels[(int)stage].SetActive(false);
+                        stage++;
+                        plantModels[(int)stage].SetActive(true);
+                    }
+                    
                 }
+                else
+                {
+                    Debug.Log("Next Stage");
+                    plantModels[(int)stage].SetActive(false);
+                    stage++;
+                    plantModels[(int)stage].SetActive(true);
+                }
+
             }
         }
+        
     }
 
     public void AddElapsedHours(int hoursToAdd)
@@ -88,12 +115,23 @@ public class Plant : MonoBehaviour
 
     void UpdateUI()
     {
-        waterText.text = currentWater + "/" + maxWater;
+        if(currentWater <= waterWarningValue)
+        {
+            waterIcon.SetActive(true);
+        }
+        else
+        {
+            waterIcon.SetActive(false);
+        }
     }
 
     public void AddWater(float waterToAdd)
     {
+        AlmanacProgression.instance.Unlock("WaterPlant");
         currentWater += waterToAdd;
+        waterSound.pitch = Random.Range(0.5f, 1f);
+        waterSound.Play();
+        Instantiate(waterParticles, transform);
         if(currentWater > maxWater)
         {
             currentWater = maxWater;

@@ -14,10 +14,18 @@ public class CameraFollow : MonoBehaviour
     public float rotDamping = 5f;
     public bool isEnabled = true;
 
+    public Transform right;
+
     public float xRot;
     public float xRotSpeed;
 
+    public float yRot;
     public float yRotSpeed;
+
+    public float rotTest;
+    public float yRotLimit = 70f;
+    public float yRotLowerLimit = -70f;
+
 
     void CheckInput()
     {
@@ -38,36 +46,47 @@ public class CameraFollow : MonoBehaviour
             }
         }
 
-            xRot = Input.GetAxis("Mouse X") * xRotSpeed;
-        if(Input.GetKey(KeyCode.Mouse1))
+        xRot = Input.GetAxis("Mouse X") * xRotSpeed;
+        yRot = Input.GetAxis("Mouse Y") * yRotSpeed * -1;
+
+        height += Input.GetAxis("Mouse Y") * -1f * yRotSpeed;
+        if (height > heightUpperLimit)
         {
-
-                height += Input.GetAxis("Mouse Y") * -1f * yRotSpeed;
-                if(height > heightUpperLimit)
-                {
-                    height = heightUpperLimit;
-                }
-                if(height < heightLowerLimit)
-                {
-                    height = heightLowerLimit;
-                }
-
-            transform.RotateAround(target.position, new Vector3(0.0f, 1.0f, 0.0f), xRot);
-                //target.Rotate(new Vector3(0f, xRot, 0f), Space.World);
-
+            height = heightUpperLimit;
         }
+        if(height < heightLowerLimit)
+        {
+            height = heightLowerLimit;
+        }
+        
+        //Horizontal camera movement
+        target.RotateAround(target.position, target.GetComponent<PlayerGravityScript>().gravityDir, xRot);
+        //transform.RotateAround(target.position, target.GetComponent<PlayerGravityScript>().gravityDir, xRot);
 
+        //Vertical camera movement
+        if(Mathf.Abs(rotTest + yRot) < yRotLimit)
+        {
+            rotTest += yRot;
+            transform.RotateAround(target.position, (right.position - target.transform.position).normalized, yRot);
+        }
+        //else
+        //{
+        //    if (rotTest + yRot > yRotLimit)
+        //    {
+        //        rotTest = yRotLimit;
+        //    }
+        //    else
+        //    {
+        //        rotTest = -yRotLimit;
+        //    }
+        //}
+        //target.RotateAround(target.position, transform.forward target.GetComponent<PlayerGravityScript>().gravityDir, xRot);
 
     }
 
     private void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    private void FixedUpdate()
-    {
-        //target.Rotate(0f, xRot, 0f);
+        rotTest = transform.localRotation.x;
     }
 
     private void LateUpdate()
@@ -75,28 +94,6 @@ public class CameraFollow : MonoBehaviour
         if(isEnabled)
         {
             CheckInput();
-            float wantedRotationAngle = target.eulerAngles.y;
-            float currentRotationAngle = transform.eulerAngles.y;
-            float wantedHeight = target.position.y + height;
-            float currentHeight = transform.position.y;
-            currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, rotDamping * Time.deltaTime);
-            //LERP the height
-            currentHeight = Mathf.Lerp(currentHeight, wantedHeight, rotDamping * Time.deltaTime);
-            //Get the rotation
-            Quaternion currentRotation = Quaternion.Euler(0f, currentRotationAngle, 0f);
-            //position the camera
-            transform.position = target.transform.position;
-            //set its offset distance
-            transform.position -= currentRotation * Vector3.forward * distance;
-            //set its offset height
-            Vector3 newHeight = transform.position;
-            newHeight.y = wantedHeight;
-            transform.position = newHeight;
-            
-         
-
-            //currentRotation.Rotate(0f, rot, 0f);
-            transform.LookAt(target);
         }
         else
         {

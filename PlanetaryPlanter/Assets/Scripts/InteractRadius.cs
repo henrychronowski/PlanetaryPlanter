@@ -19,6 +19,7 @@ public class InteractRadius : MonoBehaviour
 
 
     public GameObject highlight;
+    public TextMesh interactTip;
     public Transform interactBubble;
 
     void SetClosestInteractable()
@@ -42,7 +43,7 @@ public class InteractRadius : MonoBehaviour
             }
         }
         closestInteractable = interactables[closestIndex].gameObject.GetComponent<InteractableObject>();
-
+        interactTip.text = closestInteractable.interactText;
         
     }
 
@@ -51,20 +52,29 @@ public class InteractRadius : MonoBehaviour
         if(inRange)
         {
             highlight.SetActive(true);
+            interactTip.gameObject.SetActive(true);
             
             
             highlight.transform.position = closestInteractable.transform.position;
             highlight.transform.rotation = closestInteractable.transform.rotation;
             highlight.transform.Rotate(90, 0, 0);
+            highlight.GetComponentInChildren<Light>().spotAngle = closestInteractable.interactLightAngle;
             if(Input.GetKeyDown(KeyCode.E))
             {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().animator.SetBool("Interacting", true);
                 //closestInteractable.gameObject.GetComponent<PlantSpot>().Interact();
                 closestInteractable.gameObject.GetComponent<InteractableObject>().InteractableEventTriggered();
+            }
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().animator.SetBool("Interacting", false);
             }
         }
         else
         {
             highlight.SetActive(false);
+            interactTip.gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().animator.SetBool("Interacting", false);
         }
     }
 
