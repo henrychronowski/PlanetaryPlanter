@@ -7,49 +7,82 @@ public class CollectSeedScript : MonoBehaviour
 {
     public bool canCollect = false;
     public GameObject seed;
+    public GameObject seedModel;
+    public int hoursBeforeRespawn;
+    public int hourLastCollected;
+    SunRotationScript time;
+    public string canCollectTip;
+    public int hoursSinceLastCollected;
+
     //public GameObject fertilizer;
 
-    public GameObject plant;
     //public bool collected = false;
 
     // Start is called before the first frame update
     void Start()
     {
         //NewInventory.instance.AddItem(fertilizer);
+        time = GameObject.FindObjectOfType<SunRotationScript>();
+        hourLastCollected = -1; //has not been collected yet
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        CollectSeed();
+        //CollectSeed();
+        CanCollect();
+        if (canCollect)
+        {
+            seedModel.SetActive(true);
+        }
+        else
+        {
+            seedModel.SetActive(false);
+        }
     }
 
-    void OnTriggerEnter(Collider col)
+    void CanCollect()
     {
-        if (col.gameObject.tag == "Player")
+        if (hourLastCollected == -1)
         {
             canCollect = true;
+            return;
         }
-    }
-
-    void OnTriggerExit(Collider col)
-    {
-        if (col.gameObject.tag == "Player")
+        hoursSinceLastCollected = time.GetTotalElapsedTime() - hourLastCollected;
+        if (time.GetTotalElapsedTime() - hourLastCollected >= hoursBeforeRespawn)
+        {
+            canCollect = true;
+            GetComponent<InteractableObject>().interactText = canCollectTip;
+        }
+        else
         {
             canCollect = false;
+            GetComponent<InteractableObject>().interactText = "";
         }
     }
 
-    void CollectSeed()
+    public void CollectSeed()
     {
-        if(canCollect && Input.GetKeyDown(KeyCode.E))
+        if(canCollect)
         {
-            UnityEngine.Debug.Log("1");
-            //SeedInventoryScript inventory = gameObject.GetComponent<SeedInventoryScript>();
-            GameObject temp = Instantiate(seed, transform.parent, false);
-            //SeedInventoryScript.instance.AddSeed(temp);
-            GameObject.FindObjectOfType<NewInventory>().AddItem(temp);
-            //Destroy(seed);
+            if(NewInventory.instance.SpacesAvailable() > 0)
+            {
+                hourLastCollected = time.GetTotalElapsedTime();
+                GameObject temp = Instantiate(seed, transform.parent, false);
+                temp.transform.position = new Vector3(10000, 100000);
+                NewInventory.instance.AddItem(temp);
+                if(seed.tag == "Seed")
+                {
+                    TutorialManagerScript.instance.Unlock("Planting Seeds");
+                    return;
+                }
+                else if(seed.tag == "Modifier")
+                {
+                    TutorialManagerScript.instance.Unlock("Modifiers");
+                    return;
+                }
+            }
         }
     }
 }

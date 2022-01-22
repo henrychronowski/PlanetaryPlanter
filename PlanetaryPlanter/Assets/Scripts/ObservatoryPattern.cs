@@ -40,38 +40,38 @@ public class ObservatoryPattern : MonoBehaviour
 
     }
 
-    bool Compare()
-    {
-        bool[,] tempArray = new bool[width, patternRows.Count];
-        ObservatoryPlanetSpot[,] planets = Observatory.instance.planetSpotsArray;
-        
-        for (int j = patternRows.Count - 1; j >= 0; j--)
-        {
-            for (int i = 0; i < width; i++) //if anyone has questions about this ask me it makes sense trust me -Dan
-            {
-                if (planets[i,j].filled)
-                    tempArray[i, j] = true;
-                else
-                    tempArray[i, j] = false;
-            }
-        }
+    //bool Compare()
+    //{
+    //    bool[,] tempArray = new bool[width, patternRows.Count];
+    //    ObservatoryPlanetSpot[,] planets = Observatory.instance.planetSpotsArray;
 
-        for(int i = 0; i < width; i++)
-        {
-            for(int j = 0; j < patternRows.Count; j++)
-            {
-                if (tempArray[i, j] != boolPattern[i, j])
-                {
-                    //Debug.Log("False");
-                    return false;
-                }
-            }
-        }
+    //    for (int j = patternRows.Count - 1; j >= 0; j--)
+    //    {
+    //        for (int i = 0; i < width; i++) //if anyone has questions about this ask me it makes sense trust me -Dan
+    //        {
+    //            if (planets[i, j].filled)
+    //                tempArray[i, j] = true;
+    //            else
+    //                tempArray[i, j] = false;
+    //        }
+    //    }
 
-        Debug.Log("Potassium");
-        success.SetActive(true);
-        return true;
-    }
+    //    for (int i = 0; i < width; i++)
+    //    {
+    //        for (int j = 0; j < patternRows.Count; j++)
+    //        {
+    //            if (tempArray[i, j] != boolPattern[i, j])
+    //            {
+    //                //Debug.Log("False");
+    //                return false;
+    //            }
+    //        }
+    //    }
+
+    //    Debug.Log("Potassium");
+    //    success.SetActive(true);
+    //    return true;
+    //}
 
 
     // Start is called before the first frame update
@@ -84,6 +84,6 @@ public class ObservatoryPattern : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Compare();
+        //Compare();
     }
 }

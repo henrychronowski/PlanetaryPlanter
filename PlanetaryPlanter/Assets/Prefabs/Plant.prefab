@@ -636,18 +636,20 @@ MonoBehaviour:
   - {fileID: 8841713188083676939}
   currentWater: 80
   maxWater: 100
-  growthNeededForEachStage: 10
+  growthNeededForEachStage: 5
   growthProgress: 0
   hoursElapsed: 0
   timeSinceLastGrowth: 0
   timeBetweenGrowths: 1
   originalScale: {x: 0, y: 0, z: 0}
   smallIcon: {fileID: 21300000, guid: 3796f9cd8113e554cb982bfc3a7fd1c6, type: 3}
-  grownIcon: {fileID: 21300000, guid: 6ce1592e5efebdf45a611bb707d7437f, type: 3}
+  grownIcon: {fileID: 21300000, guid: 810d6bba139332a458b740017db48ad5, type: 3}
   waterText: {fileID: 7915676949892323781}
   lastRecordedHour: 0
   sinFactor: 0.2
   fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  species: 0
+  type: 0
 --- !u!114 &8841713188997342967
 MonoBehaviour:
   m_ObjectHideFlags: 0

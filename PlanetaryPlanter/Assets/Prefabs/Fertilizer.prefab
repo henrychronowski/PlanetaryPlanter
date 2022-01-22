@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2015470650034509963}
   - component: {fileID: 3890921160963969395}
   - component: {fileID: 1508429118580454617}
+  - component: {fileID: 714704932736986584}
   m_Layer: 0
   m_Name: Fertilizer
   m_TagString: Fertilizer
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8acd5820a94af4492eb7e8df37605f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 2e2b47d370f3bca43a3a8cd7018c21d8, type: 3}
+  icon: {fileID: 21300000, guid: 2b3c3d0376e1bd34fbb1a105c25b09a9, type: 3}
 --- !u!23 &2015470650034509963
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -110,3 +111,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fertilizer: {fileID: 6069283911487194163}
+--- !u!114 &714704932736986584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6069283911487194163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9da1641332a8c4db70345cdbad80ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Fertilizer
+  itemType: Misc
+  otherInfo: '"It looks like candy... should give it to the plants though."'

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerGravityScript : MonoBehaviour
 {
-    public PlanetGravityScript planet;
+    [SerializeField]
+    PlanetGravityScript planet;
+    [SerializeField]
     public Vector3 gravityDir;
+    
     public float gravityModifier = 1.0f;
     // Start is called before the first frame update
     void Start()
@@ -15,6 +18,10 @@ public class PlayerGravityScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+    }
+
+    private void FixedUpdate()
     {
         gravityDir = planet.Attract(transform, gravityModifier);
     }

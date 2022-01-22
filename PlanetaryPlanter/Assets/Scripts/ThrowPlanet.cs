@@ -5,29 +5,17 @@ using UnityEngine;
 public class ThrowPlanet : MonoBehaviour
 {
     public LayerMask observatoryMarker;
-    void CheckInput()
-    {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hitInfo))
-            {
-                if(hitInfo.collider.gameObject.layer == 8 && hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().filled == false)
-                {
-                    hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().PlaceObject(NewInventory.instance.PopItemOfTag("Plant"));
-                }
-            }
-        }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+    void PlacePlanet()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hitInfo))
             {
-                if (hitInfo.collider.gameObject.layer == 8 && hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().filled == true)
+                if (hitInfo.collider.gameObject.layer == 8 && hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().filled == false)
                 {
-                    
-                    hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().RemoveObject();
+                    hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().PlaceObject(NewInventory.instance.GetItemInCursor());
                 }
             }
         }
@@ -42,7 +30,7 @@ public class ThrowPlanet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckInput();
+        PlacePlanet();
     }
 
     private void OnDrawGizmos()

@@ -16,6 +16,7 @@ public class MovementScript : MonoBehaviour
     public float jumpPower;
     public float maxSpeed;
     public float jumpGravityMod;
+    public float groundedDragWhenNotMoving;
 
     [SerializeField]
     bool grounded;
@@ -25,22 +26,37 @@ public class MovementScript : MonoBehaviour
     [SerializeField]
     float rotSpeed;
 
+    AudioSource jump;
+
+    public float sizeOfJumpDetect;
+    public Vector3 jumpDetect;
+
     PlayerGravityScript gravity;
+
+    public Animator animator;
     // Update is called once per frame
 
     private void Start()
     {
         rgd = GetComponent<Rigidbody>();
         gravity = GetComponent<PlayerGravityScript>();
+        jump = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
+        animator.SetBool("moving", moveDir != Vector3.zero);
+
+        animator.SetBool("grounded", grounded);
         //Quaternion temp = Quaternion.AngleAxis(Camera.main.transform.rotation.y, gravity.gravityDir) * Quaternion.an;
 
-        if(Physics.CheckSphere(groundCheck.position, groundCheckRadius, ground))
+        if(Physics.CheckBox(groundCheck.position, jumpDetect, transform.rotation, ground))
+        {
+            grounded = true;
+        }
+        else if (Physics.CheckBox(groundCheck.position, jumpDetect, transform.rotation, 8))
         {
             grounded = true;
         }
@@ -55,7 +71,7 @@ public class MovementScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && grounded)
         {
-            rgd.AddForce(transform.up * jumpPower);
+            Jump();
         }
         if(Input.GetKey(KeyCode.Space) && !grounded)
         {
@@ -67,18 +83,24 @@ public class MovementScript : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButton(2))
-        {
-            mouseX = Input.GetAxis("Mouse X");
-        }
+        //if (Input.GetMouseButton(2))
+        //{
+        //    mouseX = Input.GetAxis("Mouse X");
+        //}
+        //else
+        //{
+        //    mouseX = 0;
+        //}
+    }
+
+    void Jump()
+    {
+        rgd.AddForce(transform.up * jumpPower);
+        jump.Play();
     }
 
     void FixedUpdate()
     {
-        //rgd.MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(moveDir) * moveSpeed * Time.deltaTime);
-        
-        
-
         if (grounded)
         {
             rgd.AddForce(transform.TransformDirection(moveDir) * moveSpeed);
@@ -91,26 +113,16 @@ public class MovementScript : MonoBehaviour
             rgd.velocity = Vector3.ClampMagnitude(rgd.velocity, maxSpeed * 2);
         }
 
-        transform.RotateAround(transform.position, new Vector3(0, 1, 0), mouseX*rotSpeed);
+        if(grounded && moveDir == Vector3.zero)
+        {
+            rgd.velocity /= groundedDragWhenNotMoving;
+        }
         
-        
-        //transform.localRotation = Quaternion.RotateTowards(transform.localRotation, 100f);
-        //GetComponent<PlayerGravityScript>().planet.Attract(transform);
 
-        Quaternion.LookRotation(transform.forward, gravity.gravityDir);
-
-        //transform.Rotate(new Vector3(0, 1, 0), Quaternion.Angle(Quaternion.Euler(transform.forward), Camera.main.transform.rotation));
-
-        Debug.Log("angle: " + Quaternion.Angle(Quaternion.Euler(transform.forward), Camera.main.transform.rotation));
-
-        //transform.LookAt(new Ray(transform.position, moveDir).GetPoint(5f));
-        //transform.RotateAround(transform.position, new Vector3(0, 1, 0));
-        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.FromToRotation(transform.up, moveDir), Time.deltaTime * 50);
     }
 
     private void OnDrawGizmos()
     {
-        //rgd.position + transform.TransformDirection(moveDir) * moveSpeed * Time.deltaTime;
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(transform.position + transform.forward, 0.5f);
         Ray a = new Ray(transform.position, transform.TransformDirection(moveDir));

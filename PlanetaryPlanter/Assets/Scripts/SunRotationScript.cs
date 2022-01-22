@@ -10,7 +10,7 @@ public class SunRotationScript : MonoBehaviour
     [SerializeField]
     float CurrentAngle = -30.0f;
     [SerializeField]
-    float RotationScale = 0.1f;
+    float RotationScale = 0.05f;
     public int CurrentDay = 1;
     public int CurrentHour = 0;
 
@@ -31,7 +31,6 @@ public class SunRotationScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this);
         FullRevolutionAngle = CurrentAngle;
         HourAngle = CurrentAngle + 15.0f;
 
@@ -68,7 +67,7 @@ public class SunRotationScript : MonoBehaviour
             CurrentAngle >= FullRevolutionAngle - 0.01)
         {
             CurrentDay++;
-            DayCounter.text = "Day " + CurrentDay;
+            //DayCounter.text = "Day " + CurrentDay;
         }
     }
 
@@ -91,7 +90,7 @@ public class SunRotationScript : MonoBehaviour
                 CurrentHour = 0;
             }
 
-            Debug.Log(((CurrentDay - 1) * 24) + CurrentHour);
+            //Debug.Log(((CurrentDay - 1) * 24) + CurrentHour);
             HourCounter.text = "Time: " + CurrentHour + ":00";
         }
     }

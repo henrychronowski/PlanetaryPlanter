@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
 public class Observatory : MonoBehaviour
 {
-    public static Observatory instance;
 
     public Transform bottomLeftCorner;
     public int width;
@@ -14,27 +14,50 @@ public class Observatory : MonoBehaviour
     public float yDistanceBetweenPlanets;
 
     public GameObject emptySlot;
-    public ObservatoryPlanetSpot[,] planetSpotsArray;
+    public ObservatoryPlanetSpot[,] planetSpotsArray; //Part of the old implementation
     public bool createPlanetsOnStart;
+
+    public List<ObservatoryPlanetSpot> constellationSpots; //New implementation
 
     public GameObject playerCam;
     public bool inObservatoryView;
+    public bool completed;
+    public GameObject solarSystemButton;
+    public TextMeshProUGUI numComplete;
 
-    void CheckInput()
+    public Sprite completedConstellationSprite;
+
+    public Transform next;
+    public string completionAchievementName;
+    LineRenderer line;
+    public int filledSpots;
+
+    public AudioSource telescope;
+    public AudioSource main;
+
+    public void EnterObservatory()
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            if (playerCam.activeInHierarchy)
+        AlmanacProgression.instance.Unlock("ObservatoryEnter");
+            if (playerCam.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled == true)
             {
-                playerCam.SetActive(false);
-                inObservatoryView = true;
-            }
+                playerCam.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = false;
+            GameObject.FindObjectOfType<MovementScript>().enabled = false;    
+            inObservatoryView = true;
+                TutorialManagerScript.instance.Unlock("The Telescope");
+            //NewInventory.instance.SetSpacesActive(true);
+                telescope.Play();
+                main.mute = true;
+            } 
             else
             {
-                playerCam.SetActive(true);
+            GameObject.FindObjectOfType<MovementScript>().enabled = true;
+
+            playerCam.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = true;
                 inObservatoryView = false;
+                //NewInventory.instance.SetSpacesActive(false);
+                telescope.Stop();
+                main.mute = false;
             }
-        }
     }
 
     void CreateEmptySlots()
@@ -53,27 +76,69 @@ public class Observatory : MonoBehaviour
         }
     }
 
+    bool CheckForCompletion()
+    {
+        foreach(ObservatoryPlanetSpot spot in constellationSpots)
+        {
+            if(!spot.filled)
+            {
+                return false;
+            }
+        }
+        Complete();
+        
+        return true;
+
+    }
+
+    public int GetFilledSpots()
+    {
+        int filled = 0;
+        foreach (ObservatoryPlanetSpot spot in constellationSpots)
+        {
+            if (spot.filled)
+            {
+                filled++;
+            }
+        }
+        numComplete.text = filled + "/" + constellationSpots.Count;
+        return filled;
+    }
+
+    void Complete()
+    {
+        line.enabled = true;
+        completed = true;
+        solarSystemButton.GetComponent<UnityEngine.UI.Image>().sprite = completedConstellationSprite;
+        
+        AlmanacProgression.instance.Unlock(completionAchievementName);
+
+        TutorialManagerScript.instance.Unlock("Demo Over");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         planetSpotsArray = new ObservatoryPlanetSpot[width, height];
-        if(createPlanetsOnStart)
-        {
-            CreateEmptySlots();
-        }
+        constellationSpots.AddRange(GetComponentsInChildren<ObservatoryPlanetSpot>());
+        line = GetComponent<LineRenderer>();
+        line.SetPosition(0, solarSystemButton.transform.position);
+        line.SetPosition(1, next.position);
+        line.enabled = false;
+        //line.colorGradient.
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckInput();
+        if(!completed)
+        {
+            GetFilledSpots();
+            CheckForCompletion();
+        }
+        else
+        {
+        }
     }
 
-    private void Awake()
-    {
-        if (instance != null)
-            Destroy(instance);
-        else
-            instance = this;
-    }
 }
