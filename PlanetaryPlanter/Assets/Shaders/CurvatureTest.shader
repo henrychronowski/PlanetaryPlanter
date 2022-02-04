@@ -47,10 +47,15 @@ Shader "Custom/CurvatureTest"
 
             float curveAmount = distance(worldPos, _WorldSpaceCameraPos);//worldPos.z * worldPos.z;
 
-            float3 objectPos = 0;
-            objectPos.z -= curveAmount;
+            //float3 objectPos = 0;
+            //objectPos.y -= curveAmount;
 
-            v.vertex.xyz += objectPos;
+            //v.vertex.xyz += objectPos;
+
+            curveAmount = max(curveAmount, 10.0f);
+            curveAmount -= 10.0f;
+
+            v.vertex.y -= curveAmount;
 
             //worldPos.y *= worldPos.y;
 
