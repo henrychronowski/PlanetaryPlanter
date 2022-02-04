@@ -14,7 +14,7 @@ Shader "Custom/CurvatureTest"
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows
+        #pragma surface surf Standard fullforwardshadows vertex:vert
 
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
@@ -39,6 +39,23 @@ Shader "Custom/CurvatureTest"
 
         void vert(inout appdata_full v, out Input o)
         {
+            //v.vertex.x += sin(_Time * 30) * .3;
+
+            float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+
+            //worldPos -= _WorldSpaceCameraPos;
+
+            float curveAmount = distance(worldPos, _WorldSpaceCameraPos);//worldPos.z * worldPos.z;
+
+            float3 objectPos = 0;
+            objectPos.z -= curveAmount;
+
+            v.vertex.xyz += objectPos;
+
+            //worldPos.y *= worldPos.y;
+
+            //v.vertex.y -= worldPos.y;
+
             UNITY_INITIALIZE_OUTPUT(Input, o);
         }
 
