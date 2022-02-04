@@ -16,6 +16,9 @@ Shader "Custom/CurvatureTest"
         // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf Standard fullforwardshadows vertex:vert
 
+        // Adding keywords to disable vertex offset when in editor
+        #pragma multi_compile_vertex __ IN_EDITOR
+
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
 
@@ -39,31 +42,16 @@ Shader "Custom/CurvatureTest"
 
         void vert(inout appdata_full v, out Input o)
         {
-            //v.vertex.x += sin(_Time * 30) * .3;
+#ifdef IN_EDITOR
 
+#else
             float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+            float curveAmount = distance(worldPos, _WorldSpaceCameraPos);
 
-            //worldPos -= _WorldSpaceCameraPos;
-
-            float curveAmount = distance(worldPos, _WorldSpaceCameraPos);//worldPos.z * worldPos.z;
-
-            //float3 objectPos = 0;
-            //objectPos.y -= curveAmount;
-
-            //v.vertex.xyz += objectPos;
-
-            /*curveAmount = max(curveAmount, 10.0f);
-            curveAmount -= 10.0f;
-
-            curveAmount = lerp(1.0f, 10.0f, curveAmount * 0.1);*/
-            //curveAmount = lerp(0.0f, 10.0f, curveAmount / 20);
-            curveAmount = curveAmount * 0.01f;///100.0f;
+            curveAmount = curveAmount * 0.01f;
             curveAmount = (0.0f + (-1.0f * (curveAmount * curveAmount)) * 100);
             v.vertex.y += curveAmount;
-
-            //worldPos.y *= worldPos.y;
-
-            //v.vertex.y -= worldPos.y;
+#endif
 
             UNITY_INITIALIZE_OUTPUT(Input, o);
         }
