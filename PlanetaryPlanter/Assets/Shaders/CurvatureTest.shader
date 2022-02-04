@@ -56,9 +56,10 @@ Shader "Custom/CurvatureTest"
             curveAmount -= 10.0f;
 
             curveAmount = lerp(1.0f, 10.0f, curveAmount * 0.1);*/
-            curveAmount = lerp(0.0f, 10.0f, curveAmount / 20);
-
-            v.vertex.y -= curveAmount;
+            //curveAmount = lerp(0.0f, 10.0f, curveAmount / 20);
+            curveAmount = curveAmount * 0.01f;///100.0f;
+            curveAmount = (0.0f + (-1.0f * (curveAmount * curveAmount)) * 100);
+            v.vertex.y += curveAmount;
 
             //worldPos.y *= worldPos.y;
 
