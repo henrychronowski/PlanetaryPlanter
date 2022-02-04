@@ -52,8 +52,11 @@ Shader "Custom/CurvatureTest"
 
             //v.vertex.xyz += objectPos;
 
-            curveAmount = max(curveAmount, 10.0f);
+            /*curveAmount = max(curveAmount, 10.0f);
             curveAmount -= 10.0f;
+
+            curveAmount = lerp(1.0f, 10.0f, curveAmount * 0.1);*/
+            curveAmount = lerp(0.0f, 10.0f, curveAmount / 20);
 
             v.vertex.y -= curveAmount;
 
