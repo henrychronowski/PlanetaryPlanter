@@ -313,7 +313,7 @@ public class NewInventory : MonoBehaviour
 
     void CheckForObservatoryState()
     {
-        if(!GameObject.Find("PlayerVCam").GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled && !inventoryActive)
+        if(!GameObject.Find("PlayerVCam").GetComponent<Cinemachine.CinemachineFreeLook>().enabled && !inventoryActive)
         {
             SetSpacesActive(true);
         }
