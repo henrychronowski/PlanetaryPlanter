@@ -60,7 +60,7 @@ public class CameraFollow : MonoBehaviour
         }
         
         //Horizontal camera movement
-        target.RotateAround(target.position, target.GetComponent<PlayerGravityScript>().gravityDir, xRot);
+        transform.RotateAround(target.position, target.transform.up, xRot);
         //transform.RotateAround(target.position, target.GetComponent<PlayerGravityScript>().gravityDir, xRot);
 
         //Vertical camera movement
