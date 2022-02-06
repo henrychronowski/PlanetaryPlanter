@@ -30,6 +30,9 @@ public class CharacterMovement : MonoBehaviour
     public bool grounded;
 
     [SerializeField]
+    LayerMask ground;
+
+    [SerializeField]
     Vector3 velocity;
 
     [SerializeField]
@@ -88,6 +91,22 @@ public class CharacterMovement : MonoBehaviour
         velocity = Vector3.zero;
     }
 
+    void GroundCheck()
+    {
+        if (Physics.CheckBox(groundChecker.position, jumpDetect, transform.rotation, ground))
+        {
+            grounded = true;
+        }
+        else if (Physics.CheckBox(groundChecker.position, jumpDetect, transform.rotation, 8))
+        {
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -105,5 +124,11 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawCube(groundChecker.position, jumpDetect);
     }
 }
