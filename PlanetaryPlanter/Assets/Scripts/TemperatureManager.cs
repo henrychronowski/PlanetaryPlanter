@@ -32,6 +32,4 @@ public class TemperatureManager : MonoBehaviour
     {
         currentTemperature = Random.Range(minTemperature, maxTemperature);
     }
-
-    
 }
