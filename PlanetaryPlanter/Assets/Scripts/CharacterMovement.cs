@@ -15,7 +15,10 @@ public class CharacterMovement : MonoBehaviour
     Transform groundChecker;
 
     [SerializeField]
-    float jumpPower;
+    float jumpHeight = 1.0f;
+
+    [SerializeField]
+    float maxJumpTime = 0.5f;
 
     [SerializeField]
     float maxSpeed;
@@ -71,7 +74,16 @@ public class CharacterMovement : MonoBehaviour
         float playerY;
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            playerY = Mathf.Sqrt(jumpPower * 3.0f * gravity);
+            playerY = (-2 * jumpHeight) / Mathf.Pow(maxJumpTime/2, 2);
+        }
+        //else if(Input.GetKey(KeyCode.Space))
+        //{
+
+        //}
+        else if(grounded)
+        {
+            playerY = -0.05f;
+            velocity.y = -0.05f;
         }
         else
         {
@@ -88,7 +100,6 @@ public class CharacterMovement : MonoBehaviour
         JumpGravity();
         characterController.Move(Time.deltaTime * velocity);
         
-        velocity = Vector3.zero;
     }
 
     void GroundCheck()
@@ -118,7 +129,7 @@ public class CharacterMovement : MonoBehaviour
     {
         CheckInput();
         animator.SetBool("grounded", grounded);
-
+        GroundCheck();
         Integrate();
     }
 
