@@ -61,20 +61,20 @@ public class InteractRadius : MonoBehaviour
             highlight.GetComponentInChildren<Light>().spotAngle = closestInteractable.interactLightAngle;
             if(Input.GetKeyDown(KeyCode.E))
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().animator.SetBool("Interacting", true);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().animator.SetBool("Interacting", true);
                 //closestInteractable.gameObject.GetComponent<PlantSpot>().Interact();
                 closestInteractable.gameObject.GetComponent<InteractableObject>().InteractableEventTriggered();
             }
             if (Input.GetKeyUp(KeyCode.E))
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().animator.SetBool("Interacting", false);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().animator.SetBool("Interacting", false);
             }
         }
         else
         {
             highlight.SetActive(false);
             interactTip.gameObject.SetActive(false);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>().animator.SetBool("Interacting", false);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().animator.SetBool("Interacting", false);
         }
     }
 
