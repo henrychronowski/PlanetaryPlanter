@@ -18,9 +18,11 @@ public class PlantTool : MonoBehaviour
     public float maxWaterLevel; //water level the plant can reach at maximum
     public float startGrowthLevel; //level at which plant growth starts
     public float fullGrowthLevel; //level at which plant will be fully grown
+    public float growthRate; //the rate at which the plant will grow
 
     public GameObject[] plantModels; //models for each stage of plant growth
-    public GameObject waterNeeded;
+    public GameObject waterNeededIcon; //icon to display when water level is low
+    public GameObject fertilizer; //fertilizer that will come from dead plants
 
     public PlanetSpecies planetSpecies;
     public ModifierTypes modifier;
@@ -28,17 +30,24 @@ public class PlantTool : MonoBehaviour
 
     float currentWaterLevel;
     float currentGrowth;
+    float growthPerStage;
 
     // Start is called before the first frame update
     void Start()
     {
         currentWaterLevel = startWaterLevel;
         currentGrowth = startGrowthLevel;
+        growthPerStage = fullGrowthLevel / 4;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void Growth()
+    {
+
     }
 }
