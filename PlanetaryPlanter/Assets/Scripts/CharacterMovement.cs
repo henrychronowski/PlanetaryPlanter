@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Character controller based movement
+// Daniel Hartman
 public class CharacterMovement : MonoBehaviour
 {
     private CharacterController characterController;
-    public Transform camera;
-
-    [SerializeField]
-    private float speed = 1f;
+    public Transform cam;
     public Animator animator;
 
     [SerializeField]
-    Transform groundChecker;
+    float speed;
+
+    [SerializeField]
+    float airSpeed;
 
     [SerializeField]
     float jumpHeight = 1.0f;
-
-    [SerializeField]
-    float maxJumpTime = 0.5f;
 
     [SerializeField]
     float maxSpeed;
@@ -26,91 +26,154 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     float gravity;
 
+    [SerializeField]
+    float groundedGravity;
+
+    [SerializeField]
+    float movementDrag;
+
+    [SerializeField]
+    float stoppedDrag;
+
+    [SerializeField]
+    float airDrag;
+
+    [SerializeField]
+    float holdJumpGravity;
+
     float xMove;
 
     float zMove;
 
-    public bool grounded;
+    [SerializeField]
+    Transform groundChecker;
 
     [SerializeField]
     LayerMask ground;
 
     [SerializeField]
+    bool grounded;
+    
+    [SerializeField]
+    public bool canMove = true; 
+    
+    [SerializeField]
+    bool jumping;
+    
+    [SerializeField]
     Vector3 velocity;
 
-    [SerializeField]
-    Vector3 jumpDetect;
 
-    public float turnSmoothTime = 0.1f;
+    [SerializeField]
+    float jumpDetectRadius;
+
+    [SerializeField]
+    float turnSmoothTime = 0.1f;
+    
     float turnSmoothVelocity;
+
+    private AudioSource jumpSound;
 
 
     void CheckInput()
     {
         xMove = Input.GetAxisRaw("Horizontal");
         zMove = Input.GetAxisRaw("Vertical");
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        {
+            jumping = true;
+            jumpSound.Play();
+        }
     }
 
     void Move()
     {
-
-        //velocity += new Vector3(xMove, 0, yMove) * speed;
         Vector3 playerMovement = new Vector3(xMove, 0, zMove);
         animator.SetBool("moving", playerMovement != Vector3.zero);
-
         if (playerMovement != Vector3.zero)
         {
-            //https://youtu.be/4HpC--2iowE this helped
-            float targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + camera.eulerAngles.y;
+            //https://youtu.be/4HpC--2iowE this helped with some math here
+            float targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            characterController.Move(moveDir.normalized * speed * Time.deltaTime);
+            if(grounded)
+                velocity += moveDir.normalized * speed * Time.deltaTime;
+            else
+                velocity += moveDir.normalized * airSpeed * Time.deltaTime;
+
+            if(grounded)
+            {
+                velocity.x *= movementDrag;
+                velocity.z *= movementDrag;
+            }
         }
+        else 
+        {
+            if (grounded)
+            {
+                velocity.x *= stoppedDrag;
+                velocity.z *= stoppedDrag;
+            }
+            else
+            {
+                velocity.x *= airDrag;
+                velocity.z *= airDrag;
+            }
+        }
+        
+        
+        //Clamp only the x and z values
+        //Use a separate vector to avoid jumping triggering the clamp, slowing the x and z movement drastically when jumping 
+        Vector3 xzMovement = new Vector3(velocity.x, 0, velocity.z);
+        xzMovement = Vector3.ClampMagnitude(xzMovement, maxSpeed);
+        velocity.x = xzMovement.x;
+        velocity.z = xzMovement.z;
+
     }
 
     void JumpGravity()
     {
-        float playerY;
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(jumping && grounded)
         {
-            playerY = (-2 * jumpHeight) / Mathf.Pow(maxJumpTime/2, 2);
+            velocity.y = jumpHeight;
+            grounded = false;
         }
-        //else if(Input.GetKey(KeyCode.Space))
-        //{
-
-        //}
-        else if(grounded)
+        if(!grounded && Input.GetKey(KeyCode.Space))
         {
-            playerY = -0.05f;
-            velocity.y = -0.05f;
+            velocity.y += -holdJumpGravity;
+        }
+        else if(grounded && velocity.y < 0)
+        {
+            velocity.y = -groundedGravity;
         }
         else
         {
-            playerY = -gravity;
+            velocity.y += -gravity;
         }
-
-        velocity += new Vector3(0, playerY, 0);
     }
 
 
     void Integrate()
     {
-        Move();
+        if(canMove)
+            Move();
+
         JumpGravity();
         characterController.Move(Time.deltaTime * velocity);
-        
     }
 
     void GroundCheck()
     {
-        if (Physics.CheckBox(groundChecker.position, jumpDetect, transform.rotation, ground))
+        if (Physics.CheckSphere(groundChecker.position, jumpDetectRadius, ground) && velocity.y <= 0)
         {
             grounded = true;
+            jumping = false;
         }
-        else if (Physics.CheckBox(groundChecker.position, jumpDetect, transform.rotation, 8))
+        else if (Physics.CheckSphere(groundChecker.position, jumpDetectRadius, 8) && velocity.y <= 0)
         {
             grounded = true;
+            jumping = false;
         }
         else
         {
@@ -122,6 +185,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        jumpSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -129,17 +193,18 @@ public class CharacterMovement : MonoBehaviour
     {
         CheckInput();
         animator.SetBool("grounded", grounded);
-        GroundCheck();
-        Integrate();
     }
 
     private void FixedUpdate()
     {
+        Integrate();
+        GroundCheck();
+
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawCube(groundChecker.position, jumpDetect);
+        //Gizmos.DrawSphere(groundChecker.position, jumpDetectRadius);
     }
 }
