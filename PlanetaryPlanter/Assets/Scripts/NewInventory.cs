@@ -80,7 +80,7 @@ public class NewInventory : MonoBehaviour
             inventoryActive = true;
             Cursor.lockState = CursorLockMode.None;
             //Need to remove cameraFollow references since that script is trashed
-            GameObject.FindObjectOfType<CameraFollow>().enabled = false;
+            //GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = false;
             grayOutLevelPanel.SetActive(false);
             return;
         }
@@ -98,12 +98,12 @@ public class NewInventory : MonoBehaviour
         if(active)
         {
             Cursor.lockState = CursorLockMode.None;
-            GameObject.FindObjectOfType<CameraFollow>().enabled = false;
+            GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = false;
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
-            GameObject.FindObjectOfType<CameraFollow>().enabled = true;
+            GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = true;
             grayOutLevelPanel.SetActive(false);
         }
     }
