@@ -10,6 +10,7 @@ public class TemperatureManager : MonoBehaviour
     public float biomeSize; //size of the biome for this temperature
 
     float currentTemperature;
+    Collider[] objectsInBiome;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class TemperatureManager : MonoBehaviour
 
     void CheckObjectsInRange()
     {
-        //Physics.OverlapSphere
+        objectsInBiome = Physics.OverlapSphere(gameObject.transform.position, biomeSize);
     }
 
     void CalculateTemperatureChange()
