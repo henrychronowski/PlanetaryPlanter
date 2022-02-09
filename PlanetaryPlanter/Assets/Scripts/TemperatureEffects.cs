@@ -21,4 +21,14 @@ public class TemperatureEffects : MonoBehaviour
     {
         
     }
+
+    public float GetWaterChange()
+    {
+        return waterNeededChange;
+    }
+
+    public float GetGrowthChange()
+    {
+        return growthTimeChange;
+    }
 }
