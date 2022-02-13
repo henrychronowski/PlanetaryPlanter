@@ -44,7 +44,9 @@ public class ReturnToFarmScript : MonoBehaviour
     {
         if(canReturn && Input.GetKeyDown(KeyCode.F))
         {
+            player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = new Vector3(returnSpot.transform.position.x, returnSpot.transform.position.y, returnSpot.transform.position.z);
+            player.GetComponent<CharacterController>().enabled = true;
         }
     }
 }
