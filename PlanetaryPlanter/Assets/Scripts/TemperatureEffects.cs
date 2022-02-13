@@ -9,6 +9,7 @@ public class TemperatureEffects : MonoBehaviour
         //could perhaps make them arrays too?
     public float waterNeededChange;
     public float growthTimeChange;
+    Biomes currentBiome;
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +31,10 @@ public class TemperatureEffects : MonoBehaviour
     public float GetGrowthChange()
     {
         return growthTimeChange;
+    }
+
+    public void SetCurrentBiome(Biomes biome)
+    {
+        currentBiome = biome;
     }
 }
