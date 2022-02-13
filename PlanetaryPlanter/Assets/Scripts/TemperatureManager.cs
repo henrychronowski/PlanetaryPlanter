@@ -61,14 +61,29 @@ public class TemperatureManager : MonoBehaviour
             if (currentTemperature >= 67.0f)
             {
                 collider.gameObject.GetComponent<TemperatureEffects>().SetCurrentBiome(Biomes.Hot);
+
+                if (collider.gameObject == GameObject.Find("Player"))
+                {
+                    collider.gameObject.GetComponent<DisplayPlayerBiome>().SetCurrentBiome(Biomes.Hot);
+                }
             }
             else if (currentTemperature < 67.0f && currentTemperature > 33.0f)
             {
                 collider.gameObject.GetComponent<TemperatureEffects>().SetCurrentBiome(Biomes.Temperate);
+
+                if (collider.gameObject == GameObject.Find("Player"))
+                {
+                    collider.gameObject.GetComponent<DisplayPlayerBiome>().SetCurrentBiome(Biomes.Temperate);
+                }
             }
             else if (currentTemperature <= 33.0f)
             {
                 collider.gameObject.GetComponent<TemperatureEffects>().SetCurrentBiome(Biomes.Cold);
+
+                if (collider.gameObject == GameObject.Find("Player"))
+                {
+                    collider.gameObject.GetComponent<DisplayPlayerBiome>().SetCurrentBiome(Biomes.Cold);
+                }
             }
         }
     }
