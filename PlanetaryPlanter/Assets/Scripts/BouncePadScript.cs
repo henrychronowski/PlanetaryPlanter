@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BouncePadScript : MonoBehaviour
 {
-    float bounceSpeed = 10000.0f;
+    float bounceSpeed = 25.0f;
     public GameObject player;
 
     // Start is called before the first frame update
@@ -20,7 +20,9 @@ public class BouncePadScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        player = collision.gameObject;
-        player.GetComponent<Rigidbody>().AddForce(Vector3.up * bounceSpeed);
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            player.GetComponent<CharacterMovement>().Bounce(bounceSpeed);
+        }
     }
 }
