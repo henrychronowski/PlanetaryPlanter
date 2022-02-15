@@ -17,6 +17,8 @@ public class TemperatureManager : MonoBehaviour
     public float biomeSize; //size of the biome for this temperature
     public float tempChangeTime; //time until temperature changes;
 
+    public GameObject player; //to reference the player
+
     float currentTemperature;
     float currentTempChangeTime;
     Collider[] objectsInBiome;
@@ -37,14 +39,19 @@ public class TemperatureManager : MonoBehaviour
         {
             CalculateTemperatureChange();
             currentTempChangeTime = tempChangeTime;
-        }
 
-        CheckObjectsInRange();
+            CheckObjectsInRange();
+        }
     }
 
     void CheckObjectsInRange()
     {
         objectsInBiome = Physics.OverlapSphere(gameObject.transform.position, biomeSize);
+
+        foreach (Collider collider in objectsInBiome)
+        {
+            Debug.Log(collider.gameObject.name);
+        }
 
         SetActiveBiomeForObjects();
     }
@@ -56,34 +63,72 @@ public class TemperatureManager : MonoBehaviour
 
     void SetActiveBiomeForObjects()
     {
-        foreach(Collider collider in objectsInBiome)
+        for (int i = 0; i < objectsInBiome.Length; i++)
         {
             if (currentTemperature >= 67.0f)
             {
-                collider.gameObject.GetComponent<TemperatureEffects>().SetCurrentBiome(Biomes.Hot);
+                objectsInBiome[i].gameObject.GetComponent<TemperatureEffects>().SetCurrentBiome(Biomes.Hot);
 
-                if (collider.gameObject == GameObject.Find("Player"))
+                if (objectsInBiome[i].gameObject == player)
                 {
-                    collider.gameObject.GetComponent<DisplayPlayerBiome>().SetCurrentBiome(Biomes.Hot);
+                    Debug.Log("Acknowledging Player");
+                    objectsInBiome[i].gameObject.GetComponent<DisplayPlayerBiome>().SetCurrentBiome(Biomes.Hot);
                 }
             }
-            else if (currentTemperature < 67.0f && currentTemperature > 33.0f)
+            
+            if (currentTemperature < 67.0f && currentTemperature > 33.0f)
             {
-                collider.gameObject.GetComponent<TemperatureEffects>().SetCurrentBiome(Biomes.Temperate);
+                objectsInBiome[i].gameObject.GetComponent<TemperatureEffects>().SetCurrentBiome(Biomes.Temperate);
 
-                if (collider.gameObject == GameObject.Find("Player"))
+                if (objectsInBiome[i].gameObject == player)
                 {
-                    collider.gameObject.GetComponent<DisplayPlayerBiome>().SetCurrentBiome(Biomes.Temperate);
+                    Debug.Log("Acknowledging Player");
+                    objectsInBiome[i].gameObject.GetComponent<DisplayPlayerBiome>().SetCurrentBiome(Biomes.Temperate);
                 }
             }
-            else if (currentTemperature <= 33.0f)
+            
+            if (currentTemperature <= 33.0f)
             {
-                collider.gameObject.GetComponent<TemperatureEffects>().SetCurrentBiome(Biomes.Cold);
+                objectsInBiome[i].gameObject.GetComponent<TemperatureEffects>().SetCurrentBiome(Biomes.Cold);
 
-                if (collider.gameObject == GameObject.Find("Player"))
+                if (objectsInBiome[i].gameObject == player)
                 {
-                    collider.gameObject.GetComponent<DisplayPlayerBiome>().SetCurrentBiome(Biomes.Cold);
+                    Debug.Log("Acknowledging Player");
+                    objectsInBiome[i].gameObject.GetComponent<DisplayPlayerBiome>().SetCurrentBiome(Biomes.Cold);
                 }
+            }
+        }
+    }
+
+    void SetSpecificBiome(GameObject gameObject)
+    {
+        if (currentTemperature >= 67.0f)
+        {
+            gameObject.GetComponent<TemperatureEffects>().SetCurrentBiome(Biomes.Hot);
+
+            if (gameObject == player)
+            {
+                gameObject.GetComponent<DisplayPlayerBiome>().SetCurrentBiome(Biomes.Hot);
+            }
+        }
+
+        if (currentTemperature < 67.0f && currentTemperature > 33.0f)
+        {
+            gameObject.GetComponent<TemperatureEffects>().SetCurrentBiome(Biomes.Temperate);
+
+            if (gameObject == player)
+            {
+                gameObject.GetComponent<DisplayPlayerBiome>().SetCurrentBiome(Biomes.Temperate);
+            }
+        }
+
+        if (currentTemperature <= 33.0f)
+        {
+            gameObject.GetComponent<TemperatureEffects>().SetCurrentBiome(Biomes.Cold);
+
+            if (gameObject == player)
+            {
+                gameObject.GetComponent<DisplayPlayerBiome>().SetCurrentBiome(Biomes.Cold);
             }
         }
     }

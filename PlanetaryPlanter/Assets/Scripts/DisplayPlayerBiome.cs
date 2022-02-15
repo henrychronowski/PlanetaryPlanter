@@ -17,16 +17,19 @@ public class DisplayPlayerBiome : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //DisplayCurrentBiome();
     }
 
     public void DisplayCurrentBiome()
     {
-        biomeText.text = "Current biome is: " + currentBiome.ToString();
+        biomeText.text = "Current biome is: " + currentBiome;
     }
 
     public void SetCurrentBiome(Biomes biome)
     {
         currentBiome = biome;
+        Debug.Log(currentBiome);
+
+        DisplayCurrentBiome();
     }
 }
