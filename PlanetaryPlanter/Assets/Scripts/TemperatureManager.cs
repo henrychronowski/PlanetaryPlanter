@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Biomes
 {
@@ -18,10 +19,12 @@ public class TemperatureManager : MonoBehaviour
     public float tempChangeTime; //time until temperature changes;
 
     public GameObject player; //to reference the player
+    public Text biomeText;
 
     float currentTemperature;
     float currentTempChangeTime;
     Collider[] objectsInBiome;
+    Biomes currentBiome;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +45,13 @@ public class TemperatureManager : MonoBehaviour
 
             CheckObjectsInRange();
         }
+
+        DisplayCurrentBiome();
+    }
+
+    public void DisplayCurrentBiome()
+    {
+        biomeText.text = "Current biome is: " + currentBiome;
     }
 
     void CheckObjectsInRange()
@@ -59,6 +69,21 @@ public class TemperatureManager : MonoBehaviour
     void CalculateTemperatureChange()
     {
         currentTemperature = Random.Range(minTemperature, maxTemperature);
+
+        if (currentTemperature >= 67.0f)
+        {
+            currentBiome = Biomes.Hot;
+        }
+
+        if (currentTemperature < 67.0f && currentTemperature > 33.0f)
+        {
+            currentBiome = Biomes.Temperate;
+        }
+
+        if (currentTemperature <= 33.0f)
+        {
+            currentBiome = Biomes.Cold;
+        }
     }
 
     void SetActiveBiomeForObjects()
