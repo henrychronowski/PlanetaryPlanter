@@ -8,6 +8,7 @@ public class TooltipInfo : MonoBehaviour
     public string itemType;
     public string otherInfo;
 
+    //The name and tooltip to change to if this item gets modified with fire/ice
     public string fireModName;
     public string fireModInfo;
 
