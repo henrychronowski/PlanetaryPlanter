@@ -253,6 +253,16 @@ public class NewInventory : MonoBehaviour
 
     }
 
+    public GameObject GetItemInSelectedSpace()
+    {
+        if (selectedSpace.item)
+        {
+            return selectedSpace.item.itemObject;
+        }
+        return null;
+
+    }
+
     public GameObject GetItem()
     {
         if (selectedSpace.item)

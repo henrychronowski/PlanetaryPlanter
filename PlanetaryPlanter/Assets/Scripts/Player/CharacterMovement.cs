@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -72,14 +73,32 @@ public class CharacterMovement : MonoBehaviour
     
     float turnSmoothVelocity;
 
+    public Vector3 axis;
+
     private AudioSource jumpSound;
     public Transform rayBack;
     public Transform rayMid;
     public Transform rayFront;
     public Transform rayRight;
     public Transform rayLeft;
+    public Transform rayFrontRight;
+    public Transform rayFrontLeft;
 
+    public Transform rayBackLeft;
+    public Transform rayBackRight;
+    public float slopeSlideAngle;
+    public float slideSpeed;
+    public float slidingJumpPower;
+    public float midRayMaxDistance;
+    public bool isSliding;
 
+    public bool isGliding;
+    public bool holdingGlider;
+    public float glidingGravity;
+    public float glideAirSpeed;
+    public float glideTurnSpeed;
+    
+    GliderItem glider;
 
 
     void CheckInput()
@@ -100,17 +119,33 @@ public class CharacterMovement : MonoBehaviour
         if (playerMovement != Vector3.zero)
         {
             //https://youtu.be/4HpC--2iowE this helped with some math here
-            float targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            
-            if(grounded)
+            float targetAngle;
+            float angle; 
+            Vector3 moveDir; 
+            if(isGliding)
+            {
+                targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, glideTurnSpeed);
+                moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            }
+            else
+            {
+                targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            }
+
+            if (grounded)
                 velocity += moveDir.normalized * speed * Time.deltaTime;
+            else if(isGliding)
+                velocity += moveDir.normalized * glideAirSpeed * Time.deltaTime;
             else
                 velocity += moveDir.normalized * airSpeed * Time.deltaTime;
 
-            if(grounded)
+            if (grounded)
             {
                 velocity.x *= movementDrag;
                 velocity.z *= movementDrag;
@@ -123,7 +158,7 @@ public class CharacterMovement : MonoBehaviour
                 velocity.x *= stoppedDrag;
                 velocity.z *= stoppedDrag;
             }
-            else
+            else if(!isGliding)
             {
                 velocity.x *= airDrag;
                 velocity.z *= airDrag;
@@ -142,20 +177,38 @@ public class CharacterMovement : MonoBehaviour
 
     void JumpGravity()
     {
-        if(jumping && grounded)
+        if(isGliding && !grounded) //Holding a glider and in the air
+        {
+            if(velocity.y > 0) //Gliding only kicks in when falling
+            {
+                velocity.y += -gravity;
+            }
+            else
+            {
+                velocity.y = -glidingGravity;
+            }
+
+            return;
+        }
+        if (jumping && grounded && isSliding) //Sliding and grounded
+        {
+            velocity.y = slidingJumpPower;
+            grounded = false;
+        }
+        else if (jumping && grounded) //Grounded but pressed jump
         {
             velocity.y = jumpHeight;
             grounded = false;
         }
-        if(!grounded && Input.GetKey(KeyCode.Space))
+        if(!grounded && Input.GetKey(KeyCode.Space)) //Holding jump while airborne
         {
             velocity.y += -holdJumpGravity;
         }
-        else if(grounded && velocity.y <= 0)
+        else if(grounded && velocity.y <= 0) //Gravity when grounded
         {
             velocity.y = -groundedGravity;
         }
-        else
+        else //Gravity while airborne and not holding jump
         {
             velocity.y += -gravity;
         }
@@ -168,6 +221,10 @@ public class CharacterMovement : MonoBehaviour
         RaycastHit hitFront;
         RaycastHit hitRight;
         RaycastHit hitLeft;
+        RaycastHit hitFrontRight;
+        RaycastHit hitFrontLeft;
+        RaycastHit hitBackLeft;
+        RaycastHit hitBackRight;
 
 
         Physics.Raycast(rayBack.position, Vector3.down, out hitBack);
@@ -175,6 +232,10 @@ public class CharacterMovement : MonoBehaviour
         Physics.Raycast(rayFront.position, Vector3.down, out hitFront);
         Physics.Raycast(rayRight.position, Vector3.down, out hitRight);
         Physics.Raycast(rayLeft.position, Vector3.down, out hitLeft);
+        Physics.Raycast(rayFrontRight.position, Vector3.down, out hitFrontRight);
+        Physics.Raycast(rayFrontLeft.position, Vector3.down, out hitFrontLeft);
+        Physics.Raycast(rayBackLeft.position, Vector3.down, out hitBackLeft);
+        Physics.Raycast(rayBackRight.position, Vector3.down, out hitBackRight);
 
 
         Debug.DrawLine(rayBack.position, hitBack.point, Color.red);
@@ -182,18 +243,88 @@ public class CharacterMovement : MonoBehaviour
         Debug.DrawLine(rayFront.position, hitFront.point, Color.blue);
         Debug.DrawLine(rayRight.position, hitRight.point, Color.yellow);
         Debug.DrawLine(rayLeft.position, hitLeft.point, Color.yellow);
-
-        Vector3 rayBackLocalHit = new Vector3(rayBack.localPosition.x, rayBack.localPosition.y - (Vector3.Distance(hitBack.point, rayBack.position)), rayBack.localPosition.z);
-        Vector3 rayMidLocalHit = new Vector3(rayMid.localPosition.x, rayMid.localPosition.y - (Vector3.Distance(hitMid.point, rayMid.position)), rayMid.localPosition.z);
-        Vector3 rayFrontLocalHit = new Vector3(rayFront.localPosition.x, rayFront.localPosition.y - (Vector3.Distance(hitFront.point, rayFront.position)), rayFront.localPosition.z);
-        Vector3 rayRightLocalHit = new Vector3(rayRight.localPosition.x, rayRight.localPosition.y - (Vector3.Distance(hitRight.point, rayRight.position)), rayRight.localPosition.z);
-        Vector3 rayLeftLocalHit = new Vector3(rayLeft.localPosition.x, rayLeft.localPosition.y - (Vector3.Distance(hitLeft.point, rayLeft.position)), rayLeft.localPosition.z);
+        Debug.DrawLine(rayFrontRight.position, hitFrontRight.point, Color.cyan);
+        Debug.DrawLine(rayFrontLeft.position, hitFrontLeft.point, Color.grey);
+        Debug.DrawLine(rayBackLeft.position, hitBackLeft.point, Color.cyan);
+        Debug.DrawLine(rayBackRight.position, hitBackRight.point, Color.grey);
 
 
 
+        float frontBackAngle = Vector3.Angle(hitFront.point, hitBack.point);
+        float leftRightAngle = Vector3.Angle(hitLeft.point, hitRight.point);
+        float diagonalRightAngle = Vector3.Angle(hitFrontRight.point, hitBackLeft.point);
+        float diagonalLeftAngle = Vector3.Angle(hitFrontLeft.point, hitBackRight.point);
+
+
+        if (grounded && Vector3.Distance(hitMid.point, rayMid.transform.position) > midRayMaxDistance)
+        {
+            Vector3 slideDir = Vector3.zero;
+            if (frontBackAngle > slopeSlideAngle) //Front/back slope check
+            {
+                if(hitFront.point.y > hitBack.point.y)
+                {
+                    //move backwards and down the slope
+                    slideDir += (hitBack.point - hitFront.point).normalized;
+                }
+                else if(hitFront.point.y < hitBack.point.y)
+                {
+                    //move forwards and down the slope
+                    slideDir += (hitFront.point - hitBack.point).normalized;
+                }
+            }
+            if (leftRightAngle > slopeSlideAngle) //Front/back slope check
+            {
+                if (hitLeft.point.y > hitRight.point.y)
+                {
+                    //move backwards and down the slope
+                    slideDir += (hitRight.point - hitLeft.point).normalized;
+                }
+                else if (hitLeft.point.y < hitRight.point.y)
+                {
+                    //move forwards and down the slope
+                    slideDir += (hitLeft.point - hitRight.point).normalized;
+                }
+            }
+            if (diagonalRightAngle > slopeSlideAngle) //Front/back slope check
+            {
+                if (hitBackLeft.point.y > hitFrontRight.point.y)
+                {
+                    //move backwards and down the slope
+                    slideDir += (hitFrontRight.point - hitBackLeft.point).normalized;
+                }
+                else if (hitBackLeft.point.y < hitFrontRight.point.y)
+                {
+                    //move forwards and down the slope
+                    slideDir += (hitBackLeft.point - hitFrontRight.point).normalized;
+                }
+            }
+            if (diagonalLeftAngle > slopeSlideAngle) //Front/back slope check
+            {
+                if (hitBackRight.point.y > hitFrontLeft.point.y)
+                {
+                    //move backwards and down the slope
+                    slideDir += (hitFrontLeft.point - hitBackRight.point).normalized;
+                }
+                else if (hitBackRight.point.y < hitFrontLeft.point.y)
+                {
+                    //move forwards and down the slope
+                    slideDir += (hitBackRight.point - hitFrontLeft.point).normalized;
+                }
+            }
+            if (slideDir != Vector3.zero)
+                isSliding = true;
+            else
+                isSliding = false;
+            characterController.Move(slideDir.normalized * slideSpeed);
+        }
+        else
+        {
+            isSliding = false;
+        }
 
         Debug.Log("Angle: " + Vector3.Angle(hitFront.point, hitBack.point));
-        Debug.Log("Signed: " + Vector3.SignedAngle(rayFrontLocalHit, rayBackLocalHit, new Vector3(1, 0, 0)));
+        GameObject.Find("Angle").GetComponent<TextMeshProUGUI>().text = Vector3.Angle(hitFront.point, hitBack.point).ToString();
+        GameObject.Find("Angle2").GetComponent<TextMeshProUGUI>().text = Vector3.Distance(hitMid.point, rayMid.transform.position).ToString();
 
 
     }
@@ -205,7 +336,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Integrate()
     {
-        if(canMove)
+        if(canMove) //Prevents movement in cutscenes and such
             Move();
 
         JumpGravity();
@@ -231,6 +362,34 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    void GlideCheck()
+    {
+        if(NewInventory.instance.GetItemInSelectedSpace() == null)
+        {
+            holdingGlider = false;
+            isGliding = false;
+            return;
+        }
+        if(NewInventory.instance.GetItemInSelectedSpace().tag == "Glider" )
+        {
+            glider = NewInventory.instance.GetItemInSelectedSpace().GetComponent<GliderItem>();
+            //
+            holdingGlider = true;   
+        }
+        else
+        {
+            holdingGlider = false;
+        }
+        if(holdingGlider && !grounded && velocity.y < 0)
+        {
+            isGliding = glider.DecrementDurability();
+        }
+        else
+        {
+            isGliding = false;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -249,12 +408,14 @@ public class CharacterMovement : MonoBehaviour
     {
         Integrate();
         GroundCheck();
+        GlideCheck();
 
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(groundChecker.position, jumpDetectRadius);
         //Gizmos.DrawSphere(groundChecker.position, jumpDetectRadius);
     }
 }
