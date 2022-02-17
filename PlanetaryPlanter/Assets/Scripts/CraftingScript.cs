@@ -38,8 +38,8 @@ public class CraftingScript : MonoBehaviour
     {
         if (slot1.GetComponent<CraftingSlotCheckScript>().isObject == true && slot2.GetComponent<CraftingSlotCheckScript>().isModifier == true)
         {
-            slot1.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<Plant>().type = 
-                slot2.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<Modifier>().modifierToApply;
+            slot1.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<PlantTool>().modifier = 
+                slot2.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<ModifierTool>().modifier;
             Destroy(slot2.GetComponent<CraftingSlotCheckScript>().item.gameObject);
             slot1.GetComponent<CraftingSlotCheckScript>().item.Init(slot1.GetComponent<CraftingSlotCheckScript>().item.itemObject);
             return;
@@ -47,8 +47,8 @@ public class CraftingScript : MonoBehaviour
 
         else if (slot2.GetComponent<CraftingSlotCheckScript>().isObject == true && slot1.GetComponent<CraftingSlotCheckScript>().isModifier == true)
         {
-            slot2.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<Plant>().type =
-                slot1.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<Modifier>().modifierToApply;
+            slot2.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<PlantTool>().modifier =
+                slot1.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<ModifierTool>().modifier;
             Destroy(slot1.GetComponent<CraftingSlotCheckScript>().item.gameObject);
             slot2.GetComponent<CraftingSlotCheckScript>().item.Init(slot2.GetComponent<CraftingSlotCheckScript>().item.itemObject);
             return;

@@ -5,8 +5,10 @@ using UnityEngine;
 public enum PlanetSpecies
 {
     Asteroid,
-    Planet,
-    Star
+    RockPlanet,
+    GasPlanet,
+    Star,
+    Comet
 }
 
 public enum PlanetType
@@ -32,6 +34,8 @@ public class ObservatoryPlanetSpot : MonoBehaviour
     public GameObject asteroidFruit;
     public GameObject starFruit;
     public GameObject planetFruit;
+    //public GameObject rockPlanetFruit;
+    //public GameObject gasPlanetFruit;
 
     public void PlaceObject(GameObject newObject)
     {
@@ -53,7 +57,12 @@ public class ObservatoryPlanetSpot : MonoBehaviour
                             newObject = Instantiate(asteroidFruit);
                             break;
                         }
-                    case PlanetSpecies.Planet:
+                    case PlanetSpecies.GasPlanet:
+                        {
+                            newObject = Instantiate(planetFruit);
+                            break;
+                        }
+                    case PlanetSpecies.RockPlanet:
                         {
                             newObject = Instantiate(planetFruit);
                             break;

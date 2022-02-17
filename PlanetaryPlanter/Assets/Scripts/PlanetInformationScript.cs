@@ -72,7 +72,12 @@ public class PlanetInformationScript : MonoBehaviour
                     preview.sprite = asteroid[(int)type];
                     break;
                 }
-            case PlanetSpecies.Planet:
+            case PlanetSpecies.RockPlanet:
+                {
+                    preview.sprite = planet[(int)type];
+                    break;
+                }
+            case PlanetSpecies.GasPlanet:
                 {
                     preview.sprite = planet[(int)type];
                     break;
@@ -82,6 +87,7 @@ public class PlanetInformationScript : MonoBehaviour
                     preview.sprite = star[(int)type];
                     break;
                 }
+            //case PlanetSpecies.Comet:
         }
     }
 }

@@ -29,7 +29,23 @@ public class InventoryItem : MonoBehaviour
             iconDisplay.sprite = itemObject.GetComponent<IconHolder>().icon;
             if(item.tag == "Plant")
             {
-                if(item.GetComponent<Plant>().species == PlanetSpecies.Planet)
+                //change this for rock planet specific info
+                if (item.GetComponent<Plant>().species == PlanetSpecies.RockPlanet)
+                {
+                    if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
+                    {
+                        iconDisplay.sprite = firePlanet;
+                        AlmanacProgression.instance.Unlock("BurningPlanet");
+                    }
+                    if (item.GetComponent<Plant>().type == PlanetType.FrozenCore)
+                    {
+                        iconDisplay.sprite = icePlanet;
+                        AlmanacProgression.instance.Unlock("FrozenPlanet");
+                    }
+                }
+
+                //have to change this to match gas planet specific info
+                if (item.GetComponent<Plant>().species == PlanetSpecies.GasPlanet)
                 {
                     if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
                     {

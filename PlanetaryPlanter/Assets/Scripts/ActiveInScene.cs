@@ -18,7 +18,7 @@ public class ActiveInScene : MonoBehaviour
                 {
                     Debug.Log(m.GetType());
                 }
-                else if(m == GetComponent<Plant>())
+                else if(m == GetComponent<PlantTool>())
                 {
                     //keep this active no matter what so stuff can grow
                 }
