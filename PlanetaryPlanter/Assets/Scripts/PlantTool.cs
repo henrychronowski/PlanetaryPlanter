@@ -20,6 +20,7 @@ public class PlantTool : MonoBehaviour
     public float startGrowthLevel; //level at which plant growth starts
     public float fullGrowthLevel; //level at which plant will be fully grown
     public float growthRate; //the rate at which the plant will grow, added to the growth level
+    public float growthPerStage; //growth needed to advance stages
     public bool potted;
 
     public GameObject[] plantModels; //models for each stage of plant growth
@@ -36,7 +37,6 @@ public class PlantTool : MonoBehaviour
 
     float currentWaterLevel;
     float currentGrowth;
-    float growthPerStage;
     int pastHour;
 
     // Start is called before the first frame update

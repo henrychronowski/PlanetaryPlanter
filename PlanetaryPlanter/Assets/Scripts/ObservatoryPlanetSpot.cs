@@ -28,7 +28,7 @@ public class ObservatoryPlanetSpot : MonoBehaviour
     public Transform rotateAround;
     public float orbitSpeed;
 
-    public PlanetType type; //ModifierType
+    public ModifierTypes type; //ModifierType
     public PlanetSpecies species;
 
     public GameObject asteroidFruit;
@@ -47,10 +47,10 @@ public class ObservatoryPlanetSpot : MonoBehaviour
 
         if(!filled)
         {
-            if(newObject.GetComponent<Plant>().type == type && newObject.GetComponent<Plant>().species == species)
+            if(newObject.GetComponent<PlantTool>().modifier == type && newObject.GetComponent<PlantTool>().planetSpecies == species)
             {
                 newObject = NewInventory.instance.PopItemInCursor();
-                switch(newObject.GetComponent<Plant>().species)
+                switch(newObject.GetComponent<PlantTool>().planetSpecies)
                 {
                     case PlanetSpecies.Asteroid:
                         {
@@ -72,6 +72,7 @@ public class ObservatoryPlanetSpot : MonoBehaviour
                             newObject = Instantiate(starFruit);
                             break;
                         }
+                    //case PlanetSpecies.Comet:
                 }
                 heldObject = newObject;
                 Vector3 scale = newObject.transform.localScale;

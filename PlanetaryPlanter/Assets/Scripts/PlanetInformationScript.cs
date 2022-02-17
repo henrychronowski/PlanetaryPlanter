@@ -63,7 +63,7 @@ public class PlanetInformationScript : MonoBehaviour
         }
     }
 
-    void ChooseImageToDisplay(PlanetSpecies species, PlanetType type)
+    void ChooseImageToDisplay(PlanetSpecies species, ModifierTypes type)
     {
         switch(species)
         {

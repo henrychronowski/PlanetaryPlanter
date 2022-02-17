@@ -589,6 +589,7 @@ GameObject:
   - component: {fileID: 8841713188997342965}
   - component: {fileID: 8841713188997342967}
   - component: {fileID: 3295720273854982070}
+  - component: {fileID: 6601898366876389523}
   m_Layer: 7
   m_Name: Plant
   m_TagString: Plant
@@ -636,15 +637,20 @@ MonoBehaviour:
   - {fileID: 8841713188083676939}
   currentWater: 80
   maxWater: 100
+  waterWarningValue: 0
   growthNeededForEachStage: 5
   growthProgress: 0
   hoursElapsed: 0
   timeSinceLastGrowth: 0
   timeBetweenGrowths: 1
+  growthRequiredToRot: 0
   originalScale: {x: 0, y: 0, z: 0}
   smallIcon: {fileID: 21300000, guid: 3796f9cd8113e554cb982bfc3a7fd1c6, type: 3}
   grownIcon: {fileID: 21300000, guid: 810d6bba139332a458b740017db48ad5, type: 3}
   waterText: {fileID: 7915676949892323781}
+  waterIcon: {fileID: 0}
+  waterParticles: {fileID: 0}
+  waterSound: {fileID: 0}
   lastRecordedHour: 0
   sinFactor: 0.2
   fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
@@ -665,6 +671,8 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactText: Test
+  interactLightAngle: 10
 --- !u!114 &3295720273854982070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,6 +686,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 3796f9cd8113e554cb982bfc3a7fd1c6, type: 3}
+--- !u!114 &6601898366876389523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841713188997342954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dae76b39b285db45ace4daaee0d504f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathWaterLevel: 0
+  warningWaterLevel: 0
+  startWaterLevel: 0
+  maxWaterLevel: 0
+  waterDecreaseRate: 0
+  startGrowthLevel: 0
+  fullGrowthLevel: 0
+  growthRate: 0
+  growthPerStage: 0
+  potted: 0
+  plantModels:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  waterNeededIcon: {fileID: 0}
+  waterParticles: {fileID: 0}
+  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  fullyGrownIcon: {fileID: 21300000, guid: 810d6bba139332a458b740017db48ad5, type: 3}
+  waterSound: {fileID: 0}
+  planetSpecies: 0
+  modifier: 0
+  currentStage: 0
 --- !u!1 &8841713189769588277
 GameObject:
   m_ObjectHideFlags: 0
