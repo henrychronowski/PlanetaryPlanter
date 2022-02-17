@@ -11,7 +11,7 @@ public enum PlanetSpecies
     Comet
 }
 
-public enum PlanetType
+public enum PlanetType //ModifierType?
 {
     None,
     VolcanicAsh,
@@ -28,7 +28,7 @@ public class ObservatoryPlanetSpot : MonoBehaviour
     public Transform rotateAround;
     public float orbitSpeed;
 
-    public PlanetType type;
+    public PlanetType type; //ModifierType
     public PlanetSpecies species;
 
     public GameObject asteroidFruit;
