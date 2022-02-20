@@ -7,14 +7,19 @@ public class TemperatureEffects : MonoBehaviour
     //these public values will be multipliers ex. 1.25
         //so we can set these or intake temp values and set these accordingly
         //could perhaps make them arrays too?
-    public float waterNeededChange;
-    public float growthTimeChange;
+    public float heatGrowthChange;
+    public float coldGrowthChange;
+    public float temperateGrowthChange;
+    public PlanetType modifier;
+    public PlanetSpecies species;
+        
     Biomes currentBiome;
+    float baseGrowth;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //baseGrowth = gameObject.GetComponent<PlantTool>().growthRate;
     }
 
     // Update is called once per frame
@@ -23,14 +28,22 @@ public class TemperatureEffects : MonoBehaviour
         
     }
 
-    public float GetWaterChange()
+    void ApplyGrowthChange()
     {
-        return waterNeededChange;
-    }
+        if (currentBiome == Biomes.Hot)
+        {
+            //gameObject.GetComponent<PlantTool>().growthRate += heatGrowthRate;
+        }
 
-    public float GetGrowthChange()
-    {
-        return growthTimeChange;
+        if (currentBiome == Biomes.Cold)
+        {
+            //gameObject.GetComponent<PlantTool>().growthRate += coldGrowthRate;
+        }
+
+        if (currentBiome == Biomes.Temperate)
+        {
+            //gameObject.GetComponent<PlantTool>().growthRate += temperateGrowthRate;
+        }
     }
 
     public void SetCurrentBiome(Biomes biome)
