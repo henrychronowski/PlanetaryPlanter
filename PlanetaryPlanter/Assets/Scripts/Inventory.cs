@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
             {
                 if(inventory[i] == null)
                 {
-                    item.GetComponent<Plant>().inPot = false;
+                    item.GetComponent<PlantTool>().potted = false;
                     inventory[i] = item;
                     item.transform.parent = inventorySpots[i];
                     item.transform.localPosition = Vector3.zero;

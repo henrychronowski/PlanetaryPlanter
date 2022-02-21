@@ -19,7 +19,7 @@ public class CloseAllMenus : MonoBehaviour
         bool menusClosed = false;
         if (GameObject.Find("Observatory 1").GetComponent<Observatory>().inObservatoryView)
         {
-            GameObject.Find("Observatory 1").GetComponent<Observatory>().EnterObservatory();
+//            GameObject.Find("Observatory 1").GetComponent<Observatory>().EnterObservatory();
         }
         foreach(GameObject m in menus)
         {

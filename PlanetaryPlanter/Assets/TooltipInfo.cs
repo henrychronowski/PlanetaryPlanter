@@ -21,13 +21,13 @@ public class TooltipInfo : MonoBehaviour
         if (isPlant)
         {
 
-            if (GetComponent<Plant>().type == PlanetType.VolcanicAsh)
+            if (GetComponent<PlantTool>().modifier == ModifierTypes.VolcanicAsh)
             {
                 name = fireModName;
                 otherInfo = fireModInfo;
             }
 
-            if (GetComponent<Plant>().type == PlanetType.FrozenCore)
+            if (GetComponent<PlantTool>().modifier == ModifierTypes.FrozenCore)
             {
                 name = iceModName;
                 otherInfo = iceModInfo;

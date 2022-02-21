@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlantSpot : MonoBehaviour
 {
-    public Plant placedPlant;
+    public PlantTool placedPlant;
     public GameObject basicPlantObject;
     public GameObject fertilizer;
 
@@ -33,14 +33,15 @@ public class PlantSpot : MonoBehaviour
     {
 
         GameObject temp = transform.GetChild(0).transform.gameObject;
-        Plant p = temp.GetComponent<Plant>();
-        if (p.inPot == true)
+        PlantTool p = temp.GetComponent<PlantTool>();
+        if (p.potted == true)
         {
             GameObject fertilizerCheck;
             fertilizerCheck = NewInventory.instance.PopItemOfTag("Fertilizer");
+
             if(fertilizerCheck)
             {
-                p.growthNeededForEachStage -= 3;
+                p.growthPerStage -= 3;
                 Instantiate(fertilizerParticles, transform);
                 return true;
             }
@@ -51,8 +52,8 @@ public class PlantSpot : MonoBehaviour
     void TakePlant()
     {
         GameObject temp = transform.GetChild(0).transform.gameObject;
-        Plant p = temp.GetComponent<Plant>();
-        if (p.stage != Plant.Stage.Ripe && p.stage != Plant.Stage.Rotten)
+        PlantTool p = temp.GetComponent<PlantTool>();
+        if (p.currentStage != PlantTool.Stage.Ripe && p.currentStage != PlantTool.Stage.Rotten)
         {
             if (PlaceFertilizer())
                 return;
@@ -62,7 +63,7 @@ public class PlantSpot : MonoBehaviour
                 return;
             }
         }
-        if (p.stage == Plant.Stage.Rotten)
+        if (p.currentStage == PlantTool.Stage.Rotten)
         {
             //NewInventory.instance.AddItem(fertilizer);
             AlmanacProgression.instance.Unlock("GetFertilizer");
@@ -70,7 +71,7 @@ public class PlantSpot : MonoBehaviour
             GameObject temp2 = Instantiate(fertilizer);
             NewInventory.instance.AddItem(temp2);
 
-            p.inPot = false;
+            p.potted = false;
             temp.transform.parent = null;
             temp.transform.position = new Vector3(10000, 100000);
 
@@ -80,7 +81,7 @@ public class PlantSpot : MonoBehaviour
         }
         if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject))
         {
-            p.inPot = false;
+            p.potted = false;
             //Destroy(transform.GetChild(0).gameObject);
             //transform.GetChild(0).transform.gameObject.SetActive(false);
             temp.transform.parent = null;
@@ -107,7 +108,7 @@ public class PlantSpot : MonoBehaviour
         {
             return placePlantInteract;
         }
-        if(GetComponentInChildren<Plant>().stage == Plant.Stage.Ripe || (GetComponentInChildren<Plant>().stage == Plant.Stage.Rotten))
+        if (GetComponentInChildren<PlantTool>().currentStage == PlantTool.Stage.Ripe || (GetComponentInChildren<PlantTool>().currentStage == PlantTool.Stage.Rotten))
         {
             return harvestPlantInteract;
         }

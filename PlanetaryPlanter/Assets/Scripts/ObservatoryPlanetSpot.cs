@@ -5,11 +5,13 @@ using UnityEngine;
 public enum PlanetSpecies
 {
     Asteroid,
-    Planet,
-    Star
+    RockPlanet,
+    GasPlanet,
+    Star,
+    Comet
 }
 
-public enum PlanetType
+public enum PlanetType //ModifierType?
 {
     None,
     VolcanicAsh,
@@ -26,12 +28,14 @@ public class ObservatoryPlanetSpot : MonoBehaviour
     public Transform rotateAround;
     public float orbitSpeed;
 
-    public PlanetType type;
+    public ModifierTypes type; //ModifierType
     public PlanetSpecies species;
 
     public GameObject asteroidFruit;
     public GameObject starFruit;
     public GameObject planetFruit;
+    //public GameObject rockPlanetFruit;
+    //public GameObject gasPlanetFruit;
 
     public void PlaceObject(GameObject newObject)
     {
@@ -43,17 +47,22 @@ public class ObservatoryPlanetSpot : MonoBehaviour
 
         if(!filled)
         {
-            if(newObject.GetComponent<Plant>().type == type && newObject.GetComponent<Plant>().species == species)
+            if(newObject.GetComponent<PlantTool>().modifier == type && newObject.GetComponent<PlantTool>().planetSpecies == species)
             {
                 newObject = NewInventory.instance.PopItemInCursor();
-                switch(newObject.GetComponent<Plant>().species)
+                switch(newObject.GetComponent<PlantTool>().planetSpecies)
                 {
                     case PlanetSpecies.Asteroid:
                         {
                             newObject = Instantiate(asteroidFruit);
                             break;
                         }
-                    case PlanetSpecies.Planet:
+                    case PlanetSpecies.GasPlanet:
+                        {
+                            newObject = Instantiate(planetFruit);
+                            break;
+                        }
+                    case PlanetSpecies.RockPlanet:
                         {
                             newObject = Instantiate(planetFruit);
                             break;
@@ -63,6 +72,7 @@ public class ObservatoryPlanetSpot : MonoBehaviour
                             newObject = Instantiate(starFruit);
                             break;
                         }
+                    //case PlanetSpecies.Comet:
                 }
                 heldObject = newObject;
                 Vector3 scale = newObject.transform.localScale;

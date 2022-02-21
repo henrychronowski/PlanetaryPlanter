@@ -29,41 +29,57 @@ public class InventoryItem : MonoBehaviour
             iconDisplay.sprite = itemObject.GetComponent<IconHolder>().icon;
             if(item.tag == "Plant")
             {
-                if(item.GetComponent<Plant>().species == PlanetSpecies.Planet)
+                //change this for rock planet specific info
+                if (item.GetComponent<PlantTool>().planetSpecies == PlanetSpecies.RockPlanet)
                 {
-                    if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
+                    if (item.GetComponent<PlantTool>().modifier == ModifierTypes.VolcanicAsh)
                     {
                         iconDisplay.sprite = firePlanet;
                         AlmanacProgression.instance.Unlock("BurningPlanet");
                     }
-                    if (item.GetComponent<Plant>().type == PlanetType.FrozenCore)
+                    if (item.GetComponent<PlantTool>().modifier == ModifierTypes.FrozenCore)
                     {
                         iconDisplay.sprite = icePlanet;
                         AlmanacProgression.instance.Unlock("FrozenPlanet");
                     }
                 }
 
-                else if (item.GetComponent<Plant>().species == PlanetSpecies.Star)
+                //have to change this to match gas planet specific info
+                if (item.GetComponent<PlantTool>().planetSpecies == PlanetSpecies.GasPlanet)
                 {
-                    if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
+                    if (item.GetComponent<PlantTool>().modifier == ModifierTypes.VolcanicAsh)
+                    {
+                        iconDisplay.sprite = firePlanet;
+                        AlmanacProgression.instance.Unlock("BurningPlanet");
+                    }
+                    if (item.GetComponent<PlantTool>().modifier == ModifierTypes.FrozenCore)
+                    {
+                        iconDisplay.sprite = icePlanet;
+                        AlmanacProgression.instance.Unlock("FrozenPlanet");
+                    }
+                }
+
+                else if (item.GetComponent<PlantTool>().planetSpecies == PlanetSpecies.Star)
+                {
+                    if (item.GetComponent<PlantTool>().modifier == ModifierTypes.VolcanicAsh)
                     {
                         iconDisplay.sprite = fireStar;
                         AlmanacProgression.instance.Unlock("SuperheatedStar");
                     }
-                    if (item.GetComponent<Plant>().type == PlanetType.FrozenCore)
+                    if (item.GetComponent<PlantTool>().modifier == ModifierTypes.FrozenCore)
                     {
                         iconDisplay.sprite = iceStar;
                         AlmanacProgression.instance.Unlock("ColdStar");
                     }
                 }
-                else if (item.GetComponent<Plant>().species == PlanetSpecies.Asteroid)
+                else if (item.GetComponent<PlantTool>().planetSpecies == PlanetSpecies.Asteroid)
                 {
-                    if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
+                    if (item.GetComponent<PlantTool>().modifier == ModifierTypes.VolcanicAsh)
                     {
                         iconDisplay.sprite = fireAsteroid;
                         AlmanacProgression.instance.Unlock("MagmaAsteroid");
                     }
-                    if (item.GetComponent<Plant>().type == PlanetType.FrozenCore)
+                    if (item.GetComponent<PlantTool>().modifier == ModifierTypes.FrozenCore)
                     {
                         iconDisplay.sprite = iceAsteroid;
                         AlmanacProgression.instance.Unlock("CometCluster");

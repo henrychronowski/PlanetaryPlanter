@@ -56,7 +56,7 @@ public class SaveObjects : MonoBehaviour
         {
             plantsToSave[i].SetActive(true);
             plantsToSave[i].transform.parent = null;
-            plantsToSave[i].GetComponent<Plant>().AddElapsedHours(SunRotationScript.instance.GetTotalElapsedTime() - timeLeftAt);
+            plantsToSave[i].GetComponent<PlantTool>().AddElapsedHours(SunRotationScript.instance.GetTotalElapsedTime() - timeLeftAt);
             Debug.Log("Returned at " + SunRotationScript.instance.GetTotalElapsedTime());
 
             //Instantiate(plantsToSave[i], GameObject.Find(planters[i]).transform, false);

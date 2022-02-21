@@ -189,9 +189,9 @@ public class NewInventory : MonoBehaviour
                 spaces[i].filled = true;
                 spaces[i].item.gameObject.transform.localPosition = Vector3.zero;
 
-                if(item.GetComponent<Plant>())
+                if(item.GetComponent<PlantTool>())
                 {
-                    string species = item.GetComponent<Plant>().species.ToString();
+                    string species = item.GetComponent<PlantTool>().planetSpecies.ToString();
 
                     AlmanacProgression.instance.Unlock("Collect" + species + "Plant");
                 }
@@ -203,9 +203,9 @@ public class NewInventory : MonoBehaviour
                     AlmanacProgression.instance.Unlock("Collect" + species + "Seed");
                 }
 
-                if(item.GetComponent<Modifier>())
+                if(item.GetComponent<ModifierTool>())
                 {
-                    AlmanacProgression.instance.Unlock(item.GetComponent<Modifier>().modifierToApply.ToString());
+                    AlmanacProgression.instance.Unlock(item.GetComponent<ModifierTool>().modifier.ToString());
                 }
                 collectPop.pitch = Random.Range(0.5f, 1f);
                 collectPop.Play();
