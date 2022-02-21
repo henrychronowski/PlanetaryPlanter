@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// THIS SCRIPT IS NO LONGER BEING USED.
 // When highlighted in the hotbar, clamps downward Y velocity to allow travel over great distances
 public class GliderItem : MonoBehaviour
 {
