@@ -257,6 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8752458536398770644}
+  - component: {fileID: 3661363038828032146}
   - component: {fileID: 8752458536398770645}
   - component: {fileID: 8752458536398770647}
   - component: {fileID: 3350161107273453718}
@@ -288,7 +289,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8752458536398770645
+--- !u!114 &3661363038828032146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,6 +297,41 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8752458536398770634}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dae76b39b285db45ace4daaee0d504f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathWaterLevel: 10
+  warningWaterLevel: 20
+  startWaterLevel: 30
+  maxWaterLevel: 60
+  waterDecreaseRate: 2
+  startGrowthLevel: 0
+  fullGrowthLevel: 60
+  growthRate: 2
+  growthPerStage: 15
+  potted: 1
+  plantModels:
+  - {fileID: 919132149155446097, guid: d997567776e430f409a3f9524133a32f, type: 3}
+  - {fileID: 919132149155446097, guid: 638e142d041194a4997bef53413e710c, type: 3}
+  - {fileID: 919132149155446097, guid: d8c0449b94b6e9b4d85227dea1482167, type: 3}
+  - {fileID: 919132149155446097, guid: 27931852a32e8734fbcd5e558ffecacc, type: 3}
+  waterNeededIcon: {fileID: 9097207178865940958}
+  waterParticles: {fileID: 512159613258848882, guid: 5f87f954b917303489dd2ad67c6b8c8c, type: 3}
+  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  fullyGrownIcon: {fileID: 21300000, guid: 6c52313a87706b24f90bbf110e0ea35f, type: 3}
+  waterSound: {fileID: 5992686230633381149}
+  planetSpecies: 3
+  modifier: 0
+  currentStage: 0
+--- !u!114 &8752458536398770645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8752458536398770634}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a41179e464811ae4da6144f17c8396dc, type: 3}
   m_Name: 
@@ -635,14 +671,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d997567776e430f409a3f9524133a32f, type: 3}
---- !u!1 &2806101018891497828 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d997567776e430f409a3f9524133a32f, type: 3}
-  m_PrefabInstance: {fileID: 3039982334023470133}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3295111755609664478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d997567776e430f409a3f9524133a32f, type: 3}
+  m_PrefabInstance: {fileID: 3039982334023470133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2806101018891497828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d997567776e430f409a3f9524133a32f, type: 3}
   m_PrefabInstance: {fileID: 3039982334023470133}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3039982334355469836

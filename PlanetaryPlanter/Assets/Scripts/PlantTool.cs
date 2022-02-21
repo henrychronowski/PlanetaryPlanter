@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlantTool : MonoBehaviour
 {
     public enum Stage
@@ -29,7 +29,7 @@ public class PlantTool : MonoBehaviour
     public GameObject fertilizer; //fertilizer that will come from dead plants
     public Sprite fullyGrownIcon; //icon for fully grown plants
     public AudioSource waterSound;
-
+    //public Text waterText;
 
     public PlanetSpecies planetSpecies;
     public ModifierTypes modifier;

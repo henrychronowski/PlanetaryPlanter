@@ -97,6 +97,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1972666050350199101}
+  - component: {fileID: 4628582019183946949}
   - component: {fileID: 1972666050350199100}
   - component: {fileID: 1972666050350199102}
   - component: {fileID: 5505793748629975167}
@@ -128,7 +129,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1972666050350199100
+--- !u!114 &4628582019183946949
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,6 +137,41 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972666050350199075}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dae76b39b285db45ace4daaee0d504f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathWaterLevel: 10
+  warningWaterLevel: 20
+  startWaterLevel: 30
+  maxWaterLevel: 60
+  waterDecreaseRate: 2
+  startGrowthLevel: 0
+  fullGrowthLevel: 60
+  growthRate: 2
+  growthPerStage: 15
+  potted: 1
+  plantModels:
+  - {fileID: 919132149155446097, guid: 352b1a7a13028f945a447e4ad632479e, type: 3}
+  - {fileID: 919132149155446097, guid: 700f3fd160ad5b94e9d2eabc4c9e0db7, type: 3}
+  - {fileID: 919132149155446097, guid: f6429febfd69d494e9ccb7920b0c672f, type: 3}
+  - {fileID: 919132149155446097, guid: 8b5b9a2150b0ee845928b72f54677d0d, type: 3}
+  waterNeededIcon: {fileID: 684349090705280508}
+  waterParticles: {fileID: 512159613258848882, guid: 5f87f954b917303489dd2ad67c6b8c8c, type: 3}
+  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  fullyGrownIcon: {fileID: 21300000, guid: b77a8ee68f11a0d41b8a5b53bafeae94, type: 3}
+  waterSound: {fileID: -3015667871567097576}
+  planetSpecies: 1
+  modifier: 0
+  currentStage: 0
+--- !u!114 &1972666050350199100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972666050350199075}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a41179e464811ae4da6144f17c8396dc, type: 3}
   m_Name: 
