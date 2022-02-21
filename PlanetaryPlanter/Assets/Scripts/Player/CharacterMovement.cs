@@ -97,9 +97,7 @@ public class CharacterMovement : MonoBehaviour
     public float glidingGravity;
     public float glideAirSpeed;
     public float glideTurnSpeed;
-    
-    GliderItem glider;
-
+    public GameObject gliderIndicator;
 
     void CheckInput()
     {
@@ -109,6 +107,10 @@ public class CharacterMovement : MonoBehaviour
         {
             jumping = true;
             jumpSound.Play();
+        }
+        else if(Input.GetKeyDown(KeyCode.Space) && !grounded)
+        {
+            holdingGlider = !holdingGlider; //Swaps value of holdingGlider
         }
     }
 
@@ -322,9 +324,9 @@ public class CharacterMovement : MonoBehaviour
             isSliding = false;
         }
 
-        Debug.Log("Angle: " + Vector3.Angle(hitFront.point, hitBack.point));
-        GameObject.Find("Angle").GetComponent<TextMeshProUGUI>().text = Vector3.Angle(hitFront.point, hitBack.point).ToString();
-        GameObject.Find("Angle2").GetComponent<TextMeshProUGUI>().text = Vector3.Distance(hitMid.point, rayMid.transform.position).ToString();
+        //Debug.Log("Angle: " + Vector3.Angle(hitFront.point, hitBack.point));
+        //GameObject.Find("Angle").GetComponent<TextMeshProUGUI>().text = Vector3.Angle(hitFront.point, hitBack.point).ToString();
+        //GameObject.Find("Angle2").GetComponent<TextMeshProUGUI>().text = Vector3.Distance(hitMid.point, rayMid.transform.position).ToString();
 
 
     }
@@ -350,11 +352,13 @@ public class CharacterMovement : MonoBehaviour
         {
             grounded = true;
             jumping = false;
+            holdingGlider = false;
         }
         else if (Physics.CheckSphere(groundChecker.position, jumpDetectRadius, 8) && velocity.y <= 0)
         {
             grounded = true;
             jumping = false;
+            holdingGlider = false;
         }
         else
         {
@@ -364,25 +368,11 @@ public class CharacterMovement : MonoBehaviour
 
     void GlideCheck()
     {
-        if(NewInventory.instance.GetItemInSelectedSpace() == null)
-        {
-            holdingGlider = false;
-            isGliding = false;
-            return;
-        }
-        if(NewInventory.instance.GetItemInSelectedSpace().tag == "Glider" )
-        {
-            glider = NewInventory.instance.GetItemInSelectedSpace().GetComponent<GliderItem>();
-            //
-            holdingGlider = true;   
-        }
-        else
-        {
-            holdingGlider = false;
-        }
+        gliderIndicator.SetActive(holdingGlider);
+        
         if(holdingGlider && !grounded && velocity.y < 0)
         {
-            isGliding = glider.DecrementDurability();
+            isGliding = true;
         }
         else
         {
