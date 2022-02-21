@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BouncePadScript : MonoBehaviour
 {
-    float bounceSpeed = 25.0f;
+    public float bounceSpeed = 25.0f;
     public GameObject player;
 
     // Start is called before the first frame update
