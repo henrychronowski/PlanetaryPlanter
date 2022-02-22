@@ -51,7 +51,7 @@ class NewSkyRenderer : SkyRenderer
 
 	Shader GetNewSkyShader()
 	{
-		return null;
+		return Shader.Find("SkyShader");
 	}
 
 	public override void Cleanup()
