@@ -17,6 +17,59 @@ MonoBehaviour:
   - {fileID: 7930707666511146792}
   - {fileID: 1263107968821326285}
   - {fileID: 4655774070607904850}
+  - {fileID: 805955059512611151}
+--- !u!114 &805955059512611151
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: NewSky
+  m_EditorClassIdentifier: Assembly-CSharp::NewSky
+  active: 1
+  m_AdvancedMode: 0
+  rotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  skyIntensityMode:
+    m_OverrideState: 0
+    m_Value: 0
+  exposure:
+    m_OverrideState: 0
+    m_Value: 0
+  multiplier:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxValue:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxColor:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0, z: 0}
+  desiredLuxValue:
+    m_OverrideState: 0
+    m_Value: 20000
+  updateMode:
+    m_OverrideState: 0
+    m_Value: 0
+  updatePeriod:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+  includeSunInBaking:
+    m_OverrideState: 0
+    m_Value: 0
+  hdriSky:
+    m_OverrideState: 1
+    m_Value: {fileID: 8900000, guid: 1cde0e200e792cb4491204276a656490, type: 3}
 --- !u!114 &1263107968821326285
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -167,16 +220,16 @@ MonoBehaviour:
     min: 0
   upperHemisphereLuxValue:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0.25519863
     min: 0
   upperHemisphereLuxColor:
     m_OverrideState: 0
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: 0.4461903, y: 0.2905544, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 0
     m_Value: 20000
   updateMode:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 2
   updatePeriod:
     m_OverrideState: 0
@@ -187,12 +240,12 @@ MonoBehaviour:
     m_Value: 0
   hdriSky:
     m_OverrideState: 1
-    m_Value: {fileID: 0}
+    m_Value: {fileID: 8900000, guid: efd74eded94c72941a0f79100d0d1b80, type: 2}
   enableDistortion:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   procedural:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   flowmap:
     m_OverrideState: 0
@@ -202,15 +255,15 @@ MonoBehaviour:
     m_Value: 1
   scrollDirection:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 70
     min: 0
     max: 360
   scrollSpeed:
     m_OverrideState: 0
-    m_Value: 2
+    m_Value: 8.93
     min: 0
   enableBackplate:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   backplateType:
     m_OverrideState: 0
@@ -245,7 +298,7 @@ MonoBehaviour:
     max: 100
   shadowTint:
     m_OverrideState: 0
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 0.4461903, g: 0.2905544, b: 0.5, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
@@ -258,6 +311,58 @@ MonoBehaviour:
   rectLightShadow:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &7456215589627267407
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: NewSky
+  m_EditorClassIdentifier: Assembly-CSharp::NewSky
+  active: 0
+  m_AdvancedMode: 0
+  rotation:
+    m_OverrideState: 1
+    m_Value: 0
+    min: 0
+    max: 360
+  skyIntensityMode:
+    m_OverrideState: 0
+    m_Value: 0
+  exposure:
+    m_OverrideState: 0
+    m_Value: 0
+  multiplier:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxValue:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxColor:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0, z: 0}
+  desiredLuxValue:
+    m_OverrideState: 0
+    m_Value: 20000
+  updateMode:
+    m_OverrideState: 0
+    m_Value: 0
+  updatePeriod:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+  includeSunInBaking:
+    m_OverrideState: 0
+    m_Value: 0
+  hdriSky:
+    m_OverrideState: 1
+    m_Value: {fileID: 8900000, guid: 1cde0e200e792cb4491204276a656490, type: 3}
 --- !u!114 &7930707666511146792
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -454,7 +559,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   skyType:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 1
   skyAmbientMode:
     m_OverrideState: 1
     m_Value: 1
