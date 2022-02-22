@@ -38,6 +38,7 @@ public class PlantTool : MonoBehaviour
     float currentWaterLevel;
     float currentGrowth;
     int pastHour;
+    int stageCount;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,8 @@ public class PlantTool : MonoBehaviour
         //setting some basic information for water levels and growth rates
         currentWaterLevel = startWaterLevel;
         currentGrowth = startGrowthLevel;
-        growthPerStage = fullGrowthLevel / 4;
+        //growthPerStage = fullGrowthLevel / 4;
+        stageCount = 1; 
 
         //setting the time and ui to start
         pastHour = -1;
@@ -80,8 +82,10 @@ public class PlantTool : MonoBehaviour
             currentGrowth += growthRate;
             currentWaterLevel -= waterDecreaseRate;
 
-            if (currentGrowth % growthPerStage == 0 && currentStage != Stage.Rotten)
+            if (currentGrowth >= (growthPerStage * stageCount) && currentStage != Stage.Rotten)
             {
+                stageCount++;
+
                 if (currentStage == Stage.Ripe)
                 {
                     GetComponent<IconHolder>().icon = fullyGrownIcon;

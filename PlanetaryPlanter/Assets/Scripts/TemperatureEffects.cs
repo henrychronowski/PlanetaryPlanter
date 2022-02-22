@@ -10,7 +10,7 @@ public class TemperatureEffects : MonoBehaviour
     public float heatGrowthChange;
     public float coldGrowthChange;
     public float temperateGrowthChange;
-    public PlanetType modifier;
+    public ModifierTypes modifier;
     public PlanetSpecies species;
         
     Biomes currentBiome;
