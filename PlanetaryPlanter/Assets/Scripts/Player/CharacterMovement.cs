@@ -338,8 +338,14 @@ public class CharacterMovement : MonoBehaviour
 
     void Integrate()
     {
-        if(canMove) //Prevents movement in cutscenes and such
+        if (canMove) //Prevents movement in cutscenes and such
             Move();
+        else
+        {
+            velocity.x *= stoppedDrag;
+            velocity.z *= stoppedDrag;
+            animator.SetBool("moving", velocity != Vector3.zero);
+        }
 
         JumpGravity();
         SlopeRayCheck();

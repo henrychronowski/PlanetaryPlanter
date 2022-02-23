@@ -19,8 +19,6 @@ public class Observatory : MonoBehaviour
 
     public List<ObservatoryPlanetSpot> constellationSpots; //New implementation
 
-    public GameObject playerCam;
-    public bool inObservatoryView;
     public bool completed;
     public GameObject solarSystemButton;
     public TextMeshProUGUI numComplete;
@@ -32,33 +30,6 @@ public class Observatory : MonoBehaviour
     LineRenderer line;
     public int filledSpots;
 
-    public AudioSource telescope;
-    public AudioSource main;
-
-    public void EnterObservatory()
-    {
-        AlmanacProgression.instance.Unlock("ObservatoryEnter");
-            if (playerCam.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled == true)
-            {
-                playerCam.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = false;
-            GameObject.FindObjectOfType<MovementScript>().enabled = false;    
-            inObservatoryView = true;
-                TutorialManagerScript.instance.Unlock("The Telescope");
-            //NewInventory.instance.SetSpacesActive(true);
-                telescope.Play();
-                main.mute = true;
-            } 
-            else
-            {
-            GameObject.FindObjectOfType<MovementScript>().enabled = true;
-
-            playerCam.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = true;
-                inObservatoryView = false;
-                //NewInventory.instance.SetSpacesActive(false);
-                telescope.Stop();
-                main.mute = false;
-            }
-    }
 
     void CreateEmptySlots()
     {
