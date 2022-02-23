@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class CompostPlantScript : MonoBehaviour
 {
-    public GameObject plant;
+    public NewInventory inventory;
+    Transform player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        inventory = FindObjectOfType<NewInventory>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        plant = gameObject.GetComponent<PlantSpot>().basicPlantObject;
+        
     }
 
     public void CompostPlant()
     {
-        Debug.Log("Composting Plant");
-        Destroy(this.plant);
+        
     }
 }
