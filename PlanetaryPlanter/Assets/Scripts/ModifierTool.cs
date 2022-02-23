@@ -6,7 +6,9 @@ public enum ModifierTypes
 {
     None,
     VolcanicAsh,
-    FrozenCore
+    FrozenCore,
+    MortalCoil,
+    Fossilium
 }
 
 public class ModifierTool : MonoBehaviour

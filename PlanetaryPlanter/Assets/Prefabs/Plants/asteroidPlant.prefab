@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 8478914514535368642}
   - component: {fileID: 7511106427382626385}
   - component: {fileID: 3158162002909942285}
+  - component: {fileID: 3568563296495025792}
   m_Layer: 7
   m_Name: asteroidPlant
   m_TagString: Plant
@@ -148,7 +149,7 @@ MonoBehaviour:
   waterDecreaseRate: 2
   startGrowthLevel: 0
   fullGrowthLevel: 60
-  growthRate: 2
+  growthRate: 4
   growthPerStage: 15
   potted: 1
   plantModels:
@@ -350,6 +351,23 @@ MonoBehaviour:
   iceModName: Ice Asteroid
   iceModInfo: 
   isPlant: 1
+--- !u!114 &3568563296495025792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2496107721849800350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae5f97d26dbc7b4a87620dbb20c5b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heatGrowthChange: 4
+  coldGrowthChange: -2
+  temperateGrowthChange: 0
+  modifier: 0
+  species: 0
 --- !u!1 &6905500716569491998
 GameObject:
   m_ObjectHideFlags: 0

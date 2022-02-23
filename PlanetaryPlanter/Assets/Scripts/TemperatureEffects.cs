@@ -32,22 +32,24 @@ public class TemperatureEffects : MonoBehaviour
     {
         if (currentBiome == Biomes.Hot)
         {
-            //gameObject.GetComponent<PlantTool>().growthRate += heatGrowthRate;
+            gameObject.GetComponent<PlantTool>().growthRate += heatGrowthChange;
         }
 
         if (currentBiome == Biomes.Cold)
         {
-            //gameObject.GetComponent<PlantTool>().growthRate += coldGrowthRate;
+            gameObject.GetComponent<PlantTool>().growthRate += coldGrowthChange;
         }
 
         if (currentBiome == Biomes.Temperate)
         {
-            //gameObject.GetComponent<PlantTool>().growthRate += temperateGrowthRate;
+            gameObject.GetComponent<PlantTool>().growthRate += temperateGrowthChange;
         }
     }
 
     public void SetCurrentBiome(Biomes biome)
     {
         currentBiome = biome;
+
+        ApplyGrowthChange();
     }
 }

@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 3350161107273453718}
   - component: {fileID: 5992686230633381149}
   - component: {fileID: 1021186660885997877}
+  - component: {fileID: -8803389468183705084}
   m_Layer: 7
   m_Name: starPlant
   m_TagString: Plant
@@ -308,7 +309,7 @@ MonoBehaviour:
   waterDecreaseRate: 2
   startGrowthLevel: 0
   fullGrowthLevel: 60
-  growthRate: 2
+  growthRate: 4
   growthPerStage: 15
   potted: 1
   plantModels:
@@ -510,6 +511,23 @@ MonoBehaviour:
   iceModName: Ice Star
   iceModInfo: 
   isPlant: 1
+--- !u!114 &-8803389468183705084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8752458536398770634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae5f97d26dbc7b4a87620dbb20c5b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heatGrowthChange: 4
+  coldGrowthChange: -2
+  temperateGrowthChange: 0
+  modifier: 0
+  species: 3
 --- !u!1 &9097207178865940958
 GameObject:
   m_ObjectHideFlags: 0
