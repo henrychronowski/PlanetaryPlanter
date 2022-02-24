@@ -53,7 +53,7 @@ public class OpenAlmanacScript : MonoBehaviour
         NewInventory.instance.SetSpacesActive(true);
         isPaused = true;
         Time.timeScale = 0;
-        GameObject.FindObjectOfType<MovementScript>().enabled = false;
+        GameObject.FindObjectOfType<CharacterMovement>().enabled = false;
         almanac.SetActive(true);
     }
 
@@ -68,7 +68,7 @@ public class OpenAlmanacScript : MonoBehaviour
         }
         if(!GameObject.Find("Observatory 1").GetComponent<Observatory>().inObservatoryView)
         {
-            GameObject.FindObjectOfType<MovementScript>().enabled = true;
+            GameObject.FindObjectOfType<CharacterMovement>().enabled = true;
         }
     }
 }
