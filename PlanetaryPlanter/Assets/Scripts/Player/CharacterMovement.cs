@@ -126,6 +126,16 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+
+    // https://dude123code.medium.com/finally-a-good-wall-run-in-unity-4de42bcb7289
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(Mathf.Abs(Vector3.Dot(collision.GetContact(0).normal, Vector3.up)) < 0.1f && !grounded && !holdingGlider)
+        {
+            Debug.Log("Wall!");
+        }
+    }
+
     void Move()
     {
         Vector3 playerMovement = new Vector3(xMove, 0, zMove);
@@ -144,35 +154,35 @@ public class CharacterMovement : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             }
-            else if ((characterController.collisionFlags & CollisionFlags.Sides) != 0)
-            {
-                touchingWall = true;
+            //else if ((characterController.collisionFlags & CollisionFlags.Sides) != 0)
+            //{
+            //    touchingWall = true;
 
-                targetAngle = Mathf.Atan2(actualMovementDirection.x, actualMovementDirection.z) * Mathf.Rad2Deg;
-                float playerTargetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                if (playerTargetAngle > 180)
-                    playerTargetAngle = (playerTargetAngle - 360);
-                if (playerTargetAngle < -180)
-                    playerTargetAngle = (playerTargetAngle + 360);
+            //    targetAngle = Mathf.Atan2(actualMovementDirection.x, actualMovementDirection.z) * Mathf.Rad2Deg;
+            //    float playerTargetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            //    if (playerTargetAngle > 180)
+            //        playerTargetAngle = (playerTargetAngle - 360);
+            //    if (playerTargetAngle < -180)
+            //        playerTargetAngle = (playerTargetAngle + 360);
 
-                collisionMovementAngleDifference = Mathf.Abs(targetAngle - playerTargetAngle);
-                if (collisionMovementAngleDifference > 180)
-                    collisionMovementAngleDifference = 360 - collisionMovementAngleDifference;
+            //    collisionMovementAngleDifference = Mathf.Abs(targetAngle - playerTargetAngle);
+            //    if (collisionMovementAngleDifference > 180)
+            //        collisionMovementAngleDifference = 360 - collisionMovementAngleDifference;
                 
-                if(collisionMovementAngleDifference < moveAlongWallAngleDifference)
-                {
-                    angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                    moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
-                }
-                else
-                {
-                    angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, playerTargetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                    moveDir = Quaternion.Euler(0f, playerTargetAngle, 0f) * Vector3.forward;
-                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
-                }
+            //    if(collisionMovementAngleDifference < moveAlongWallAngleDifference)
+            //    {
+            //        angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            //        moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            //        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            //    }
+            //    else
+            //    {
+            //        angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, playerTargetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            //        moveDir = Quaternion.Euler(0f, playerTargetAngle, 0f) * Vector3.forward;
+            //        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            //    }
 
-            }
+            //}
             else
             {
                 targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -405,7 +415,6 @@ public class CharacterMovement : MonoBehaviour
             Vector3 xzMove = new Vector3(velocity.x, 0, velocity.z);
             float actualVelocityMagnitude = new Vector2(actualVelocity.x, actualVelocity.z).magnitude;
             xzMove = Vector3.ClampMagnitude(xzMove, maxSpeed - (maxSpeed * (collisionMovementAngleDifference/90)));
-            Debug.Log(maxSpeed - (maxSpeed * (collisionMovementAngleDifference / 90)));
             velocity.x = xzMove.x;
             velocity.z = xzMove.z;
         }
