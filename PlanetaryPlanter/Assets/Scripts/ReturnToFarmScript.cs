@@ -36,13 +36,13 @@ public class ReturnToFarmScript : MonoBehaviour
         if (col.tag == "Player")
         {
             canReturn = true;
-            returnMessage.text = "Press F to return to farm.";
+            returnMessage.text = "Press R to return to farm.";
         }
     }
 
     void CheckInput()
     {
-        if(canReturn && Input.GetKeyDown(KeyCode.F))
+        if(canReturn && Input.GetKeyDown(KeyCode.R))
         {
             player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = new Vector3(returnSpot.transform.position.x, returnSpot.transform.position.y, returnSpot.transform.position.z);
