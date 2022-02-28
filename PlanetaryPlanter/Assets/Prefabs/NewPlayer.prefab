@@ -845,14 +845,15 @@ MonoBehaviour:
   animator: {fileID: 429418673297392477}
   speed: 50
   airSpeed: 25
-  jumpHeight: 12
-  maxSpeed: 10
+  jumpHeight: 13
+  maxSpeed: 8
   gravity: 0.5
   groundedGravity: 0
+  maxFallSpeed: 15
   movementDrag: 0.99
   stoppedDrag: 0.7
   airDrag: 0.99
-  holdJumpGravity: 0.25
+  holdJumpGravity: 0.35
   groundChecker: {fileID: 3306395700647041569}
   ground:
     serializedVersion: 2
@@ -861,6 +862,7 @@ MonoBehaviour:
   canMove: 1
   jumping: 0
   velocity: {x: 0, y: 0, z: 0}
+  verticalVelocity: 0
   jumpDetectRadius: 0.24
   turnSmoothTime: 0.15
   axis: {x: 0, y: 0, z: 0}
@@ -884,6 +886,13 @@ MonoBehaviour:
   glideAirSpeed: 15
   glideTurnSpeed: 0.4
   gliderIndicator: {fileID: 980714674}
+  actualMovementDirection: {x: 0, y: 0, z: 0}
+  actualVelocity: {x: 0, y: 0, z: 0}
+  previousPos: {x: 0, y: 0, z: 0}
+  moveAlongWallAngleDifference: 0
+  collisionMovementAngleDifference: 0
+  touchingWall: 0
+  touchingWallMaxSpeed: 0
 --- !u!82 &7834039730912763172
 AudioSource:
   m_ObjectHideFlags: 0

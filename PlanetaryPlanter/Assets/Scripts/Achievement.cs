@@ -23,7 +23,7 @@ public class Achievement : MonoBehaviour
         {
             unlocked = true;
             PopUpController.instance.NewPopUp(description, popUpIcon);
-            ((MonoBehaviour)achievementEvent.GetPersistentTarget(0)).SendMessage(achievementEvent.GetPersistentMethodName(0));
+            //((MonoBehaviour)achievementEvent.GetPersistentTarget(0)).SendMessage(achievementEvent.GetPersistentMethodName(0));
         }
     }
 
