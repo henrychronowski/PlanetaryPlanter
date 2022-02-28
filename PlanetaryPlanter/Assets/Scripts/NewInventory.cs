@@ -131,7 +131,6 @@ public class NewInventory : MonoBehaviour
     // the player's inventory, such as silo spaces or crafting table slots.
     public void Click(InventorySpace space)
     {
-
         if(!itemInCursor)
         {
             selectedItem = space.item;
