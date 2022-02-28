@@ -7,7 +7,7 @@ public class TelescopeOverlay : MonoBehaviour
     public CinemachineVirtualCamera cam;
     public CinemachineBrain brain;
     public GameObject overlay;
-    public Observatory observatory;
+    public ObservatoryMaster observatory;
     // Start is called before the first frame update
     void Start()
     {
