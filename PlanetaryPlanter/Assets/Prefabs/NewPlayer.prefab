@@ -339,7 +339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (Press Space)
+  m_text: (Press Shift)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -882,9 +882,9 @@ MonoBehaviour:
   isSliding: 0
   isGliding: 0
   holdingGlider: 0
-  glidingGravity: 1.5
-  glideAirSpeed: 15
-  glideTurnSpeed: 0.4
+  glidingGravity: 1.7
+  glideAirSpeed: 25
+  glideTurnSpeed: 0.2
   gliderIndicator: {fileID: 980714674}
   actualMovementDirection: {x: 0, y: 0, z: 0}
   actualVelocity: {x: 0, y: 0, z: 0}
