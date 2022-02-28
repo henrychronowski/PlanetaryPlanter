@@ -30,6 +30,11 @@ public class Observatory : MonoBehaviour
     LineRenderer line;
     public int filledSpots;
 
+    public AudioSource telescope;
+    public AudioSource main;
+
+    public SolarSystemCountScript solarSystemCounter;
+
 
     void CreateEmptySlots()
     {
@@ -81,8 +86,9 @@ public class Observatory : MonoBehaviour
         line.enabled = true;
         completed = true;
         solarSystemButton.GetComponent<UnityEngine.UI.Image>().sprite = completedConstellationSprite;
-        
-        AlmanacProgression.instance.Unlock(completionAchievementName);
+
+        solarSystemCounter.numSolarSystemsComplete++;
+        AlmanacProgression.instance.Unlock(completionAchievementName + solarSystemCounter.numSolarSystemsComplete.ToString());
 
         TutorialManagerScript.instance.Unlock("Demo Over");
     }
@@ -96,6 +102,8 @@ public class Observatory : MonoBehaviour
         line.SetPosition(0, solarSystemButton.transform.position);
         line.SetPosition(1, next.position);
         line.enabled = false;
+
+        solarSystemCounter = FindObjectOfType<SolarSystemCountScript>();
         //line.colorGradient.
     }
 
