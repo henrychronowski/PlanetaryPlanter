@@ -109,12 +109,13 @@ public class ObservatoryMaster : MonoBehaviour
     {
         if(lerping)
         {
-            Mathf.SmoothStep(0, 1, timeSpentLerping/lerpTime);
-            transform.position = Vector3.Lerp(lerpOrigin, lerpTarget, timeSpentLerping/lerpTime);
+            float t = Mathf.SmoothStep(0, 1, timeSpentLerping/lerpTime);
+            transform.position = Vector3.Lerp(lerpOrigin, lerpTarget, t);
             timeSpentLerping += Time.deltaTime;
             if(timeSpentLerping>= lerpTime)
             {
                 timeSpentLerping = 0;
+                transform.position = lerpTarget;
                 lerping = false;
             }
         }

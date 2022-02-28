@@ -120,7 +120,7 @@ public class CharacterMovement : MonoBehaviour
             jumping = true;
             jumpSound.Play();
         }
-        else if(Input.GetKeyDown(KeyCode.Space) && !grounded)
+        else if(Input.GetKeyDown(KeyCode.LeftShift) && !grounded)
         {
             holdingGlider = !holdingGlider; //Swaps value of holdingGlider
         }

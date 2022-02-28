@@ -84,7 +84,6 @@ public class Observatory : MonoBehaviour
         
         AlmanacProgression.instance.Unlock(completionAchievementName);
 
-        TutorialManagerScript.instance.Unlock("Demo Over");
     }
 
     // Start is called before the first frame update
