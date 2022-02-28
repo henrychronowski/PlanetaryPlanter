@@ -38,14 +38,14 @@ public class ObservatoryMaster : MonoBehaviour
             inObservatoryView = true;
             TutorialManagerScript.instance.Unlock("The Telescope");
             telescope.Play();
-            main.mute = true;
+            //main.mute = true;
         }
         else
         {
             playerCam.GetComponent<Cinemachine.CinemachineFreeLook>().enabled = true;
             inObservatoryView = false;
             telescope.Stop();
-            main.mute = false;
+            //main.mute = false;
         }
     }
 
