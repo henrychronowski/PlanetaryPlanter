@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Cinemachine;
 
+//This class holds all code relating to inventory management. 
+//Any questions regarding this code should be directed to Dan Hartman
 public class NewInventory : MonoBehaviour
 {
     public static NewInventory instance;
@@ -16,21 +19,23 @@ public class NewInventory : MonoBehaviour
             instance = this;
     }
 
-    public InventoryItem selectedItem; //the inventory item your cursor is holding
+    public InventoryItem selectedItem; // The inventory item your cursor is holding
     public List<InventorySpace> spaces;
-    public bool itemInCursor; //is your cursor holding an item?
+    public bool itemInCursor; // Is your cursor holding an item?
     public GameObject emptyInventoryObject;
     public InventorySpace selectedSpace;
     public GameObject selectionIndicator;
     public GameObject grayOutLevelPanel;
     public int selectedIndex;
     public float scrollWheel;
-    public bool inventoryActive; //True when the mouse has been unconfined and can click on things, only when UI is open
+    public bool inventoryActive; // True when the mouse has been unconfined and can click on things, only when UI is open
     public bool forceActive;
     public CloseAllMenus menuCloser;
     public AudioSource collectPop;
 
-
+    // This offsets the item in the mouse cursor's position so it is not obstructed by the mouse and avoids any potential bugs 
+    // related to holding items in cursors preventing the cursor from clicking buttons
+    public int heldItemPositionOffset = 25;
     void CheckInput()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -59,6 +64,7 @@ public class NewInventory : MonoBehaviour
 
     }
 
+    //Effectively "opens" the inventory by locking the camera
     public void SetSpacesActive(bool active)
     {
         if (forceActive)
@@ -73,7 +79,8 @@ public class NewInventory : MonoBehaviour
             }
             inventoryActive = true;
             Cursor.lockState = CursorLockMode.None;
-            GameObject.FindObjectOfType<CameraFollow>().enabled = false;
+            //Need to remove cameraFollow references since that script is trashed
+            GameObject.FindObjectOfType<CameraController>().CameraState(false);
             grayOutLevelPanel.SetActive(false);
             return;
         }
@@ -91,12 +98,12 @@ public class NewInventory : MonoBehaviour
         if(active)
         {
             Cursor.lockState = CursorLockMode.None;
-            GameObject.FindObjectOfType<CameraFollow>().enabled = false;
+            GameObject.FindObjectOfType<CameraController>().CameraState(false);
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
-            GameObject.FindObjectOfType<CameraFollow>().enabled = true;
+            GameObject.FindObjectOfType<CameraController>().CameraState(true);
             grayOutLevelPanel.SetActive(false);
         }
     }
@@ -119,9 +126,11 @@ public class NewInventory : MonoBehaviour
         
     }
 
+    // Runs whenever an inventory space is clicked on.
+    // This includes clicking on spaces that aren't necessarily 
+    // the player's inventory, such as silo spaces or crafting table slots.
     public void Click(InventorySpace space)
     {
-
         if(!itemInCursor)
         {
             selectedItem = space.item;
@@ -243,6 +252,16 @@ public class NewInventory : MonoBehaviour
 
     }
 
+    public GameObject GetItemInSelectedSpace()
+    {
+        if (selectedSpace.item)
+        {
+            return selectedSpace.item.itemObject;
+        }
+        return null;
+
+    }
+
     public GameObject GetItem()
     {
         if (selectedSpace.item)
@@ -292,6 +311,7 @@ public class NewInventory : MonoBehaviour
         return null;
     }
 
+    //Moves the item held in the cursor to the 
     void UpdateHeldItemPos()
     {
         if(itemInCursor)
@@ -306,14 +326,15 @@ public class NewInventory : MonoBehaviour
                 selectedItem.gameObject.transform.position = new Vector3(10000, 10000);
             }
             RectTransform itemTransform = selectedItem.gameObject.GetComponent<RectTransform>();
-            selectedItem.gameObject.transform.position = new Vector3(Input.mousePosition.x + (itemTransform.rect.width), Input.mousePosition.y + (itemTransform.rect.height + 25), Input.mousePosition.z);
+            selectedItem.gameObject.transform.position = new Vector3(Input.mousePosition.x + (itemTransform.rect.width),
+                Input.mousePosition.y + (itemTransform.rect.height + heldItemPositionOffset), Input.mousePosition.z);
 
         }
     }
 
     void CheckForObservatoryState()
     {
-        if(!GameObject.Find("PlayerVCam").GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled && !inventoryActive)
+        if(!GameObject.Find("PlayerVCam").GetComponent<CameraController>().canUseCamera && !inventoryActive)
         {
             SetSpacesActive(true);
         }

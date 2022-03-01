@@ -17,9 +17,9 @@ public class CloseAllMenus : MonoBehaviour
     {
         GameObject[] menus = GameObject.FindGameObjectsWithTag("Menu");
         bool menusClosed = false;
-        if (GameObject.Find("Observatory 1").GetComponent<Observatory>().inObservatoryView)
+        if (GameObject.FindObjectOfType<ObservatoryMaster>().inObservatoryView)
         {
-            GameObject.Find("Observatory 1").GetComponent<Observatory>().EnterObservatory();
+            GameObject.FindObjectOfType<ObservatoryMaster>().EnterObservatory();
         }
         foreach(GameObject m in menus)
         {
@@ -42,7 +42,7 @@ public class CloseAllMenus : MonoBehaviour
 
     public bool AreMenusOpen()
     {
-        if (GameObject.Find("Observatory 1").GetComponent<Observatory>().inObservatoryView)
+        if (GameObject.FindObjectOfType<ObservatoryMaster>().inObservatoryView)
         {
             return true;
         }

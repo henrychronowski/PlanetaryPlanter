@@ -17,6 +17,7 @@ public class SiloInventory : MonoBehaviour
     {
         AlmanacProgression.instance.Unlock("SiloOpen");
         TutorialManagerScript.instance.Unlock("The Silo");
+
         if(inventoryPanelObject.activeInHierarchy)
         {
             inventoryPanelObject.SetActive(false);

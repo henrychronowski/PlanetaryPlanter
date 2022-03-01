@@ -19,8 +19,6 @@ public class Observatory : MonoBehaviour
 
     public List<ObservatoryPlanetSpot> constellationSpots; //New implementation
 
-    public GameObject playerCam;
-    public bool inObservatoryView;
     public bool completed;
     public GameObject solarSystemButton;
     public TextMeshProUGUI numComplete;
@@ -35,30 +33,8 @@ public class Observatory : MonoBehaviour
     public AudioSource telescope;
     public AudioSource main;
 
-    public void EnterObservatory()
-    {
-        AlmanacProgression.instance.Unlock("ObservatoryEnter");
-            if (playerCam.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled == true)
-            {
-                playerCam.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = false;
-            GameObject.FindObjectOfType<MovementScript>().enabled = false;    
-            inObservatoryView = true;
-                TutorialManagerScript.instance.Unlock("The Telescope");
-            //NewInventory.instance.SetSpacesActive(true);
-                telescope.Play();
-                main.mute = true;
-            } 
-            else
-            {
-            GameObject.FindObjectOfType<MovementScript>().enabled = true;
+    public SolarSystemCountScript solarSystemCounter;
 
-            playerCam.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = true;
-                inObservatoryView = false;
-                //NewInventory.instance.SetSpacesActive(false);
-                telescope.Stop();
-                main.mute = false;
-            }
-    }
 
     void CreateEmptySlots()
     {
@@ -110,10 +86,10 @@ public class Observatory : MonoBehaviour
         line.enabled = true;
         completed = true;
         solarSystemButton.GetComponent<UnityEngine.UI.Image>().sprite = completedConstellationSprite;
-        
-        AlmanacProgression.instance.Unlock(completionAchievementName);
 
-        TutorialManagerScript.instance.Unlock("Demo Over");
+        solarSystemCounter.numSolarSystemsComplete++;
+        AlmanacProgression.instance.Unlock(completionAchievementName + solarSystemCounter.numSolarSystemsComplete.ToString());
+
     }
 
     // Start is called before the first frame update
@@ -125,6 +101,8 @@ public class Observatory : MonoBehaviour
         line.SetPosition(0, solarSystemButton.transform.position);
         line.SetPosition(1, next.position);
         line.enabled = false;
+
+        solarSystemCounter = FindObjectOfType<SolarSystemCountScript>();
         //line.colorGradient.
     }
 
