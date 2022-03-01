@@ -51,7 +51,7 @@ class NewSkyRenderer : SkyRenderer
 
 	Shader GetNewSkyShader()
 	{
-		return Shader.Find("SkyShader");
+		return Shader.Find("Hidden/HDRP/Sky/SkyShader");//SkyShader");
 	}
 
 	public override void Cleanup()
