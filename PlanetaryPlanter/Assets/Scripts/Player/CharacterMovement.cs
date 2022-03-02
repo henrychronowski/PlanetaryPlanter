@@ -111,18 +111,28 @@ public class CharacterMovement : MonoBehaviour
     public float collisionMovementAngleDifference;
     public bool touchingWall;
     public float touchingWallMaxSpeed;
+
+    public bool wallrunning;
+    public float wallrunningGravity;
+    public float wallRunningAngleRequirement;
+    public float maxAngleChange;
+    public Vector3 wallNormal;
+    public GameObject currentWall;
+    public GameObject playerModel;
+
     void CheckInput()
     {
         xMove = Input.GetAxisRaw("Horizontal");
         zMove = Input.GetAxisRaw("Vertical");
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        if (Input.GetKeyDown(KeyCode.Space) && (grounded || wallrunning))
         {
             jumping = true;
             jumpSound.Play();
         }
-        else if(Input.GetKeyDown(KeyCode.Space) && !grounded)
+        else if(Input.GetKeyDown(KeyCode.LeftShift) && !grounded)
         {
             holdingGlider = !holdingGlider; //Swaps value of holdingGlider
+            ExitWallRun();
         }
     }
 
@@ -130,16 +140,84 @@ public class CharacterMovement : MonoBehaviour
     // https://dude123code.medium.com/finally-a-good-wall-run-in-unity-4de42bcb7289
     private void OnCollisionEnter(Collision collision)
     {
-        if(Mathf.Abs(Vector3.Dot(collision.GetContact(0).normal, Vector3.up)) < 0.1f && !grounded && !holdingGlider)
+        float collisionDot = Mathf.Abs(Vector3.Dot(collision.GetContact(0).normal, Vector3.up));
+        if (collisionDot < 0.1f && !grounded && !holdingGlider && collision.gameObject.tag != "Player")
         {
-            Debug.Log("Wall!");
+            
+            Vector3 tempVel = velocity; //Used only for gizmo
+            Debug.DrawRay(collision.GetContact(0).point, Vector3.ProjectOnPlane(tempVel, collision.GetContact(0).normal), Color.cyan);
+            currentWall = collision.gameObject;
+            if(Vector3.Dot(collision.GetContact(0).normal, velocity) >= wallRunningAngleRequirement)
+            {
+                if(!wallrunning)
+                {
+                    if(Vector3.Distance(rayLeft.position, collision.GetContact(0).point) > Vector3.Distance(rayRight.position, collision.GetContact(0).point))
+                    {
+                        playerModel.transform.Rotate(Vector3.forward, 15);
+                    }
+                    else
+                    {
+                        playerModel.transform.Rotate(Vector3.forward, -15);
+                    }
+                    wallrunning = true;
+                }
+                Debug.Log("Wallrun");
+                wallNormal = collision.GetContact(0).normal;
+            }
+            else
+            {
+                Debug.Log("Wallclimb");
+            }
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        float collisionDot = Mathf.Abs(Vector3.Dot(collision.GetContact(0).normal, Vector3.up));
+        if (collisionDot < 0.1f && !grounded && !holdingGlider && collision.gameObject.tag != "Player" && wallrunning)
+        {
+            //Debug.Log(collision.gameObject.name);
+
+            Debug.DrawRay(collision.GetContact(0).point, Vector3.ProjectOnPlane(velocity, collision.GetContact(0).normal), Color.cyan);
+            velocity = Vector3.ProjectOnPlane(velocity, collision.GetContact(0).normal);
+            Debug.Log("Angle between " + Vector3.Angle(wallNormal, collision.GetContact(0).normal));
+            if (Vector3.Angle(wallNormal, collision.GetContact(0).normal) > maxAngleChange)
+            {
+                ExitWallRun();
+            }
+
+        }
+        else if(grounded)
+        {
+            ExitWallRun();
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    { 
+        if(collision.gameObject == currentWall)
+        {
+            ExitWallRun();
+        }
+    }
+
+    void ExitWallRun()
+    {
+        wallrunning = false;
+        wallNormal = Vector3.zero;
+        currentWall = null;
+        playerModel.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+    }
+
+    void WallRunJump()
+    {
+
     }
 
     void Move()
     {
         Vector3 playerMovement = new Vector3(xMove, 0, zMove);
-        animator.SetBool("moving", playerMovement != Vector3.zero);
+        animator.SetBool("moving", (playerMovement != Vector3.zero) || wallrunning);
         if (playerMovement != Vector3.zero)
         {
             //https://youtu.be/4HpC--2iowE this helped with some math here
@@ -154,41 +232,12 @@ public class CharacterMovement : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             }
-            //else if ((characterController.collisionFlags & CollisionFlags.Sides) != 0)
-            //{
-            //    touchingWall = true;
-
-            //    targetAngle = Mathf.Atan2(actualMovementDirection.x, actualMovementDirection.z) * Mathf.Rad2Deg;
-            //    float playerTargetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            //    if (playerTargetAngle > 180)
-            //        playerTargetAngle = (playerTargetAngle - 360);
-            //    if (playerTargetAngle < -180)
-            //        playerTargetAngle = (playerTargetAngle + 360);
-
-            //    collisionMovementAngleDifference = Mathf.Abs(targetAngle - playerTargetAngle);
-            //    if (collisionMovementAngleDifference > 180)
-            //        collisionMovementAngleDifference = 360 - collisionMovementAngleDifference;
-                
-            //    if(collisionMovementAngleDifference < moveAlongWallAngleDifference)
-            //    {
-            //        angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            //        moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            //        transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            //    }
-            //    else
-            //    {
-            //        angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, playerTargetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            //        moveDir = Quaternion.Euler(0f, playerTargetAngle, 0f) * Vector3.forward;
-            //        transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            //    }
-
-            //}
             else
             {
                 targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, angle, transform.eulerAngles.z);
             }
 
 
@@ -212,6 +261,11 @@ public class CharacterMovement : MonoBehaviour
                 velocity.x *= stoppedDrag;
                 velocity.z *= stoppedDrag;
             }
+            else if(wallrunning)
+            {
+                velocity.x *= airDrag * 1.1f;
+                velocity.z *= airDrag * 1.1f;
+            }
             else if(!isGliding)
             {
                 velocity.x *= airDrag;
@@ -231,6 +285,17 @@ public class CharacterMovement : MonoBehaviour
 
     void JumpGravity()
     {
+        if(wallrunning)
+        {
+            velocity.y -= wallrunningGravity;
+            if (jumping)
+            {
+                velocity += (wallNormal + Vector3.up).normalized * jumpHeight;
+                ExitWallRun();
+                jumping = false;
+            }
+            return;
+        }
         if(isGliding && !grounded) //Holding a glider and in the air
         {
             if(velocity.y > 0) //Gliding only kicks in when falling
@@ -253,6 +318,7 @@ public class CharacterMovement : MonoBehaviour
         {
             velocity.y = jumpHeight;
             grounded = false;
+            jumping = false;
         }
         if(!grounded && Input.GetKey(KeyCode.Space)) //Holding jump while airborne
         {
@@ -425,7 +491,7 @@ public class CharacterMovement : MonoBehaviour
             actualMovementDirection = ((transform.position - previousPos) /Time.deltaTime).normalized;
             actualVelocity = (((transform.position - previousPos).normalized * Vector3.Distance(transform.position, previousPos)) / Time.deltaTime);
             
-            Debug.DrawRay(transform.position, actualMovementDirection);
+            //Debug.DrawRay(transform.position, actualMovementDirection);
         }
         //Applied when leaving walls to prevent odd bursts of speed when running against a wall and leaving the wall
 
@@ -476,7 +542,7 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         CheckInput();
-        animator.SetBool("grounded", grounded);
+        animator.SetBool("grounded", grounded || wallrunning);
     }
 
     private void FixedUpdate()
