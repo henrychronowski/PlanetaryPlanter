@@ -6,7 +6,7 @@ public class PlanetRotationScript : MonoBehaviour
 {
     public GameObject planet;
     float currentAngle = 0f;
-    float rotationScale = 0.005f;
+    float rotationScale = 0.01f;
     // Start is called before the first frame update
     void Start()
     {
