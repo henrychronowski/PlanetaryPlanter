@@ -119,7 +119,11 @@ public class CharacterMovement : MonoBehaviour
     public Vector3 wallNormal;
     public GameObject currentWall;
     public GameObject playerModel;
-
+    public float wallJumpPower;
+    public float minWallrunSpeed;
+    public float wallrunRotation;
+    public bool isCrouchSliding;
+    public float slopeCrouchSlideAngle;
     void CheckInput()
     {
         xMove = Input.GetAxisRaw("Horizontal");
@@ -134,8 +138,31 @@ public class CharacterMovement : MonoBehaviour
             holdingGlider = !holdingGlider; //Swaps value of holdingGlider
             ExitWallRun();
         }
+        if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            StartSlide();
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            ExitSlide();
+        }
     }
 
+    void StartSlide()
+    {
+        if(grounded)
+        {
+            playerModel.transform.Rotate(new Vector3(-1, 0, 0), 60);
+            isCrouchSliding = true;
+        }
+
+    }
+
+    void ExitSlide()
+    {
+        playerModel.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        isCrouchSliding = false;
+    }
 
     // https://dude123code.medium.com/finally-a-good-wall-run-in-unity-4de42bcb7289
     private void OnCollisionEnter(Collision collision)
@@ -147,17 +174,25 @@ public class CharacterMovement : MonoBehaviour
             Vector3 tempVel = velocity; //Used only for gizmo
             Debug.DrawRay(collision.GetContact(0).point, Vector3.ProjectOnPlane(tempVel, collision.GetContact(0).normal), Color.cyan);
             currentWall = collision.gameObject;
-            if(Vector3.Dot(collision.GetContact(0).normal, velocity) >= wallRunningAngleRequirement)
+            if(Vector3.Dot(collision.GetContact(0).normal, velocity) >= wallRunningAngleRequirement && wallNormal != collision.GetContact(0).normal)
             {
                 if(!wallrunning)
                 {
-                    if(Vector3.Distance(rayLeft.position, collision.GetContact(0).point) > Vector3.Distance(rayRight.position, collision.GetContact(0).point))
+                    float leftSideDistance = Vector3.Distance(rayLeft.position, collision.GetContact(0).point);
+                    float rightSideDistance = Vector3.Distance(rayRight.position, collision.GetContact(0).point);
+                    float frontSideDistance = Vector3.Distance(rayFront.position, collision.GetContact(0).point);
+                    if(frontSideDistance < leftSideDistance && frontSideDistance < rightSideDistance)
                     {
-                        playerModel.transform.Rotate(Vector3.forward, 15);
+                        playerModel.transform.Rotate(new Vector3(-1, 0, 0), wallrunRotation);
+
                     }
-                    else
+                    else if (leftSideDistance > rightSideDistance)
                     {
-                        playerModel.transform.Rotate(Vector3.forward, -15);
+                        playerModel.transform.Rotate(Vector3.forward, wallrunRotation);
+                    }
+                    else 
+                    {
+                        playerModel.transform.Rotate(Vector3.forward, -wallrunRotation);
                     }
                     wallrunning = true;
                 }
@@ -185,6 +220,10 @@ public class CharacterMovement : MonoBehaviour
             {
                 ExitWallRun();
             }
+            if(velocity.magnitude < minWallrunSpeed)
+            {
+                ExitWallRun();
+            }
 
         }
         else if(grounded)
@@ -197,6 +236,7 @@ public class CharacterMovement : MonoBehaviour
     { 
         if(collision.gameObject == currentWall)
         {
+            
             ExitWallRun();
         }
     }
@@ -204,7 +244,6 @@ public class CharacterMovement : MonoBehaviour
     void ExitWallRun()
     {
         wallrunning = false;
-        wallNormal = Vector3.zero;
         currentWall = null;
         playerModel.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
@@ -229,8 +268,7 @@ public class CharacterMovement : MonoBehaviour
                 targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, glideTurnSpeed);
                 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, angle, transform.eulerAngles.x);
             }
             else
             {
@@ -239,6 +277,13 @@ public class CharacterMovement : MonoBehaviour
                 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 transform.rotation = Quaternion.Euler(transform.eulerAngles.x, angle, transform.eulerAngles.z);
             }
+
+            if (wallrunning)
+            {
+                targetAngle = Mathf.Atan2(velocity.x, velocity.z) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, targetAngle, transform.eulerAngles.z);
+            }
+
 
 
             if (grounded)
@@ -290,7 +335,10 @@ public class CharacterMovement : MonoBehaviour
             velocity.y -= wallrunningGravity;
             if (jumping)
             {
-                velocity += (wallNormal + Vector3.up).normalized * jumpHeight;
+                if (velocity.y < 0)
+                    velocity.y = 0;
+
+                velocity += (wallNormal + Vector3.up).normalized * wallJumpPower;
                 ExitWallRun();
                 jumping = false;
             }
@@ -380,10 +428,16 @@ public class CharacterMovement : MonoBehaviour
         float diagonalLeftAngle = Vector3.Angle(hitFrontLeft.point, hitBackRight.point);
 
 
-        if (grounded && Vector3.Distance(hitMid.point, rayMid.transform.position) > midRayMaxDistance)
+        if (grounded && ((Vector3.Distance(hitMid.point, rayMid.transform.position) > midRayMaxDistance) || isCrouchSliding))
         {
             Vector3 slideDir = Vector3.zero;
-            if (frontBackAngle > slopeSlideAngle) //Front/back slope check
+            float slideAngle;
+            if (isCrouchSliding)
+                slideAngle = slopeCrouchSlideAngle;
+            else
+                slideAngle = slopeSlideAngle;
+
+            if (frontBackAngle > slideAngle) //Front/back slope check
             {
                 if(hitFront.point.y > hitBack.point.y)
                 {
@@ -396,7 +450,7 @@ public class CharacterMovement : MonoBehaviour
                     slideDir += (hitFront.point - hitBack.point).normalized;
                 }
             }
-            if (leftRightAngle > slopeSlideAngle) //Front/back slope check
+            if (leftRightAngle > slideAngle) //Front/back slope check
             {
                 if (hitLeft.point.y > hitRight.point.y)
                 {
@@ -409,7 +463,7 @@ public class CharacterMovement : MonoBehaviour
                     slideDir += (hitLeft.point - hitRight.point).normalized;
                 }
             }
-            if (diagonalRightAngle > slopeSlideAngle) //Front/back slope check
+            if (diagonalRightAngle > slideAngle) //Front/back slope check
             {
                 if (hitBackLeft.point.y > hitFrontRight.point.y)
                 {
@@ -422,7 +476,7 @@ public class CharacterMovement : MonoBehaviour
                     slideDir += (hitBackLeft.point - hitFrontRight.point).normalized;
                 }
             }
-            if (diagonalLeftAngle > slopeSlideAngle) //Front/back slope check
+            if (diagonalLeftAngle > slideAngle) //Front/back slope check
             {
                 if (hitBackRight.point.y > hitFrontLeft.point.y)
                 {
@@ -504,6 +558,7 @@ public class CharacterMovement : MonoBehaviour
             grounded = true;
             jumping = false;
             holdingGlider = false;
+            wallNormal = Vector3.zero;
         }
         else if (Physics.CheckSphere(groundChecker.position, jumpDetectRadius, 8) && velocity.y <= 0)
         {
