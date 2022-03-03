@@ -6,7 +6,9 @@ public enum PlanetSpecies
 {
     Asteroid,
     Planet,
-    Star
+    Star,
+    RockPlanet,
+    Comet
 }
 
 public enum PlanetType
