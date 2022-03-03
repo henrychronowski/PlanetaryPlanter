@@ -844,15 +844,15 @@ MonoBehaviour:
   cam: {fileID: 0}
   animator: {fileID: 429418673297392477}
   speed: 50
-  airSpeed: 25
+  airSpeed: 35
   jumpHeight: 13
-  maxSpeed: 8
+  maxSpeed: 13
   gravity: 0.5
   groundedGravity: 0
   maxFallSpeed: 15
   movementDrag: 0.99
   stoppedDrag: 0.7
-  airDrag: 0.99
+  airDrag: 0.98
   holdJumpGravity: 0.35
   groundChecker: {fileID: 3306395700647041569}
   ground:
@@ -861,7 +861,7 @@ MonoBehaviour:
   grounded: 1
   canMove: 1
   jumping: 0
-  velocity: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: -0, z: 0}
   verticalVelocity: 0
   jumpDetectRadius: 0.24
   turnSmoothTime: 0.15
@@ -886,12 +886,12 @@ MonoBehaviour:
   glideAirSpeed: 25
   glideTurnSpeed: 0.2
   gliderIndicator: {fileID: 980714674}
-  actualMovementDirection: {x: 0, y: 0, z: 0}
-  actualVelocity: {x: 0, y: 0, z: 0}
-  previousPos: {x: 0, y: 0, z: 0}
+  actualMovementDirection: {x: 0.9194652, y: -0.22524168, z: -0.32225758}
+  actualVelocity: {x: 6.9396973, y: -1.7000198, z: -2.432251}
+  previousPos: {x: 315.03635, y: 0.78898966, z: 308.75424}
   moveAlongWallAngleDifference: 0
-  collisionMovementAngleDifference: 0
-  touchingWall: 0
+  collisionMovementAngleDifference: 28.16336
+  touchingWall: 1
   touchingWallMaxSpeed: 0
 --- !u!82 &7834039730912763172
 AudioSource:
@@ -1230,7 +1230,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246541095666616054}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.000021457672, z: -7.4000015}
+  m_LocalPosition: {x: 0, y: 72.17, z: -7.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1246541095681494541}
