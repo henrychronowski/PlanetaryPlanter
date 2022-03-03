@@ -135,6 +135,10 @@ public class ObservatoryMaster : MonoBehaviour
     void Start()
     {
 
+        foreach (Transform observatory in observatoryPoints)
+        {
+            observatory.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
