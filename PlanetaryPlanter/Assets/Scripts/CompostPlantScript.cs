@@ -29,7 +29,7 @@ public class CompostPlantScript : MonoBehaviour
 
     public void CompostPlant()
     {
-        if(Input.GetKeyDown(KeyCode.E) && canCompost && inventory.selectedSpace.gameObject.tag == "Plant")
+        if(Input.GetKeyDown(KeyCode.E) && canCompost && inventory.GetItem(inventory.selectedSpace).gameObject.tag == "Plant")
         {
             inventory.PopItem();
         }
