@@ -8,6 +8,7 @@ public class Constellation : MonoBehaviour
     public int chapter;
     public bool completed;
     public string completionAchievement;
+    
     // Start is called before the first frame update
     void Start()
     {
