@@ -58,7 +58,7 @@ public class SunRotationScript : MonoBehaviour
         {
             CurrentAngle = -CurrentAngle;
         }
-        sun.transform.rotation = Quaternion.Euler(30, CurrentAngle, 0);
+        sun.transform.rotation = Quaternion.Euler(sun.transform.rotation.eulerAngles.x, CurrentAngle, sun.transform.rotation.eulerAngles.z);
     }
 
     void CheckDay()
