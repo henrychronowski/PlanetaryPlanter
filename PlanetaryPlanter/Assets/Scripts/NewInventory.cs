@@ -142,6 +142,7 @@ public class NewInventory : MonoBehaviour
         }
         else
         {
+            
             if(space.item == null)
             {
                 space.item = selectedItem;
@@ -153,6 +154,17 @@ public class NewInventory : MonoBehaviour
             }
             else
             {
+                if(space.location == SpaceLocation.Trash)
+                {
+                    Destroy(space.item.gameObject);
+                    space.item = selectedItem;
+                    //selectedItem = null;
+                    itemInCursor = false;
+                    space.filled = true;
+                    space.item.transform.parent = space.transform;
+                    space.item.transform.localPosition = Vector3.zero;
+                }
+
                 InventoryItem temp = space.item;
                 space.item = selectedItem;
                 selectedItem = temp;
