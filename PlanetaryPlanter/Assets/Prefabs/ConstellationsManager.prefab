@@ -652,24 +652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30b7a74dac077b49a718e1c37f509ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bottomLeftCorner: {fileID: 1613998675455267907}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 1613998673834918936}
-  numComplete: {fileID: 1613998674721354092}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 1613998673834918940}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &1613998673751842967
-=======
   filled: 0
   plantLayer:
     serializedVersion: 2
@@ -684,7 +666,6 @@ MonoBehaviour:
   starFruit: {fileID: 1635305695513810529, guid: fc66178dbc20ce94780e0dd5111884e6, type: 3}
   planetFruit: {fileID: 971520453555534600, guid: d0a62a0bcf693d24a8724f555c6acc93, type: 3}
 --- !u!114 &5448160823694941577
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1617,12 +1598,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2693100112748533979}
   numComplete: {fileID: 6119307767383600767}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 1613998674962647312}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &1613998674581661020
-=======
   next: {fileID: 2368886503491419072}
   connections:
   - {fileID: 7518073630459025899}
@@ -1633,7 +1608,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &5657200046560123787
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4527,24 +4501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bottomLeftCorner: {fileID: 2368886502447805484}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886504021717955}
-  numComplete: {fileID: 2368886503788546283}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886503610839383}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502010241790
-=======
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
@@ -4597,7 +4553,6 @@ Transform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1613998673620098900
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5919,51 +5874,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2368886502030683143}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 268.76013, y: 104.33638, z: 1}
-  m_Center: {x: -7.9404488, y: 7.5949554, z: 0}
---- !u!114 &2368886502030683138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502030683143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886503132192058}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503440011324}
-  numComplete: {fileID: 2368886502924492750}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886503440011323}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502030683139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502030683143}
-=======
   m_GameObject: {fileID: 1613998674391859628}
->>>>>>> dev
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -7464,117 +7375,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2368886502108637103}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 344.6, z: 260.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2368886502711716738}
-  - {fileID: 2368886502173857951}
-  m_Father: {fileID: 2368886503988717581}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2368886502108637079
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502108637103}
-  m_Mesh: {fileID: 0}
---- !u!23 &2368886502108637078
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502108637103}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 305f16d1fa1b1db49a44637f1c5c4b3b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 2
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2368886502108637077
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502108637103}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 268.76013, y: 104.33638, z: 1}
-  m_Center: {x: -7.9404488, y: 7.5949554, z: 0}
---- !u!114 &2368886502108637076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502108637103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886502711716738}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886502183990112}
-  numComplete: {fileID: 2368886503778291638}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886503699329201}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502108637075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502108637103}
-=======
   m_GameObject: {fileID: 1613998674920303943}
->>>>>>> dev
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -10215,12 +10016,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886504021717955}
   numComplete: {fileID: 2368886503788546283}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886503491419072}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502216255480
-=======
   next: {fileID: 2368886503610839383}
   connections:
   - {fileID: 2368886502332411922}
@@ -10229,7 +10024,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886502010241790
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16298,12 +16092,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886503491419079}
   numComplete: {fileID: 2368886502908818485}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886504021717954}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502391178464
-=======
   next: {fileID: 2368886503491419072}
   connections:
   - {fileID: 7836373866785693503}
@@ -16314,7 +16102,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886502216255480
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17055,24 +16842,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bottomLeftCorner: {fileID: 2368886502267327114}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886502962083494}
-  numComplete: {fileID: 2368886502202996278}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886503909809126}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502399497038
-=======
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -17221,7 +16990,6 @@ Canvas:
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &2368886502224609416
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17510,31 +17278,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2368886502409897785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886503594325508}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503282572034}
-  numComplete: {fileID: 2368886502581449968}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886503282572037}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502409897789
-MonoBehaviour:
-=======
   m_GameObject: {fileID: 2368886502232615478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.00000762984}
@@ -17550,7 +17293,6 @@ MonoBehaviour:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2368886502232615475
 CanvasRenderer:
->>>>>>> dev
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18599,30 +18341,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2368886502453529420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886503550827121}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503325972343}
-  numComplete: {fileID: 2368886502542047365}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886503325972336}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502453529416
-=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2368886502279191307}
@@ -18665,7 +18383,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 2368886502279191306}
   m_CullTransparentMesh: 1
 --- !u!114 &2368886502279191349
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20012,30 +19729,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e04b42a6dfb554d856b2698be667db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bottomLeftCorner: {fileID: 2368886502064600927}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503699329200}
-  numComplete: {fileID: 2368886503944342424}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886504126263844}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502501417357
-MonoBehaviour:
-=======
   axis: {x: 0, y: 0, z: 0}
   axisDir: {fileID: 2368886503492783776}
 --- !u!1 &2368886502346299163
 GameObject:
->>>>>>> dev
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -21083,12 +20780,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886502332411923}
   numComplete: {fileID: 2368886503959252165}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886503063173461}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502539931255
-=======
   next: {fileID: 2368886504021717954}
   connections:
   - {fileID: 2368886503531797841}
@@ -21099,7 +20790,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886502391178464
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37628,12 +37318,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886503610839376}
   numComplete: {fileID: 2368886502223167138}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886503222758305}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502583223049
-=======
   next: {fileID: 2368886503610839383}
   connections:
   - {fileID: 2368886502332411922}
@@ -37642,7 +37326,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886502872780143
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41238,12 +40921,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886503063173460}
   numComplete: {fileID: 2368886503371358844}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886504126263844}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502717017628
-=======
   next: {fileID: 2368886503491419072}
   connections:
   - {fileID: 7836373866785693503}
@@ -41252,7 +40929,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886502935201897
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42088,12 +41764,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886502393996640}
   numComplete: {fileID: 2368886502775727600}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886503282572037}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502725175468
-=======
   next: {fileID: 2368886503342213152}
   connections:
   - {fileID: 2368886503342213152}
@@ -42103,7 +41773,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886502967050376
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44101,24 +43770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bottomLeftCorner: {fileID: 2368886502021302685}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886502564237695}
-  numComplete: {fileID: 2368886503117417897}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886503315919534}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502757025164
-=======
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
@@ -44131,7 +43782,6 @@ MonoBehaviour:
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 1
 --- !u!114 &2368886503028654995
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44941,103 +44591,8 @@ Transform:
   m_Father: {fileID: 2368886503208163801}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
---- !u!33 &2368886502765560997
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502765561053}
-  m_Mesh: {fileID: 0}
---- !u!23 &2368886502765560996
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502765561053}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 305f16d1fa1b1db49a44637f1c5c4b3b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 2
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2368886502765561051
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502765561053}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 268.76013, y: 104.33638, z: 1}
-  m_Center: {x: -7.9404488, y: 7.5949554, z: 0}
---- !u!114 &2368886502765561050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502765561053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886502866858507}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503434139108}
-  numComplete: {fileID: 2368886503134613196}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886503325972336}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502765561049
-MonoBehaviour:
-=======
 --- !u!1 &2368886503072066028
 GameObject:
->>>>>>> dev
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -47839,12 +47394,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886503222758304}
   numComplete: {fileID: 2368886502668613494}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886503610839383}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502872780143
-=======
   next: {fileID: 2368886502590285937}
   connections: []
   completionAchievementName: LoreEntry
@@ -47852,7 +47401,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886503147085651
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48513,12 +48061,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886503011896305}
   numComplete: {fileID: 2368886502787330265}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886503406401936}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502883159730
-=======
   next: {fileID: 2368886502599117157}
   connections:
   - {fileID: 2368886502599117157}
@@ -48528,7 +48070,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886503156382412
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49558,31 +49099,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2368886502910894843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886502437875414}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886502986577460}
-  numComplete: {fileID: 2368886503506152162}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886503434139109}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502910894791
-MonoBehaviour:
-=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2368886503175584787}
@@ -49596,7 +49112,6 @@ MonoBehaviour:
   m_IsActive: 0
 --- !u!4 &2368886503175584787
 Transform:
->>>>>>> dev
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -49817,53 +49332,8 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
-<<<<<<< HEAD
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2368886502919463824
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502919463830}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 268.76013, y: 104.33638, z: 1}
-  m_Center: {x: -7.9404488, y: 7.5949554, z: 0}
---- !u!114 &2368886502919463825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886502919463830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886502750737728}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503315919535}
-  numComplete: {fileID: 2368886503556917639}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886503440011323}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502919463826
-=======
   m_TargetDisplay: 0
 --- !u!114 &2368886503177431829
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50628,12 +50098,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886503680546757}
   numComplete: {fileID: 2368886503366186837}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886503491419072}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502935201897
-=======
   next: {fileID: 2368886502749895301}
   connections:
   - {fileID: 7518073630459025899}
@@ -50642,7 +50106,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886503190327853
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51342,12 +50805,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886503763377214}
   numComplete: {fileID: 2368886503549648046}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886503342213152}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886502967050376
-=======
   next: {fileID: 2368886502564237694}
   connections: []
   completionAchievementName: LoreEntry
@@ -51355,7 +50812,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886503208163798
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57198,12 +56654,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886503890081536}
   numComplete: {fileID: 2368886503172904848}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886502590285937}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503147085651
-=======
   next: {fileID: 2368886502941964864}
   connections: []
   completionAchievementName: LoreEntry
@@ -57211,7 +56661,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886503384101608
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58454,101 +57903,7 @@ Transform:
   m_Father: {fileID: 2368886502717017625}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
---- !u!33 &2368886503156382384
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503156382408}
-  m_Mesh: {fileID: 0}
---- !u!23 &2368886503156382385
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503156382408}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 305f16d1fa1b1db49a44637f1c5c4b3b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 2
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2368886503156382414
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503156382408}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 268.76013, y: 104.33638, z: 1}
-  m_Center: {x: -7.9404488, y: 7.5949554, z: 0}
---- !u!114 &2368886503156382415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503156382408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886503591758878}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503011896305}
-  numComplete: {fileID: 2368886502787330265}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886502599117157}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503156382412
-=======
 --- !u!114 &2368886503428204613
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60940,358 +60295,9 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-<<<<<<< HEAD
-  m_Size: {x: 268.76013, y: 104.33638, z: 1}
-  m_Center: {x: -7.9404488, y: 7.5949554, z: 0}
---- !u!114 &2368886503190327841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503190327840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886503318336489}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503680546757}
-  numComplete: {fileID: 2368886503366186837}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886502749895301}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503190327853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503190327840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MeshFormatVersion: 2
-  m_Faces:
-  - m_Indexes: 000000000100000002000000000000000200000003000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 040000000500000006000000040000000600000007000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 08000000090000000a000000080000000a0000000b000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 0c0000000d0000000e0000000c0000000e0000000f000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 100000001100000012000000100000001200000013000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 140000001500000016000000140000001600000017000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  m_SharedVertices:
-  - m_Vertices: 000000000d00000017000000
-  - m_Vertices: 010000000400000016000000
-  - m_Vertices: 020000000700000011000000
-  - m_Vertices: 030000000e00000010000000
-  - m_Vertices: 050000000800000015000000
-  - m_Vertices: 060000000b00000012000000
-  - m_Vertices: 090000000c00000014000000
-  - m_Vertices: 0a0000000f00000013000000
-  m_SharedTextures: []
-  m_Positions:
-  - {x: 126.43961, y: -44.573235, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: 0.5}
-  - {x: -142.32051, y: 59.763145, z: 0.5}
-  - {x: -142.32051, y: -44.573235, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: -0.5}
-  - {x: -142.32051, y: 59.763145, z: -0.5}
-  - {x: -142.32051, y: 59.763145, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: -0.5}
-  - {x: -142.32051, y: -44.573235, z: -0.5}
-  - {x: -142.32051, y: 59.763145, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: 0.5}
-  - {x: -142.32051, y: -44.573235, z: 0.5}
-  - {x: -142.32051, y: -44.573235, z: -0.5}
-  - {x: -142.32051, y: -44.573235, z: 0.5}
-  - {x: -142.32051, y: 59.763145, z: 0.5}
-  - {x: -142.32051, y: 59.763145, z: -0.5}
-  - {x: -142.32051, y: -44.573235, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: -0.5}
-  - {x: 126.43961, y: 59.763145, z: -0.5}
-  - {x: 126.43961, y: 59.763145, z: 0.5}
-  - {x: 126.43961, y: -44.573235, z: 0.5}
-  m_Textures0:
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  m_Textures2: []
-  m_Textures3: []
-  m_Tangents:
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  m_Colors: []
-  m_UnwrapParameters:
-    m_HardAngle: 88
-    m_PackMargin: 20
-    m_AngleError: 8
-    m_AreaError: 15
-  m_PreserveMeshAssetOnDestroy: 0
-  assetGuid: 
-  m_Mesh: {fileID: 0}
-  m_VersionIndex: 1296
-  m_IsSelectable: 1
-  m_SelectedFaces: 
-  m_SelectedEdges: []
-  m_SelectedVertices: 
---- !u!120 &2368886503190327843
-LineRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503190327840}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: f74a4e08d8a12804dbd4852b5a1ff556, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_UseWorldSpace: 1
-  m_Loop: 0
---- !u!1 &2368886503197297200
-=======
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2368886503503073978
->>>>>>> dev
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61689,31 +60695,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2368886503208163803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886503067703314}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503763377214}
-  numComplete: {fileID: 2368886503549648046}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886502564237694}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503208163798
-MonoBehaviour:
-=======
   m_GameObject: {fileID: 2368886503516291794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.125}
@@ -61724,7 +60705,6 @@ MonoBehaviour:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2368886503516448591
 GameObject:
->>>>>>> dev
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -66943,317 +65923,6 @@ RectTransform:
   m_Father: {fileID: 2368886502623376046}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
---- !u!33 &2368886503356300952
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503356300944}
-  m_Mesh: {fileID: 0}
---- !u!23 &2368886503356300959
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503356300944}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 305f16d1fa1b1db49a44637f1c5c4b3b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 2
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2368886503356300958
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503356300944}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 268.76013, y: 104.33638, z: 1}
-  m_Center: {x: -7.9404488, y: 7.5949554, z: 0}
---- !u!114 &2368886503356300945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503356300944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886503488438105}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503917755253}
-  numComplete: {fileID: 2368886503133633509}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886502986577461}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503356300957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503356300944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MeshFormatVersion: 2
-  m_Faces:
-  - m_Indexes: 000000000100000002000000000000000200000003000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 040000000500000006000000040000000600000007000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 08000000090000000a000000080000000a0000000b000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 0c0000000d0000000e0000000c0000000e0000000f000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 100000001100000012000000100000001200000013000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 140000001500000016000000140000001600000017000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  m_SharedVertices:
-  - m_Vertices: 000000000d00000017000000
-  - m_Vertices: 010000000400000016000000
-  - m_Vertices: 020000000700000011000000
-  - m_Vertices: 030000000e00000010000000
-  - m_Vertices: 050000000800000015000000
-  - m_Vertices: 060000000b00000012000000
-  - m_Vertices: 090000000c00000014000000
-  - m_Vertices: 0a0000000f00000013000000
-  m_SharedTextures: []
-  m_Positions:
-  - {x: 126.43961, y: -44.573235, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: 0.5}
-  - {x: -142.32051, y: 59.763145, z: 0.5}
-  - {x: -142.32051, y: -44.573235, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: -0.5}
-  - {x: -142.32051, y: 59.763145, z: -0.5}
-  - {x: -142.32051, y: 59.763145, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: -0.5}
-  - {x: -142.32051, y: -44.573235, z: -0.5}
-  - {x: -142.32051, y: 59.763145, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: 0.5}
-  - {x: -142.32051, y: -44.573235, z: 0.5}
-  - {x: -142.32051, y: -44.573235, z: -0.5}
-  - {x: -142.32051, y: -44.573235, z: 0.5}
-  - {x: -142.32051, y: 59.763145, z: 0.5}
-  - {x: -142.32051, y: 59.763145, z: -0.5}
-  - {x: -142.32051, y: -44.573235, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: -0.5}
-  - {x: 126.43961, y: 59.763145, z: -0.5}
-  - {x: 126.43961, y: 59.763145, z: 0.5}
-  - {x: 126.43961, y: -44.573235, z: 0.5}
-  m_Textures0:
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  m_Textures2: []
-  m_Textures3: []
-  m_Tangents:
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  m_Colors: []
-  m_UnwrapParameters:
-    m_HardAngle: 88
-    m_PackMargin: 20
-    m_AngleError: 8
-    m_AreaError: 15
-  m_PreserveMeshAssetOnDestroy: 0
-  assetGuid: 
-  m_Mesh: {fileID: 0}
-  m_VersionIndex: 1302
-  m_IsSelectable: 1
-  m_SelectedFaces: 
-  m_SelectedEdges: []
-  m_SelectedVertices: 
---- !u!120 &2368886503356300947
-LineRenderer:
-=======
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.4, y: -0.7}
@@ -67261,7 +65930,6 @@ LineRenderer:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2368886503662042603
 Canvas:
->>>>>>> dev
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -68029,24 +66697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bottomLeftCorner: {fileID: 2368886502322378658}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886502094510756}
-  numComplete: {fileID: 2368886503733843286}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886502094510755}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503369369243
-=======
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -68066,7 +66716,6 @@ MonoBehaviour:
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!114 &2368886503682984703
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69036,12 +67685,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886502505650231}
   numComplete: {fileID: 2368886502218785567}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886502941964864}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503384101608
-=======
   next: {fileID: 2368886502094510755}
   connections: []
   completionAchievementName: LoreEntry
@@ -69049,7 +67692,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886503728654602
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73885,12 +72527,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 2368886502599117154}
   numComplete: {fileID: 2368886503232833168}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886503011896304}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503535140050
-=======
   next: {fileID: 2368886502599117157}
   connections:
   - {fileID: 2368886502393996643}
@@ -73901,7 +72537,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &2368886503874016605
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74888,24 +73523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bottomLeftCorner: {fileID: 2368886503174344607}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886502590285936}
-  numComplete: {fileID: 2368886502906819416}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886503016368868}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503544404301
-=======
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -74925,7 +73542,6 @@ MonoBehaviour:
   m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!114 &2368886503890081538
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78105,25 +76721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bottomLeftCorner: {fileID: 2368886503762475533}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503115038241}
-  numComplete: {fileID: 2368886503932747441}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886502183990113}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503622015945
-MonoBehaviour:
-=======
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -78144,7 +76741,6 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2368886504004228825
 GameObject:
->>>>>>> dev
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -82463,261 +81059,10 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-<<<<<<< HEAD
-  m_Size: {x: 268.76013, y: 104.33638, z: 1}
-  m_Center: {x: -7.9404488, y: 7.5949554, z: 0}
---- !u!114 &2368886503728654601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503728654606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886504096341976}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886502505650231}
-  numComplete: {fileID: 2368886502218785567}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886502094510755}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503728654602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886503728654606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MeshFormatVersion: 2
-  m_Faces:
-  - m_Indexes: 000000000100000002000000000000000200000003000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 040000000500000006000000040000000600000007000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 08000000090000000a000000080000000a0000000b000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 0c0000000d0000000e0000000c0000000e0000000f000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 100000001100000012000000100000001200000013000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 140000001500000016000000140000001600000017000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  m_SharedVertices:
-  - m_Vertices: 000000000d00000017000000
-  - m_Vertices: 010000000400000016000000
-  - m_Vertices: 020000000700000011000000
-  - m_Vertices: 030000000e00000010000000
-  - m_Vertices: 050000000800000015000000
-  - m_Vertices: 060000000b00000012000000
-  - m_Vertices: 090000000c00000014000000
-  - m_Vertices: 0a0000000f00000013000000
-  m_SharedTextures: []
-  m_Positions:
-  - {x: 126.43961, y: -44.573235, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: 0.5}
-  - {x: -142.32051, y: 59.763145, z: 0.5}
-  - {x: -142.32051, y: -44.573235, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: -0.5}
-  - {x: -142.32051, y: 59.763145, z: -0.5}
-  - {x: -142.32051, y: 59.763145, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: -0.5}
-  - {x: -142.32051, y: -44.573235, z: -0.5}
-  - {x: -142.32051, y: 59.763145, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: 0.5}
-  - {x: -142.32051, y: -44.573235, z: 0.5}
-  - {x: -142.32051, y: -44.573235, z: -0.5}
-  - {x: -142.32051, y: -44.573235, z: 0.5}
-  - {x: -142.32051, y: 59.763145, z: 0.5}
-  - {x: -142.32051, y: 59.763145, z: -0.5}
-  - {x: -142.32051, y: -44.573235, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: -0.5}
-  - {x: 126.43961, y: 59.763145, z: -0.5}
-  - {x: 126.43961, y: 59.763145, z: 0.5}
-  - {x: 126.43961, y: -44.573235, z: 0.5}
-  m_Textures0:
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  m_Textures2: []
-  m_Textures3: []
-  m_Tangents:
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  m_Colors: []
-  m_UnwrapParameters:
-    m_HardAngle: 88
-    m_PackMargin: 20
-    m_AngleError: 8
-    m_AreaError: 15
-  m_PreserveMeshAssetOnDestroy: 0
-  assetGuid: 
-  m_Mesh: {fileID: 0}
-  m_VersionIndex: 1314
-  m_IsSelectable: 1
-  m_SelectedFaces: 
-  m_SelectedEdges: []
-  m_SelectedVertices: 
---- !u!120 &2368886503728654604
-LineRenderer:
-=======
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1274802415689542503
 MonoBehaviour:
->>>>>>> dev
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -84098,30 +82443,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2368886503754561240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886502775654373}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503016368867}
-  numComplete: {fileID: 2368886503381681425}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886503016368868}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503754561244
-=======
   m_GameObject: {fileID: 3462008199693067953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -84144,7 +82465,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 3462008199693067953}
   m_CullTransparentMesh: 1
 --- !u!114 &1069961000639136547
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87322,12 +85642,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 3844399724138504442}
   numComplete: {fileID: 3844399723345731690}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 2368886502599117157}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886503874016605
-=======
   next: {fileID: 3844399725069847994}
   connections:
   - {fileID: 3844399725069847994}
@@ -87336,7 +85650,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &3844399723554948370
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95339,31 +93652,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2368886504102629160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886503368508165}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503909809127}
-  numComplete: {fileID: 2368886502316451633}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886502505650230}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886504102629140
-MonoBehaviour:
-=======
   m_GameObject: {fileID: 4611737911312145500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -95374,7 +93662,6 @@ MonoBehaviour:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &6153940156538785211
 LineRenderer:
->>>>>>> dev
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95668,318 +93955,7 @@ Transform:
   m_Father: {fileID: 6832404300374279847}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
---- !u!33 &2368886504111093951
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886504111093943}
-  m_Mesh: {fileID: 0}
---- !u!23 &2368886504111093944
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886504111093943}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 305f16d1fa1b1db49a44637f1c5c4b3b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 2
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2368886504111093945
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886504111093943}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 268.76013, y: 104.33638, z: 1}
-  m_Center: {x: -7.9404488, y: 7.5949554, z: 0}
---- !u!114 &2368886504111093942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886504111093943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 2368886503974893950}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 2368886503531797842}
-  numComplete: {fileID: 2368886503787568578}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 2368886502332411922}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &2368886504111093946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886504111093943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MeshFormatVersion: 2
-  m_Faces:
-  - m_Indexes: 000000000100000002000000000000000200000003000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 040000000500000006000000040000000600000007000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 08000000090000000a000000080000000a0000000b000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 0c0000000d0000000e0000000c0000000e0000000f000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 100000001100000012000000100000001200000013000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 140000001500000016000000140000001600000017000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  m_SharedVertices:
-  - m_Vertices: 000000000d00000017000000
-  - m_Vertices: 010000000400000016000000
-  - m_Vertices: 020000000700000011000000
-  - m_Vertices: 030000000e00000010000000
-  - m_Vertices: 050000000800000015000000
-  - m_Vertices: 060000000b00000012000000
-  - m_Vertices: 090000000c00000014000000
-  - m_Vertices: 0a0000000f00000013000000
-  m_SharedTextures: []
-  m_Positions:
-  - {x: 126.43961, y: -44.573235, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: 0.5}
-  - {x: -142.32051, y: 59.763145, z: 0.5}
-  - {x: -142.32051, y: -44.573235, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: -0.5}
-  - {x: -142.32051, y: 59.763145, z: -0.5}
-  - {x: -142.32051, y: 59.763145, z: 0.5}
-  - {x: 126.43961, y: 59.763145, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: -0.5}
-  - {x: -142.32051, y: -44.573235, z: -0.5}
-  - {x: -142.32051, y: 59.763145, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: 0.5}
-  - {x: -142.32051, y: -44.573235, z: 0.5}
-  - {x: -142.32051, y: -44.573235, z: -0.5}
-  - {x: -142.32051, y: -44.573235, z: 0.5}
-  - {x: -142.32051, y: 59.763145, z: 0.5}
-  - {x: -142.32051, y: 59.763145, z: -0.5}
-  - {x: -142.32051, y: -44.573235, z: -0.5}
-  - {x: 126.43961, y: -44.573235, z: -0.5}
-  - {x: 126.43961, y: 59.763145, z: -0.5}
-  - {x: 126.43961, y: 59.763145, z: 0.5}
-  - {x: 126.43961, y: -44.573235, z: 0.5}
-  m_Textures0:
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 1, y: 0}
-  m_Textures2: []
-  m_Textures3: []
-  m_Tangents:
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: -1, y: 0, z: 0, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: -1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 0, y: 0, z: 1, w: -1}
-  m_Colors: []
-  m_UnwrapParameters:
-    m_HardAngle: 88
-    m_PackMargin: 20
-    m_AngleError: 8
-    m_AreaError: 15
-  m_PreserveMeshAssetOnDestroy: 0
-  assetGuid: 
-  m_Mesh: {fileID: 0}
-  m_VersionIndex: 1293
-  m_IsSelectable: 1
-  m_SelectedFaces: 
-  m_SelectedEdges: []
-  m_SelectedVertices: 
---- !u!120 &2368886504111093940
-=======
 --- !u!120 &5013392149213788991
->>>>>>> dev
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99209,12 +97185,6 @@ MonoBehaviour:
   solarSystemButton: {fileID: 1222516971593591082}
   numComplete: {fileID: 7392932309729980419}
   completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-<<<<<<< HEAD
-  next: {fileID: 3844399725069847994}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &3844399723554948370
-=======
   next: {fileID: 2368886502599117157}
   connections:
   - {fileID: 2368886502599117157}
@@ -99223,7 +97193,6 @@ MonoBehaviour:
   filledSpots: 0
   solarSystemCounter: {fileID: 0}
 --- !u!114 &6311094350039756344
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102408,12 +100377,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 3844399724475378201}
-=======
   - component: {fileID: 6985122741430081464}
   - component: {fileID: 1278546355990185990}
->>>>>>> dev
   m_Layer: 0
   m_Name: LineHolder
   m_TagString: Untagged
@@ -102435,9 +100400,6 @@ Transform:
   m_Father: {fileID: 1379041274355684911}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
---- !u!1 &3844399724529152195
-=======
 --- !u!120 &1278546355990185990
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -102538,7 +100500,6 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
 --- !u!1 &7602698027894141529
->>>>>>> dev
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102610,176 +100571,6 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-<<<<<<< HEAD
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3844399724529152197
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3844399724529152195}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 268.76013, y: 104.33638, z: 1}
-  m_Center: {x: -7.9404488, y: 7.5949554, z: 0}
---- !u!114 &3844399724529152198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3844399724529152195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b71832d5b8a1654b8fcba82ed5de1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftCorner: {fileID: 3844399723494736382}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 3844399723253894392}
-  numComplete: {fileID: 3844399724910265098}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 3844399723253894399}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &3844399724529152199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3844399724529152195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MeshFormatVersion: 2
-  m_Faces:
-  - m_Indexes: 000000000100000002000000000000000200000003000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 040000000500000006000000040000000600000007000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 08000000090000000a000000080000000a0000000b000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 0c0000000d0000000e0000000c0000000e0000000f000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 100000001100000012000000100000001200000013000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  - m_Indexes: 140000001500000016000000140000001600000017000000
-    m_SmoothingGroup: 0
-    m_Uv:
-      m_UseWorldSpace: 0
-      m_FlipU: 0
-      m_FlipV: 0
-      m_SwapUV: 0
-      m_Fill: 1
-      m_Scale: {x: 1, y: 1}
-      m_Offset: {x: 0, y: 0}
-      m_Rotation: 0
-      m_Anchor: 9
-    m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
-    m_ManualUV: 1
-    elementGroup: -1
-    m_TextureGroup: -1
-  m_SharedVertices:
-  - m_Vertices: 000000000d00000017000000
-  - m_Vertices: 010000000400000016000000
-  - m_Vertices: 020000000700000011000000
-  - m_Vertices: 030000000e00000010000000
-  - m_Vertices: 050000000800000015000000
-  - m_Vertices: 060000000b00000012000000
-  - m_Vertices: 090000000c00000014000000
-  - m_Vertices: 0a0000000f00000013000000
-  m_SharedTextures: []
-=======
->>>>>>> dev
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -104523,24 +102314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30b7a74dac077b49a718e1c37f509ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bottomLeftCorner: {fileID: 3844399725218761092}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 3844399723649044075}
-  numComplete: {fileID: 3844399723340428611}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 3844399723253894399}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &3844399724850429782
-=======
   filled: 0
   plantLayer:
     serializedVersion: 2
@@ -104555,7 +102328,6 @@ MonoBehaviour:
   starFruit: {fileID: 1635305695513810529, guid: fc66178dbc20ce94780e0dd5111884e6, type: 3}
   planetFruit: {fileID: 971520453555534600, guid: d0a62a0bcf693d24a8724f555c6acc93, type: 3}
 --- !u!114 &7830027282595973267
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105892,24 +103664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30b7a74dac077b49a718e1c37f509ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bottomLeftCorner: {fileID: 3844399724540482905}
-  width: 7
-  height: 7
-  xDistanceBetweenPlanets: 10
-  yDistanceBetweenPlanets: 10
-  emptySlot: {fileID: 825013775980159809, guid: 2a8bb35778d98dc4b94a0233427de198, type: 3}
-  createPlanetsOnStart: 0
-  constellationSpots: []
-  completed: 0
-  solarSystemButton: {fileID: 3844399725069847995}
-  numComplete: {fileID: 3844399723442942317}
-  completedConstellationSprite: {fileID: 21300000, guid: ae50ae5b4694e1d42b319aaa2421a98f, type: 3}
-  next: {fileID: 3844399723649044074}
-  completionAchievementName: LoreEntry1
-  filledSpots: 0
---- !u!114 &3844399725279582536
-=======
   filled: 0
   plantLayer:
     serializedVersion: 2
@@ -105924,7 +103678,6 @@ MonoBehaviour:
   starFruit: {fileID: 1635305695513810529, guid: fc66178dbc20ce94780e0dd5111884e6, type: 3}
   planetFruit: {fileID: 971520453555534600, guid: d0a62a0bcf693d24a8724f555c6acc93, type: 3}
 --- !u!114 &7830027283114363788
->>>>>>> dev
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115944,44 +113697,6 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8217406645504169697}
   m_Enabled: 1
-<<<<<<< HEAD
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7830027284360077334
-SphereCollider:
-=======
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -116006,7 +113721,6 @@ SphereCollider:
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8230019195556604320
 GameObject:
->>>>>>> dev
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
