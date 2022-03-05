@@ -111,6 +111,7 @@ public class CharacterMovement : MonoBehaviour
     public float collisionMovementAngleDifference;
     public bool touchingWall;
     public float touchingWallMaxSpeed;
+
     void CheckInput()
     {
         xMove = Input.GetAxisRaw("Horizontal");
@@ -124,6 +125,7 @@ public class CharacterMovement : MonoBehaviour
         {
             holdingGlider = !holdingGlider; //Swaps value of holdingGlider
         }
+
     }
 
     void Move()
