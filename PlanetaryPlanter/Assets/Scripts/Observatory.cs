@@ -19,8 +19,6 @@ public class Observatory : MonoBehaviour
 
     public List<ObservatoryPlanetSpot> constellationSpots; //New implementation
 
-    public GameObject playerCam;
-    public bool inObservatoryView;
     public bool completed;
     public GameObject solarSystemButton;
     public TextMeshProUGUI numComplete;
@@ -28,37 +26,15 @@ public class Observatory : MonoBehaviour
     public Sprite completedConstellationSprite;
 
     public Transform next;
+    public List<Transform> connections;
     public string completionAchievementName;
-    LineRenderer line;
+    LineRenderer baseLine; //used as a base when new connections are made in Start()
+    public List<LineRenderer> lines;
     public int filledSpots;
 
-    public AudioSource telescope;
-    public AudioSource main;
 
-    public void EnterObservatory()
-    {
-        AlmanacProgression.instance.Unlock("ObservatoryEnter");
-            if (playerCam.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled == true)
-            {
-                playerCam.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = false;
-            GameObject.FindObjectOfType<MovementScript>().enabled = false;    
-            inObservatoryView = true;
-                TutorialManagerScript.instance.Unlock("The Telescope");
-            //NewInventory.instance.SetSpacesActive(true);
-                telescope.Play();
-                main.mute = true;
-            } 
-            else
-            {
-            GameObject.FindObjectOfType<MovementScript>().enabled = true;
+    public SolarSystemCountScript solarSystemCounter;
 
-            playerCam.GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = true;
-                inObservatoryView = false;
-                //NewInventory.instance.SetSpacesActive(false);
-                telescope.Stop();
-                main.mute = false;
-            }
-    }
 
     void CreateEmptySlots()
     {
@@ -107,13 +83,17 @@ public class Observatory : MonoBehaviour
 
     void Complete()
     {
-        line.enabled = true;
+        foreach(LineRenderer l in lines)
+        {
+            l.enabled = true;
+        }
+        
         completed = true;
         solarSystemButton.GetComponent<UnityEngine.UI.Image>().sprite = completedConstellationSprite;
-        
-        AlmanacProgression.instance.Unlock(completionAchievementName);
 
-        TutorialManagerScript.instance.Unlock("Demo Over");
+        solarSystemCounter.numSolarSystemsComplete++;
+        AlmanacProgression.instance.Unlock(completionAchievementName + solarSystemCounter.numSolarSystemsComplete.ToString());
+
     }
 
     // Start is called before the first frame update
@@ -121,10 +101,19 @@ public class Observatory : MonoBehaviour
     {
         planetSpotsArray = new ObservatoryPlanetSpot[width, height];
         constellationSpots.AddRange(GetComponentsInChildren<ObservatoryPlanetSpot>());
-        line = GetComponent<LineRenderer>();
-        line.SetPosition(0, solarSystemButton.transform.position);
-        line.SetPosition(1, next.position);
-        line.enabled = false;
+        lines = new List<LineRenderer>();
+        //lines.Add(GetComponent<LineRenderer>());
+        lines.AddRange(GetComponentsInChildren<LineRenderer>());
+        for (int i = 0; i < connections.Count; i++)
+        {
+            LineRenderer newLine = gameObject.AddComponent<LineRenderer>();
+            //newLine = baseLine;
+            lines[i].SetPosition(0, solarSystemButton.transform.position);
+            lines[i].SetPosition(1, connections[i].position);
+            lines[i].enabled = false;
+        }
+
+        solarSystemCounter = FindObjectOfType<SolarSystemCountScript>();
         //line.colorGradient.
     }
 

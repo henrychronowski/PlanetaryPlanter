@@ -6,6 +6,7 @@ using UnityEngine;
 public class CollectSeedScript : MonoBehaviour
 {
     public bool canCollect = false;
+    public bool infinite = false; //testing
     public GameObject seed;
     public GameObject seedModel;
     public int hoursBeforeRespawn;
@@ -64,7 +65,7 @@ public class CollectSeedScript : MonoBehaviour
 
     public void CollectSeed()
     {
-        if(canCollect)
+        if(canCollect || infinite)
         {
             if(NewInventory.instance.SpacesAvailable() > 0)
             {
