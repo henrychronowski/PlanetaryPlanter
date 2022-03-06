@@ -28,7 +28,7 @@ public class OpenAlmanacScript : MonoBehaviour
                 NewInventory.instance.SetSpacesActive(true);
                 isPaused = true;
                 Time.timeScale = 0;
-                GameObject.FindObjectOfType<MovementScript>().enabled = false;
+                GameObject.FindObjectOfType<CharacterMovement>().canMove = false;
                 almanac.SetActive(true);
             }
             else
@@ -40,9 +40,9 @@ public class OpenAlmanacScript : MonoBehaviour
                 {
                     transform.GetChild(i).gameObject.SetActive(false);
                 }
-                if (!GameObject.Find("Observatory 1").GetComponent<Observatory>().inObservatoryView)
+                if (!GameObject.FindObjectOfType<ObservatoryMaster>().inObservatoryView)
                 {
-                    GameObject.FindObjectOfType<MovementScript>().enabled = true;
+                    GameObject.FindObjectOfType<CharacterMovement>().canMove = true;
                 }
             }
         }
@@ -53,7 +53,7 @@ public class OpenAlmanacScript : MonoBehaviour
         NewInventory.instance.SetSpacesActive(true);
         isPaused = true;
         Time.timeScale = 0;
-        GameObject.FindObjectOfType<MovementScript>().enabled = false;
+        GameObject.FindObjectOfType<CharacterMovement>().canMove = false;
         almanac.SetActive(true);
     }
 
@@ -66,9 +66,9 @@ public class OpenAlmanacScript : MonoBehaviour
         {
             transform.GetChild(i).gameObject.SetActive(false);
         }
-        if(!GameObject.Find("Observatory 1").GetComponent<Observatory>().inObservatoryView)
+        if(!GameObject.FindObjectOfType<ObservatoryMaster>().inObservatoryView)
         {
-            GameObject.FindObjectOfType<MovementScript>().enabled = true;
+            GameObject.FindObjectOfType<CharacterMovement>().canMove = true;
         }
     }
 }
