@@ -458,6 +458,13 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    public void Teleport(Vector3 position)
+    {
+        characterController.enabled = false;
+        transform.position = position;
+        characterController.enabled = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
