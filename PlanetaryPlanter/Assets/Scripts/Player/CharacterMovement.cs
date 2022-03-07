@@ -124,11 +124,17 @@ public class CharacterMovement : MonoBehaviour
     public float wallrunRotation;
     public bool isCrouchSliding;
     public float slopeCrouchSlideAngle;
+
+    public bool wallClimbing;
+    public Transform ledgeGrabRayLocation;
+    public float ledgeGrabRayLength;
+    public bool grabbingLedge;
+    public float ledgeJumpPower;
     void CheckInput()
     {
         xMove = Input.GetAxisRaw("Horizontal");
         zMove = Input.GetAxisRaw("Vertical");
-        if (Input.GetKeyDown(KeyCode.Space) && (grounded || wallrunning))
+        if (Input.GetKeyDown(KeyCode.Space) && (grounded || wallrunning || grabbingLedge))
         {
             jumping = true;
             jumpSound.Play();
@@ -136,7 +142,7 @@ public class CharacterMovement : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.LeftShift) && !grounded)
         {
             holdingGlider = !holdingGlider; //Swaps value of holdingGlider
-            ExitWallRun();
+            ExitWall();
         }
         if(Input.GetKeyDown(KeyCode.LeftControl))
         {
@@ -202,6 +208,7 @@ public class CharacterMovement : MonoBehaviour
             else
             {
                 Debug.Log("Wallclimb");
+                wallClimbing = true;
             }
         }
     }
@@ -215,21 +222,25 @@ public class CharacterMovement : MonoBehaviour
 
             Debug.DrawRay(collision.GetContact(0).point, Vector3.ProjectOnPlane(velocity, collision.GetContact(0).normal), Color.cyan);
             velocity = Vector3.ProjectOnPlane(velocity, collision.GetContact(0).normal);
-            Debug.Log("Angle between " + Vector3.Angle(wallNormal, collision.GetContact(0).normal));
             if (Vector3.Angle(wallNormal, collision.GetContact(0).normal) > maxAngleChange)
             {
-                ExitWallRun();
+                ExitWall();
             }
             if(velocity.magnitude < minWallrunSpeed)
             {
-                ExitWallRun();
+                ExitWall();
             }
 
         }
         else if(grounded)
         {
-            ExitWallRun();
+            ExitWall();
         }
+        if(grabbingLedge)
+        {
+            wallNormal = collision.GetContact(0).normal;
+        }
+        
     }
 
     private void OnCollisionExit(Collision collision)
@@ -237,19 +248,43 @@ public class CharacterMovement : MonoBehaviour
         if(collision.gameObject == currentWall)
         {
             
-            ExitWallRun();
+            ExitWall();
+            wallClimbing = false;
+            grabbingLedge = false;
         }
     }
 
-    void ExitWallRun()
+    void ExitWall()
     {
+        wallClimbing = false;
         wallrunning = false;
         currentWall = null;
         playerModel.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
 
-    void WallRunJump()
+    void GrabLedge()
     {
+        if (wallrunning)
+            return;
+
+        Ray ray = new Ray(ledgeGrabRayLocation.position, Vector3.down);
+        Physics.Raycast(ledgeGrabRayLocation.position, Vector3.down, out RaycastHit hitInfo, ledgeGrabRayLength);
+        Debug.DrawLine(ledgeGrabRayLocation.position, ray.GetPoint(ledgeGrabRayLength), Color.red);
+        if (velocity.y <= 0)
+        {
+            Debug.Log("Normal" + hitInfo.normal);
+            if(Vector3.Dot(hitInfo.normal, Vector3.up) > 0.1f)
+            {
+                grabbingLedge = true;
+                characterController.enabled = false;
+                transform.position = new Vector3(transform.position.x, hitInfo.point.y - (ledgeGrabRayLocation.position.y - transform.position.y) + (ledgeGrabRayLength/2), transform.position.z);
+                characterController.enabled = true;
+            }
+            else
+            {
+                grabbingLedge = false;
+            }
+        }
 
     }
 
@@ -257,12 +292,21 @@ public class CharacterMovement : MonoBehaviour
     {
         Vector3 playerMovement = new Vector3(xMove, 0, zMove);
         animator.SetBool("moving", (playerMovement != Vector3.zero) || wallrunning);
-        if (playerMovement != Vector3.zero)
+        
+        float targetAngle;
+        float angle;
+        Vector3 moveDir;
+        if (grabbingLedge)
+        {
+            targetAngle = Mathf.Atan2(-wallNormal.x, -wallNormal.z) * Mathf.Rad2Deg;
+            angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, angle, transform.eulerAngles.z);
+        }
+        else if (playerMovement != Vector3.zero)
         {
             //https://youtu.be/4HpC--2iowE this helped with some math here
-            float targetAngle;
-            float angle; 
-            Vector3 moveDir; 
+            
             if(isGliding)
             {
                 targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -270,7 +314,7 @@ public class CharacterMovement : MonoBehaviour
                 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
                 transform.rotation = Quaternion.Euler(transform.eulerAngles.x, angle, transform.eulerAngles.x);
             }
-            else
+            else 
             {
                 targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -278,13 +322,14 @@ public class CharacterMovement : MonoBehaviour
                 transform.rotation = Quaternion.Euler(transform.eulerAngles.x, angle, transform.eulerAngles.z);
             }
 
+
             if (wallrunning)
             {
                 targetAngle = Mathf.Atan2(velocity.x, velocity.z) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(transform.eulerAngles.x, targetAngle, transform.eulerAngles.z);
             }
 
-
+            
 
             if (grounded)
                 velocity += moveDir.normalized * speed * Time.deltaTime;
@@ -330,6 +375,18 @@ public class CharacterMovement : MonoBehaviour
 
     void JumpGravity()
     {
+        if(grabbingLedge)
+        {
+            velocity = Vector3.zero;
+            if(jumping)
+            {
+                velocity += (Vector3.up).normalized * ledgeJumpPower;
+                ExitWall();
+                jumping = false;
+                grabbingLedge = false;
+            }
+            return;
+        }
         if(wallrunning)
         {
             velocity.y -= wallrunningGravity;
@@ -339,7 +396,7 @@ public class CharacterMovement : MonoBehaviour
                     velocity.y = 0;
 
                 velocity += (wallNormal + Vector3.up).normalized * wallJumpPower;
-                ExitWallRun();
+                ExitWall();
                 jumping = false;
             }
             return;
@@ -525,6 +582,7 @@ public class CharacterMovement : MonoBehaviour
 
         JumpGravity();
         SlopeRayCheck();
+        GrabLedge();
         if((characterController.collisionFlags & CollisionFlags.Above) != 0 && velocity.y > 0)
         {
             velocity.y = 0;
