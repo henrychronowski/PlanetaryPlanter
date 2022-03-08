@@ -118,6 +118,7 @@ public class SaveManager : MonoBehaviour
     public void LoadGame()
     {
         loadDataIntended = true;
+        dataLoaded = false;
         SceneManager.LoadScene(activeSceneIndex);
     }
 
@@ -150,6 +151,7 @@ public class SaveManager : MonoBehaviour
             {
                 LoadData();
                 dataLoaded = true;
+                loadDataIntended = false;
             }
             else if (SceneManager.GetSceneByBuildIndex(activeSceneIndex).isLoaded && !loadDataIntended && !dataLoaded)
             {
