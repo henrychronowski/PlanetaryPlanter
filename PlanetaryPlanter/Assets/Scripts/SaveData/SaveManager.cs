@@ -163,14 +163,14 @@ public class SaveManager : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            SaveData();
-        }
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    SaveData();
+        //}
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LoadData();
-        }
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    LoadData();
+        //}
     }
 }
