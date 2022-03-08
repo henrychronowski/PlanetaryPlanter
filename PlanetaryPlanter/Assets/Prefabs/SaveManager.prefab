@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f3eddeddc738643b627dccf6ad89f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenSaves: 10
+  timeBetweenSaves: 5
   timeSinceLastSave: 0
   playerData:
     position: []
@@ -52,6 +52,12 @@ MonoBehaviour:
     achievementsDone: []
     tutorialsDone: []
     chapterCompletionRequirements: 
+    itemIDs: 
+    plants:
+      planterIds: 
+      speciesArray: 
+      growthValue: []
+      waterValue: []
   player: {fileID: 0}
   master: {fileID: 0}
   activeSceneIndex: 1
