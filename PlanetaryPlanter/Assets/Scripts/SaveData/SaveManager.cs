@@ -1,7 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+[System.Serializable]
+public struct PlantsData
+{
+    public PlantsData(List<PlantSpot> planters)
+    {
+        planterIds = new int[planters.Count];
+        speciesArray = new PlanetSpecies[planters.Count];
+        growthValue = new float[planters.Count];
+        waterValue = new float[planters.Count];
+
+        for (int i = 0; i < planters.Count; i++)
+        {
+            planterIds[i] = i;
+            if (planters[i].placedPlant == null)
+            {
+                speciesArray[i] = PlanetSpecies.Unidentified;
+                growthValue[i] = -1;
+                waterValue[i] = -1;
+            }
+            else
+            {
+                speciesArray[i] = planters[i].placedPlant.species;
+                growthValue[i] = planters[i].placedPlant.growthProgress;
+                Debug.Log("Save growth as " + growthValue[i]);
+                waterValue[i] = planters[i].placedPlant.currentWater;
+            }
+
+        }
+        
+    }
+
+    public int[] planterIds;
+    public PlanetSpecies[] speciesArray;
+    public float[] growthValue;
+    public float[] waterValue;
+}
+
+[System.Serializable]
+public struct InventoryItemSave
+{
+    public InventoryItemSave(string name, ItemID itemId)
+    {
+        spaceName = name;
+        id = itemId;
+    }
+    public string spaceName;
+    public ItemID id;
+}
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager instance;
@@ -15,7 +65,7 @@ public class SaveManager : MonoBehaviour
     public bool dataLoaded;
     public bool loadDataIntended;
 
-
+    
 
     private void Awake()
     {
@@ -32,7 +82,11 @@ public class SaveManager : MonoBehaviour
 
     public void SaveData()
     {
-        SaveSystem.SaveAllData(player, master, AlmanacProgression.instance, TutorialManagerScript.instance, NewInventory.instance);
+        List<PlantSpot> plantSpots = new List<PlantSpot>();
+        plantSpots.AddRange(GameObject.FindObjectsOfType<PlantSpot>(true).OrderBy(gameObject => gameObject.name).ToArray());
+        master = GameObject.FindObjectOfType<ObservatoryMaster>();
+        player = GameObject.FindObjectOfType<CharacterMovement>();
+        SaveSystem.SaveAllData(player, master, AlmanacProgression.instance, TutorialManagerScript.instance, NewInventory.instance, new PlantsData(plantSpots));
     }
 
     public void LoadData()
@@ -51,6 +105,14 @@ public class SaveManager : MonoBehaviour
         AlmanacProgression.instance.LoadCompletedAchievements(playerData.achievementsDone);
         TutorialManagerScript.instance.LoadCompletedTutorials(playerData.tutorialsDone);
         NewInventory.instance.LoadAllItems(GameObject.FindObjectOfType<InventoryItemIndex>(), playerData.itemIDs);
+
+        //Spawn all the new plants
+        PlantSpot[] planters = GameObject.FindObjectsOfType<PlantSpot>(true).OrderBy(gameObject => gameObject.name).ToArray();
+        for(int i = 0; i < playerData.plants.planterIds.Length; i++)
+        {
+            planters[i].PlacePlantOfType(playerData.plants.speciesArray[i], playerData.plants.growthValue[i]);
+            //planters[i].placedPlant.currentWater = playerData.plants.waterValue[i];
+        }
     }
 
     public void LoadGame()
@@ -72,7 +134,7 @@ public class SaveManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (SceneManager.GetActiveScene().buildIndex == activeSceneIndex)
         {
