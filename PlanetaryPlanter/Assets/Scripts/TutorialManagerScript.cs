@@ -24,13 +24,13 @@ public class TutorialManagerScript : MonoBehaviour
     void Start()
     {
         tutorials.AddRange(GetComponents<Tutorial>());
+        //Unlock("Welcome to Planetary Planter");
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckActive();
-        Unlock("Welcome to Planetary Planter");
     }
 
     void CheckActive()
@@ -62,6 +62,31 @@ public class TutorialManagerScript : MonoBehaviour
         if(!tutorial.isUnlocked)
         {
             tutorial.TutorialEventTriggered();
+        }
+    }
+
+    public string[] GetAllCompletedTutorials()
+    {
+        List<string> completedTutorials = new List<string>();
+        foreach(Tutorial t in tutorials)
+        {
+            if(t.isUnlocked)
+            {
+                completedTutorials.Add(t.title);
+            }
+        }
+        return completedTutorials.ToArray();
+    }
+
+    public void LoadCompletedTutorials(string[] completedTutorials)
+    {
+        foreach (string key in completedTutorials)
+        {
+            if (FindTutorialEntry(key) != null)
+            {
+                FindTutorialEntry(key).isUnlocked = true;
+                Debug.Log("Unlocked " + key);
+            }
         }
     }
 

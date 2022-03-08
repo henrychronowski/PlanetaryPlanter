@@ -16,6 +16,7 @@ public class TooltipInfo : MonoBehaviour
     public string iceModInfo;
 
     public bool isPlant = false;
+    public ItemID itemID;
 
     void CheckForMods()
     {

@@ -26,12 +26,12 @@ public class Observatory : MonoBehaviour
     public Sprite completedConstellationSprite;
 
     public Transform next;
+    public List<Transform> connections;
     public string completionAchievementName;
-    LineRenderer line;
+    LineRenderer baseLine; //used as a base when new connections are made in Start()
+    public List<LineRenderer> lines;
     public int filledSpots;
 
-    public AudioSource telescope;
-    public AudioSource main;
 
     public SolarSystemCountScript solarSystemCounter;
 
@@ -83,14 +83,17 @@ public class Observatory : MonoBehaviour
 
     void Complete()
     {
-        line.enabled = true;
+        foreach(LineRenderer l in lines)
+        {
+            l.enabled = true;
+        }
+        
         completed = true;
         solarSystemButton.GetComponent<UnityEngine.UI.Image>().sprite = completedConstellationSprite;
 
         solarSystemCounter.numSolarSystemsComplete++;
         AlmanacProgression.instance.Unlock(completionAchievementName + solarSystemCounter.numSolarSystemsComplete.ToString());
 
-        TutorialManagerScript.instance.Unlock("Demo Over");
     }
 
     // Start is called before the first frame update
@@ -98,10 +101,16 @@ public class Observatory : MonoBehaviour
     {
         planetSpotsArray = new ObservatoryPlanetSpot[width, height];
         constellationSpots.AddRange(GetComponentsInChildren<ObservatoryPlanetSpot>());
-        line = GetComponent<LineRenderer>();
-        line.SetPosition(0, solarSystemButton.transform.position);
-        line.SetPosition(1, next.position);
-        line.enabled = false;
+        lines = new List<LineRenderer>();
+        //lines.Add(GetComponent<LineRenderer>());
+        lines.AddRange(GetComponentsInChildren<LineRenderer>());
+        for (int i = 0; i < connections.Count; i++)
+        {
+            //newLine = baseLine;
+            lines[i].SetPosition(0, solarSystemButton.transform.position);
+            lines[i].SetPosition(1, connections[i].position);
+            lines[i].enabled = false;
+        }
 
         solarSystemCounter = FindObjectOfType<SolarSystemCountScript>();
         //line.colorGradient.
