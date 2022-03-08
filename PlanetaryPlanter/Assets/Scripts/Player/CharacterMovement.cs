@@ -111,6 +111,7 @@ public class CharacterMovement : MonoBehaviour
     public float collisionMovementAngleDifference;
     public bool touchingWall;
     public float touchingWallMaxSpeed;
+
     void CheckInput()
     {
         xMove = Input.GetAxisRaw("Horizontal");
@@ -120,10 +121,11 @@ public class CharacterMovement : MonoBehaviour
             jumping = true;
             jumpSound.Play();
         }
-        else if(Input.GetKeyDown(KeyCode.Space) && !grounded)
+        else if(Input.GetKeyDown(KeyCode.LeftShift) && !grounded)
         {
             holdingGlider = !holdingGlider; //Swaps value of holdingGlider
         }
+
     }
 
     void Move()
@@ -405,7 +407,6 @@ public class CharacterMovement : MonoBehaviour
             Vector3 xzMove = new Vector3(velocity.x, 0, velocity.z);
             float actualVelocityMagnitude = new Vector2(actualVelocity.x, actualVelocity.z).magnitude;
             xzMove = Vector3.ClampMagnitude(xzMove, maxSpeed - (maxSpeed * (collisionMovementAngleDifference/90)));
-            Debug.Log(maxSpeed - (maxSpeed * (collisionMovementAngleDifference / 90)));
             velocity.x = xzMove.x;
             velocity.z = xzMove.z;
         }
@@ -454,6 +455,13 @@ public class CharacterMovement : MonoBehaviour
         {
             isGliding = false;
         }
+    }
+
+    public void Teleport(Vector3 position)
+    {
+        characterController.enabled = false;
+        transform.position = position;
+        characterController.enabled = true;
     }
 
     // Start is called before the first frame update

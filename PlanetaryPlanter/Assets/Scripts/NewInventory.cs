@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Cinemachine;
+using System.Linq;
+
 
 //This class holds all code relating to inventory management. 
 //Any questions regarding this code should be directed to Dan Hartman
@@ -32,6 +34,7 @@ public class NewInventory : MonoBehaviour
     public bool forceActive;
     public CloseAllMenus menuCloser;
     public AudioSource collectPop;
+    public InventoryItemIndex index;
 
     // This offsets the item in the mouse cursor's position so it is not obstructed by the mouse and avoids any potential bugs 
     // related to holding items in cursors preventing the cursor from clicking buttons
@@ -132,8 +135,8 @@ public class NewInventory : MonoBehaviour
     public void Click(InventorySpace space)
     {
 
-        if(!itemInCursor)
-        {
+        if(!itemInCursor && space.item != null)
+        {          
             selectedItem = space.item;
             space.item = null;
             space.filled = false;
@@ -142,6 +145,7 @@ public class NewInventory : MonoBehaviour
         }
         else
         {
+            
             if(space.item == null)
             {
                 space.item = selectedItem;
@@ -153,6 +157,17 @@ public class NewInventory : MonoBehaviour
             }
             else
             {
+                if(space.location == SpaceLocation.Trash)
+                {
+                    Destroy(space.item.gameObject);
+                    space.item = selectedItem;
+                    //selectedItem = null;
+                    itemInCursor = false;
+                    space.filled = true;
+                    space.item.transform.parent = space.transform;
+                    space.item.transform.localPosition = Vector3.zero;
+                }
+
                 InventoryItem temp = space.item;
                 space.item = selectedItem;
                 selectedItem = temp;
@@ -227,6 +242,49 @@ public class NewInventory : MonoBehaviour
                 return true;
             }
         }
+        return false;
+    }
+
+    public bool AddItemToSpace(GameObject item, InventorySpace space)
+    {
+        if (!space.item)
+        {
+            GameObject inventoryObject = Instantiate(emptyInventoryObject, space.gameObject.transform);
+
+            inventoryObject.GetComponent<InventoryItem>().Init(item);
+
+            space.item = inventoryObject.GetComponent<InventoryItem>();
+            space.filled = true;
+            space.item.gameObject.transform.localPosition = Vector3.zero;
+
+            if (item.GetComponent<Plant>())
+            {
+                string species = item.GetComponent<Plant>().species.ToString();
+
+                AlmanacProgression.instance.Unlock("Collect" + species + "Plant");
+            }
+
+            if (item.GetComponent<Seed>())
+            {
+                string species = item.GetComponent<Seed>().species.ToString();
+                Debug.Log("Collect" + species + "Seed");
+                AlmanacProgression.instance.Unlock("Collect" + species + "Seed");
+            }
+
+            if (item.GetComponent<Modifier>())
+            {
+                AlmanacProgression.instance.Unlock(item.GetComponent<Modifier>().modifierToApply.ToString());
+            }
+            collectPop.pitch = Random.Range(0.5f, 1f);
+            collectPop.Play();
+
+            if (SpacesAvailable() <= 0)
+            {
+                TutorialManagerScript.instance.Unlock("Full Inventory");
+            }
+            return true;
+        }
+        
         return false;
     }
 
@@ -328,7 +386,7 @@ public class NewInventory : MonoBehaviour
             }
             RectTransform itemTransform = selectedItem.gameObject.GetComponent<RectTransform>();
             selectedItem.gameObject.transform.position = new Vector3(Input.mousePosition.x + (itemTransform.rect.width),
-                Input.mousePosition.y + (itemTransform.rect.height + heldItemPositionOffset), Input.mousePosition.z);
+            Input.mousePosition.y + (itemTransform.rect.height + heldItemPositionOffset), Input.mousePosition.z);
 
         }
     }
@@ -339,6 +397,146 @@ public class NewInventory : MonoBehaviour
         {
             SetSpacesActive(true);
         }
+    }
+
+    public ItemID[] ReturnAllInventoryIDs()
+    {
+        List<ItemID> items = new List<ItemID>();
+
+        InventorySpace[] allSpaces = GameObject.FindObjectsOfType<InventorySpace>(true).OrderBy(gameObject => gameObject.name).ToArray();
+
+        //allSpaces2.Sort();
+
+        for (int i = 0; i < allSpaces.Length; i++)
+        {
+            if (allSpaces[i].filled)
+                items.Add(DetermineItemID(allSpaces[i].item.itemObject));
+            else
+                items.Add(ItemID.Unidentified);
+        }
+        return items.ToArray();
+    }
+
+    public List<InventoryItemSave> ReturnAllInventoryIDsNew()
+    {
+        List<InventoryItemSave> savedItems = new List<InventoryItemSave>();
+        List<ItemID> items = new List<ItemID>();
+
+        List<InventorySpace> allSpaces = new List<InventorySpace>();
+        allSpaces.AddRange(GameObject.FindObjectsOfType<InventorySpace>(true));
+        allSpaces.Sort();
+
+        for (int i = 0; i < allSpaces.Count; i++)
+        {
+            if (allSpaces[i].filled)
+                items.Add(DetermineItemID(allSpaces[i].item.itemObject));
+            else
+                items.Add(ItemID.Unidentified);
+        }
+        return savedItems;
+    }
+
+    public void LoadAllItems(InventoryItemIndex index, ItemID[] items)
+    {
+        InventorySpace[] allSpaces = GameObject.FindObjectsOfType<InventorySpace>(true).OrderBy(gameObject => gameObject.name).ToArray();
+
+        if(allSpaces.Length != items.Length)
+        {
+            Debug.LogError("Item id length != space count");
+        }
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] != ItemID.Unidentified)
+                AddItemToSpace(Instantiate(index.items[(int)items[i]]), allSpaces[i]);
+        }
+    }
+
+    public ItemID DetermineItemID(GameObject item)
+    {
+        //
+        if (item.tag == "Fertilizer")
+            return ItemID.Fertilizer;
+
+        if (item.tag == "Plant")
+        {
+            if (item.GetComponent<Plant>().species == PlanetSpecies.Planet)
+            {
+                if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
+                {
+                    return ItemID.FirePlanet;
+                }
+                else if (item.GetComponent<Plant>().type == PlanetType.FrozenCore)
+                {
+                    return ItemID.IcePlanet;
+                }
+                else
+                {
+                    return ItemID.PlanetPlant;
+                }
+            }
+
+            if (item.GetComponent<Plant>().species == PlanetSpecies.Star)
+            {
+                if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
+                {
+                    return ItemID.FireStar;
+                }
+                else if (item.GetComponent<Plant>().type == PlanetType.FrozenCore)
+                {
+                    return ItemID.IceStar;
+                }
+                else
+                {
+                    return ItemID.StarPlant;
+                }
+            }
+
+            if (item.GetComponent<Plant>().species == PlanetSpecies.Asteroid)
+            {
+                if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
+                {
+                    return ItemID.FireAsteroid;
+                }
+                else if (item.GetComponent<Plant>().type == PlanetType.FrozenCore)
+                {
+                    return ItemID.IceAsteroid;
+                }
+                else
+                {
+                    return ItemID.AsteroidPlant;
+                }
+            }
+        }
+
+        if (item.tag == "Seed")
+        {
+            if (item.GetComponent<Seed>().species == PlanetSpecies.Planet)
+            {
+                return ItemID.PlanetSeed;
+            }
+            else if (item.GetComponent<Seed>().species == PlanetSpecies.Star)
+            {
+                return ItemID.StarSeed;
+            }
+            else if (item.GetComponent<Seed>().species == PlanetSpecies.Asteroid)
+            {
+                return ItemID.AsteroidSeed;
+            }
+        }
+
+        if (item.tag == "Modifier")
+        {
+            if (item.GetComponent<Modifier>().modifierToApply == PlanetType.VolcanicAsh)
+            {
+                return ItemID.FireModifier;
+            }
+            else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.FrozenCore)
+            {
+                return ItemID.IceModifier;
+            }
+        }
+
+        return ItemID.Unidentified;
     }
 
     // Start is called before the first frame update
