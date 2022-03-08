@@ -8,6 +8,8 @@ class NewSkyRenderer : SkyRenderer
 	public static readonly int _SkyParam = Shader.PropertyToID("_SkyParam");
 	public static readonly int _PixelCoordToViewDirWS = Shader.PropertyToID("_PixelCoordToViewDirWS");
 
+	public static readonly int _SkyColor = Shader.PropertyToID("_SkyColor");
+
 	Material m_NewSkyMaterial;
 	MaterialPropertyBlock m_PropertyBlock = new MaterialPropertyBlock();
 
@@ -47,6 +49,10 @@ class NewSkyRenderer : SkyRenderer
 			m_PropertyBlock.SetTexture(_Cubemap, newSky.hdriSky.value);
 			m_PropertyBlock.SetVector(_SkyParam, new Vector4(intensity, 0.0f, Mathf.Cos(phi), Mathf.Sin(phi)));
 			m_PropertyBlock.SetMatrix(_PixelCoordToViewDirWS, builtinParams.pixelCoordToViewDirMatrix);
+
+			//m_PropertyBlock.SetVector(_SkyColor, newSky.hdriParam.value);
+			m_PropertyBlock.SetColor(_SkyColor, newSky.hdriParam.value);
+
 			CoreUtils.DrawFullScreen(builtinParams.commandBuffer, m_NewSkyMaterial, m_PropertyBlock, passID);
 		}
 	}
