@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Cinemachine;
-
+using System.Linq;
 
 
 //This class holds all code relating to inventory management. 
@@ -135,8 +135,8 @@ public class NewInventory : MonoBehaviour
     public void Click(InventorySpace space)
     {
 
-        if(!itemInCursor)
-        {
+        if(!itemInCursor && space.item != null)
+        {          
             selectedItem = space.item;
             space.item = null;
             space.filled = false;
@@ -403,9 +403,11 @@ public class NewInventory : MonoBehaviour
     {
         List<ItemID> items = new List<ItemID>();
 
-        InventorySpace[] allSpaces = GameObject.FindObjectsOfType<InventorySpace>(true);
+        InventorySpace[] allSpaces = GameObject.FindObjectsOfType<InventorySpace>(true).OrderBy(gameObject => gameObject.name).ToArray();
 
-        for(int i = 0; i < allSpaces.Length; i++)
+        //allSpaces2.Sort();
+
+        for (int i = 0; i < allSpaces.Length; i++)
         {
             if (allSpaces[i].filled)
                 items.Add(DetermineItemID(allSpaces[i].item.itemObject));
@@ -415,9 +417,28 @@ public class NewInventory : MonoBehaviour
         return items.ToArray();
     }
 
+    public List<InventoryItemSave> ReturnAllInventoryIDsNew()
+    {
+        List<InventoryItemSave> savedItems = new List<InventoryItemSave>();
+        List<ItemID> items = new List<ItemID>();
+
+        List<InventorySpace> allSpaces = new List<InventorySpace>();
+        allSpaces.AddRange(GameObject.FindObjectsOfType<InventorySpace>(true));
+        allSpaces.Sort();
+
+        for (int i = 0; i < allSpaces.Count; i++)
+        {
+            if (allSpaces[i].filled)
+                items.Add(DetermineItemID(allSpaces[i].item.itemObject));
+            else
+                items.Add(ItemID.Unidentified);
+        }
+        return savedItems;
+    }
+
     public void LoadAllItems(InventoryItemIndex index, ItemID[] items)
     {
-        InventorySpace[] allSpaces = GameObject.FindObjectsOfType<InventorySpace>(true);
+        InventorySpace[] allSpaces = GameObject.FindObjectsOfType<InventorySpace>(true).OrderBy(gameObject => gameObject.name).ToArray();
 
         if(allSpaces.Length != items.Length)
         {

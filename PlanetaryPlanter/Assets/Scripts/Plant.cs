@@ -21,8 +21,7 @@ public class Plant : MonoBehaviour
     [SerializeField]
     List<GameObject> plantModels;
 
-    [SerializeField]
-    float currentWater; //energy needed for plant to grow
+    public float currentWater; //energy needed for plant to grow
 
     [SerializeField]
     float maxWater;
@@ -107,7 +106,7 @@ public class Plant : MonoBehaviour
         }
         
     }
-
+    
     public void AddElapsedHours(int hoursToAdd)
     {
         for(int i = 0; i < hoursToAdd; i++)

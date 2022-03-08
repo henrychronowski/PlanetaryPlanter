@@ -8,7 +8,8 @@ public enum PlanetSpecies
     Planet,
     Star,
     RockPlanet,
-    Comet
+    Comet,
+    Unidentified
 }
 
 public enum PlanetType

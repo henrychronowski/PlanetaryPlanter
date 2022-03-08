@@ -13,8 +13,10 @@ public class PlayerData
     public List<int> chapterCompletionRequirements;
 
     public ItemID[] itemIDs;
+    public PlantsData plants;
 
-    public PlayerData(CharacterMovement player, ObservatoryMaster observatoryMaster, AlmanacProgression alm, TutorialManagerScript tutorials, NewInventory inventory)
+
+    public PlayerData(CharacterMovement player, ObservatoryMaster observatoryMaster, AlmanacProgression alm, TutorialManagerScript tutorials, NewInventory inventory, PlantsData plantData)
     {
         position = new float[3] { player.transform.position.x, player.transform.position.y, player.transform.position.z };
         currentChapter = observatoryMaster.GetCurrentChapter();
@@ -22,6 +24,8 @@ public class PlayerData
         achievementsDone = alm.GetAllCompletedAchievements();
         tutorialsDone = tutorials.GetAllCompletedTutorials();
         itemIDs = inventory.ReturnAllInventoryIDs();
+        plants = plantData;
+        
     }
 
     // Start is called before the first frame update

@@ -407,7 +407,6 @@ public class CharacterMovement : MonoBehaviour
             Vector3 xzMove = new Vector3(velocity.x, 0, velocity.z);
             float actualVelocityMagnitude = new Vector2(actualVelocity.x, actualVelocity.z).magnitude;
             xzMove = Vector3.ClampMagnitude(xzMove, maxSpeed - (maxSpeed * (collisionMovementAngleDifference/90)));
-            Debug.Log(maxSpeed - (maxSpeed * (collisionMovementAngleDifference / 90)));
             velocity.x = xzMove.x;
             velocity.z = xzMove.z;
         }
