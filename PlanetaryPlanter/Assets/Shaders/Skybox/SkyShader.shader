@@ -15,6 +15,7 @@ Shader "Hidden/HDRP/Sky/SkyShader"
         TEXTURECUBE(_Cubemap);
     SAMPLER(sampler_Cubemap);
    // TEXTURE(_Skymap);
+   // COLOR(_SkyColor)
 
     float4 _SkyParam; // x exposure, y multiplier, zw rotation (cosPhi and sinPhi)
 
