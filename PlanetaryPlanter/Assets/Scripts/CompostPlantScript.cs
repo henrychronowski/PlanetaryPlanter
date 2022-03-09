@@ -78,13 +78,11 @@ public class CompostPlantScript : MonoBehaviour
         if(distanceFromCompostBin > distance)
         {
             canCompost = true;
-            Debug.Log("Can Compost");
             TutorialManagerScript.instance.Unlock("Compost Bin");
         }
         else
         {
             canCompost = false;
-            Debug.Log("Can't Compost");
         }
     }
 
