@@ -106,7 +106,6 @@ public class Observatory : MonoBehaviour
         lines.AddRange(GetComponentsInChildren<LineRenderer>());
         for (int i = 0; i < connections.Count; i++)
         {
-            LineRenderer newLine = gameObject.AddComponent<LineRenderer>();
             //newLine = baseLine;
             lines[i].SetPosition(0, solarSystemButton.transform.position);
             lines[i].SetPosition(1, connections[i].position);

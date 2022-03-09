@@ -9,5 +9,10 @@ public class SolarSystemCountScript : MonoBehaviour
     void Start()
     {
         numSolarSystemsComplete = 0;
+        AudioSource[] audio = GameObject.FindObjectsOfType<AudioSource>();
+        for (int i = 0; i < audio.Length; i++)
+        {
+            Debug.Log(audio[i].name);
+        }
     }
 }
