@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlantSpot : MonoBehaviour
 {
     public Plant placedPlant;
-    public GameObject basicPlantObject;
+    public GameObject plantObject;
     public GameObject fertilizer;
 
     private CollectSeedScript collectSeed;
@@ -18,15 +18,61 @@ public class PlantSpot : MonoBehaviour
     InteractableObject interactable;
 
     public GameObject fertilizerParticles;
+    public InventoryItemIndex items;
 
     public void PlacePlant()
     {
-        basicPlantObject = NewInventory.instance.PopItemOfTag("Seed");
-        if (basicPlantObject) //if the object is not null this will run
+        plantObject = NewInventory.instance.PopItemOfTag("Seed");
+        if (plantObject) //if the object is not null this will run
         {
-            Instantiate(basicPlantObject.GetComponent<Seed>().plantObject, transform);
+            plantObject = Instantiate(plantObject.GetComponent<Seed>().plantObject, transform);
+            placedPlant = plantObject.GetComponent<Plant>();
             TutorialManagerScript.instance.Unlock("Maintaining Plants");
         }
+    }
+
+    public void PlacePlantOfType(PlanetSpecies species, float growth)
+    {
+        switch(species)
+        {
+            case PlanetSpecies.Asteroid:
+                {
+                    plantObject = Instantiate(items.items[(int)ItemID.AsteroidPlant], transform);
+                    placedPlant = plantObject.GetComponent<Plant>();
+                    placedPlant.AddElapsedHours((int)growth);
+
+                    break;
+                }
+            case PlanetSpecies.Planet:
+                {
+                    plantObject = Instantiate(items.items[(int)ItemID.PlanetPlant], transform);
+                    placedPlant = plantObject.GetComponent<Plant>();
+                    placedPlant.AddElapsedHours((int)growth);
+
+                    break;
+                }
+            case PlanetSpecies.Star:
+                {
+                    plantObject = Instantiate(items.items[(int)ItemID.StarPlant], transform);
+                    placedPlant = plantObject.GetComponent<Plant>();
+                    placedPlant.AddElapsedHours((int)growth);
+
+                    break;
+                }
+            case PlanetSpecies.Comet:
+                {
+                    //not fully implemented
+                    break;
+                }
+            case PlanetSpecies.RockPlanet:
+                {
+                    //not fully implemented
+
+                    break;
+                }
+
+        }
+        
     }
 
     public bool PlaceFertilizer()
@@ -64,7 +110,6 @@ public class PlantSpot : MonoBehaviour
         }
         if (p.stage == Plant.Stage.Rotten)
         {
-            //NewInventory.instance.AddItem(fertilizer);
             AlmanacProgression.instance.Unlock("GetFertilizer");
             TutorialManagerScript.instance.Unlock("Fertilizer");
             GameObject temp2 = Instantiate(fertilizer);
@@ -73,16 +118,12 @@ public class PlantSpot : MonoBehaviour
             p.inPot = false;
             temp.transform.parent = null;
             temp.transform.position = new Vector3(10000, 100000);
-
-            //compost = gameObject.GetComponent<CompostPlantScript>();
-            //compost.CompostPlant();
+            plantObject = null;
             return;
         }
-        if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject))
+        if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject)) //Returns false when inventory is full
         {
             p.inPot = false;
-            //Destroy(transform.GetChild(0).gameObject);
-            //transform.GetChild(0).transform.gameObject.SetActive(false);
             temp.transform.parent = null;
             temp.transform.position = new Vector3(10000, 100000); //this is dumb but its 4:30am
             Debug.Log("Added to inv");
@@ -122,6 +163,8 @@ public class PlantSpot : MonoBehaviour
         //NewInventory.instance.AddItem(fertilizer);
         interactable = GetComponent<InteractableObject>();
         fertilizer = gameObject.GetComponent<FertilizerScript>().Fertilizer;
+        items = GameObject.FindObjectOfType<InventoryItemIndex>();
+        gameObject.name = transform.parent.name + " Bed"; //every plantspot gameobject name needs to be different for saving to work and I REALLY dont want to go rename each individual one
     }
     // Update is called once per frame
     void Update()

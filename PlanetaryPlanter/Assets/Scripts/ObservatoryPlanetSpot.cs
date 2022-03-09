@@ -8,7 +8,8 @@ public enum PlanetSpecies
     Planet,
     Star,
     RockPlanet,
-    Comet
+    Comet,
+    Unidentified
 }
 
 public enum PlanetType
@@ -17,6 +18,7 @@ public enum PlanetType
     VolcanicAsh,
     FrozenCore
 }
+
 
 public class ObservatoryPlanetSpot : MonoBehaviour
 {
@@ -35,7 +37,7 @@ public class ObservatoryPlanetSpot : MonoBehaviour
     public GameObject starFruit;
     public GameObject planetFruit;
 
-    public void PlaceObject(GameObject newObject)
+    public void PlaceObject(GameObject newObject, bool fromInventory = true)
     {
         if (newObject == null)
             return;
@@ -47,7 +49,9 @@ public class ObservatoryPlanetSpot : MonoBehaviour
         {
             if(newObject.GetComponent<Plant>().type == type && newObject.GetComponent<Plant>().species == species)
             {
-                newObject = NewInventory.instance.PopItemInCursor();
+                if(fromInventory)
+                    newObject = NewInventory.instance.PopItemInCursor();
+
                 switch(newObject.GetComponent<Plant>().species)
                 {
                     case PlanetSpecies.Asteroid:
@@ -73,7 +77,8 @@ public class ObservatoryPlanetSpot : MonoBehaviour
                 newObject.transform.localScale = scale;
                 GetComponent<MeshRenderer>().enabled = false;
                 filled = true;
-                newObject.transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().enabled = false;
+                newObject.GetComponent<Plant>().inPot = false;
+                //newObject.transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().enabled = false;
             }
         }
         else
