@@ -104,9 +104,9 @@ public class CharacterMovement : MonoBehaviour
     public float glideTurnSpeed;
     public GameObject gliderIndicator;
 
-    public Vector3 actualMovementDirection;
-    public Vector3 actualVelocity;
-    public Vector3 previousPos;
+    Vector3 actualMovementDirection;
+    Vector3 actualVelocity;
+    Vector3 previousPos;
     public float moveAlongWallAngleDifference;
     public float collisionMovementAngleDifference;
     public bool touchingWall;
@@ -122,14 +122,27 @@ public class CharacterMovement : MonoBehaviour
     public float wallJumpPower;
     public float minWallrunSpeed;
     public float wallrunRotation;
+
     public bool isCrouchSliding;
     public float slopeCrouchSlideAngle;
+    public float crouchSlideSpeed;
+    public float crouchSlideDrag;
+    public float crouchSlideMaxSpeed;
+    public float slidingControlModifier;
+
+    public float slopeForce;
+    public float slopeForceRayLength;
 
     public bool wallClimbing;
     public Transform ledgeGrabRayLocation;
     public float ledgeGrabRayLength;
     public bool grabbingLedge;
     public float ledgeJumpPower;
+    public float dropLedgeInputWindow;
+    public float ledgeGrabCooldown;
+    public float timeSinceLastLedgeGrab;
+    public bool canLedgeGrab;
+    public float ledgeShuffleSpeed;
     void CheckInput()
     {
         xMove = Input.GetAxisRaw("Horizontal");
@@ -147,10 +160,15 @@ public class CharacterMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftControl))
         {
             StartSlide();
+            if(grabbingLedge)
+                LedgeDrop();
+            if (wallrunning)
+                ExitWall();
         }
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
-            ExitSlide();
+            if(isCrouchSliding)
+                ExitSlide();
         }
     }
 
@@ -174,25 +192,21 @@ public class CharacterMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         float collisionDot = Mathf.Abs(Vector3.Dot(collision.GetContact(0).normal, Vector3.up));
-        if (collisionDot < 0.1f && !grounded && !holdingGlider && collision.gameObject.tag != "Player")
+        if (collisionDot < 0.1f && !grounded && !holdingGlider && collision.gameObject.tag != "Player" && !grabbingLedge)
         {
-            
-            Vector3 tempVel = velocity; //Used only for gizmo
-            Debug.DrawRay(collision.GetContact(0).point, Vector3.ProjectOnPlane(tempVel, collision.GetContact(0).normal), Color.cyan);
+            //Draw velocity ray
+            Debug.DrawRay(collision.GetContact(0).point, Vector3.ProjectOnPlane(velocity, collision.GetContact(0).normal), Color.cyan);
             currentWall = collision.gameObject;
-            if(Vector3.Dot(collision.GetContact(0).normal, velocity) >= wallRunningAngleRequirement && wallNormal != collision.GetContact(0).normal)
+            //Dot product with the XZ velocity since we don't care about Y velocity here
+            Vector3 xzVelocity = new Vector3(velocity.x, 0, velocity.z);
+            Debug.Log(Vector3.Dot(collision.GetContact(0).normal, xzVelocity.normalized));
+            if(Vector3.Dot(collision.GetContact(0).normal, xzVelocity.normalized) >= wallRunningAngleRequirement && wallNormal != collision.GetContact(0).normal)
             {
-                if(!wallrunning)
+                if(!wallrunning) //Set the rotations only once when entering the wallrun
                 {
                     float leftSideDistance = Vector3.Distance(rayLeft.position, collision.GetContact(0).point);
                     float rightSideDistance = Vector3.Distance(rayRight.position, collision.GetContact(0).point);
-                    float frontSideDistance = Vector3.Distance(rayFront.position, collision.GetContact(0).point);
-                    if(frontSideDistance < leftSideDistance && frontSideDistance < rightSideDistance)
-                    {
-                        playerModel.transform.Rotate(new Vector3(-1, 0, 0), wallrunRotation);
-
-                    }
-                    else if (leftSideDistance > rightSideDistance)
+                    if (leftSideDistance > rightSideDistance)
                     {
                         playerModel.transform.Rotate(Vector3.forward, wallrunRotation);
                     }
@@ -205,11 +219,6 @@ public class CharacterMovement : MonoBehaviour
                 Debug.Log("Wallrun");
                 wallNormal = collision.GetContact(0).normal;
             }
-            else
-            {
-                Debug.Log("Wallclimb");
-                wallClimbing = true;
-            }
         }
     }
 
@@ -218,25 +227,25 @@ public class CharacterMovement : MonoBehaviour
         float collisionDot = Mathf.Abs(Vector3.Dot(collision.GetContact(0).normal, Vector3.up));
         if (collisionDot < 0.1f && !grounded && !holdingGlider && collision.gameObject.tag != "Player" && wallrunning)
         {
-            //Debug.Log(collision.gameObject.name);
-
+            //Velocity ray
             Debug.DrawRay(collision.GetContact(0).point, Vector3.ProjectOnPlane(velocity, collision.GetContact(0).normal), Color.cyan);
             velocity = Vector3.ProjectOnPlane(velocity, collision.GetContact(0).normal);
             if (Vector3.Angle(wallNormal, collision.GetContact(0).normal) > maxAngleChange)
             {
                 ExitWall();
             }
-            if(velocity.magnitude < minWallrunSpeed)
+            Vector3 xzVelocity = new Vector3(velocity.x, 0, velocity.z); 
+            if(xzVelocity.magnitude < minWallrunSpeed) //Ends wallrun prematurely if speed gets low enough
             {
                 ExitWall();
             }
 
         }
-        else if(grounded)
+        else if(grounded && wallrunning) //Exit when hitting ground
         {
             ExitWall();
         }
-        if(grabbingLedge)
+        if(grabbingLedge) //Important for ledge shuffling
         {
             wallNormal = collision.GetContact(0).normal;
         }
@@ -247,13 +256,16 @@ public class CharacterMovement : MonoBehaviour
     { 
         if(collision.gameObject == currentWall)
         {
-            
-            ExitWall();
-            wallClimbing = false;
-            grabbingLedge = false;
+            if(!grabbingLedge) //Prevents leaving the wall unintentionally when grabbing ledge
+            {
+                ExitWall();
+                wallClimbing = false;
+                grabbingLedge = false;
+                timeSinceLastLedgeGrab = 0;
+            }
         }
     }
-
+    
     void ExitWall()
     {
         wallClimbing = false;
@@ -262,9 +274,20 @@ public class CharacterMovement : MonoBehaviour
         playerModel.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
 
+    void LedgeDrop()
+    {
+        if(grabbingLedge)
+        {
+            velocity = (wallNormal + Vector3.down).normalized * wallJumpPower;
+            ExitWall();
+            grabbingLedge = false;
+            timeSinceLastLedgeGrab = 0;
+        }
+    }
+
     void GrabLedge()
     {
-        if (wallrunning)
+        if (wallrunning || !canLedgeGrab)
             return;
 
         Ray ray = new Ray(ledgeGrabRayLocation.position, Vector3.down);
@@ -272,12 +295,13 @@ public class CharacterMovement : MonoBehaviour
         Debug.DrawLine(ledgeGrabRayLocation.position, ray.GetPoint(ledgeGrabRayLength), Color.red);
         if (velocity.y <= 0)
         {
-            Debug.Log("Normal" + hitInfo.normal);
+            //Debug.Log("Normal" + hitInfo.normal);
             if(Vector3.Dot(hitInfo.normal, Vector3.up) > 0.1f)
             {
                 grabbingLedge = true;
                 characterController.enabled = false;
-                transform.position = new Vector3(transform.position.x, hitInfo.point.y - (ledgeGrabRayLocation.position.y - transform.position.y) + (ledgeGrabRayLength/2), transform.position.z);
+                transform.position = new Vector3(transform.position.x, hitInfo.point.y - (ledgeGrabRayLocation.position.y - transform.position.y)
+                    + (ledgeGrabRayLength/2), transform.position.z);
                 characterController.enabled = true;
             }
             else
@@ -298,10 +322,28 @@ public class CharacterMovement : MonoBehaviour
         Vector3 moveDir;
         if (grabbingLedge)
         {
-            targetAngle = Mathf.Atan2(-wallNormal.x, -wallNormal.z) * Mathf.Rad2Deg;
-            angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, angle, transform.eulerAngles.z);
+            //Face towards the ledge
+            targetAngle = Mathf.Atan2(-wallNormal.x, -wallNormal.z) * Mathf.Rad2Deg; 
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, targetAngle, transform.eulerAngles.z);
+            
+
+            //Ledge shuffling
+            float ledgeShuffleAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            moveDir = Quaternion.Euler(0f, ledgeShuffleAngle, 0f) * Vector3.forward;
+            velocity = Vector3.ProjectOnPlane(moveDir, wallNormal).normalized * ledgeShuffleSpeed;
+
+            if(Vector3.Dot(moveDir, wallNormal) > dropLedgeInputWindow && playerMovement != Vector3.zero)
+            {
+                //Drop off the ledge
+                LedgeDrop();
+            }
+
+            if(playerMovement == Vector3.zero || jumping)
+            {
+                velocity.x = 0;
+                velocity.z = 0;
+            }
+            Debug.DrawRay(transform.position, velocity);
         }
         else if (playerMovement != Vector3.zero)
         {
@@ -330,15 +372,26 @@ public class CharacterMovement : MonoBehaviour
             }
 
             
-
-            if (grounded)
+            if(isCrouchSliding)
+                velocity += moveDir.normalized * (speed * slidingControlModifier) * Time.deltaTime;
+            else if (grounded)
                 velocity += moveDir.normalized * speed * Time.deltaTime;
             else if(isGliding)
                 velocity += moveDir.normalized * glideAirSpeed * Time.deltaTime;
             else
                 velocity += moveDir.normalized * airSpeed * Time.deltaTime;
 
-            if (grounded)
+            if (isCrouchSliding)
+                velocity += GetSlideForce();
+            else
+                velocity += GetSlopeForce();
+
+            if(isCrouchSliding)
+            {
+                velocity.x *= crouchSlideDrag;
+                velocity.z *= crouchSlideDrag;
+            }
+            else if (grounded)
             {
                 velocity.x *= movementDrag;
                 velocity.z *= movementDrag;
@@ -346,10 +399,26 @@ public class CharacterMovement : MonoBehaviour
         }
         else 
         {
-            if (grounded)
+            if (isCrouchSliding)
+                velocity += GetSlideForce();
+            if (isCrouchSliding) //use the same drag regardless of input
+            {
+                velocity.x *= crouchSlideDrag;
+                velocity.z *= crouchSlideDrag;
+            }
+            else if (grounded)
             {
                 velocity.x *= stoppedDrag;
                 velocity.z *= stoppedDrag;
+                //This is to prevent the inspector from showing incredibly small and insignificant numbers
+                if (Mathf.Abs(velocity.x) < 0.01f)
+                {
+                    velocity.x = 0;
+                }
+                if (Mathf.Abs(velocity.z) < 0.01f)
+                {
+                    velocity.z = 0;
+                }
             }
             else if(wallrunning)
             {
@@ -367,7 +436,14 @@ public class CharacterMovement : MonoBehaviour
         //Clamp only the x and z values
         //Use a separate vector to avoid jumping triggering the clamp, slowing the x and z movement drastically when jumping 
         Vector3 xzMovement = new Vector3(velocity.x, 0, velocity.z);
-        xzMovement = Vector3.ClampMagnitude(xzMovement, maxSpeed);
+        if(isCrouchSliding)
+        {
+            xzMovement = Vector3.ClampMagnitude(xzMovement, crouchSlideMaxSpeed);
+        }
+        else
+        {
+            xzMovement = Vector3.ClampMagnitude(xzMovement, maxSpeed);
+        }
         velocity.x = xzMovement.x;
         velocity.z = xzMovement.z;
 
@@ -377,7 +453,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if(grabbingLedge)
         {
-            velocity = Vector3.zero;
+            velocity.y = 0;
             if(jumping)
             {
                 velocity += (Vector3.up).normalized * ledgeJumpPower;
@@ -427,23 +503,37 @@ public class CharacterMovement : MonoBehaviour
         }
         if(!grounded && Input.GetKey(KeyCode.Space)) //Holding jump while airborne
         {
-            velocity.y += -holdJumpGravity;
+            if (velocity.y == -groundedGravity)
+            {
+                velocity.y = -holdJumpGravity;
+            }
+            else
+            {
+                velocity.y += -holdJumpGravity;
+            }
         }
         else if(grounded && velocity.y <= 0) //Gravity when grounded
         {
-            velocity.y = -groundedGravity;
+            velocity.y = -groundedGravity; //Always should be set to be higher than max fall speed
         }
         else //Gravity while airborne and not holding jump
         {
-            velocity.y += -gravity;
+            if(velocity.y == -groundedGravity) //this is meant to run the first frame the player leaves the ground and only then
+            {
+                velocity.y = -gravity;
+            }
+            else
+            {
+                velocity.y += -gravity;
+            }
         }
-        if(velocity.y < -maxFallSpeed)
+        if(velocity.y < -maxFallSpeed && !grounded)
         {
             velocity.y = -maxFallSpeed;
         }
     }
 
-    void SlopeRayCheck()
+    void SlipRayCheck()
     {
         RaycastHit hitBack;
         RaycastHit hitMid;
@@ -467,15 +557,15 @@ public class CharacterMovement : MonoBehaviour
         Physics.Raycast(rayBackRight.position, Vector3.down, out hitBackRight);
 
 
-        Debug.DrawLine(rayBack.position, hitBack.point, Color.red);
-        Debug.DrawLine(rayMid.position, hitMid.point, Color.green);
-        Debug.DrawLine(rayFront.position, hitFront.point, Color.blue);
-        Debug.DrawLine(rayRight.position, hitRight.point, Color.yellow);
-        Debug.DrawLine(rayLeft.position, hitLeft.point, Color.yellow);
-        Debug.DrawLine(rayFrontRight.position, hitFrontRight.point, Color.cyan);
-        Debug.DrawLine(rayFrontLeft.position, hitFrontLeft.point, Color.grey);
-        Debug.DrawLine(rayBackLeft.position, hitBackLeft.point, Color.cyan);
-        Debug.DrawLine(rayBackRight.position, hitBackRight.point, Color.grey);
+        //Debug.DrawLine(rayBack.position, hitBack.point, Color.red);
+        //Debug.DrawLine(rayMid.position, hitMid.point, Color.green);
+        //Debug.DrawLine(rayFront.position, hitFront.point, Color.blue);
+        //Debug.DrawLine(rayRight.position, hitRight.point, Color.yellow);
+        //Debug.DrawLine(rayLeft.position, hitLeft.point, Color.yellow);
+        //Debug.DrawLine(rayFrontRight.position, hitFrontRight.point, Color.cyan);
+        //Debug.DrawLine(rayFrontLeft.position, hitFrontLeft.point, Color.grey);
+        //Debug.DrawLine(rayBackLeft.position, hitBackLeft.point, Color.cyan);
+        //Debug.DrawLine(rayBackRight.position, hitBackRight.point, Color.grey);
 
 
 
@@ -485,14 +575,11 @@ public class CharacterMovement : MonoBehaviour
         float diagonalLeftAngle = Vector3.Angle(hitFrontLeft.point, hitBackRight.point);
 
 
-        if (grounded && ((Vector3.Distance(hitMid.point, rayMid.transform.position) > midRayMaxDistance) || isCrouchSliding))
+        if (grounded && ((Vector3.Distance(hitMid.point, rayMid.transform.position) > midRayMaxDistance)))
         {
             Vector3 slideDir = Vector3.zero;
             float slideAngle;
-            if (isCrouchSliding)
-                slideAngle = slopeCrouchSlideAngle;
-            else
-                slideAngle = slopeSlideAngle;
+            slideAngle = slopeSlideAngle;
 
             if (frontBackAngle > slideAngle) //Front/back slope check
             {
@@ -557,11 +644,6 @@ public class CharacterMovement : MonoBehaviour
             isSliding = false;
         }
 
-        //Debug.Log("Angle: " + Vector3.Angle(hitFront.point, hitBack.point));
-        //GameObject.Find("Angle").GetComponent<TextMeshProUGUI>().text = Vector3.Angle(hitFront.point, hitBack.point).ToString();
-        //GameObject.Find("Angle2").GetComponent<TextMeshProUGUI>().text = Vector3.Distance(hitMid.point, rayMid.transform.position).ToString();
-
-
     }
 
     public void Bounce(float bouncePower)
@@ -577,11 +659,12 @@ public class CharacterMovement : MonoBehaviour
         {
             velocity.x *= stoppedDrag;
             velocity.z *= stoppedDrag;
+           
             animator.SetBool("moving", velocity != Vector3.zero);
         }
-
+        
         JumpGravity();
-        SlopeRayCheck();
+        SlipRayCheck();
         GrabLedge();
         if((characterController.collisionFlags & CollisionFlags.Above) != 0 && velocity.y > 0)
         {
@@ -607,6 +690,43 @@ public class CharacterMovement : MonoBehaviour
         }
         //Applied when leaving walls to prevent odd bursts of speed when running against a wall and leaving the wall
 
+    }
+
+    Vector3 GetSlopeForce()
+    {
+        RaycastHit slopeHit;
+        Physics.Raycast(transform.position, Vector3.down, out slopeHit, characterController.height/2 * slopeForceRayLength);
+
+        Ray ray = new Ray(transform.position, Vector3.down);
+        Debug.DrawLine(transform.position, ray.GetPoint(characterController.height / 2 * slopeForceRayLength), Color.green);
+
+        if(slopeHit.normal != Vector3.up && slopeHit.normal != Vector3.zero && velocity.y <= 0)
+        {
+            Vector3 force = Vector3.down * characterController.height / 2 * slopeForce;
+            Debug.Log(force);
+            //grounded = true;
+            return force;
+        }
+
+        return Vector3.zero;
+    }
+    
+    Vector3 GetSlideForce()
+    {
+        RaycastHit slopeHit;
+        Physics.Raycast(transform.position, Vector3.down, out slopeHit, characterController.height / 2 * slopeForceRayLength);
+
+        if (slopeHit.normal != Vector3.up && slopeHit.normal != Vector3.zero && velocity.y <= 0)
+        {
+            float slopeFactor = Mathf.Abs(1 - Vector3.Dot(Vector3.up, slopeHit.normal));
+            Vector3 slideForce = Vector3.ProjectOnPlane(Vector3.down, slopeHit.normal).normalized * slopeFactor * crouchSlideSpeed;
+            //Ray sticks around for 5 seconds
+            Debug.DrawRay(slopeHit.point, slideForce, Color.green, 5f);
+
+            return slideForce;
+        }
+        //even ground, nothing needed
+        return Vector3.zero;
     }
 
     void GroundCheck()
@@ -655,6 +775,8 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         CheckInput();
+        timeSinceLastLedgeGrab += Time.deltaTime;
+        canLedgeGrab = timeSinceLastLedgeGrab > ledgeGrabCooldown;
         animator.SetBool("grounded", grounded || wallrunning);
     }
 
