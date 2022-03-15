@@ -5,7 +5,6 @@ using UnityEngine;
 public class PortalMapScript : MonoBehaviour
 {
     public PortalFoundScript[] portalObj;
-    public List<PortalFoundScript> portals = new List<PortalFoundScript>();
     int portalListSize;
 
     // Start is called before the first frame update
