@@ -28,6 +28,16 @@ public class MoveAIThief : MonoBehaviour
             float randX = 0.0f;
             float randZ = 0.0f;
 
+            randX = Random.Range(movementRadius.transform.position.x -
+                movementRadius.GetComponent<SphereCollider>().radius,
+                movementRadius.transform.position.x +
+                movementRadius.GetComponent<SphereCollider>().radius);
+
+            randZ = Random.Range(movementRadius.transform.position.z -
+                movementRadius.GetComponent<SphereCollider>().radius,
+                movementRadius.transform.position.z +
+                movementRadius.GetComponent<SphereCollider>().radius);
+
             //gameObject.GetComponent<NavMeshAgent>().SetDestination();
         }
 
