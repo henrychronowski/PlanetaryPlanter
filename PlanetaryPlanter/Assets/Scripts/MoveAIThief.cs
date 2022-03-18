@@ -5,8 +5,7 @@ using UnityEngine.AI;
 
 public class MoveAIThief : MonoBehaviour
 {
-    public float moveSpeed; //how fast the ai will move
-    public NavMeshAgent thief;
+    public NavMeshAgent thief; //could be unnecessary
 
     public GameObject player; //to know the player to target
     public Transform detectionRadius; //how close the player must be to be noticed
@@ -18,13 +17,19 @@ public class MoveAIThief : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        newDestinationNeeded = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //gameObject.GetComponent<NavMeshAgent>().SetDestination();
+        if (newDestinationNeeded == true)
+        {
+            float randX = 0.0f;
+            float randZ = 0.0f;
+
+            //gameObject.GetComponent<NavMeshAgent>().SetDestination();
+        }
 
         CheckThiefLocation();
     }
