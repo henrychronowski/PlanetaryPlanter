@@ -38,7 +38,10 @@ public class MoveAIThief : MonoBehaviour
                 movementRadius.transform.position.z +
                 movementRadius.GetComponent<SphereCollider>().radius);
 
-            //gameObject.GetComponent<NavMeshAgent>().SetDestination();
+            destination = new Vector3(randX, 1, randZ);
+            gameObject.GetComponent<NavMeshAgent>().SetDestination(destination);
+
+            newDestinationNeeded = false;
         }
 
         CheckThiefLocation();
