@@ -13,6 +13,7 @@ public class MoveAIThief : MonoBehaviour
 
     Vector3 destination;
     bool newDestinationNeeded = false;
+    bool playerSpotted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,15 +45,40 @@ public class MoveAIThief : MonoBehaviour
             newDestinationNeeded = false;
         }
 
+        if (playerSpotted == true)
+        {
+            destination = player.transform.position;
+        }
+
         CheckThiefLocation();
     }
 
     void CheckThiefLocation()
     {
+        //maybe change this to a distance close to the destination (with a slight pause?)
         if (gameObject.transform.position == destination)
         {
             //pick new location to move to
             newDestinationNeeded = true;
         }
+        //if (destination == player.transform.position)
+    }
+
+    public void PlayerNoticed()
+    {
+        //make the ai move after the player now
+        destination = player.transform.position;
+        playerSpotted = true;
+    }
+
+    public void PlayerEscaped()
+    {
+        //have the ai go back to random wandering
+        newDestinationNeeded = true;
+    }
+
+    void StealFromPlayer()
+    {
+        //take an item from the player inventory or something?
     }
 }
