@@ -56,12 +56,11 @@ public class MoveAIThief : MonoBehaviour
     void CheckThiefLocation()
     {
         //maybe change this to a distance close to the destination (with a slight pause?)
-        if (gameObject.transform.position == destination)
+        if (Vector3.Distance(gameObject.transform.position, destination) < 2.0f)
         {
             //pick new location to move to
             newDestinationNeeded = true;
         }
-        //if (destination == player.transform.position)
     }
 
     public void PlayerNoticed()
