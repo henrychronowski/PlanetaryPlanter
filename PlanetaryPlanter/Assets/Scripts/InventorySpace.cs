@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public enum SpaceLocation
 {
     PlayerInventory,
-    SiloInventory
+    SiloInventory,
+    Trash
 }
 
 public class InventorySpace : MonoBehaviour

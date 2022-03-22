@@ -28,7 +28,7 @@ public class FastForwardScript : MonoBehaviour
             Time.timeScale = 0;
             return;
         }
-        else if (Input.GetKey(KeyCode.R))
+        else if (Input.GetKey(KeyCode.F))
         {
             Time.timeScale = fastForwardSpeed;
             fastForwardImage.SetActive(true);

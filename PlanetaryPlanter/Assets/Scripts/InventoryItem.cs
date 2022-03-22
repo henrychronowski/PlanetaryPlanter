@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class InventoryItem : MonoBehaviour
 {
-    public bool initted;
     public GameObject itemObject;
 
     private Image iconDisplay;
@@ -19,6 +20,8 @@ public class InventoryItem : MonoBehaviour
     public Sprite fireStar;
     public Sprite iceStar;
 
+    public ItemID itemID;
+   
     public void Init(GameObject item)
     {
         itemObject = item;
@@ -71,7 +74,6 @@ public class InventoryItem : MonoBehaviour
                 }
             }
         }
-        initted = true;
     }
 
     // Update is called once per frame

@@ -11,13 +11,33 @@ public class CompostPlantScript : MonoBehaviour
     float distanceFromCompostBin;
 
     bool canCompost;
+    bool hasComposted;
+
+    //Counts how many plants you've composted
+    int currentCompost;
+
+    //The minimum amount of plants required to make fertilizer.
+    int minUntilFertilizer;
+
+    public GameObject fertilizer;
+
+    InteractableObject interactable;
+
+    public string compostInteract;
+    public string collectInteract;
 
     // Start is called before the first frame update
     void Start()
     {
+        currentCompost = 0;
+        minUntilFertilizer = 10;
+
         canCompost = false;
+        hasComposted = false;
         inventory = FindObjectOfType<NewInventory>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        interactable = GetComponent<InteractableObject>();
     }
 
     // Update is called once per frame
@@ -25,13 +45,30 @@ public class CompostPlantScript : MonoBehaviour
     {
         CheckDistanceFromPlayer();
         CompostPlant();
+        hasComposted = false;
+
+        interactable.interactText = InteractText();
     }
 
     public void CompostPlant()
     {
         if(Input.GetKeyDown(KeyCode.E) && canCompost)
         {
-            inventory.PopItem();
+            if (inventory.selectedSpace.filled)
+            {
+                if (inventory.GetItem(inventory.selectedSpace).gameObject.tag == "Plant")
+                {
+                    inventory.PopItem();
+                    currentCompost++;
+                    hasComposted = true;
+                }
+            }
+
+            if (inventory.SpacesAvailable() > 0 && currentCompost >= minUntilFertilizer && !hasComposted)
+            {
+                currentCompost -= minUntilFertilizer;
+                inventory.AddItem(fertilizer);
+            }
         }
     }
 
@@ -41,14 +78,21 @@ public class CompostPlantScript : MonoBehaviour
         if(distanceFromCompostBin > distance)
         {
             canCompost = true;
-            Debug.Log("Can Compost");
+            TutorialManagerScript.instance.Unlock("Compost Bin");
         }
         else
         {
             canCompost = false;
-            Debug.Log("Can't Compost");
         }
     }
 
+    string InteractText()
+    {
+        if(currentCompost >= minUntilFertilizer)
+        {
+            return collectInteract;
+        }
 
+        return compostInteract;
+    }
 }

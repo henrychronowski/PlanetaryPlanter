@@ -31,6 +31,9 @@ public class CharacterMovement : MonoBehaviour
     float groundedGravity;
 
     [SerializeField]
+    float maxFallSpeed;
+
+    [SerializeField]
     float movementDrag;
 
     [SerializeField]
@@ -64,6 +67,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     Vector3 velocity;
 
+    [SerializeField]
+    float verticalVelocity;
 
     [SerializeField]
     float jumpDetectRadius;
@@ -99,6 +104,14 @@ public class CharacterMovement : MonoBehaviour
     public float glideTurnSpeed;
     public GameObject gliderIndicator;
 
+    public Vector3 actualMovementDirection;
+    public Vector3 actualVelocity;
+    public Vector3 previousPos;
+    public float moveAlongWallAngleDifference;
+    public float collisionMovementAngleDifference;
+    public bool touchingWall;
+    public float touchingWallMaxSpeed;
+
     void CheckInput()
     {
         xMove = Input.GetAxisRaw("Horizontal");
@@ -108,10 +121,11 @@ public class CharacterMovement : MonoBehaviour
             jumping = true;
             jumpSound.Play();
         }
-        else if(Input.GetKeyDown(KeyCode.Space) && !grounded)
+        else if(Input.GetKeyDown(KeyCode.LeftShift) && !grounded)
         {
             holdingGlider = !holdingGlider; //Swaps value of holdingGlider
         }
+
     }
 
     void Move()
@@ -132,6 +146,35 @@ public class CharacterMovement : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             }
+            else if ((characterController.collisionFlags & CollisionFlags.Sides) != 0)
+            {
+                touchingWall = true;
+
+                targetAngle = Mathf.Atan2(actualMovementDirection.x, actualMovementDirection.z) * Mathf.Rad2Deg;
+                float playerTargetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                if (playerTargetAngle > 180)
+                    playerTargetAngle = (playerTargetAngle - 360);
+                if (playerTargetAngle < -180)
+                    playerTargetAngle = (playerTargetAngle + 360);
+
+                collisionMovementAngleDifference = Mathf.Abs(targetAngle - playerTargetAngle);
+                if (collisionMovementAngleDifference > 180)
+                    collisionMovementAngleDifference = 360 - collisionMovementAngleDifference;
+                
+                if(collisionMovementAngleDifference < moveAlongWallAngleDifference)
+                {
+                    angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                    moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                }
+                else
+                {
+                    angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, playerTargetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                    moveDir = Quaternion.Euler(0f, playerTargetAngle, 0f) * Vector3.forward;
+                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                }
+
+            }
             else
             {
                 targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -139,6 +182,7 @@ public class CharacterMovement : MonoBehaviour
                 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
             }
+
 
             if (grounded)
                 velocity += moveDir.normalized * speed * Time.deltaTime;
@@ -213,6 +257,10 @@ public class CharacterMovement : MonoBehaviour
         else //Gravity while airborne and not holding jump
         {
             velocity.y += -gravity;
+        }
+        if(velocity.y < -maxFallSpeed)
+        {
+            velocity.y = -maxFallSpeed;
         }
     }
 
@@ -338,12 +386,41 @@ public class CharacterMovement : MonoBehaviour
 
     void Integrate()
     {
-        if(canMove) //Prevents movement in cutscenes and such
+        if (canMove) //Prevents movement in cutscenes and such
             Move();
+        else
+        {
+            velocity.x *= stoppedDrag;
+            velocity.z *= stoppedDrag;
+            animator.SetBool("moving", velocity != Vector3.zero);
+        }
 
         JumpGravity();
         SlopeRayCheck();
+        if((characterController.collisionFlags & CollisionFlags.Above) != 0 && velocity.y > 0)
+        {
+            velocity.y = 0;
+        }
+
+        if ((characterController.collisionFlags & CollisionFlags.Sides) != 0)
+        {
+            Vector3 xzMove = new Vector3(velocity.x, 0, velocity.z);
+            float actualVelocityMagnitude = new Vector2(actualVelocity.x, actualVelocity.z).magnitude;
+            xzMove = Vector3.ClampMagnitude(xzMove, maxSpeed - (maxSpeed * (collisionMovementAngleDifference/90)));
+            velocity.x = xzMove.x;
+            velocity.z = xzMove.z;
+        }
         characterController.Move(Time.deltaTime * velocity);
+        if ((characterController.collisionFlags & CollisionFlags.Sides) != 0)
+        {
+            touchingWall = true;
+            actualMovementDirection = ((transform.position - previousPos) /Time.deltaTime).normalized;
+            actualVelocity = (((transform.position - previousPos).normalized * Vector3.Distance(transform.position, previousPos)) / Time.deltaTime);
+            
+            Debug.DrawRay(transform.position, actualMovementDirection);
+        }
+        //Applied when leaving walls to prevent odd bursts of speed when running against a wall and leaving the wall
+
     }
 
     void GroundCheck()
@@ -380,6 +457,13 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    public void Teleport(Vector3 position)
+    {
+        characterController.enabled = false;
+        transform.position = position;
+        characterController.enabled = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -396,6 +480,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        previousPos = transform.position;
         Integrate();
         GroundCheck();
         GlideCheck();
