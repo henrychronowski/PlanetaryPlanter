@@ -81,6 +81,7 @@ Shader "Custom/CurvedTerrainLit"
 #pragma instancing_options assumeuniformscaling nomatrices nolightprobe nolightmap
 
 #pragma multi_compile _ _ALPHATEST_ON
+#pragma multi_compile __ IN_EDITOR
 
 // All our shaders use same name for entry point
 #pragma vertex Vert
