@@ -74,6 +74,7 @@ public class MoveAIThief : MonoBehaviour
     {
         //have the ai go back to random wandering
         newDestinationNeeded = true;
+        playerSpotted = false;
     }
 
     void StealFromPlayer()
