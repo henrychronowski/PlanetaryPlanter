@@ -19,7 +19,7 @@ public class GoToStartScript : MonoBehaviour
 
     IEnumerator GoToStart()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(5.0f);
         SceneManager.LoadScene(0);
     }
 }
