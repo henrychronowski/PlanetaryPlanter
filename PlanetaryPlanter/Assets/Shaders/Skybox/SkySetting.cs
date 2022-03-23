@@ -11,6 +11,8 @@ public class NewSky : SkySettings
 
 	[Tooltip("Specify the cubemap HDRP uses to render the sky.")]
 	public CubemapParameter hdriSky = new CubemapParameter(null);
+	[Tooltip("Specify the sky tint.")]
+	public ColorParameter hdriParam = new ColorParameter(Color.cyan);
 
 	public override Type GetSkyRendererType()
 	{
@@ -22,7 +24,15 @@ public class NewSky : SkySettings
 		int hash = base.GetHashCode();
 		unchecked
 		{
-			hash = hdriSky.value != null ? hash * 23 + hdriSky.GetHashCode() : hash;
+			hash = hdriSky.value != null ? hash * 23 + hdriSky.GetHashCode() + hdriParam.GetHashCode(): hash;
+			// if(hdriSky.value != null)
+			// {
+			// 	hash = hash * 23 + hdriSky.GetHashCode();
+			// }
+			// else
+			// {
+			// 	//hash = hash;
+			// }
 		}
 		return hash;
 	}
