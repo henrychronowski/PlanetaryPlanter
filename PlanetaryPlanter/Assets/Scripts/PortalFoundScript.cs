@@ -11,6 +11,8 @@ public class PortalFoundScript : MonoBehaviour
     [SerializeField]
     float distanceFromPortalPlant;
 
+    public GameObject portalMap;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class PortalFoundScript : MonoBehaviour
     void Update()
     {
         CheckDistanceFromPlayer();
+        Teleport();
     }
 
     void CheckDistanceFromPlayer()
@@ -49,6 +52,15 @@ public class PortalFoundScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             canTeleport = false;
+        }
+    }
+
+    void Teleport()
+    {
+        if(Input.GetKeyDown(KeyCode.E) && canTeleport == true)
+        {
+            portalMap.SetActive(true);
+            NewInventory.instance.SetSpacesActive(true);
         }
     }
 }
