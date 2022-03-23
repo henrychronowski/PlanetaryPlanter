@@ -23,6 +23,7 @@ public class DetectPlayer : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            Debug.Log("player spotted, move to engage");
             thief.GetComponent<MoveAIThief>().PlayerNoticed();
         }
     }
