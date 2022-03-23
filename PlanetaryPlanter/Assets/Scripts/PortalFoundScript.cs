@@ -60,6 +60,7 @@ public class PortalFoundScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E) && canTeleport == true)
         {
             portalMap.SetActive(true);
+            NewInventory.instance.SetSpacesActive(true);
         }
     }
 }
