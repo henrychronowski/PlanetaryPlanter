@@ -16,11 +16,7 @@ public enum PlanetType
 {
     None,
     VolcanicAsh,
-    FrozenCore,
-    Sprout,
-    MortalCoil,
-    DewDrop,
-    Fossilium
+    FrozenCore
 }
 
 
