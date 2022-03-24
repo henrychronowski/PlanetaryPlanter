@@ -14,8 +14,6 @@ Shader "Hidden/HDRP/Sky/SkyShader"
 
         TEXTURECUBE(_Cubemap);
     SAMPLER(sampler_Cubemap);
-   // TEXTURE(_Skymap);
-   // COLOR(_SkyColor)
 
     float4 _SkyParam; // x exposure, y multiplier, zw rotation (cosPhi and sinPhi)
 
@@ -56,7 +54,7 @@ Shader "Hidden/HDRP/Sky/SkyShader"
     float4 GetColorWithRotation(float3 dir, float exposure, float2 cos_sin)
     {
         dir = RotationUp(dir, cos_sin);
-        float3 skyColor = float3(1.0, 1.0, 1.0);// SAMPLE_TEXTURECUBE_LOD(_Cubemap, sampler_Cubemap, dir, 0).rgb * _Intensity * exposure;
+        float3 skyColor = SAMPLE_TEXTURECUBE_LOD(_Cubemap, sampler_Cubemap, dir, 0).rgb * _Intensity * exposure;
         skyColor = ClampToFloat16Max(skyColor);
 
         return float4(skyColor, 1.0);
