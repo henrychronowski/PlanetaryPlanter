@@ -61,12 +61,16 @@ public class PlantSpot : MonoBehaviour
                 }
             case PlanetSpecies.Comet:
                 {
-                    //not fully implemented
+                    plantObject = Instantiate(items.items[(int)ItemID.CometPlant], transform);
+                    placedPlant = plantObject.GetComponent<Plant>();
+                    placedPlant.AddElapsedHours((int)growth);
                     break;
                 }
             case PlanetSpecies.RockPlanet:
                 {
-                    //not fully implemented
+                    plantObject = Instantiate(items.items[(int)ItemID.RockyPlanetPlant], transform);
+                    placedPlant = plantObject.GetComponent<Plant>();
+                    placedPlant.AddElapsedHours((int)growth);
 
                     break;
                 }
