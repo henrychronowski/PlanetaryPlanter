@@ -41,7 +41,7 @@ public class ObservatoryMaster : MonoBehaviour
             playerCam.GetComponent<Cinemachine.CinemachineFreeLook>().enabled = false;
             inObservatoryView = true;
             TutorialManagerScript.instance.Unlock("The Telescope");
-            //main.Stop();
+            main.Stop();
             telescope.Play();
             foreach (Transform observatory in observatoryPoints)
             {
@@ -54,7 +54,7 @@ public class ObservatoryMaster : MonoBehaviour
             playerCam.GetComponent<Cinemachine.CinemachineFreeLook>().enabled = true;
             inObservatoryView = false;
             telescope.Stop();
-            //main.Play();
+            main.Play();
             foreach (Transform observatory in observatoryPoints)
             {
                 observatory.gameObject.SetActive(false);
@@ -243,6 +243,7 @@ public class ObservatoryMaster : MonoBehaviour
             observatory.gameObject.SetActive(false);
         }
         initted = true;
+        
     }
 
     // Update is called once per frame
