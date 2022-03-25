@@ -59,6 +59,32 @@ public class AlmanacProgression : MonoBehaviour
         }
         return null;
     }
+
+    public string[] GetAllCompletedAchievements()
+    {
+        List<string> completedAchievements = new List<string>();
+        foreach (Achievement t in achievements)
+        {
+            if (t.unlocked)
+            {
+                completedAchievements.Add(t.title);
+            }
+        }
+        return completedAchievements.ToArray();
+    }
+
+    public void LoadCompletedAchievements(string[] completedAchievements)
+    {
+        foreach (string key in completedAchievements)
+        {
+            if (FindAchievementByTitle(key) != null)
+            {
+                FindAchievementByTitle(key).unlocked = true;
+                Debug.Log("Unlocked " + key);
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

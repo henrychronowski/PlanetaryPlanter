@@ -27,6 +27,15 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
     }
 
+    public void LoadGame()
+    {
+        
+        GameObject.FindObjectOfType<SaveManager>().LoadGame();
+    }
+    public void NewGame()
+    {
+        GameObject.FindObjectOfType<SaveManager>().NewGame();
+    }
     public void QuitGame()
     {
         Application.Quit();
