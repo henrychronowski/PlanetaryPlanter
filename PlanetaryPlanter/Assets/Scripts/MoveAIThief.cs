@@ -51,7 +51,8 @@ public class MoveAIThief : MonoBehaviour
         if (playerSpotted == true)
         {
             Debug.Log("updating player position");
-            //destination = player.transform.position;
+
+            destination = player.transform.position;
             gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
         }
 
@@ -72,6 +73,8 @@ public class MoveAIThief : MonoBehaviour
     {
         //make the ai move after the player now
         Debug.Log("player spotted");
+
+        destination = player.transform.position;
         gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
         playerSpotted = true;
     }
@@ -80,12 +83,25 @@ public class MoveAIThief : MonoBehaviour
     {
         //have the ai go back to random wandering
         Debug.Log("player escaped");
+
         newDestinationNeeded = true;
         playerSpotted = false;
     }
 
-    void StealFromPlayer()
+    void StealFromPlayer() //take an item from the player inventory
     {
-        //take an item from the player inventory or something?
+        int randItem;
+
+        //could be this or a collider contact
+        if (Vector3.Distance(gameObject.transform.position, destination) < 1.0f)
+        {
+            if (player.GetComponent<Inventory>().itemsInInventory > 0)
+            {
+                randItem = (int)Random.Range(0, player.GetComponent<Inventory>().itemsInInventory);
+
+                Debug.Log("got your nose :)");
+                stolenObject = player.GetComponent<Inventory>().inventory[randItem];
+            }
+        }
     }
 }
