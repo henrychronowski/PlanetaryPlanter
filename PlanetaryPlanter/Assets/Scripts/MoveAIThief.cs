@@ -12,6 +12,7 @@ public class MoveAIThief : MonoBehaviour
     public Transform movementRadius; //the range on the map the ai can move
 
     Vector3 destination;
+    GameObject stolenObject; //gameobject or what?
     bool newDestinationNeeded = false;
     bool playerSpotted = false;
 
@@ -26,6 +27,8 @@ public class MoveAIThief : MonoBehaviour
     {
         if (newDestinationNeeded == true)
         {
+            Debug.Log("picking new destination");
+            
             float randX = 0.0f;
             float randZ = 0.0f;
 
@@ -47,7 +50,9 @@ public class MoveAIThief : MonoBehaviour
 
         if (playerSpotted == true)
         {
-            destination = player.transform.position;
+            Debug.Log("updating player position");
+            //destination = player.transform.position;
+            gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
         }
 
         CheckThiefLocation();
@@ -66,13 +71,15 @@ public class MoveAIThief : MonoBehaviour
     public void PlayerNoticed()
     {
         //make the ai move after the player now
-        destination = player.transform.position;
+        Debug.Log("player spotted");
+        gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
         playerSpotted = true;
     }
 
     public void PlayerEscaped()
     {
         //have the ai go back to random wandering
+        Debug.Log("player escaped");
         newDestinationNeeded = true;
         playerSpotted = false;
     }
