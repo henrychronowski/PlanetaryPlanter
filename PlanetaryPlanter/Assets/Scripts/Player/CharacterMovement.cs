@@ -59,7 +59,10 @@ public class CharacterMovement : MonoBehaviour
     bool grounded;
     
     [SerializeField]
-    public bool canMove = true; 
+    public bool canMove = true;
+
+    [SerializeField]
+    public bool canParkour = false;
     
     [SerializeField]
     bool jumping;
@@ -191,6 +194,8 @@ public class CharacterMovement : MonoBehaviour
     // https://dude123code.medium.com/finally-a-good-wall-run-in-unity-4de42bcb7289
     private void OnCollisionEnter(Collision collision)
     {
+        if (!canParkour)
+            return;
         float collisionDot = Mathf.Abs(Vector3.Dot(collision.GetContact(0).normal, Vector3.up));
         if (collisionDot < 0.1f && !grounded && !holdingGlider && collision.gameObject.tag != "Player" && !grabbingLedge)
         {
@@ -224,6 +229,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        if (!canParkour)
+            return;
         float collisionDot = Mathf.Abs(Vector3.Dot(collision.GetContact(0).normal, Vector3.up));
         if (collisionDot < 0.1f && !grounded && !holdingGlider && collision.gameObject.tag != "Player" && wallrunning)
         {
@@ -253,8 +260,10 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void OnCollisionExit(Collision collision)
-    { 
-        if(collision.gameObject == currentWall)
+    {
+        if (!canParkour)
+            return;
+        if (collision.gameObject == currentWall)
         {
             if(!grabbingLedge) //Prevents leaving the wall unintentionally when grabbing ledge
             {
