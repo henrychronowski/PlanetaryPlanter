@@ -117,12 +117,13 @@ public class PlantSpot : MonoBehaviour
             AlmanacProgression.instance.Unlock("GetFertilizer");
             TutorialManagerScript.instance.Unlock("Fertilizer");
             GameObject temp2 = Instantiate(fertilizer);
-            NewInventory.instance.AddItem(temp2);
-
-            p.inPot = false;
-            temp.transform.parent = null;
-            temp.transform.position = new Vector3(10000, 100000);
-            plantObject = null;
+            if(NewInventory.instance.AddItem(temp2))
+            {
+                p.inPot = false;
+                temp.transform.parent = null;
+                temp.transform.position = new Vector3(10000, 100000);
+                plantObject = null;
+            }
             return;
         }
         if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject)) //Returns false when inventory is full
