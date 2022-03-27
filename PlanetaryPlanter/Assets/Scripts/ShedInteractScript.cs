@@ -17,6 +17,8 @@ public class ShedInteractScript : MonoBehaviour
 
     Transform player;
 
+    ObservatoryMaster master;
+
     public void Interact()
     {
         if (inventoryPanelObject.activeInHierarchy)
@@ -28,8 +30,8 @@ public class ShedInteractScript : MonoBehaviour
         }
         else if(!NewInventory.instance.forceActive)
         {
-            shedMenu.SetActive(true);
             NewInventory.instance.ForceActive();
+            master.EnterObservatory();
         }
 
     }
@@ -49,6 +51,7 @@ public class ShedInteractScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        master = GameObject.FindObjectOfType<ObservatoryMaster>();
     }
 
     // Update is called once per frame
