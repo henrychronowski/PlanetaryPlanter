@@ -675,7 +675,7 @@ public class CharacterMovement : MonoBehaviour
             velocity.x *= stoppedDrag;
             velocity.z *= stoppedDrag;
            
-            animator.SetBool("moving", velocity != Vector3.zero);
+            animator.SetBool("moving", false);
         }
         
         JumpGravity();
