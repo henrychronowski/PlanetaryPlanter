@@ -27,7 +27,6 @@ public struct PlantsData
             {
                 speciesArray[i] = planters[i].placedPlant.species;
                 growthValue[i] = planters[i].placedPlant.growthProgress;
-                Debug.Log("Save growth as " + growthValue[i]);
                 waterValue[i] = planters[i].placedPlant.currentWater;
             }
 
