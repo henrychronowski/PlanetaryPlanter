@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class PortalMapScript : MonoBehaviour
 {
-    public PortalFoundScript[] portalObj;
-    int portalListSize;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Awake()
     {
-        portalObj = FindObjectsOfType<PortalFoundScript>();
-        portalListSize = portalObj.Length;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void TeleportPlayer(GameObject location)
+    {
+        player.transform.position = new Vector3(location.transform.position.x, location.transform.position.y, location.transform.position.z);
+        NewInventory.instance.SetSpacesActive(false);
     }
 }

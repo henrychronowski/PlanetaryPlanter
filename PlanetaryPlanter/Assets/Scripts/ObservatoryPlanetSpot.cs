@@ -87,7 +87,7 @@ public class ObservatoryPlanetSpot : MonoBehaviour
         }
         else
         {
-            Debug.Log("Filled");
+            //Debug.Log("Filled");
         }
         //Observatory.instance.
     }

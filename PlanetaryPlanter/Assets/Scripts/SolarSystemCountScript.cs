@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SolarSystemCountScript : MonoBehaviour
 {
     public int numSolarSystemsComplete;
+    public int numSolarSystemsTotal = 77;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class SolarSystemCountScript : MonoBehaviour
 
     void CheckEndStatus()
     {
-        if(numSolarSystemsComplete == 77)
+        if(numSolarSystemsComplete == numSolarSystemsTotal)
         {
             SceneManager.LoadScene(2);
         }
