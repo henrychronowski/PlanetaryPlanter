@@ -16,7 +16,11 @@ public enum PlanetType
 {
     None,
     VolcanicAsh,
-    FrozenCore
+    FrozenCore,
+    MortalCoil,
+    Fossilium,
+    DewDrop,
+    Sprout
 }
 
 
@@ -83,7 +87,7 @@ public class ObservatoryPlanetSpot : MonoBehaviour
         }
         else
         {
-            Debug.Log("Filled");
+            //Debug.Log("Filled");
         }
         //Observatory.instance.
     }

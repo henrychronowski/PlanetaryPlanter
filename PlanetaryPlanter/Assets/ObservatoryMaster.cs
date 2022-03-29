@@ -243,6 +243,7 @@ public class ObservatoryMaster : MonoBehaviour
             observatory.gameObject.SetActive(false);
         }
         initted = true;
+        
     }
 
     // Update is called once per frame

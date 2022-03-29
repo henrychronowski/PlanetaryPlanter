@@ -14,6 +14,10 @@ public class PlanetInformationScript : MonoBehaviour
 
     public Sprite[] star;
 
+    public Sprite[] rocky;
+
+    public Sprite[] comet;
+
     public Image preview;
 
     public bool isHovering;
@@ -80,6 +84,16 @@ public class PlanetInformationScript : MonoBehaviour
             case PlanetSpecies.Star:
                 {
                     preview.sprite = star[(int)type];
+                    break;
+                }
+            case PlanetSpecies.RockPlanet:
+                {
+                    preview.sprite = rocky[(int)type];
+                    break;
+                }
+            case PlanetSpecies.Comet:
+                {
+                    preview.sprite = comet[(int)type];
                     break;
                 }
         }

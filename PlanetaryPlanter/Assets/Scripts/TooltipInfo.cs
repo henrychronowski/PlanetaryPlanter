@@ -15,8 +15,19 @@ public class TooltipInfo : MonoBehaviour
     public string iceModName;
     public string iceModInfo;
 
+    public string ghostModName;
+    public string ghostModInfo;
+
+    public string fossilModName;
+    public string fossilModInfo;
+
+    public string waterModName;
+    public string waterModInfo;
+
+    public string grassModName;
+    public string grassModInfo;
+
     public bool isPlant = false;
-    public ItemID itemID;
 
     void CheckForMods()
     {
@@ -33,6 +44,30 @@ public class TooltipInfo : MonoBehaviour
             {
                 name = iceModName;
                 otherInfo = iceModInfo;
+            }
+
+            if (GetComponent<Plant>().type == PlanetType.MortalCoil)
+            {
+                name = ghostModName;
+                otherInfo = ghostModInfo;
+            }
+
+            if (GetComponent<Plant>().type == PlanetType.Fossilium)
+            {
+                name = fossilModName;
+                otherInfo = fossilModInfo;
+            }
+
+            if (GetComponent<Plant>().type == PlanetType.DewDrop)
+            {
+                name = waterModName;
+                otherInfo = waterModInfo;
+            }
+
+            if (GetComponent<Plant>().type == PlanetType.Sprout)
+            {
+                name = grassModName;
+                otherInfo = grassModInfo;
             }
         }
     }
