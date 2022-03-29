@@ -3,7 +3,17 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{4873F100-2662-4601-ABFA-5650B10E15D6}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="PlayMainMenuTheme" ID="{4CB0CD5F-FE29-48D3-993B-8A527EDF551E}"/>
+				<Event Name="PlayMainMenuTheme" ID="{4CB0CD5F-FE29-48D3-993B-8A527EDF551E}">
+					<ChildrenList>
+						<Action Name="" ID="{FBF96160-0587-4983-AC6C-698F7C0B5A43}" ShortID="759954358">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MainMenuTheme" ID="{D02FC784-3812-4338-8C4B-B527E7CFD2F7}" WorkUnitID="{B6F0A9CD-F468-4FD4-84C6-683319B6BADB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
