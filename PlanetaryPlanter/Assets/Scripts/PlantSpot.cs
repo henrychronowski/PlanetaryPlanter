@@ -61,12 +61,16 @@ public class PlantSpot : MonoBehaviour
                 }
             case PlanetSpecies.Comet:
                 {
-                    //not fully implemented
+                    plantObject = Instantiate(items.items[(int)ItemID.CometPlant], transform);
+                    placedPlant = plantObject.GetComponent<Plant>();
+                    placedPlant.AddElapsedHours((int)growth);
                     break;
                 }
             case PlanetSpecies.RockPlanet:
                 {
-                    //not fully implemented
+                    plantObject = Instantiate(items.items[(int)ItemID.RockyPlanetPlant], transform);
+                    placedPlant = plantObject.GetComponent<Plant>();
+                    placedPlant.AddElapsedHours((int)growth);
 
                     break;
                 }
@@ -113,12 +117,13 @@ public class PlantSpot : MonoBehaviour
             AlmanacProgression.instance.Unlock("GetFertilizer");
             TutorialManagerScript.instance.Unlock("Fertilizer");
             GameObject temp2 = Instantiate(fertilizer);
-            NewInventory.instance.AddItem(temp2);
-
-            p.inPot = false;
-            temp.transform.parent = null;
-            temp.transform.position = new Vector3(10000, 100000);
-            plantObject = null;
+            if(NewInventory.instance.AddItem(temp2))
+            {
+                p.inPot = false;
+                temp.transform.parent = null;
+                temp.transform.position = new Vector3(10000, 100000);
+                plantObject = null;
+            }
             return;
         }
         if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject)) //Returns false when inventory is full
