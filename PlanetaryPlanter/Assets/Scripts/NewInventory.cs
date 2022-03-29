@@ -28,6 +28,7 @@ public class NewInventory : MonoBehaviour
     public InventorySpace selectedSpace;
     public GameObject selectionIndicator;
     public GameObject grayOutLevelPanel;
+    public GameObject craftingMenu;
     public int selectedIndex;
     public float scrollWheel;
     public bool inventoryActive; // True when the mouse has been unconfined and can click on things, only when UI is open
@@ -44,6 +45,20 @@ public class NewInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             SetSpacesActiveToggle();
+        }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            if(!inventoryActive)
+                SetSpacesActiveToggle();
+
+            if(craftingMenu.activeInHierarchy)
+            {
+                CloseCraftingMenu();
+            }
+            else
+            {
+                OpenCraftingMenu();
+            }
         }
         scrollWheel = Input.mouseScrollDelta.y * -5;
         
@@ -397,6 +412,16 @@ public class NewInventory : MonoBehaviour
         {
             SetSpacesActive(true);
         }
+    }
+
+    void OpenCraftingMenu()
+    {
+        craftingMenu.SetActive(true);
+    }
+
+    void CloseCraftingMenu()
+    {
+        craftingMenu.SetActive(false);
     }
 
     public ItemID[] ReturnAllInventoryIDs()
