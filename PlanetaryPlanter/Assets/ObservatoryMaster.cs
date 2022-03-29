@@ -63,6 +63,21 @@ public class ObservatoryMaster : MonoBehaviour
         }
     }
 
+    public void UpdateToDoUI()
+    {
+        int currentConstellation = 0;
+        for(int i = 0; i < unlockedConstellations.Count; i++)
+        {
+            if (unlockedConstellations[i])
+            {
+                currentConstellation = i;
+            }
+            else
+                break;
+        }
+        observatoryPoints[currentConstellation].GetComponentInChildren<SolarSystemInfo>().UpdateRequirementsPanel();
+    }
+
     public List<ObservatoryPlanetSpot> GetPlanetSpotsOfCurrentChapter()
     {
         List<ObservatoryPlanetSpot> spots = new List<ObservatoryPlanetSpot>();
@@ -251,5 +266,6 @@ public class ObservatoryMaster : MonoBehaviour
     {
         LerpUpdate();
         ChangeConstellationButtonStatus();
+        UpdateToDoUI();
     }
 }
