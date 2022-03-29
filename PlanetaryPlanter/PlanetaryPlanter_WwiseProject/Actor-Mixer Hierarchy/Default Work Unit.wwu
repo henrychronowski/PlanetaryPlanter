@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{B6F0A9CD-F468-4FD4-84C6-683319B6BADB}" SchemaVersion="103">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{B6F0A9CD-F468-4FD4-84C6-683319B6BADB}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{B6F0A9CD-F468-4FD4-84C6-683319B6BADB}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="MainMenuTheme" ID="{E35A6E64-15E3-4B0D-B217-1645439FA7FC}" ShortID="1056992055">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{88BBB5EB-E248-4191-8C2E-3803159B9DFA}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{FCE47502-5DDC-4FE2-AA0A-BD7B21AE7032}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="MainMenuTheme" ID="{59CF2292-478A-4C82-8404-AE8C78D3792A}">
+							<PropertyList>
+								<Property Name="FadeInDuration" Type="Real64" Value="1.67594737387341"/>
+								<Property Name="FadeOutDuration" Type="Real64" Value="10.3604019475811"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="101.928072101937"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>MainMenuTheme.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="525634859"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="MainMenuTheme" ID="{59CF2292-478A-4C82-8404-AE8C78D3792A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

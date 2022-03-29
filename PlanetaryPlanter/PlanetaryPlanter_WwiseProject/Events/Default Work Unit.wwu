@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{4873F100-2662-4601-ABFA-5650B10E15D6}" SchemaVersion="103">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{4873F100-2662-4601-ABFA-5650B10E15D6}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{4873F100-2662-4601-ABFA-5650B10E15D6}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="PlayMainMenuTheme" ID="{4CB0CD5F-FE29-48D3-993B-8A527EDF551E}"/>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>
