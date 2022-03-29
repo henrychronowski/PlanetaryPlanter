@@ -1,8 +1,12 @@
+// Shader for curving objects using vertex displacement
+// Built from @Cyanilux's URP PBR template as cited below
+// - Henry Chronoski
+
 // Example Shader for Universal RP
 // Written by @Cyanilux
 // https://www.cyanilux.com/tutorials/urp-shader-code
 
-Shader "Cyanilux/URPTemplates/PBRLitShaderExample" {
+Shader "0CurvedURPCustoms/PBRLitShaderExample" {
 	Properties{
 		// Sorry the inspector is a little messy, but I'd rather not rely on a Custom ShaderGUI
 		// or the one used by the Lit/Shader, as then adding new properties won't show
@@ -52,215 +56,221 @@ Shader "Cyanilux/URPTemplates/PBRLitShaderExample" {
 
 				// Not including Detail maps in this template
 	}
-		SubShader{
-			Tags {
-				"RenderPipeline" = "UniversalPipeline"
-				"RenderType" = "Opaque"
-				"Queue" = "Geometry"
-			}
+	SubShader{
+		Tags {
+			"RenderPipeline" = "UniversalPipeline"
+			"RenderType" = "Opaque"
+			"Queue" = "Geometry"
+		}
 
-			HLSLINCLUDE
-			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+		HLSLINCLUDE
+		#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-			CBUFFER_START(UnityPerMaterial)
-			float4 _BaseMap_ST;
-			float4 _BaseColor;
-			float4 _EmissionColor;
-			float4 _SpecColor;
-			float _Metallic;
-			float _Smoothness;
-			float _OcclusionStrength;
-			float _Cutoff;
-			float _BumpScale;
-			CBUFFER_END
-			ENDHLSL
+		CBUFFER_START(UnityPerMaterial)
+		float4 _BaseMap_ST;
+		float4 _BaseColor;
+		float4 _EmissionColor;
+		float4 _SpecColor;
+		float _Metallic;
+		float _Smoothness;
+		float _OcclusionStrength;
+		float _Cutoff;
+		float _BumpScale;
+		CBUFFER_END
+		ENDHLSL
 
-			Pass {
-				Name "ForwardLit"
-				Tags { "LightMode" = "UniversalForward" }
+		Pass {
+			Name "ForwardLit"
+			Tags { "LightMode" = "UniversalForward" }
 
-				HLSLPROGRAM
-				#pragma vertex LitPassVertex
-				#pragma fragment LitPassFragment
+			HLSLPROGRAM
+			#pragma vertex LitPassVertex
+			#pragma fragment LitPassFragment
 
-				// ---------------------------------------------------------------------------
-				// Keywords
-				// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Keywords
+// ---------------------------------------------------------------------------
 
-				// Material Keywords
-				#pragma shader_feature_local _NORMALMAP
-				#pragma shader_feature_local_fragment _ALPHATEST_ON
-				#pragma shader_feature_local_fragment _ALPHAPREMULTIPLY_ON
-				#pragma shader_feature_local_fragment _EMISSION
-				#pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
-				#pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-				#pragma shader_feature_local_fragment _OCCLUSIONMAP
+			// Material Keywords
+			#pragma shader_feature_local _NORMALMAP
+			#pragma shader_feature_local_fragment _ALPHATEST_ON
+			#pragma shader_feature_local_fragment _ALPHAPREMULTIPLY_ON
+			#pragma shader_feature_local_fragment _EMISSION
+			#pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
+			#pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+			#pragma shader_feature_local_fragment _OCCLUSIONMAP
 
-				//#pragma shader_feature_local _PARALLAXMAP // v10+ only
-				//#pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED // v10+ only
-				// Note, for this template not supporting parallax/height mapping or detail maps
+			//#pragma shader_feature_local _PARALLAXMAP // v10+ only
+			//#pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED // v10+ only
+			// Note, for this template not supporting parallax/height mapping or detail maps
 
-				//#pragma shader_feature_local _ _CLEARCOAT _CLEARCOATMAP // v10+ only, URP/ComplexLit shader
+			//#pragma shader_feature_local _ _CLEARCOAT _CLEARCOATMAP // v10+ only, URP/ComplexLit shader
 
-				#pragma shader_feature_local_fragment _SPECULARHIGHLIGHTS_OFF
-				#pragma shader_feature_local_fragment _ENVIRONMENTREFLECTIONS_OFF
-				#pragma shader_feature_local_fragment _SPECULAR_SETUP
-				#pragma shader_feature_local _RECEIVE_SHADOWS_OFF
+			#pragma shader_feature_local_fragment _SPECULARHIGHLIGHTS_OFF
+			#pragma shader_feature_local_fragment _ENVIRONMENTREFLECTIONS_OFF
+			#pragma shader_feature_local_fragment _SPECULAR_SETUP
+			#pragma shader_feature_local _RECEIVE_SHADOWS_OFF
 
-				// URP Keywords
-				#pragma multi_compile _ _MAIN_LIGHT_SHADOWS
-				#pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
-				// Note, v11 changes these to :
-				// #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+			// URP Keywords
+			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS
+			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
+			// Note, v11 changes these to :
+			// #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
 
-				#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
-				#pragma multi_compile_fragment _ _ADDITIONAL_LIGHT_SHADOWS
-				#pragma multi_compile_fragment _ _SHADOWS_SOFT
-				#pragma multi_compile_fragment _ _SCREEN_SPACE_OCCLUSION // v10+ only (for SSAO support)
-				#pragma multi_compile _ LIGHTMAP_SHADOW_MIXING // v10+ only, renamed from "_MIXED_LIGHTING_SUBTRACTIVE"
-				#pragma multi_compile _ SHADOWS_SHADOWMASK // v10+ only
+			#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
+			#pragma multi_compile_fragment _ _ADDITIONAL_LIGHT_SHADOWS
+			#pragma multi_compile_fragment _ _SHADOWS_SOFT
+			#pragma multi_compile_fragment _ _SCREEN_SPACE_OCCLUSION // v10+ only (for SSAO support)
+			#pragma multi_compile _ LIGHTMAP_SHADOW_MIXING // v10+ only, renamed from "_MIXED_LIGHTING_SUBTRACTIVE"
+			#pragma multi_compile _ SHADOWS_SHADOWMASK // v10+ only
 
-				// Unity Keywords
-				#pragma multi_compile _ LIGHTMAP_ON
-				#pragma multi_compile _ DIRLIGHTMAP_COMBINED
-				#pragma multi_compile_fog
+			// Unity Keywords
+			#pragma multi_compile _ LIGHTMAP_ON
+			#pragma multi_compile _ DIRLIGHTMAP_COMBINED
+			#pragma multi_compile_fog
 
-				// GPU Instancing (not supported)
-				//#pragma multi_compile_instancing
+			// Custom Keywords
+			#pragma multi_compile _ IN_EDITOR
 
-				// ---------------------------------------------------------------------------
-				// Structs
-				// ---------------------------------------------------------------------------
+			// GPU Instancing (not supported)
+			//#pragma multi_compile_instancing
 
-				#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+// ---------------------------------------------------------------------------
+// Structs
+// ---------------------------------------------------------------------------
 
-				struct Attributes
-	 {
-float4 positionOS	: POSITION;
-#ifdef _NORMALMAP
-	float4 tangentOS 	: TANGENT;
-#endif
-float4 normalOS		: NORMAL;
-float2 uv		    : TEXCOORD0;
-float2 lightmapUV	: TEXCOORD1;
-float4 color		: COLOR;
-//UNITY_VERTEX_INPUT_INSTANCE_ID
-};
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
-struct Varyings
-{
-float4 positionCS 					: SV_POSITION;
-float2 uv		    				: TEXCOORD0;
-DECLARE_LIGHTMAP_OR_SH(lightmapUV, vertexSH, 1);
-float3 positionWS					: TEXCOORD2;
+			struct Attributes
+			{
+				float4 positionOS	: POSITION;
+				#ifdef _NORMALMAP
+					float4 tangentOS 	: TANGENT;
+				#endif
+				float4 normalOS		: NORMAL;
+				float2 uv		    : TEXCOORD0;
+				float2 lightmapUV	: TEXCOORD1;
+				float4 color		: COLOR;
+				//UNITY_VERTEX_INPUT_INSTANCE_ID
+			};
 
-#ifdef _NORMALMAP
-	half4 normalWS					: TEXCOORD3;    // xyz: normal, w: viewDir.x
-	half4 tangentWS					: TEXCOORD4;    // xyz: tangent, w: viewDir.y
-	half4 bitangentWS				: TEXCOORD5;    // xyz: bitangent, w: viewDir.z
-#else
-	half3 normalWS					: TEXCOORD3;
-#endif
+			struct Varyings
+			{
+				float4 positionCS 					: SV_POSITION;
+				float2 uv		    				: TEXCOORD0;
+				DECLARE_LIGHTMAP_OR_SH(lightmapUV, vertexSH, 1);
+				float3 positionWS					: TEXCOORD2;
 
-#ifdef _ADDITIONAL_LIGHTS_VERTEX
-	half4 fogFactorAndVertexLight	: TEXCOORD6; // x: fogFactor, yzw: vertex light
-#else
-	half  fogFactor					: TEXCOORD6;
-#endif
+				#ifdef _NORMALMAP
+					half4 normalWS					: TEXCOORD3;    // xyz: normal, w: viewDir.x
+					half4 tangentWS					: TEXCOORD4;    // xyz: tangent, w: viewDir.y
+					half4 bitangentWS				: TEXCOORD5;    // xyz: bitangent, w: viewDir.z
+				#else
+					half3 normalWS					: TEXCOORD3;
+				#endif
 
-#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
-	float4 shadowCoord 				: TEXCOORD7;
-#endif
+				#ifdef _ADDITIONAL_LIGHTS_VERTEX
+					half4 fogFactorAndVertexLight	: TEXCOORD6; // x: fogFactor, yzw: vertex light
+				#else
+					half  fogFactor					: TEXCOORD6;
+				#endif
 
-float4 color						: COLOR;
-//UNITY_VERTEX_INPUT_INSTANCE_ID
-//UNITY_VERTEX_OUTPUT_STEREO
-};
+				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
+					float4 shadowCoord 				: TEXCOORD7;
+				#endif
 
-#include "PBRSurface.hlsl"
-#include "PBRInput.hlsl"
+				float4 color						: COLOR;
+				//UNITY_VERTEX_INPUT_INSTANCE_ID
+				//UNITY_VERTEX_OUTPUT_STEREO
+			};
+
+			#include "PBRSurface.hlsl"
+			#include "PBRInput.hlsl"
 
 // ---------------------------------------------------------------------------
 // Vertex Shader
 // ---------------------------------------------------------------------------
 
-Varyings LitPassVertex(Attributes IN)
-{
-Varyings OUT;
+			Varyings LitPassVertex(Attributes IN)
+			{
+				Varyings OUT;
 
-//UNITY_SETUP_INSTANCE_ID(IN);
-//UNITY_TRANSFER_INSTANCE_ID(IN, OUT);
-//UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
+				//UNITY_SETUP_INSTANCE_ID(IN);
+				//UNITY_TRANSFER_INSTANCE_ID(IN, OUT);
+				//UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
 
-VertexPositionInputs positionInputs = GetVertexPositionInputs(IN.positionOS.xyz);
-#ifdef _NORMALMAP
-	VertexNormalInputs normalInputs = GetVertexNormalInputs(IN.normalOS.xyz, IN.tangentOS);
-#else
-	VertexNormalInputs normalInputs = GetVertexNormalInputs(IN.normalOS.xyz);
-#endif
+				VertexPositionInputs positionInputs = GetVertexPositionInputs(IN.positionOS.xyz);
+				#ifdef _NORMALMAP
+					VertexNormalInputs normalInputs = GetVertexNormalInputs(IN.normalOS.xyz, IN.tangentOS);
+				#else
+					VertexNormalInputs normalInputs = GetVertexNormalInputs(IN.normalOS.xyz);
+				#endif
 
-OUT.positionCS = positionInputs.positionCS;
-OUT.positionWS = positionInputs.positionWS;
 
-half3 viewDirWS = GetWorldSpaceViewDir(positionInputs.positionWS);
-half3 vertexLight = VertexLighting(positionInputs.positionWS, normalInputs.normalWS);
-half fogFactor = ComputeFogFactor(positionInputs.positionCS.z);
 
-#ifdef _NORMALMAP
-	OUT.normalWS = half4(normalInputs.normalWS, viewDirWS.x);
-	OUT.tangentWS = half4(normalInputs.tangentWS, viewDirWS.y);
-	OUT.bitangentWS = half4(normalInputs.bitangentWS, viewDirWS.z);
-#else
-	OUT.normalWS = NormalizeNormalPerVertex(normalInputs.normalWS);
-	//OUT.viewDirWS = viewDirWS;
-#endif
 
-OUTPUT_LIGHTMAP_UV(IN.lightmapUV, unity_LightmapST, OUT.lightmapUV);
-OUTPUT_SH(OUT.normalWS.xyz, OUT.vertexSH);
+				OUT.positionCS = positionInputs.positionCS;
+				OUT.positionWS = positionInputs.positionWS;
 
-#ifdef _ADDITIONAL_LIGHTS_VERTEX
-	OUT.fogFactorAndVertexLight = half4(fogFactor, vertexLight);
-#else
-	OUT.fogFactor = fogFactor;
-#endif
+				half3 viewDirWS = GetWorldSpaceViewDir(positionInputs.positionWS);
+				half3 vertexLight = VertexLighting(positionInputs.positionWS, normalInputs.normalWS);
+				half fogFactor = ComputeFogFactor(positionInputs.positionCS.z);
 
-#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
-	OUT.shadowCoord = GetShadowCoord(positionInputs);
-#endif
+				#ifdef _NORMALMAP
+					OUT.normalWS = half4(normalInputs.normalWS, viewDirWS.x);
+					OUT.tangentWS = half4(normalInputs.tangentWS, viewDirWS.y);
+					OUT.bitangentWS = half4(normalInputs.bitangentWS, viewDirWS.z);
+				#else
+					OUT.normalWS = NormalizeNormalPerVertex(normalInputs.normalWS);
+					//OUT.viewDirWS = viewDirWS;
+				#endif
 
-OUT.uv = TRANSFORM_TEX(IN.uv, _BaseMap);
-OUT.color = IN.color;
-return OUT;
-}
+				OUTPUT_LIGHTMAP_UV(IN.lightmapUV, unity_LightmapST, OUT.lightmapUV);
+				OUTPUT_SH(OUT.normalWS.xyz, OUT.vertexSH);
+
+				#ifdef _ADDITIONAL_LIGHTS_VERTEX
+					OUT.fogFactorAndVertexLight = half4(fogFactor, vertexLight);
+				#else
+					OUT.fogFactor = fogFactor;
+				#endif
+
+				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
+					OUT.shadowCoord = GetShadowCoord(positionInputs);
+				#endif
+
+				OUT.uv = TRANSFORM_TEX(IN.uv, _BaseMap);
+				OUT.color = IN.color;
+				return OUT;
+			}
 
 // ---------------------------------------------------------------------------
 // Fragment Shader
 // ---------------------------------------------------------------------------
 
-half4 LitPassFragment(Varyings IN) : SV_Target {
-	//UNITY_SETUP_INSTANCE_ID(IN);
-	//UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(IN);
+			half4 LitPassFragment(Varyings IN) : SV_Target {
+				//UNITY_SETUP_INSTANCE_ID(IN);
+				//UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(IN);
 
-	// Setup SurfaceData
-	SurfaceData surfaceData;
-	InitializeSurfaceData(IN, surfaceData);
+				// Setup SurfaceData
+				SurfaceData surfaceData;
+				InitializeSurfaceData(IN, surfaceData);
 
-	// Setup InputData
-	InputData inputData;
-	InitializeInputData(IN, surfaceData.normalTS, inputData);
+				// Setup InputData
+				InputData inputData;
+				InitializeInputData(IN, surfaceData.normalTS, inputData);
 
-	// Simple Lighting (Lambert & BlinnPhong)
-	half4 color = UniversalFragmentPBR(inputData, surfaceData);
-	// See Lighting.hlsl to see how this is implemented.
-	// https://github.com/Unity-Technologies/Graphics/blob/master/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl
+				// Simple Lighting (Lambert & BlinnPhong)
+				half4 color = UniversalFragmentPBR(inputData, surfaceData);
+				// See Lighting.hlsl to see how this is implemented.
+				// https://github.com/Unity-Technologies/Graphics/blob/master/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl
 
-	// Fog
-	color.rgb = MixFog(color.rgb, inputData.fogCoord);
-	//color.a = OutputAlpha(color.a, _Surface);
-	return color;
-}
-ENDHLSL
-}
+				// Fog
+				color.rgb = MixFog(color.rgb, inputData.fogCoord);
+				//color.a = OutputAlpha(color.a, _Surface);
+				return color;
+			}
+			ENDHLSL
+			}
 
 // UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 // UsePass "Universal Render Pipeline/Lit/DepthOnly"
@@ -269,143 +279,143 @@ ENDHLSL
 
 // ShadowCaster, for casting shadows
 Pass {
-	Name "ShadowCaster"
-	Tags { "LightMode" = "ShadowCaster" }
+Name "ShadowCaster"
+Tags { "LightMode" = "ShadowCaster" }
 
-	ZWrite On
-	ZTest LEqual
+ZWrite On
+ZTest LEqual
 
-	HLSLPROGRAM
-	#pragma vertex ShadowPassVertex
-	#pragma fragment ShadowPassFragment
+HLSLPROGRAM
+#pragma vertex ShadowPassVertex
+#pragma fragment ShadowPassFragment
 
-	// Material Keywords
-	#pragma shader_feature_local_fragment _ALPHATEST_ON
-	#pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+// Material Keywords
+#pragma shader_feature_local_fragment _ALPHATEST_ON
+#pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
 
-	// GPU Instancing
-	#pragma multi_compile_instancing
-	//#pragma multi_compile _ DOTS_INSTANCING_ON
+// GPU Instancing
+#pragma multi_compile_instancing
+//#pragma multi_compile _ DOTS_INSTANCING_ON
 
-	// Universal Pipeline Keywords
-	// (v11+) This is used during shadow map generation to differentiate between directional and punctual (point/spot) light shadows, as they use different formulas to apply Normal Bias
-	#pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
+// Universal Pipeline Keywords
+// (v11+) This is used during shadow map generation to differentiate between directional and punctual (point/spot) light shadows, as they use different formulas to apply Normal Bias
+#pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
 
-	#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
-	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
-	#include "Packages/com.unity.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+#include "Packages/com.unity.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
 
-	// Note if we do any vertex displacement, we'll need to change the vertex function. e.g. :
-	/*
-	#pragma vertex DisplacedShadowPassVertex (instead of ShadowPassVertex above)
+// Note if we do any vertex displacement, we'll need to change the vertex function. e.g. :
+/*
+#pragma vertex DisplacedShadowPassVertex (instead of ShadowPassVertex above)
 
-	Varyings DisplacedShadowPassVertex(Attributes input) {
-		Varyings output = (Varyings)0;
-		UNITY_SETUP_INSTANCE_ID(input);
+Varyings DisplacedShadowPassVertex(Attributes input) {
+	Varyings output = (Varyings)0;
+	UNITY_SETUP_INSTANCE_ID(input);
 
-		// Example Displacement
-		input.positionOS += float4(0, _SinTime.y, 0, 0);
+	// Example Displacement
+	input.positionOS += float4(0, _SinTime.y, 0, 0);
 
-		output.uv = TRANSFORM_TEX(input.texcoord, _BaseMap);
-		output.positionCS = GetShadowPositionHClip(input);
-		return output;
-	}
-	*/
-	ENDHLSL
+	output.uv = TRANSFORM_TEX(input.texcoord, _BaseMap);
+	output.positionCS = GetShadowPositionHClip(input);
+	return output;
+}
+*/
+ENDHLSL
 }
 
 // DepthOnly, used for Camera Depth Texture (if cannot copy depth buffer instead, and the DepthNormals below isn't used)
 Pass {
-	Name "DepthOnly"
-	Tags { "LightMode" = "DepthOnly" }
+Name "DepthOnly"
+Tags { "LightMode" = "DepthOnly" }
 
-	ColorMask 0
-	ZWrite On
-	ZTest LEqual
+ColorMask 0
+ZWrite On
+ZTest LEqual
 
-	HLSLPROGRAM
-	#pragma vertex DepthOnlyVertex
-	#pragma fragment DepthOnlyFragment
+HLSLPROGRAM
+#pragma vertex DepthOnlyVertex
+#pragma fragment DepthOnlyFragment
 
-	// Material Keywords
-	#pragma shader_feature_local_fragment _ALPHATEST_ON
-	#pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+// Material Keywords
+#pragma shader_feature_local_fragment _ALPHATEST_ON
+#pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
 
-	// GPU Instancing
-	#pragma multi_compile_instancing
-	//#pragma multi_compile _ DOTS_INSTANCING_ON
+// GPU Instancing
+#pragma multi_compile_instancing
+//#pragma multi_compile _ DOTS_INSTANCING_ON
 
-	#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
-	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
-	#include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+#include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
 
-	// Note if we do any vertex displacement, we'll need to change the vertex function. e.g. :
-	/*
-	#pragma vertex DisplacedDepthOnlyVertex (instead of DepthOnlyVertex above)
+// Note if we do any vertex displacement, we'll need to change the vertex function. e.g. :
+/*
+#pragma vertex DisplacedDepthOnlyVertex (instead of DepthOnlyVertex above)
 
-	Varyings DisplacedDepthOnlyVertex(Attributes input) {
-		Varyings output = (Varyings)0;
-		UNITY_SETUP_INSTANCE_ID(input);
-		UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
+Varyings DisplacedDepthOnlyVertex(Attributes input) {
+	Varyings output = (Varyings)0;
+	UNITY_SETUP_INSTANCE_ID(input);
+	UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
-		// Example Displacement
-		input.positionOS += float4(0, _SinTime.y, 0, 0);
+	// Example Displacement
+	input.positionOS += float4(0, _SinTime.y, 0, 0);
 
-		output.uv = TRANSFORM_TEX(input.texcoord, _BaseMap);
-		output.positionCS = TransformObjectToHClip(input.position.xyz);
-		return output;
-	}
-	*/
+	output.uv = TRANSFORM_TEX(input.texcoord, _BaseMap);
+	output.positionCS = TransformObjectToHClip(input.position.xyz);
+	return output;
+}
+*/
 
-	ENDHLSL
+ENDHLSL
 }
 
 // DepthNormals, used for SSAO & other custom renderer features that request it
 Pass {
-	Name "DepthNormals"
-	Tags { "LightMode" = "DepthNormals" }
+Name "DepthNormals"
+Tags { "LightMode" = "DepthNormals" }
 
-	ZWrite On
-	ZTest LEqual
+ZWrite On
+ZTest LEqual
 
-	HLSLPROGRAM
-	#pragma vertex DepthNormalsVertex
-	#pragma fragment DepthNormalsFragment
+HLSLPROGRAM
+#pragma vertex DepthNormalsVertex
+#pragma fragment DepthNormalsFragment
 
-	// Material Keywords
-	#pragma shader_feature_local _NORMALMAP
-	#pragma shader_feature_local_fragment _ALPHATEST_ON
-	#pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+// Material Keywords
+#pragma shader_feature_local _NORMALMAP
+#pragma shader_feature_local_fragment _ALPHATEST_ON
+#pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
 
-	// GPU Instancing
-	#pragma multi_compile_instancing
-	//#pragma multi_compile _ DOTS_INSTANCING_ON
+// GPU Instancing
+#pragma multi_compile_instancing
+//#pragma multi_compile _ DOTS_INSTANCING_ON
 
-	#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
-	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
-	#include "Packages/com.unity.render-pipelines.universal/Shaders/DepthNormalsPass.hlsl"
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+#include "Packages/com.unity.render-pipelines.universal/Shaders/DepthNormalsPass.hlsl"
 
-	// Note if we do any vertex displacement, we'll need to change the vertex function. e.g. :
-	/*
-	#pragma vertex DisplacedDepthNormalsVertex (instead of DepthNormalsVertex above)
+// Note if we do any vertex displacement, we'll need to change the vertex function. e.g. :
+/*
+#pragma vertex DisplacedDepthNormalsVertex (instead of DepthNormalsVertex above)
 
-	Varyings DisplacedDepthNormalsVertex(Attributes input) {
-		Varyings output = (Varyings)0;
-		UNITY_SETUP_INSTANCE_ID(input);
-		UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
+Varyings DisplacedDepthNormalsVertex(Attributes input) {
+	Varyings output = (Varyings)0;
+	UNITY_SETUP_INSTANCE_ID(input);
+	UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
-		// Example Displacement
-		input.positionOS += float4(0, _SinTime.y, 0, 0);
+	// Example Displacement
+	input.positionOS += float4(0, _SinTime.y, 0, 0);
 
-		output.uv = TRANSFORM_TEX(input.texcoord, _BaseMap);
-		output.positionCS = TransformObjectToHClip(input.position.xyz);
-		VertexNormalInputs normalInput = GetVertexNormalInputs(input.normal, input.tangentOS);
-		output.normalWS = NormalizeNormalPerVertex(normalInput.normalWS);
-		return output;
-	}
-	*/
+	output.uv = TRANSFORM_TEX(input.texcoord, _BaseMap);
+	output.positionCS = TransformObjectToHClip(input.position.xyz);
+	VertexNormalInputs normalInput = GetVertexNormalInputs(input.normal, input.tangentOS);
+	output.normalWS = NormalizeNormalPerVertex(normalInput.normalWS);
+	return output;
+}
+*/
 
-	ENDHLSL
+ENDHLSL
 }
 
 
@@ -414,117 +424,117 @@ Pass {
 // https://github.com/Unity-Technologies/Graphics/blob/master/com.unity.render-pipelines.universal/Shaders/LitDepthNormalsPass.hlsl
 /*
 Pass {
-	Name "DepthNormals"
-	Tags { "LightMode"="DepthNormals" }
+Name "DepthNormals"
+Tags { "LightMode"="DepthNormals" }
 
-	ZWrite On
-	ZTest LEqual
+ZWrite On
+ZTest LEqual
 
-	HLSLPROGRAM
-	#pragma vertex DepthNormalsVertex
-	#pragma fragment DepthNormalsFragment
+HLSLPROGRAM
+#pragma vertex DepthNormalsVertex
+#pragma fragment DepthNormalsFragment
 
-	// Material Keywords
-	#pragma shader_feature_local _NORMALMAP
-	#pragma shader_feature_local_fragment _ALPHATEST_ON
-	#pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+// Material Keywords
+#pragma shader_feature_local _NORMALMAP
+#pragma shader_feature_local_fragment _ALPHATEST_ON
+#pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
 
-	// GPU Instancing
-	#pragma multi_compile_instancing
-	//#pragma multi_compile _ DOTS_INSTANCING_ON
+// GPU Instancing
+#pragma multi_compile_instancing
+//#pragma multi_compile _ DOTS_INSTANCING_ON
 
-	#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
-	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
 
-	#if defined(_NORMALMAP)
-		#define REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR
+#if defined(_NORMALMAP)
+	#define REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR
+#endif
+
+struct Attributes {
+	float4 positionOS		: POSITION;
+	float4 tangentOS		: TANGENT;
+	float2 texcoord			: TEXCOORD0;
+	float3 normal			: NORMAL;
+	UNITY_VERTEX_INPUT_INSTANCE_ID
+};
+
+struct Varyings {
+	float4 positionCS		: SV_POSITION;
+	float2 uv 				: TEXCOORD1;
+	float3 normalWS			: TEXCOORD2;
+
+	#if defined(REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR)
+		half4 tangentWS			: TEXCOORD4;    // xyz: tangent, w: sign
 	#endif
 
-	struct Attributes {
-		float4 positionOS		: POSITION;
-		float4 tangentOS		: TANGENT;
-		float2 texcoord			: TEXCOORD0;
-		float3 normal			: NORMAL;
-		UNITY_VERTEX_INPUT_INSTANCE_ID
-	};
+	UNITY_VERTEX_INPUT_INSTANCE_ID
+	UNITY_VERTEX_OUTPUT_STEREO
+};
 
-	struct Varyings {
-		float4 positionCS		: SV_POSITION;
-		float2 uv 				: TEXCOORD1;
-		float3 normalWS			: TEXCOORD2;
+Varyings DepthNormalsVertex(Attributes input) {
+	Varyings output = (Varyings)0;
+	UNITY_SETUP_INSTANCE_ID(input);
+	UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
-		#if defined(REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR)
-			half4 tangentWS			: TEXCOORD4;    // xyz: tangent, w: sign
-		#endif
+	// Example Displacement
+	//input.positionOS += float4(0, _SinTime.y, 0, 0);
 
-		UNITY_VERTEX_INPUT_INSTANCE_ID
-		UNITY_VERTEX_OUTPUT_STEREO
-	};
+	output.uv         = TRANSFORM_TEX(input.texcoord, _BaseMap);
+	output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
+	VertexNormalInputs normalInput = GetVertexNormalInputs(input.normal, input.tangentOS);
+	output.normalWS = NormalizeNormalPerVertex(normalInput.normalWS);
 
-	Varyings DepthNormalsVertex(Attributes input) {
-		Varyings output = (Varyings)0;
-		UNITY_SETUP_INSTANCE_ID(input);
-		UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
+	#if defined(REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR)
+		float sign = input.tangentOS.w * float(GetOddNegativeScale());
+		half4 tangentWS = half4(normalInput.tangentWS.xyz, sign);
+		output.tangentWS = tangentWS;
+	#endif
 
-		// Example Displacement
-		//input.positionOS += float4(0, _SinTime.y, 0, 0);
+	return output;
+}
 
-		output.uv         = TRANSFORM_TEX(input.texcoord, _BaseMap);
-		output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
-		VertexNormalInputs normalInput = GetVertexNormalInputs(input.normal, input.tangentOS);
-		output.normalWS = NormalizeNormalPerVertex(normalInput.normalWS);
+float4 DepthNormalsFragment(Varyings input) : SV_TARGET {
+	UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
 
-		#if defined(REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR)
-			float sign = input.tangentOS.w * float(GetOddNegativeScale());
-			half4 tangentWS = half4(normalInput.tangentWS.xyz, sign);
-			output.tangentWS = tangentWS;
-		#endif
+	Alpha(SampleAlbedoAlpha(input.uv, TEXTURE2D_ARGS(_BaseMap, sampler_BaseMap)).a, _BaseColor, _Cutoff);
 
-		return output;
-	}
+	#if defined(_NORMALMAP)
+		float sgn = input.tangentWS.w;      // should be either +1 or -1
+		float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
+		float3 normalTS = SampleNormal(input.uv, TEXTURE2D_ARGS(_BumpMap, sampler_BumpMap), _BumpScale);
 
-	float4 DepthNormalsFragment(Varyings input) : SV_TARGET {
-		UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
+		float3 normalWS = TransformTangentToWorld(normalTS, half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz));
+	#else
+		float3 normalWS = input.normalWS;
+	#endif
 
-		Alpha(SampleAlbedoAlpha(input.uv, TEXTURE2D_ARGS(_BaseMap, sampler_BaseMap)).a, _BaseColor, _Cutoff);
-
-		#if defined(_NORMALMAP)
-			float sgn = input.tangentWS.w;      // should be either +1 or -1
-			float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
-			float3 normalTS = SampleNormal(input.uv, TEXTURE2D_ARGS(_BumpMap, sampler_BumpMap), _BumpScale);
-
-			float3 normalWS = TransformTangentToWorld(normalTS, half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz));
-		#else
-			float3 normalWS = input.normalWS;
-		#endif
-
-		return float4(PackNormalOctRectEncode(TransformWorldToViewDir(normalWS, true)), 0.0, 0.0);
-	}
-	ENDHLSL
+	return float4(PackNormalOctRectEncode(TransformWorldToViewDir(normalWS, true)), 0.0, 0.0);
+}
+ENDHLSL
 }
 */
 
 // Meta, used for baking global illumination / lightmaps
 Pass {
-	Name "Meta"
-	Tags{"LightMode" = "Meta"}
+Name "Meta"
+Tags{"LightMode" = "Meta"}
 
-	Cull Off
+Cull Off
 
-	HLSLPROGRAM
-	#pragma vertex UniversalVertexMeta
-	#pragma fragment UniversalFragmentMeta
+HLSLPROGRAM
+#pragma vertex UniversalVertexMeta
+#pragma fragment UniversalFragmentMeta
 
-	#pragma shader_feature_local_fragment _SPECULAR_SETUP
-	#pragma shader_feature_local_fragment _EMISSION
-	#pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
-	#pragma shader_feature_local_fragment _ALPHATEST_ON
-	#pragma shader_feature_local_fragment _ _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-	//#pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
+#pragma shader_feature_local_fragment _SPECULAR_SETUP
+#pragma shader_feature_local_fragment _EMISSION
+#pragma shader_feature_local_fragment _METALLICSPECGLOSSMAP
+#pragma shader_feature_local_fragment _ALPHATEST_ON
+#pragma shader_feature_local_fragment _ _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+//#pragma shader_feature_local _ _DETAIL_MULX2 _DETAIL_SCALED
 
-	#pragma shader_feature_local_fragment _SPECGLOSSMAP
+#pragma shader_feature_local_fragment _SPECGLOSSMAP
 
-	struct Attributes
+struct Attributes
 {
 float4 positionOS   : POSITION;
 float3 normalOS     : NORMAL;
@@ -532,7 +542,7 @@ float2 uv0          : TEXCOORD0;
 float2 uv1          : TEXCOORD1;
 float2 uv2          : TEXCOORD2;
 #ifdef _TANGENT_TO_WORLD
-	float4 tangentOS     : TANGENT;
+float4 tangentOS     : TANGENT;
 #endif
 float4 color		: COLOR;
 };
@@ -557,18 +567,18 @@ return output;
 }
 
 half4 UniversalFragmentMeta(Varyings input) : SV_Target {
-	SurfaceData surfaceData;
-	InitializeSurfaceData(input, surfaceData);
+SurfaceData surfaceData;
+InitializeSurfaceData(input, surfaceData);
 
-	BRDFData brdfData;
-	InitializeBRDFData(surfaceData.albedo, surfaceData.metallic, surfaceData.specular, surfaceData.smoothness, surfaceData.alpha, brdfData);
+BRDFData brdfData;
+InitializeBRDFData(surfaceData.albedo, surfaceData.metallic, surfaceData.specular, surfaceData.smoothness, surfaceData.alpha, brdfData);
 
-	MetaInput metaInput;
-	metaInput.Albedo = brdfData.diffuse + brdfData.specular * brdfData.roughness * 0.5;
-	metaInput.SpecularColor = surfaceData.specular;
-	metaInput.Emission = surfaceData.emission;
+MetaInput metaInput;
+metaInput.Albedo = brdfData.diffuse + brdfData.specular * brdfData.roughness * 0.5;
+metaInput.SpecularColor = surfaceData.specular;
+metaInput.Emission = surfaceData.emission;
 
-	return MetaFragment(metaInput);
+return MetaFragment(metaInput);
 }
 
 ENDHLSL
@@ -579,5 +589,5 @@ ENDHLSL
 // UniversalGBuffer, for Deferred rendering support (v12 only)
 // but not supporting them here. See the URP Shaders source :
 // https://github.com/Unity-Technologies/Graphics/tree/master/com.unity.render-pipelines.universal/Shaders
-			}
+		}
 }
