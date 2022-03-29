@@ -67,6 +67,11 @@ public class MoveAIThief : MonoBehaviour
             //pick new location to move to
             newDestinationNeeded = true;
         }
+
+        if (playerSpotted == true && Vector3.Distance(gameObject.transform.position, destination) < 2.0f)
+        {
+            StealFromPlayer();
+        }
     }
 
     public void PlayerNoticed()
@@ -95,12 +100,13 @@ public class MoveAIThief : MonoBehaviour
         //could be this or a collider contact
         if (Vector3.Distance(gameObject.transform.position, destination) < 1.0f)
         {
-            if (player.GetComponent<Inventory>().itemsInInventory > 0)
+            if (player.GetComponent<NewInventory>().spaces.Count > 0)
             {
                 randItem = (int)Random.Range(0, player.GetComponent<Inventory>().itemsInInventory);
 
                 Debug.Log("got your nose :)");
-                stolenObject = player.GetComponent<Inventory>().inventory[randItem];
+                stolenObject = player.GetComponent<NewInventory>().GetItem
+                    (player.GetComponent<NewInventory>().spaces[randItem]);
             }
         }
     }
