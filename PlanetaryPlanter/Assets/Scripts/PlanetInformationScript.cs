@@ -86,7 +86,23 @@ public class PlanetInformationScript : MonoBehaviour
                     preview.sprite = star[(int)type];
                     break;
                 }
-            case PlanetSpecies.RockPlanet:
+            case PlanetSpecies.RockPlanet:
+                {
+                    preview.sprite = rocky[(int)type];
+                    break;
+                }
+            case PlanetSpecies.Comet:
+                {
+                    preview.sprite = comet[(int)type];
+                    break;
+                }
+        }
+    }
+    public Sprite ReturnSpriteToDisplay(PlanetSpecies species, PlanetType type)
+    {
+        switch (species)
+        {
+            case PlanetSpecies.Asteroid:
                 {
                     preview.sprite = rocky[(int)type];
                     break;
