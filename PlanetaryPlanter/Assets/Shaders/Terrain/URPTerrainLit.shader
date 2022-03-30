@@ -87,8 +87,8 @@ Shader "0CurvedURPCustoms/TerrainCurved"
             // Sample normal in pixel shader when doing instancing
             #pragma shader_feature_local _TERRAIN_INSTANCED_PERPIXEL_NORMAL
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitPasses.hlsl"
+            #include "TerrainLitInput.hlsl"
+            #include "TerrainLitPasses.hlsl"
             ENDHLSL
         }
 
@@ -115,8 +115,8 @@ Shader "0CurvedURPCustoms/TerrainCurved"
             // This is used during shadow map generation to differentiate between directional and punctual light shadows, as they use different formulas to apply Normal Bias
             #pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitPasses.hlsl"
+            #include "TerrainLitInput.hlsl"
+            #include "TerrainLitPasses.hlsl"
             ENDHLSL
         }
 
@@ -158,8 +158,8 @@ Shader "0CurvedURPCustoms/TerrainCurved"
             #pragma shader_feature_local _TERRAIN_INSTANCED_PERPIXEL_NORMAL
             #define TERRAIN_GBUFFER 1
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitPasses.hlsl"
+            #include "TerrainLitInput.hlsl"
+            #include "TerrainLitPasses.hlsl"
             ENDHLSL
         }
 
@@ -180,8 +180,8 @@ Shader "0CurvedURPCustoms/TerrainCurved"
             #pragma multi_compile_instancing
             #pragma instancing_options assumeuniformscaling nomatrices nolightprobe nolightmap
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitPasses.hlsl"
+            #include "TerrainLitInput.hlsl"
+            #include "TerrainLitPasses.hlsl"
             ENDHLSL
         }
 
@@ -202,8 +202,8 @@ Shader "0CurvedURPCustoms/TerrainCurved"
             #pragma multi_compile_instancing
             #pragma instancing_options assumeuniformscaling nomatrices nolightprobe nolightmap
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitPasses.hlsl"
+            #include "TerrainLitInput.hlsl"
+            #include "TerrainLitPasses.hlsl"
             ENDHLSL
         }
 
@@ -222,8 +222,8 @@ Shader "0CurvedURPCustoms/TerrainCurved"
             #pragma instancing_options assumeuniformscaling nomatrices nolightprobe nolightmap
 
             #define SCENESELECTIONPASS
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/TerrainLitPasses.hlsl"
+            #include "TerrainLitInput.hlsl"
+            #include "TerrainLitPasses.hlsl"
             ENDHLSL
         }
 
