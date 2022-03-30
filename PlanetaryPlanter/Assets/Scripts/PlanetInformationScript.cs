@@ -58,8 +58,8 @@ public class PlanetInformationScript : MonoBehaviour
             else
             {
                 infoText.gameObject.SetActive(true);
-                infoText.text = "Object Species: " + GetComponent<ObservatoryPlanetSpot>().species +
-                    "\nObject Type: " + GetComponent<ObservatoryPlanetSpot>().type;
+                infoText.text = "Species: " + GetComponent<ObservatoryPlanetSpot>().species +
+                    "\nType: " + GetComponent<ObservatoryPlanetSpot>().type;
                 ChooseImageToDisplay(GetComponent<ObservatoryPlanetSpot>().species, GetComponent<ObservatoryPlanetSpot>().type);
             }
         }
