@@ -19,6 +19,8 @@ public class PlantSpot : MonoBehaviour
 
     public GameObject fertilizerParticles;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
     public void PlacePlant()
     {
         basicPlantObject = NewInventory.instance.PopItemOfTag("Seed");
@@ -26,6 +28,7 @@ public class PlantSpot : MonoBehaviour
         {
             Instantiate(basicPlantObject.GetComponent<Seed>().plantObject, transform);
             TutorialManagerScript.instance.Unlock("Maintaining Plants");
+            soundManager.PlaySound("PlantPlant");
         }
     }
 
@@ -52,6 +55,7 @@ public class PlantSpot : MonoBehaviour
     {
         GameObject temp = transform.GetChild(0).transform.gameObject;
         Plant p = temp.GetComponent<Plant>();
+        soundManager.PlaySound("Harvest");
         if (p.stage != Plant.Stage.Ripe && p.stage != Plant.Stage.Rotten)
         {
             if (PlaceFertilizer())
@@ -122,6 +126,9 @@ public class PlantSpot : MonoBehaviour
         //NewInventory.instance.AddItem(fertilizer);
         interactable = GetComponent<InteractableObject>();
         fertilizer = gameObject.GetComponent<FertilizerScript>().Fertilizer;
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
+
     }
     // Update is called once per frame
     void Update()
