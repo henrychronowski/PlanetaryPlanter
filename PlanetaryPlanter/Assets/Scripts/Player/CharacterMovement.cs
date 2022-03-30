@@ -152,16 +152,18 @@ public class CharacterMovement : MonoBehaviour
     public float timeSinceLastLedgeGrab;
     public bool canLedgeGrab;
     public float ledgeShuffleSpeed;
+
+    public bool canGlide = false;
     void CheckInput()
     {
         xMove = Input.GetAxisRaw("Horizontal");
         zMove = Input.GetAxisRaw("Vertical");
-        if (Input.GetKeyDown(KeyCode.Space) && (grounded || wallrunning || grabbingLedge))
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0)) && (grounded || wallrunning || grabbingLedge))
         {
             jumping = true;
             jumpSound.Play();
         }
-        else if(Input.GetKeyDown(KeyCode.LeftShift) && !grounded)
+        else if((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.JoystickButton1)) && !grounded && canGlide)
         {
             holdingGlider = !holdingGlider; //Swaps value of holdingGlider
             ExitWall();
@@ -516,7 +518,7 @@ public class CharacterMovement : MonoBehaviour
             grounded = false;
             jumping = false;
         }
-        if(!grounded && Input.GetKey(KeyCode.Space)) //Holding jump while airborne
+        if(!grounded && (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))) //Holding jump while airborne
         {
             if (velocity.y == -groundedGravity)
             {
