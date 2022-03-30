@@ -310,7 +310,7 @@ MonoBehaviour:
   currentWater: 50
   maxWater: 50
   waterWarningValue: 25
-  growthNeededForEachStage: 20
+  growthNeededForEachStage: 15
   growthProgress: 0
   hoursElapsed: 0
   timeSinceLastGrowth: 0
@@ -473,6 +473,14 @@ MonoBehaviour:
   fireModInfo: 
   iceModName: Ice Star
   iceModInfo: 
+  ghostModName: Ghostly Star
+  ghostModInfo: 
+  fossilModName: Fossilium Star
+  fossilModInfo: 
+  waterModName: Liquid Star
+  waterModInfo: 
+  grassModName: Grassy Star
+  grassModInfo: 
   isPlant: 1
 --- !u!1 &9097207178865940958
 GameObject:
