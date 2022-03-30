@@ -6,7 +6,7 @@
 // Written by @Cyanilux
 // https://www.cyanilux.com/tutorials/urp-shader-code
 
-Shader "0CurvedURPCustoms/PBRLitShaderExample" {
+Shader "0CurvedURPCustoms/URPLitCurve" {
 	Properties{
 		// Sorry the inspector is a little messy, but I'd rather not rely on a Custom ShaderGUI
 		// or the one used by the Lit/Shader, as then adding new properties won't show
@@ -130,7 +130,7 @@ Shader "0CurvedURPCustoms/PBRLitShaderExample" {
 			#pragma multi_compile_fog
 
 			// Custom Keywords
-			#pragma multi_compile _ IN_EDITOR
+			//#pragma multi_compile __ IN_EDITOR
 
 			// GPU Instancing (not supported)
 			//#pragma multi_compile_instancing
@@ -206,11 +206,26 @@ Shader "0CurvedURPCustoms/PBRLitShaderExample" {
 					VertexNormalInputs normalInputs = GetVertexNormalInputs(IN.normalOS.xyz);
 				#endif
 
-
-
-
+				// World Curve
+				#ifdef IN_EDITOR
 				OUT.positionCS = positionInputs.positionCS;
 				OUT.positionWS = positionInputs.positionWS;
+
+				#else
+				float3 WS = mul(unity_ObjectToWorld, positionInputs.positionWS).xyz;
+				float curveAmount = distance(WS, _WorldSpaceCameraPos);
+
+				curveAmount = curveAmount * 0.01f;
+				curveAmount = (0.0f + (-1.0f * (curveAmount * curveAmount)) * 100);
+				
+				OUT.positionCS = positionInputs.positionCS;
+				//OUT.positionWS = positionInputs.positionWS;
+
+				OUT.positionCS.y += curveAmount;
+				#endif
+
+
+				
 
 				half3 viewDirWS = GetWorldSpaceViewDir(positionInputs.positionWS);
 				half3 vertexLight = VertexLighting(positionInputs.positionWS, normalInputs.normalWS);
