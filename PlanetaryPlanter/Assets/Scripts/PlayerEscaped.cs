@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerEscaped : MonoBehaviour
 {
+    public GameObject player;
+    public GameObject thief;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,13 @@ public class PlayerEscaped : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == player)
+        {
+            thief.GetComponent<MoveAIThief>().PlayerEscaped();
+        }
     }
 }
