@@ -11,6 +11,10 @@ public class CloseAllMenus : MonoBehaviour
         {
             Close();
         }
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            pauseControl.OpenAlmanac();
+        }
     }
 
     void Close()
