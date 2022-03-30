@@ -25,4 +25,12 @@ public class BouncePadScript : MonoBehaviour
             player.GetComponent<CharacterMovement>().Bounce(bounceSpeed);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            player.GetComponent<CharacterMovement>().Bounce(bounceSpeed);
+        }
+    }
 }

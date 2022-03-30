@@ -11,6 +11,7 @@ public class Shovel : MonoBehaviour
     [SerializeField] float activeTime;
     [SerializeField] AttackHitbox hitbox;
     [SerializeField] CharacterMovement character;
+    public bool canBreakObjects;
     void CheckInput()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1) && !isSwinging && character.canMove)
