@@ -11,9 +11,15 @@ public class SolarSystemInfo : MonoBehaviour
     public void UpdateRequirementsPanel()
     {
         List<Sprite> sprites = new List<Sprite>();
-        foreach(ObservatoryPlanetSpot spot in observatory.constellationSpots)
+        List<Observatory> observatories = new List<Observatory>();
+        observatories.AddRange(observatory.gameObject.transform.parent.GetComponentsInChildren<Observatory>());
+        foreach(Observatory obs in observatories)
         {
-            sprites.Add(spot.GetComponent<PlanetInformationScript>().ReturnSpriteToDisplay(spot.species, spot.type));
+            foreach(ObservatoryPlanetSpot spot in obs.constellationSpots)
+            {
+                if(!spot.filled)
+                    sprites.Add(spot.GetComponent<PlanetInformationScript>().ReturnSpriteToDisplay(spot.species, spot.type));
+            }
         }
         requirements.UpdateInfo(sprites);
     }
