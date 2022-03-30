@@ -55,6 +55,10 @@ Shader "0CurvedURPCustoms/URPLitCurve" {
 				// which assumes the keyword is more of an "on" state.
 
 				// Not including Detail maps in this template
+
+			// Curved world toggle
+			[Space(20)]
+			[Toggle(IN_EDITOR)] _In_Editor ("Turn Off Curve", Float) = 0
 	}
 	SubShader{
 		Tags {
@@ -130,7 +134,7 @@ Shader "0CurvedURPCustoms/URPLitCurve" {
 			#pragma multi_compile_fog
 
 			// Custom Keywords
-			//#pragma multi_compile __ IN_EDITOR
+			#pragma multi_compile __ IN_EDITOR
 
 			// GPU Instancing (not supported)
 			//#pragma multi_compile_instancing
