@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: HDRPTerrainBaseCurve
-  m_Shader: {fileID: 4800000, guid: 69c1f799e772cb6438f56c23efccb782, type: 3}
-  m_ShaderKeywords: IN_EDITOR _DISABLE_SSR_TRANSPARENT
+  m_Shader: {fileID: 4800000, guid: 1d1fcb2ae3f89cd49967d015f4dc321a, type: 3}
+  m_ShaderKeywords: IN_EDITOR _CURVE_OFF _DISABLE_SSR_TRANSPARENT _TERRAIN_INSTANCED_PERPIXEL_NORMAL
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -214,6 +214,7 @@ Material:
     - _CoatMask: 0
     - _CullMode: 2
     - _CullModeForward: 2
+    - _Curve: 0
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
@@ -247,6 +248,7 @@ Material:
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
     - _HeightTransition: 0
+    - _In_Editor: 0
     - _InvTilingScale: 1
     - _Ior: 1.5
     - _IridescenceMask: 1
