@@ -30,7 +30,21 @@ public class InventoryItem : MonoBehaviour
     public Sprite ghostStar;
     public Sprite fossilStar;
     public Sprite waterStar;
-    public Sprite grassStar;
+    public Sprite grassStar;
+
+    public Sprite fireComet;
+    public Sprite iceComet;
+    public Sprite ghostComet;
+    public Sprite fossilComet;
+    public Sprite waterComet;
+    public Sprite grassComet;
+
+    public Sprite fireRockyPlanet;
+    public Sprite iceRockyPlanet;
+    public Sprite ghostRockyPlanet;
+    public Sprite fossilRockyPlanet;
+    public Sprite waterRockyPlanet;
+    public Sprite grassRockyPlanet;
 
     public Sprite fireComet;
     public Sprite iceComet;

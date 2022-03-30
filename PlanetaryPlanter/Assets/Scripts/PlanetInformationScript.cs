@@ -18,8 +18,6 @@ public class PlanetInformationScript : MonoBehaviour
 
     public Sprite[] comet;
 
-    public Sprite placeholder;
-
     public Image preview;
 
     public bool isHovering;
@@ -88,7 +86,23 @@ public class PlanetInformationScript : MonoBehaviour
                     preview.sprite = star[(int)type];
                     break;
                 }
-            case PlanetSpecies.RockPlanet:
+            case PlanetSpecies.RockPlanet:
+                {
+                    preview.sprite = rocky[(int)type];
+                    break;
+                }
+            case PlanetSpecies.Comet:
+                {
+                    preview.sprite = comet[(int)type];
+                    break;
+                }
+        }
+    }
+    public Sprite ReturnSpriteToDisplay(PlanetSpecies species, PlanetType type)
+    {
+        switch (species)
+        {
+            case PlanetSpecies.Asteroid:
                 {
                     preview.sprite = rocky[(int)type];
                     break;
@@ -99,36 +113,5 @@ public class PlanetInformationScript : MonoBehaviour
                     break;
                 }
         }
-    }
-    public Sprite ReturnSpriteToDisplay(PlanetSpecies species, PlanetType type)
-    {
-        switch (species)
-        {
-            case PlanetSpecies.Asteroid:
-                {
-                    if((int)type >= asteroid.Length)
-                    {
-                        return placeholder;
-                    }
-                    return asteroid[(int)type];
-                }
-            case PlanetSpecies.Planet:
-                {
-                    if ((int)type >= planet.Length)
-                    {
-                        return placeholder;
-                    }
-                    return planet[(int)type];
-                }
-            case PlanetSpecies.Star:
-                {
-                    if ((int)type >= star.Length)
-                    {
-                        return placeholder;
-                    }
-                    return star[(int)type];
-                }
-        }
-        return null;
     }
 }
