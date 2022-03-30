@@ -37,7 +37,12 @@ Shader "0CurvedURPCustoms/TerrainCurved"
 
         [HideInInspector] _TerrainHolesTexture("Holes Map (RGB)", 2D) = "white" {}
 
-        [ToggleUI] _EnableInstancedPerPixelNormal("Enable Instanced per-pixel normal", Float) = 1.0
+        [ToggleUI] _EnableInstancedPerPixelNormal("Enable Instanced peR-pixel normal", Float) = 1.0
+
+        // Curved world toggle
+        [Space(20)]
+		[KeywordEnum(off, on)] _Curve ("Turn Off Curve", Float) = 0.0
+		
     }
 
     HLSLINCLUDE
@@ -86,6 +91,8 @@ Shader "0CurvedURPCustoms/TerrainCurved"
             #pragma shader_feature_local_fragment _MASKMAP
             // Sample normal in pixel shader when doing instancing
             #pragma shader_feature_local _TERRAIN_INSTANCED_PERPIXEL_NORMAL
+
+            #pragma multi_compile _CURVE_OFF _CURVE_ON
 
             #include "TerrainLitInput.hlsl"
             #include "TerrainLitPasses.hlsl"
@@ -233,7 +240,7 @@ Shader "0CurvedURPCustoms/TerrainCurved"
     Dependency "BaseMapShader" = "Hidden/Universal Render Pipeline/Terrain/Lit (Base Pass)"
     Dependency "BaseMapGenShader" = "Hidden/Universal Render Pipeline/Terrain/Lit (Basemap Gen)"
 
-    CustomEditor "UnityEditor.Rendering.Universal.TerrainLitShaderGUI"
+    //CustomEditor "UnityEditor.Rendering.Universal.TerrainLitShaderGUI"
 
     Fallback "Hidden/Universal Render Pipeline/FallbackError"
 }
