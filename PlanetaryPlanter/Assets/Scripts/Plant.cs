@@ -16,14 +16,15 @@ public class Plant : MonoBehaviour
         Ripe,
         Rotten
     }
+    
+    
 
     public Stage stage;
 
     [SerializeField]
     List<GameObject> plantModels;
 
-    [SerializeField]
-    float currentWater; //energy needed for plant to grow
+    public float currentWater; //energy needed for plant to grow
 
     [SerializeField]
     float maxWater;
@@ -40,7 +41,7 @@ public class Plant : MonoBehaviour
     public int hoursElapsed;
 
     IEnumerator growthTime;
-
+    
     [SerializeField]
     float timeSinceLastGrowth;
     [SerializeField]
@@ -72,7 +73,8 @@ public class Plant : MonoBehaviour
     public PlanetSpecies species;
 
     public PlanetType type;
-
+    
+    
     void Growth()
     {
         if(currentWater > 0)
@@ -107,7 +109,7 @@ public class Plant : MonoBehaviour
         }
         
     }
-
+    
     public void AddElapsedHours(int hoursToAdd)
     {
         for(int i = 0; i < hoursToAdd; i++)
@@ -160,19 +162,11 @@ public class Plant : MonoBehaviour
     {
         if(inPot)
         {
-            //timeSinceLastGrowth += Time.deltaTime;
-            //if(timeBetweenGrowths <= timeSinceLastGrowth)
-            //{
-            //    Growth();
-            //    timeSinceLastGrowth = 0;
-            //}
-            
             if (lastRecordedHour != SunRotationScript.instance.CurrentHour) 
             {
                 lastRecordedHour = SunRotationScript.instance.CurrentHour;
                 Growth();
             }
-            //plantModels[(int)stage].transform.localScale = new Vector3(originalScale.x + (Mathf.Sin(Time.time) * sinFactor), originalScale.y, originalScale.z);
         }
     }
 }
