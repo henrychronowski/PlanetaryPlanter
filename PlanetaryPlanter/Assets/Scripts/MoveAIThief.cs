@@ -8,6 +8,7 @@ public class MoveAIThief : MonoBehaviour
     public NavMeshAgent thief; //could be unnecessary
 
     public GameObject player; //to know the player to target
+    public GameObject inventory;
     public Transform detectionRadius; //how close the player must be to be noticed
     public Transform movementRadius; //the range on the map the ai can move
 
@@ -15,6 +16,7 @@ public class MoveAIThief : MonoBehaviour
     GameObject stolenObject; //gameobject or what?
     bool newDestinationNeeded = false;
     bool playerSpotted = false;
+    bool itemSpotFull = false;
 
     // Start is called before the first frame update
     void Start()
@@ -100,13 +102,16 @@ public class MoveAIThief : MonoBehaviour
         //could be this or a collider contact
         if (Vector3.Distance(gameObject.transform.position, destination) < 1.0f)
         {
-            if (player.GetComponent<NewInventory>().spaces.Count > 0)
+            if (inventory.GetComponent<NewInventory>().spaces.Count > 0 && itemSpotFull == false)
             {
-                randItem = (int)Random.Range(0, player.GetComponent<Inventory>().itemsInInventory);
+                randItem = (int)Random.Range(0, inventory.GetComponent<NewInventory>().spaces.Count);
 
                 Debug.Log("got your nose :)");
-                stolenObject = player.GetComponent<NewInventory>().GetItem
-                    (player.GetComponent<NewInventory>().spaces[randItem]);
+                stolenObject = inventory.GetComponent<NewInventory>().GetItem
+                    (inventory.GetComponent<NewInventory>().spaces[randItem]);
+                inventory.GetComponent<NewInventory>().PopItem(
+                   inventory.GetComponent<NewInventory>().spaces[randItem]);
+                itemSpotFull = true;
             }
         }
     }
