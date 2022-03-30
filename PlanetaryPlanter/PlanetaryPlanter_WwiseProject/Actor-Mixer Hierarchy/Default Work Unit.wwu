@@ -4,6 +4,9 @@
 		<WorkUnit Name="Default Work Unit" ID="{B6F0A9CD-F468-4FD4-84C6-683319B6BADB}" PersistMode="Standalone">
 			<ChildrenList>
 				<Sound Name="MainMenuTheme" ID="{D02FC784-3812-4338-8C4B-B527E7CFD2F7}" ShortID="644060571">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{88BBB5EB-E248-4191-8C2E-3803159B9DFA}"/>

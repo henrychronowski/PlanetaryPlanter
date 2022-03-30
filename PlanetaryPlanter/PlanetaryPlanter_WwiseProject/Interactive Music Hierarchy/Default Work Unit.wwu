@@ -1,6 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{A3732061-5A90-4C63-BF88-B170D919C81B}" SchemaVersion="103">
 	<InteractiveMusic>
-		<WorkUnit Name="Default Work Unit" ID="{A3732061-5A90-4C63-BF88-B170D919C81B}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{A3732061-5A90-4C63-BF88-B170D919C81B}" PersistMode="Standalone">
+			<ChildrenList>
+				<MusicSegment Name="TemperateBiomeTheme" ID="{9305CBA1-0C02-4321-9353-A5AA84E5816C}" ShortID="744934219">
+					<PropertyList>
+						<Property Name="EndPosition" Type="Real64" Value="97567.3469387755"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{88BBB5EB-E248-4191-8C2E-3803159B9DFA}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{FCE47502-5DDC-4FE2-AA0A-BD7B21AE7032}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicTrack Name="TemperateBiomeTheme" ID="{DF39C4ED-60B3-4AB0-B224-196ACD6DF633}" ShortID="364053669">
+							<ReferenceList>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{FCE47502-5DDC-4FE2-AA0A-BD7B21AE7032}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="TemperateBiomeTheme" ID="{01B4ECB0-7CD9-4D10-836B-93100DA104FC}">
+									<Language>SFX</Language>
+									<AudioFile>TemperateBiomeTheme.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="224925731"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{DCB359E4-728F-4B40-902D-CD572D41E6AC}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</TransitionList>
+							<ObjectLists>
+								<ObjectList Name="Sequences">
+									<Reference>
+										<Local>
+											<MusicTrackSequence Name="" ID="{88D51379-DB7F-4906-AC3A-14CE7B978F04}">
+												<ObjectLists>
+													<ObjectList Name="Clips">
+														<Reference>
+															<Local>
+																<MusicClip Name="TemperateBiomeTheme" ID="{F0406FF4-47B3-4CEB-ADDA-60642DA2C31D}">
+																	<PropertyList>
+																		<Property Name="EndTrimOffset" Type="Real64" Value="97567.3469387755"/>
+																		<Property Name="FadeInMode" Type="int16" Value="0"/>
+																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																	</PropertyList>
+																	<AudioSourceRef Name="TemperateBiomeTheme" ID="{01B4ECB0-7CD9-4D10-836B-93100DA104FC}"/>
+																</MusicClip>
+															</Local>
+														</Reference>
+													</ObjectList>
+												</ObjectLists>
+											</MusicTrackSequence>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</MusicTrack>
+					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Cues">
+							<Reference>
+								<Local>
+									<MusicCue Name="Entry Cue" ID="{B18D32F0-4EF6-4A7C-AC0A-97955222DA96}"/>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MusicCue Name="Exit Cue" ID="{F8B4F7B0-8E57-43A6-9082-243133B900C5}">
+										<PropertyList>
+											<Property Name="CueType" Type="int16" Value="1"/>
+											<Property Name="TimeMs" Type="Real64" Value="97567.3469387755"/>
+										</PropertyList>
+									</MusicCue>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</MusicSegment>
+			</ChildrenList>
+		</WorkUnit>
 	</InteractiveMusic>
 </WwiseDocument>

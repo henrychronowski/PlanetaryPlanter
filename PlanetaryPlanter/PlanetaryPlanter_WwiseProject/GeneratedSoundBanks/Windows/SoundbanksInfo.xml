@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
+	<RootPaths>
+		<ProjectRoot>E:\Dev Kits and Games Made\Unity Projects\PlanetaryPlanter\PlanetaryPlanter\PlanetaryPlanter_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>E:\Dev Kits and Games Made\Unity Projects\PlanetaryPlanter\PlanetaryPlanter\PlanetaryPlanter_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>E:\Dev Kits and Games Made\Unity Projects\PlanetaryPlanter\PlanetaryPlanter\PlanetaryPlanter_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>E:\Dev Kits and Games Made\Unity Projects\PlanetaryPlanter\PlanetaryPlanter\PlanetaryPlanter_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="3690994985">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3604647259" Language="SFX" Hash="3648000684">
+			<ObjectPath>\SoundBanks\Default Work Unit\MainMenu</ObjectPath>
+			<ShortName>MainMenu</ShortName>
+			<Path>MainMenu.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2490834424" Name="PlayMainMenuTheme" ObjectPath="\Events\Default Work Unit\PlayMainMenuTheme" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="525634859" Language="SFX">
+							<ShortName>MainMenuTheme.wav</ShortName>
+							<Path>SFX\MainMenuTheme_705C7841.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>
