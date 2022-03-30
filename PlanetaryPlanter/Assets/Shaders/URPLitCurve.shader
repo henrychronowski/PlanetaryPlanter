@@ -58,7 +58,7 @@ Shader "0CurvedURPCustoms/URPLitCurve" {
 
 			// Curved world toggle
 			[Space(20)]
-			[Toggle(IN_EDITOR)] _In_Editor ("Turn Off Curve", Float) = 0
+			[KeywordEnum(off, on)] _Curve ("Turn Off Curve", Float) = 0
 	}
 	SubShader{
 		Tags {
@@ -134,7 +134,7 @@ Shader "0CurvedURPCustoms/URPLitCurve" {
 			#pragma multi_compile_fog
 
 			// Custom Keywords
-			#pragma multi_compile __ IN_EDITOR
+			#pragma multi_compile _CURVE_OFF _CURVE_ON
 
 			// GPU Instancing (not supported)
 			//#pragma multi_compile_instancing
@@ -211,24 +211,23 @@ Shader "0CurvedURPCustoms/URPLitCurve" {
 				#endif
 
 				// World Curve
-				#ifdef IN_EDITOR
+				#ifdef _CURVE_OFF
 				OUT.positionCS = positionInputs.positionCS;
 				OUT.positionWS = positionInputs.positionWS;
 
 				#else
-				float3 WS = mul(unity_ObjectToWorld, positionInputs.positionWS).xyz;
-				float curveAmount = distance(WS, _WorldSpaceCameraPos);
+					float3 WS = positionInputs.positionWS;//mul(unity_ObjectToWorld, positionInputs.positionWS).xyz;
+					float curveAmount = distance(WS.xz, _WorldSpaceCameraPos.xz);
 
-				curveAmount = curveAmount * 0.01f;
-				curveAmount = (0.0f + (-1.0f * (curveAmount * curveAmount)) * 100);
-				
-				OUT.positionCS = positionInputs.positionCS;
-				//OUT.positionWS = positionInputs.positionWS;
+					curveAmount = curveAmount * 0.01f;
+					curveAmount = (0.0f + (-1.0f * (curveAmount * curveAmount)) * 100);
+					
+					OUT.positionCS = positionInputs.positionCS;
+					OUT.positionWS = positionInputs.positionWS;
 
-				OUT.positionCS.y += curveAmount;
+					OUT.positionCS.y += curveAmount;
+					OUT.positionWS.y += curveAmount;
 				#endif
-
-
 				
 
 				half3 viewDirWS = GetWorldSpaceViewDir(positionInputs.positionWS);
@@ -280,6 +279,7 @@ Shader "0CurvedURPCustoms/URPLitCurve" {
 
 				// Simple Lighting (Lambert & BlinnPhong)
 				half4 color = UniversalFragmentPBR(inputData, surfaceData);
+
 				// See Lighting.hlsl to see how this is implemented.
 				// https://github.com/Unity-Technologies/Graphics/blob/master/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl
 

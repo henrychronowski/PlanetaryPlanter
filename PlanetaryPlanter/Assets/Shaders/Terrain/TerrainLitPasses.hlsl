@@ -259,7 +259,20 @@ Varyings SplatmapVert(Attributes v)
     UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
     TerrainInstancing(v.positionOS, v.normalOS, v.texcoord);
 
-    VertexPositionInputs Attributes = GetVertexPositionInputs(v.positionOS.xyz);
+    VertexPositionInputs Attributes;
+
+#ifdef _CURVE_ON
+    float3 WS = mul(unity_ObjectToWorld, v.positionOS).xyz;
+    float curveAmount = distance(WS.xz, _WorldSpaceCameraPos.xz);
+
+    curveAmount = curveAmount * 0.01f;
+    curveAmount = (0.0f + (-1.0f * (curveAmount * curveAmount)) * 100);
+
+    Attributes  = GetVertexPositionInputs(v.positionOS.xyz + float3(0.0f, curveAmount, 0.0f));
+#else
+    Attributes  = GetVertexPositionInputs(v.positionOS.xyz);
+#endif
+
 
     o.uvMainAndLM.xy = v.texcoord;
     o.uvMainAndLM.zw = v.texcoord * unity_LightmapST.xy + unity_LightmapST.zw;
