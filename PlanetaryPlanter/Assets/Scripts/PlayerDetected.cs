@@ -23,7 +23,7 @@ public class PlayerDetected : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            thief.GetComponent<MoveAIThief>().PlayerNoticed();
+            //thief.GetComponent<MoveAIThief>().PlayerNoticed();
         }
     }
 }
