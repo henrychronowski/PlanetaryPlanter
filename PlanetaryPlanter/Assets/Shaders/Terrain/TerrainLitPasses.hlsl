@@ -30,7 +30,7 @@ void ClipHoles(float2 uv)
 }
 #endif
 
-struct Attributes
+struct Attributes   // Vert input
 {
     float4 positionOS : POSITION;
     float3 normalOS : NORMAL;
@@ -38,7 +38,7 @@ struct Attributes
     UNITY_VERTEX_INPUT_INSTANCE_ID
 };
 
-struct Varyings
+struct Varyings     // Vert output
 {
     float4 uvMainAndLM              : TEXCOORD0; // xy: control, zw: lightmap
 #ifndef TERRAIN_SPLAT_BASEPASS
@@ -63,6 +63,14 @@ struct Varyings
 #endif
     float4 clipPos                  : SV_POSITION;
     UNITY_VERTEX_OUTPUT_STEREO
+};
+
+//  Geometry Shader output
+struct GeometryOut
+{
+    float4 pos : SV_POSITION;
+    float2 uv : TEXCOORD0;
+    float4 ws : TEXCOORD1;
 };
 
 void InitializeInputData(Varyings IN, half3 normalTS, out InputData input)
