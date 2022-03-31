@@ -121,7 +121,7 @@ public class PlantSpot : MonoBehaviour
             {
                 p.inPot = false;
                 temp.transform.parent = null;
-                temp.transform.position = new Vector3(10000, 100000);
+                temp.transform.position = new Vector3(0, 1000);
                 plantObject = null;
             }
             return;
@@ -130,7 +130,8 @@ public class PlantSpot : MonoBehaviour
         {
             p.inPot = false;
             temp.transform.parent = null;
-            temp.transform.position = new Vector3(10000, 100000); //this is dumb but its 4:30am
+            temp.transform.position = new Vector3(0, 1000); //this is dumb but its 4:30am
+            plantObject = null;
             Debug.Log("Added to inv");
         }
     }

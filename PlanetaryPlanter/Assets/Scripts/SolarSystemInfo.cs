@@ -37,6 +37,7 @@ public class SolarSystemInfo : MonoBehaviour
     void SetConstellationCamActive()
     {
         observatory.transform.Find("TestConstCam").gameObject.SetActive(true);
+        TutorialManagerScript.instance.Unlock("Solar System");
     }
 
     private void OnMouseEnter()
@@ -57,6 +58,5 @@ public class SolarSystemInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateRequirementsPanel();
     }
 }
