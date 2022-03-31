@@ -9,9 +9,10 @@ public class AttackHitbox : MonoBehaviour
     public bool isActive;
     private MeshRenderer render; //temporary
     private BoxCollider hitboxCollider;
+    public bool canBreakRocks = false;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "BreakableWall")
+        if(other.tag == "BreakableWall" && canBreakRocks)
         {
             Instantiate(particles, other.transform.position, Quaternion.identity);
             breakRock.Play();

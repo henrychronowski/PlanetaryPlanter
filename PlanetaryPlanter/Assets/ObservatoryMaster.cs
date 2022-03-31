@@ -27,6 +27,7 @@ public class ObservatoryMaster : MonoBehaviour
     public GameObject basePlant;
     public bool initted;
 
+    public int currentChapterIndex;
     public enum Direction
     {
         Left,
@@ -65,17 +66,16 @@ public class ObservatoryMaster : MonoBehaviour
 
     public void UpdateToDoUI()
     {
-        int currentConstellation = 0;
         for(int i = 0; i < unlockedConstellations.Count; i++)
         {
             if (unlockedConstellations[i])
             {
-                currentConstellation = i;
+                currentChapterIndex = i;
             }
             else
                 break;
         }
-        observatoryPoints[currentConstellation].GetComponentInChildren<SolarSystemInfo>().UpdateRequirementsPanel();
+        observatoryPoints[currentChapterIndex].GetComponentInChildren<SolarSystemInfo>().UpdateRequirementsPanel();
     }
 
     public List<ObservatoryPlanetSpot> GetPlanetSpotsOfCurrentChapter()
@@ -135,7 +135,7 @@ public class ObservatoryMaster : MonoBehaviour
         
         currentChapterSpots = GetPlanetSpotsOfChapter(currentChapter);
         FillChapterSpots(currentChapter - 1); //fill all previous chapters
-
+        
         
 
 
@@ -156,7 +156,10 @@ public class ObservatoryMaster : MonoBehaviour
 
             currentChapterSpots[i].PlaceObject(temp, false);
         }
-
+        for(int i = 0; i < currentChapter; i++)
+        {
+            unlockedConstellations[i] = true;
+        }
     }
 
     public void FillChapterSpots(int chaptersToFill)
@@ -172,7 +175,7 @@ public class ObservatoryMaster : MonoBehaviour
                 temp.GetComponent<Plant>().type = spot.type;
                 temp.GetComponent<Plant>().species = spot.species;
 
-                spot.PlaceObject(temp, false);
+                spot.PlaceObject(temp, false);          
             }
         }
     }
