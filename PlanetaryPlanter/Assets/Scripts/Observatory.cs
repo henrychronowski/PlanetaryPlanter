@@ -56,6 +56,13 @@ public class Observatory : MonoBehaviour
         return filled;
     }
 
+    public List<ObservatoryPlanetSpot> GetPlanetSpots()
+    {
+        constellationSpots.Clear();
+        constellationSpots.AddRange(GetComponentsInChildren<ObservatoryPlanetSpot>());
+        return constellationSpots;
+    }
+
     void Complete()
     {
         soundManager.PlaySound("Craft");

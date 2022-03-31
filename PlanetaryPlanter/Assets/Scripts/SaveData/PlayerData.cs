@@ -19,7 +19,7 @@ public class PlayerData
     public PlayerData(CharacterMovement player, ObservatoryMaster observatoryMaster, AlmanacProgression alm, TutorialManagerScript tutorials, NewInventory inventory, PlantsData plantData)
     {
         position = new float[3] { player.transform.position.x, player.transform.position.y, player.transform.position.z };
-        currentChapter = observatoryMaster.GetCurrentChapter();
+        currentChapter = observatoryMaster.currentChapterIndex;
         spotsFilled = observatoryMaster.GetFilledPlanetsOfCurrentChapter();
         achievementsDone = alm.GetAllCompletedAchievements();
         tutorialsDone = tutorials.GetAllCompletedTutorials();

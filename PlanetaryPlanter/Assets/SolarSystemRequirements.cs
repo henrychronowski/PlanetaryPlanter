@@ -7,6 +7,12 @@ public class SolarSystemRequirements : MonoBehaviour
 {
     public List<Image> images;
     public TMPro.TextMeshProUGUI completePrompt;
+
+    public RectTransform openPos;
+    public RectTransform closedPos;
+    public float timeSpentLerping;
+    public float totalLerpTime;
+    bool opening = false;
     public void UpdateInfo(List<Sprite> newSprites)
     {
         bool oneActive = false;
@@ -26,6 +32,36 @@ public class SolarSystemRequirements : MonoBehaviour
         completePrompt.enabled = !oneActive; //shows complete text if none are active
     }
 
+    void Lerp()
+    {
+        timeSpentLerping += Time.deltaTime;
+        if(NewInventory.instance.inventoryActive && !GameObject.FindObjectOfType<ObservatoryMaster>().inObservatoryView)
+        {
+            if (!opening)
+            {
+                opening = true;
+                timeSpentLerping = 0;
+            }
+            if (timeSpentLerping > totalLerpTime)
+                transform.position = openPos.position;
+            else
+                transform.position = Vector3.Lerp(transform.position, openPos.position, timeSpentLerping/totalLerpTime);
+        }
+        else
+        {
+            if(opening)
+            {
+                opening = false;
+                timeSpentLerping = 0;
+            }
+            if(timeSpentLerping > totalLerpTime)
+                transform.position = closedPos.position;
+            else
+                transform.position = Vector3.Lerp(transform.position, closedPos.position, timeSpentLerping / totalLerpTime);
+
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +74,6 @@ public class SolarSystemRequirements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Lerp();
     }
 }
