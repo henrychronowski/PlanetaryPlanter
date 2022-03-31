@@ -13,12 +13,15 @@ public class SiloInventory : MonoBehaviour
 
     Transform player;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
+
     public void Interact()
     {
         AlmanacProgression.instance.Unlock("SiloOpen");
         TutorialManagerScript.instance.Unlock("The Silo");
-
-        if(inventoryPanelObject.activeInHierarchy)
+        
+        if (inventoryPanelObject.activeInHierarchy)
         {
             inventoryPanelObject.SetActive(false);
             //NewInventory.instance.SetSpacesActive(false);
@@ -27,6 +30,7 @@ public class SiloInventory : MonoBehaviour
         }
         else
         {
+            soundManager.PlaySound("EnterShed");
             inventoryPanelObject.SetActive(true);
             NewInventory.instance.ForceActive();
         }
@@ -55,6 +59,8 @@ public class SiloInventory : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
     private void Update()
     {

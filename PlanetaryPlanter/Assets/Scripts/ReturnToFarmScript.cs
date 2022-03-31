@@ -10,9 +10,14 @@ public class ReturnToFarmScript : MonoBehaviour
     public GameObject player;
     public Text returnMessage;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
         canReturn = false;
     }
 
@@ -47,6 +52,7 @@ public class ReturnToFarmScript : MonoBehaviour
             player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = new Vector3(returnSpot.transform.position.x, returnSpot.transform.position.y, returnSpot.transform.position.z);
             player.GetComponent<CharacterController>().enabled = true;
+            soundManager.PlaySound("FarmPort");
         }
     }
 }
