@@ -175,7 +175,7 @@ public class ObservatoryMaster : MonoBehaviour
                 temp.GetComponent<Plant>().type = spot.type;
                 temp.GetComponent<Plant>().species = spot.species;
 
-                spot.PlaceObject(temp, false);
+                spot.PlaceObject(temp, false);          
             }
         }
     }
