@@ -30,7 +30,7 @@ public class PlantSpot : MonoBehaviour
             plantObject = Instantiate(plantObject.GetComponent<Seed>().plantObject, transform);
             placedPlant = plantObject.GetComponent<Plant>();
             TutorialManagerScript.instance.Unlock("Maintaining Plants");
-            soundManager.PlaySound("PlantPlant");
+            soundManager.PlaySound("PlantingPlant");
         }
     }
 
@@ -172,14 +172,14 @@ public class PlantSpot : MonoBehaviour
         //NewInventory.instance.AddItem(fertilizer);
         interactable = GetComponent<InteractableObject>();
         fertilizer = gameObject.GetComponent<FertilizerScript>().Fertilizer;
-<<<<<<< HEAD
+
         //Audio Manager Is Opend Up here
         soundManager = SoundManager.instance;
 
-=======
+
         items = GameObject.FindObjectOfType<InventoryItemIndex>();
         gameObject.name = transform.parent.name + " Bed"; //every plantspot gameobject name needs to be different for saving to work and I REALLY dont want to go rename each individual one
->>>>>>> dev
+
     }
     // Update is called once per frame
     void Update()

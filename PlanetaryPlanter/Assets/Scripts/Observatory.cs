@@ -21,6 +21,9 @@ public class Observatory : MonoBehaviour
     public List<LineRenderer> lines;
     public int filledSpots;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
+
     public SolarSystemCountScript solarSystemCounter;
 
 
@@ -55,7 +58,8 @@ public class Observatory : MonoBehaviour
 
     void Complete()
     {
-        foreach(LineRenderer l in lines)
+        soundManager.PlaySound("Craft");
+        foreach (LineRenderer l in lines)
         {
             l.enabled = true;
         }
@@ -82,6 +86,9 @@ public class Observatory : MonoBehaviour
         }
 
         solarSystemCounter = FindObjectOfType<SolarSystemCountScript>();
+
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
