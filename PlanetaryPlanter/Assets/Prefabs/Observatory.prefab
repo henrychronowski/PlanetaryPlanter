@@ -157,7 +157,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321800676572333163}
-  m_LocalRotation: {x: -0.09569296, y: -0.00065707666, z: 0.04235861, w: 0.99450904}
+  m_LocalRotation: {x: -0.09569198, y: -0.0006530808, z: 0.042362873, w: 0.9945089}
   m_LocalPosition: {x: -16.933586, y: 48.57, z: -60.038902}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -412,7 +412,8 @@ GameObject:
   - component: {fileID: 4431299245960513673}
   - component: {fileID: 779396217290475308}
   - component: {fileID: 3257245966930097126}
-  m_Layer: 0
+  - component: {fileID: 2019212838}
+  m_Layer: 6
   m_Name: Observatory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,6 +484,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2019212838
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3906014521648386611}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3188430640878268843, guid: 32b96af8908bbc74e84ce20fa2bf6965, type: 3}
 --- !u!1 &4122923398485786486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,6 +1158,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ObservatoryMaster, Assembly-CSharp
+        m_MethodName: EnterObservatory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: The Telescope
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}

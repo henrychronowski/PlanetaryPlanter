@@ -17,7 +17,7 @@ public struct PlantsData
         for (int i = 0; i < planters.Count; i++)
         {
             planterIds[i] = i;
-            if (planters[i].placedPlant == null)
+            if (planters[i].plantObject == null)
             {
                 speciesArray[i] = PlanetSpecies.Unidentified;
                 growthValue[i] = -1;
@@ -148,9 +148,17 @@ public class SaveManager : MonoBehaviour
             //Only runs once when pressing load game or new game
             if(SceneManager.GetSceneByBuildIndex(activeSceneIndex).isLoaded && loadDataIntended && !dataLoaded)
             {
-                LoadData();
-                dataLoaded = true;
-                loadDataIntended = false;
+                    playerData = SaveSystem.LoadAllData();
+                if(GameObject.FindObjectOfType<UnlockSystem>().currentChapter == playerData.currentChapter)
+                {
+                    LoadData();
+                    dataLoaded = true;
+                    loadDataIntended = false;
+                }
+                else
+                {
+                    GameObject.FindObjectOfType<UnlockSystem>().UnlockChapters(playerData.currentChapter);
+                }
             }
             else if (SceneManager.GetSceneByBuildIndex(activeSceneIndex).isLoaded && !loadDataIntended && !dataLoaded)
             {

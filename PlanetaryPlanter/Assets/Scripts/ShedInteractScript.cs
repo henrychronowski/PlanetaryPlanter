@@ -19,6 +19,9 @@ public class ShedInteractScript : MonoBehaviour
 
     ObservatoryMaster master;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
+
     public void Interact()
     {
         if (inventoryPanelObject.activeInHierarchy)
@@ -32,6 +35,7 @@ public class ShedInteractScript : MonoBehaviour
         {
             NewInventory.instance.ForceActive();
             master.EnterObservatory();
+            soundManager.PlaySound("EnterShed");
         }
 
     }
@@ -52,6 +56,8 @@ public class ShedInteractScript : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         master = GameObject.FindObjectOfType<ObservatoryMaster>();
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame

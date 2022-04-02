@@ -25,12 +25,5 @@ public class PlayerEscaped : MonoBehaviour
         {
             thief.GetComponent<MoveAIThief>().PlayerEscaped();
         }
-
-        if (other.gameObject == thief)
-        {
-            Debug.Log("player has escaped our detection");
-            //maybe a different function but this should tell it to move back into the zone
-            thief.GetComponent<MoveAIThief>().PlayerEscaped();
-        }
     }
 }

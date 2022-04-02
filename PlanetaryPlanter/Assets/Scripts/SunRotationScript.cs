@@ -41,7 +41,7 @@ public class SunRotationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Shader.SetGlobalVector("_SunFacing", transform.forward);
     }
 
     private void FixedUpdate()

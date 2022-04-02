@@ -58,8 +58,8 @@ public class PlanetInformationScript : MonoBehaviour
             else
             {
                 infoText.gameObject.SetActive(true);
-                infoText.text = "Object Species: " + GetComponent<ObservatoryPlanetSpot>().species +
-                    "\nObject Type: " + GetComponent<ObservatoryPlanetSpot>().type;
+                infoText.text = "Species: " + GetComponent<ObservatoryPlanetSpot>().species +
+                    "\nType: " + GetComponent<ObservatoryPlanetSpot>().type;
                 ChooseImageToDisplay(GetComponent<ObservatoryPlanetSpot>().species, GetComponent<ObservatoryPlanetSpot>().type);
             }
         }
@@ -89,25 +89,15 @@ public class PlanetInformationScript : MonoBehaviour
                     break;
                 }
             case PlanetSpecies.RockPlanet:
-
                 {
-
                     preview.sprite = rocky[(int)type];
-
                     break;
-
                 }
-
             case PlanetSpecies.Comet:
-
                 {
-
                     preview.sprite = comet[(int)type];
-
                     break;
-
                 }
-
         }
     }
     public Sprite ReturnSpriteToDisplay(PlanetSpecies species, PlanetType type)
@@ -117,35 +107,43 @@ public class PlanetInformationScript : MonoBehaviour
             case PlanetSpecies.Asteroid:
                 {
                     if((int)type >= asteroid.Length)
-
                     {
-
                         return placeholder;
-
                     }
                     return asteroid[(int)type];
                 }
+            case PlanetSpecies.RockPlanet:
+                {
+                    if ((int)type >= rocky.Length)
+                    {
+                        return placeholder;
+                    }
+                    preview.sprite = rocky[(int)type];
+                    break;
+                }
             case PlanetSpecies.Planet:
                 {
-
                     if ((int)type >= planet.Length)
-
                     {
-
                         return placeholder;
-
                     }
                     return planet[(int)type];
                 }
+
+            case PlanetSpecies.Comet:
+                {
+                    if ((int)type >= comet.Length)
+                    {
+                        return placeholder;
+                    }
+                    preview.sprite = comet[(int)type];
+                    break;
+                }
             case PlanetSpecies.Star:
                 {
-
                     if ((int)type >= star.Length)
-
                     {
-
                         return placeholder;
-
                     }
                     return star[(int)type];
                 }
@@ -159,24 +157,35 @@ public class PlanetInformationScript : MonoBehaviour
     //        case PlanetSpecies.Asteroid:
     //            {
     //                if((int)type >= asteroid.Length)
+
     //                {
+
     //                    return placeholder;
+
     //                }
     //                return asteroid[(int)type];
     //            }
     //        case PlanetSpecies.Planet:
     //            {
+
     //                if ((int)type >= planet.Length)
+
     //                {
+
     //                    return placeholder;
+
     //                }
     //                return planet[(int)type];
     //            }
     //        case PlanetSpecies.Star:
     //            {
+
     //                if ((int)type >= star.Length)
+
     //                {
+
     //                    return placeholder;
+
     //                }
     //                return star[(int)type];
     //            }
