@@ -6,6 +6,8 @@ public class ThrowPlanet : MonoBehaviour
 {
     public LayerMask observatoryMarker;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
     void PlacePlanet()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -15,6 +17,7 @@ public class ThrowPlanet : MonoBehaviour
             {
                 if (hitInfo.collider.gameObject.layer == 8 && hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().filled == false)
                 {
+                    soundManager.PlaySound("PlacePlanet");
                     hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().PlaceObject(NewInventory.instance.GetItemInCursor());
                 }
             }
@@ -24,7 +27,8 @@ public class ThrowPlanet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame

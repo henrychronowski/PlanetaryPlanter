@@ -106,6 +106,11 @@ public class MoveAIThief : MonoBehaviour
             {
                 randItem = (int)Random.Range(0, inventory.GetComponent<NewInventory>().spaces.Count);
 
+                while (inventory.GetComponent<NewInventory>().spaces[randItem].filled == false)
+                {
+                    randItem = (int)Random.Range(0, inventory.GetComponent<NewInventory>().spaces.Count);
+                }
+
                 Debug.Log("got your nose :)");
                 stolenObject = inventory.GetComponent<NewInventory>().GetItem
                     (inventory.GetComponent<NewInventory>().spaces[randItem]);

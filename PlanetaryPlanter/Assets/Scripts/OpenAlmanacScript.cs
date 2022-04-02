@@ -8,10 +8,14 @@ public class OpenAlmanacScript : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject almanac;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
@@ -81,6 +85,7 @@ public class OpenAlmanacScript : MonoBehaviour
         Time.timeScale = 0;
         GameObject.FindObjectOfType<CharacterMovement>().canMove = false;
         pauseMenu.SetActive(true);
+        soundManager.PlaySound("OpenMenu");
     }
 
     public void OpenAlmanac()
@@ -95,6 +100,7 @@ public class OpenAlmanacScript : MonoBehaviour
         Time.timeScale = 0;
         GameObject.FindObjectOfType<CharacterMovement>().canMove = false;
         almanac.SetActive(true);
+        soundManager.PlaySound("OpenMenu");
     }
 
     public void UnpauseGame()

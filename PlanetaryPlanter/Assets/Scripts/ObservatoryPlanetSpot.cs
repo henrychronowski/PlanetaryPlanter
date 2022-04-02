@@ -73,6 +73,16 @@ public class ObservatoryPlanetSpot : MonoBehaviour
                             newObject = Instantiate(starFruit);
                             break;
                         }
+                    case PlanetSpecies.RockPlanet:
+                        {
+                            newObject = Instantiate(starFruit);
+                            break;
+                        }
+                    case PlanetSpecies.Comet:
+                        {
+                            newObject = Instantiate(starFruit);
+                            break;
+                        }
                 }
                 heldObject = newObject;
                 Vector3 scale = newObject.transform.localScale;
