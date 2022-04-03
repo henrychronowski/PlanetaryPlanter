@@ -139,9 +139,10 @@ public class MoveAIThief : MonoBehaviour
         }
     }
 
-    void DropItem() //this is for when the player hits the ai
+    public void DropItem() //this is for when the player hits the ai
     {
         itemSpotFull = false;
+        stolenObject = null; //idk if this is how i wanna do this but we will try it
     }
 
     public GameObject GetStolenObject()
