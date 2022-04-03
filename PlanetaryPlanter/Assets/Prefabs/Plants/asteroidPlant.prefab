@@ -165,7 +165,7 @@ MonoBehaviour:
   waterSound: {fileID: 7511106427382626385}
   lastRecordedHour: 0
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 1207248671764787036, guid: c47b05bd60fe9e24ebefc9637077ba04, type: 3}
   species: 0
   type: 0
 --- !u!114 &2496107721849800323
@@ -308,21 +308,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Asteroid Plant
   itemType: Plant
-  otherInfo: 
+  otherInfo: A fully grown cluster of asteroids. Can be put in a solar system or
+    modified at the crafting table.
   fireModName: Fire Asteroid
-  fireModInfo: 
+  fireModInfo: An asteroid cluster that leaks hot magma. Can be put in a solar system.
   iceModName: Ice Asteroid
-  iceModInfo: 
-  ghostModName: Ghostly Asteroid
-  ghostModInfo: 
-  fossilModName: Fossilium Asteroid
-  fossilModInfo: 
-  waterModName: Liquid Asteroid
-  waterModInfo: 
-  grassModName: Grassy Asteroid
-  grassModInfo: 
+  iceModInfo: An asteroid cluster made out of ice. Can be put in a solar system.
+  ghostModName: Gravestone Cluster
+  ghostModInfo: An asteroid cluster that resembles alien headstones. Can be put in
+    a solar system.
+  fossilModName: Fossil Asteroid Cluster
+  fossilModInfo: A stony comet that turns living things into fossils. Can be put
+    in a solar system.
+  waterModName: Water Asteroid
+  waterModInfo: An asteroid cluster surrounded by bubbles of water. Can be put in
+    a solar system.
+  grassModName: Grass Asteroid
+  grassModInfo: A cluster of asteroids covered in moss. Can be put in a solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
-  itemID: 4
 --- !u!1 &6905500716569491998
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,17 +41,17 @@ public class ObservatoryPlanetSpot : MonoBehaviour
     public GameObject starFruit;
     public GameObject planetFruit;
 
-    public void PlaceObject(GameObject newObject, bool fromInventory = true)
+    public bool PlaceObject(GameObject newObject, bool fromInventory = true)
     {
         if (newObject == null)
-            return;
+            return false;
 
         if (newObject.tag != "Plant")
-            return;
+            return false;
 
         if(!filled)
         {
-            if(newObject.GetComponent<Plant>().type == type && newObject.GetComponent<Plant>().species == species)
+            if(newObject.GetComponent<Plant>().type == type && newObject.GetComponent<Plant>().species == species && newObject.GetComponent<Plant>().stage != Plant.Stage.Rotten)
             {
                 if(fromInventory)
                     newObject = NewInventory.instance.PopItemInCursor();
@@ -92,13 +92,16 @@ public class ObservatoryPlanetSpot : MonoBehaviour
                 GetComponent<MeshRenderer>().enabled = false;
                 filled = true;
                 newObject.GetComponent<Plant>().inPot = false;
+                return true;
                 //newObject.transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().enabled = false;
             }
         }
         else
         {
+            return false;
             //Debug.Log("Filled");
         }
+        return false;
         //Observatory.instance.
     }
 

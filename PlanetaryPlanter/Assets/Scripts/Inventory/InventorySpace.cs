@@ -39,6 +39,16 @@ public class InventorySpace : MonoBehaviour
             tooltipBox.gameObject.SetActive(false);
     }
 
+    void CheckForItem()
+    {
+        if((transform.childCount == 0 && location != SpaceLocation.Trash) || (transform.childCount == 1 && location == SpaceLocation.Trash))
+        {
+            filled = false;
+            item = null;
+        }
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +59,6 @@ public class InventorySpace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        CheckForItem();
     }
 }

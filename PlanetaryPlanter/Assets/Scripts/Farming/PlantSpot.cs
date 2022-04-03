@@ -120,7 +120,7 @@ public class PlantSpot : MonoBehaviour
         {
             AlmanacProgression.instance.Unlock("GetFertilizer");
             TutorialManagerScript.instance.Unlock("Fertilizer");
-            GameObject temp2 = Instantiate(fertilizer);
+            GameObject temp2 = Instantiate(p.rottenPlant);
             if(NewInventory.instance.AddItem(temp2))
             {
                 p.inPot = false;

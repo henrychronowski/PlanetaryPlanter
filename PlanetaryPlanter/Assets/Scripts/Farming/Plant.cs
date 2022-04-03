@@ -68,7 +68,7 @@ public class Plant : MonoBehaviour
     [SerializeField]
     float sinFactor;
 
-    public GameObject fertilizer;
+    public GameObject rottenPlant;
 
     public PlanetSpecies species;
 
