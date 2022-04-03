@@ -98,6 +98,8 @@ public class MoveAIThief : MonoBehaviour
     void StealFromPlayer() //take an item from the player inventory
     {
         int randItem;
+        if (NewInventory.instance.GetNumberOfItems() == 0)
+            return;
 
         //could be this or a collider contact
         if (Vector3.Distance(gameObject.transform.position, destination) < 1.0f)

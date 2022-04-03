@@ -164,7 +164,7 @@ public class NewInventory : MonoBehaviour
             if(space.item == null)
             {
                 space.item = selectedItem;
-                //selectedItem = null;
+                selectedItem = null;
                 itemInCursor = false;
                 space.filled = true;
                 space.item.transform.parent = space.transform;
@@ -200,6 +200,18 @@ public class NewInventory : MonoBehaviour
             return selectedItem.itemObject;
         else
             return null;
+    }
+
+    public int GetNumberOfItems()
+    {
+        int count = 0;
+        foreach(InventorySpace space in spaces)
+        {
+            if(space.filled)
+                count++;
+        }
+
+        return count;
     }
 
     public GameObject PopItemInCursor()
@@ -489,6 +501,10 @@ public class NewInventory : MonoBehaviour
         {
             if (item.GetComponent<Plant>().species == PlanetSpecies.Planet)
             {
+                if(item.GetComponent<Plant>().stage == Plant.Stage.Rotten)
+                {
+                    return ItemID.RottenPlanet;
+                }
                 if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
                 {
                     return ItemID.FirePlanet;
@@ -521,6 +537,10 @@ public class NewInventory : MonoBehaviour
 
             if (item.GetComponent<Plant>().species == PlanetSpecies.Star)
             {
+                if (item.GetComponent<Plant>().stage == Plant.Stage.Rotten)
+                {
+                    return ItemID.RottenStar;
+                }
                 if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
                 {
                     return ItemID.FireStar;
@@ -553,6 +573,10 @@ public class NewInventory : MonoBehaviour
 
             if (item.GetComponent<Plant>().species == PlanetSpecies.Asteroid)
             {
+                if (item.GetComponent<Plant>().stage == Plant.Stage.Rotten)
+                {
+                    return ItemID.RottenAsteroid;
+                }
                 if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
                 {
                     return ItemID.FireAsteroid;
@@ -585,6 +609,10 @@ public class NewInventory : MonoBehaviour
 
             if (item.GetComponent<Plant>().species == PlanetSpecies.RockPlanet)
             {
+                if (item.GetComponent<Plant>().stage == Plant.Stage.Rotten)
+                {
+                    return ItemID.RottenRockyPlanet;
+                }
                 if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
                 {
                     return ItemID.FireRockyPlanet;
@@ -617,6 +645,10 @@ public class NewInventory : MonoBehaviour
 
             if (item.GetComponent<Plant>().species == PlanetSpecies.Comet)
             {
+                if (item.GetComponent<Plant>().stage == Plant.Stage.Rotten)
+                {
+                    return ItemID.RottenComet;
+                }
                 if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
                 {
                     return ItemID.FireCometPlanet;

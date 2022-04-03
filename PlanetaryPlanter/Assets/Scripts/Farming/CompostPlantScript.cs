@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CompostPlantScript : MonoBehaviour
 {
@@ -14,10 +15,10 @@ public class CompostPlantScript : MonoBehaviour
     bool hasComposted;
 
     //Counts how many plants you've composted
-    int currentCompost;
+    public int currentCompost;
 
     //The minimum amount of plants required to make fertilizer.
-    int minUntilFertilizer;
+    public int minUntilFertilizer;
 
     public GameObject fertilizer;
 
@@ -26,12 +27,11 @@ public class CompostPlantScript : MonoBehaviour
     public string compostInteract;
     public string collectInteract;
 
+    public List<Slider> sliders; 
+
     // Start is called before the first frame update
     void Start()
     {
-        currentCompost = 0;
-        minUntilFertilizer = 10;
-
         canCompost = false;
         hasComposted = false;
         inventory = FindObjectOfType<NewInventory>();
@@ -46,6 +46,7 @@ public class CompostPlantScript : MonoBehaviour
         CheckDistanceFromPlayer();
         CompostPlant();
         hasComposted = false;
+        UpdateSliders();
 
         interactable.interactText = InteractText();
     }
@@ -94,5 +95,13 @@ public class CompostPlantScript : MonoBehaviour
         }
 
         return compostInteract;
+    }
+
+    void UpdateSliders()
+    {
+        foreach(Slider slider in sliders)
+        {
+            slider.value = ((float)currentCompost / (float)minUntilFertilizer);
+        }    
     }
 }

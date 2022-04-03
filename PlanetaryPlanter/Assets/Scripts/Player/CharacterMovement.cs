@@ -84,7 +84,10 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField]
     float turnSmoothTime = 0.1f;
-    
+
+    [SerializeField]
+    float airTurnSmoothTime = 0.1f;
+
     float turnSmoothVelocity;
 
     public Vector3 axis;
@@ -373,14 +376,20 @@ public class CharacterMovement : MonoBehaviour
                 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
                 transform.rotation = Quaternion.Euler(transform.eulerAngles.x, angle, transform.eulerAngles.x);
             }
-            else 
+            else if(grounded)
             {
                 targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 transform.rotation = Quaternion.Euler(transform.eulerAngles.x, angle, transform.eulerAngles.z);
             }
-
+            else
+            {
+                targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, airTurnSmoothTime);
+                moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                //transform.rotation = Quaternion.Euler(transform.eulerAngles.x, angle, transform.eulerAngles.z);
+            }
 
             if (wallrunning)
             {

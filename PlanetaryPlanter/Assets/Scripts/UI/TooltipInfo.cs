@@ -27,13 +27,21 @@ public class TooltipInfo : MonoBehaviour
     public string grassModName;
     public string grassModInfo;
 
+    public string rottenName;
+    public string rottenInfo;
+
     public bool isPlant = false;
 
     void CheckForMods()
     {
         if (isPlant)
         {
-
+            if(GetComponent<Plant>().stage == Plant.Stage.Rotten)
+            {
+                name = rottenName;
+                otherInfo = rottenInfo;
+                return;
+            }
             if (GetComponent<Plant>().type == PlanetType.VolcanicAsh)
             {
                 name = fireModName;

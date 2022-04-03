@@ -17,8 +17,9 @@ public class ThrowPlanet : MonoBehaviour
             {
                 if (hitInfo.collider.gameObject.layer == 8 && hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().filled == false)
                 {
-                    soundManager.PlaySound("PlacePlanet");
-                    hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().PlaceObject(NewInventory.instance.GetItemInCursor());
+                    if (hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().PlaceObject(NewInventory.instance.GetItemInCursor()))
+                        soundManager.PlaySound("PlacePlanet"); //only plays when placing successfully
+
                 }
             }
         }
