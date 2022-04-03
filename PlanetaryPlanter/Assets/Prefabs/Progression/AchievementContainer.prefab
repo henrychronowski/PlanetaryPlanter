@@ -1,0 +1,486 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5522481389838458956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5522481389838458957}
+  - component: {fileID: 5522481389838458958}
+  - component: {fileID: 5522481389838458959}
+  - component: {fileID: 5522481389838458944}
+  - component: {fileID: 5522481389838458947}
+  - component: {fileID: 5522481389838458946}
+  - component: {fileID: 5522481389838458945}
+  - component: {fileID: 5522481389838458950}
+  - component: {fileID: 5522481389838458949}
+  - component: {fileID: 5522481389838458948}
+  - component: {fileID: 5522481389838460851}
+  - component: {fileID: 5522481389838460850}
+  - component: {fileID: 5522481389838460849}
+  - component: {fileID: 5522481389838460848}
+  - component: {fileID: 5522481389838460863}
+  - component: {fileID: 5522481389838460862}
+  - component: {fileID: 5522481389838460861}
+  - component: {fileID: 5522481389838460860}
+  - component: {fileID: 5522481389838460859}
+  - component: {fileID: 5522481389838460858}
+  - component: {fileID: 5522481389838460857}
+  - component: {fileID: 5522481389838460856}
+  - component: {fileID: 5522481389838458951}
+  - component: {fileID: 1821882175}
+  m_Layer: 0
+  m_Name: AchievementContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5522481389838458957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 58.2107, y: 21.901386, z: -560.2926}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5522481389838458958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f498a3d09bd76c40a1497c2d5d4a4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievements: []
+--- !u!114 &5522481389838458959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: WaterPlant
+  description: '"Stardust" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 2b779bbfe8648034f9fee211f484d361, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838458944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: GetFertilizer
+  description: '"Fertilizer" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 2b3c3d0376e1bd34fbb1a105c25b09a9, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838458947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: ObservatoryEnter
+  description: '"Observatory" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 2b779bbfe8648034f9fee211f484d361, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838458946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: SiloOpen
+  description: '"Silo" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 2b779bbfe8648034f9fee211f484d361, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838458945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: CollectPlanetSeed
+  description: '"Planet Seed" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: f4ecf9c4a48ca284089960a2b00dda92, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838458950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: CollectStarSeed
+  description: '"Star Seed" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 1ac1d4fe00ce4fd4da79de87eb3eb48b, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838458949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: CollectAsteroidSeed
+  description: '"Asteroid Seed" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 70824c9b5f545a449a2a00dfa4ee9bb7, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838458948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: CollectPlanetPlant
+  description: '"Planet Plant" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: b77a8ee68f11a0d41b8a5b53bafeae94, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838460851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: CollectStarPlant
+  description: '"Star Plant" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 6c52313a87706b24f90bbf110e0ea35f, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838460850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: CollectAsteroidPlant
+  description: '"Asteroid Plant" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 810d6bba139332a458b740017db48ad5, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838460849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: PlanetCropGrown
+  description: '"Planet Crop" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: b77a8ee68f11a0d41b8a5b53bafeae94, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838460848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: StarCropGrown
+  description: '"Star Crop" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 6c52313a87706b24f90bbf110e0ea35f, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838460863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: AsteroidCropGrown
+  description: '"Asteroid Crop" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 810d6bba139332a458b740017db48ad5, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838460862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: BurningPlanet
+  description: '"Burning Planet" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: cbb11c7434503704d8cf60bc696558de, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838460861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: SuperheatedStar
+  description: '"Superheated Star" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: f7343dcb350ed2f42bfe59bc899a7245, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838460860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: MagmaAsteroid
+  description: '"Magma Asteroidsr" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 3900ef90313debf47951ec68678cc2e0, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838460859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: FrozenPlanet
+  description: '"Frozen Planet" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 1c3c54c19f8ac0e4c8ad891f355410d8, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838460858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: ColdStar
+  description: '"Cold Star" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: d7601e92502691d49a3fc796a9976cff, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838460857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: CometCluster
+  description: '"Comet Cluster" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 89f76ccf891c4d64a906512b063e4388, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838460856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: VolcanicAsh
+  description: '"Volcanic Ash" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 3160698839ccca34aa44d5f7c61f4edf, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5522481389838458951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: FrozenCore
+  description: '"Frozen Core" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: e8c7a342c04e269418f6c9d335df814b, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1821882175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522481389838458956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c2595b06fe124aa7c386b4d0768ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  title: LoreEntry1
+  description: '"Lore 1" entry unlocked in Almanac'
+  popUpIcon: {fileID: 21300000, guid: 2b779bbfe8648034f9fee211f484d361, type: 3}
+  achievementEvent:
+    m_PersistentCalls:
+      m_Calls: []
