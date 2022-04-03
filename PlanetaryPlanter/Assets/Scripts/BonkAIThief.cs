@@ -18,7 +18,7 @@ public class BonkAIThief : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        RecoverStolenItem();
     }
 
     void RecoverStolenItem()
@@ -29,6 +29,8 @@ public class BonkAIThief : MonoBehaviour
                 < 2.0f)
             {
                 recoveredObject = thief.GetComponent<MoveAIThief>().GetStolenObject();
+                thief.GetComponent<MoveAIThief>().DropItem();
+
                 inventory.GetComponent<NewInventory>().AddItem(recoveredObject);
             }
         }
