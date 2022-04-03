@@ -38,13 +38,13 @@ Material:
     m_Ints: []
     m_Floats:
     - StarDensity: 4
-    - StarSize: 100
-    - SunBlend: 0.01
-    - SunSize: 0.055
+    - StarSize: 80.7
+    - SunBlend: 0.193
+    - SunSize: 0.111
     m_Colors:
-    - HorizonColDay: {r: 0, g: 0, b: 0, a: 0}
-    - HorizonColNight: {r: 0.002, g: 0, b: 0.1, a: 0}
-    - SkyColDay: {r: 0, g: 0, b: 0, a: 0}
-    - SkyColNight: {r: 0.02, g: 0.02, b: 0.2, a: 0}
+    - HorizonColDay: {r: 0, g: 0, b: 0, a: 1}
+    - HorizonColNight: {r: 0.002, g: 0, b: 0.1, a: 1}
+    - SkyColDay: {r: 0, g: 0, b: 0, a: 1}
+    - SkyColNight: {r: 1, g: 0.02, b: 0.2, a: 1}
     - SunColor: {r: 1, g: 0.65, b: 0, a: 0}
   m_BuildTextureStacks: []
