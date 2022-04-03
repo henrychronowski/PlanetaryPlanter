@@ -20,6 +20,8 @@ public class PlantSpot : MonoBehaviour
     public GameObject fertilizerParticles;
     public InventoryItemIndex items;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
     public void PlacePlant()
     {
         plantObject = NewInventory.instance.PopItemOfTag("Seed");
@@ -28,6 +30,7 @@ public class PlantSpot : MonoBehaviour
             plantObject = Instantiate(plantObject.GetComponent<Seed>().plantObject, transform);
             placedPlant = plantObject.GetComponent<Plant>();
             TutorialManagerScript.instance.Unlock("Maintaining Plants");
+            soundManager.PlaySound("PlantingPlant");
         }
     }
 
@@ -102,6 +105,7 @@ public class PlantSpot : MonoBehaviour
     {
         GameObject temp = transform.GetChild(0).transform.gameObject;
         Plant p = temp.GetComponent<Plant>();
+        soundManager.PlaySound("Harvest");
         if (p.stage != Plant.Stage.Ripe && p.stage != Plant.Stage.Rotten)
         {
             if (PlaceFertilizer())
@@ -121,7 +125,7 @@ public class PlantSpot : MonoBehaviour
             {
                 p.inPot = false;
                 temp.transform.parent = null;
-                temp.transform.position = new Vector3(10000, 100000);
+                temp.transform.position = new Vector3(0, 1000);
                 plantObject = null;
             }
             return;
@@ -130,7 +134,8 @@ public class PlantSpot : MonoBehaviour
         {
             p.inPot = false;
             temp.transform.parent = null;
-            temp.transform.position = new Vector3(10000, 100000); //this is dumb but its 4:30am
+            temp.transform.position = new Vector3(0, 1000); //this is dumb but its 4:30am
+            plantObject = null;
             Debug.Log("Added to inv");
         }
     }
@@ -168,8 +173,14 @@ public class PlantSpot : MonoBehaviour
         //NewInventory.instance.AddItem(fertilizer);
         interactable = GetComponent<InteractableObject>();
         fertilizer = gameObject.GetComponent<FertilizerScript>().Fertilizer;
+
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
+
+
         items = GameObject.FindObjectOfType<InventoryItemIndex>();
         gameObject.name = transform.parent.name + " Bed"; //every plantspot gameobject name needs to be different for saving to work and I REALLY dont want to go rename each individual one
+
     }
     // Update is called once per frame
     void Update()

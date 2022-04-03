@@ -19,12 +19,19 @@ public class CollectSeedScript : MonoBehaviour
 
     //public bool collected = false;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
+
     // Start is called before the first frame update
     void Start()
     {
         //NewInventory.instance.AddItem(fertilizer);
         time = GameObject.FindObjectOfType<SunRotationScript>();
         hourLastCollected = -1; //has not been collected yet
+
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
+
     }
 
 
@@ -73,6 +80,7 @@ public class CollectSeedScript : MonoBehaviour
                 GameObject temp = Instantiate(seed, transform.parent, false);
                 temp.transform.position = new Vector3(10000, 100000);
                 NewInventory.instance.AddItem(temp);
+                soundManager.PlaySound("CollectItem");
                 if(seed.tag == "Seed")
                 {
                     TutorialManagerScript.instance.Unlock("Planting Seeds");
