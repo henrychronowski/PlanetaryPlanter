@@ -22,7 +22,15 @@ public class BouncePadScript : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            player.GetComponent<CharacterMovement>().Bounce(bounceSpeed);
+            collision.gameObject.GetComponent<CharacterMovement>().Bounce(bounceSpeed);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<CharacterMovement>().Bounce(bounceSpeed);
         }
     }
 }

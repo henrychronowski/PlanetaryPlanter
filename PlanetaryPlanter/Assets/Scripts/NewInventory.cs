@@ -28,6 +28,7 @@ public class NewInventory : MonoBehaviour
     public InventorySpace selectedSpace;
     public GameObject selectionIndicator;
     public GameObject grayOutLevelPanel;
+    public GameObject craftingMenu;
     public int selectedIndex;
     public float scrollWheel;
     public bool inventoryActive; // True when the mouse has been unconfined and can click on things, only when UI is open
@@ -44,6 +45,20 @@ public class NewInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             SetSpacesActiveToggle();
+        }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            if(!inventoryActive)
+                SetSpacesActiveToggle();
+
+            if(craftingMenu.activeInHierarchy)
+            {
+                CloseCraftingMenu();
+            }
+            else
+            {
+                OpenCraftingMenu();
+            }
         }
         scrollWheel = Input.mouseScrollDelta.y * -5;
         
@@ -216,6 +231,8 @@ public class NewInventory : MonoBehaviour
 
                 if(item.GetComponent<Plant>())
                 {
+                    TutorialManagerScript.instance.Unlock("Harvesting Plants");
+
                     string species = item.GetComponent<Plant>().species.ToString();
 
                     AlmanacProgression.instance.Unlock("Collect" + species + "Plant");
@@ -399,6 +416,17 @@ public class NewInventory : MonoBehaviour
         }
     }
 
+    void OpenCraftingMenu()
+    {
+        craftingMenu.SetActive(true);
+        TutorialManagerScript.instance.Unlock("Crafting Table");
+    }
+
+    void CloseCraftingMenu()
+    {
+        craftingMenu.SetActive(false);
+    }
+
     public ItemID[] ReturnAllInventoryIDs()
     {
         List<ItemID> items = new List<ItemID>();
@@ -469,19 +497,19 @@ public class NewInventory : MonoBehaviour
                 {
                     return ItemID.IcePlanet;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.MortalCoil)
+                else if (item.GetComponent<Plant>().type == PlanetType.MortalCoil)
                 {
                     return ItemID.GhostPlanetPlant;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.Fossilium)
+                else if (item.GetComponent<Plant>().type == PlanetType.Fossilium)
                 {
                     return ItemID.FossilPlanetPlant;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.DewDrop)
+                else if (item.GetComponent<Plant>().type == PlanetType.DewDrop)
                 {
                     return ItemID.WaterPlanetPlant;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.Sprout)
+                else if (item.GetComponent<Plant>().type == PlanetType.Sprout)
                 {
                     return ItemID.GrassPlanetPlant;
                 }
@@ -501,19 +529,19 @@ public class NewInventory : MonoBehaviour
                 {
                     return ItemID.IceStar;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.MortalCoil)
+                else if (item.GetComponent<Plant>().type == PlanetType.MortalCoil)
                 {
                     return ItemID.GhostStarPlant;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.Fossilium)
+                else if (item.GetComponent<Plant>().type == PlanetType.Fossilium)
                 {
                     return ItemID.FossilStarPlant;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.DewDrop)
+                else if (item.GetComponent<Plant>().type == PlanetType.DewDrop)
                 {
                     return ItemID.WaterStarPlant;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.Sprout)
+                else if (item.GetComponent<Plant>().type == PlanetType.Sprout)
                 {
                     return ItemID.GrassStarPlant;
                 }
@@ -533,19 +561,19 @@ public class NewInventory : MonoBehaviour
                 {
                     return ItemID.IceAsteroid;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.MortalCoil)
+                else if (item.GetComponent<Plant>().type == PlanetType.MortalCoil)
                 {
                     return ItemID.GhostAsteroidPlant;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.Fossilium)
+                else if (item.GetComponent<Plant>().type == PlanetType.Fossilium)
                 {
                     return ItemID.FossilAsteroidPlant;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.DewDrop)
+                else if (item.GetComponent<Plant>().type == PlanetType.DewDrop)
                 {
                     return ItemID.WaterAsteroidPlant;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.Sprout)
+                else if (item.GetComponent<Plant>().type == PlanetType.Sprout)
                 {
                     return ItemID.GrassAsteroidPlant;
                 }
@@ -565,19 +593,19 @@ public class NewInventory : MonoBehaviour
                 {
                     return ItemID.IceRockyPlanet;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.MortalCoil)
+                else if (item.GetComponent<Plant>().type == PlanetType.MortalCoil)
                 {
                     return ItemID.GhostRockyPlanet;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.Fossilium)
+                else if (item.GetComponent<Plant>().type == PlanetType.Fossilium)
                 {
                     return ItemID.FossilRockyPlanet;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.DewDrop)
+                else if (item.GetComponent<Plant>().type == PlanetType.DewDrop)
                 {
                     return ItemID.WaterRockyPlanet;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.Sprout)
+                else if (item.GetComponent<Plant>().type == PlanetType.Sprout)
                 {
                     return ItemID.GrassRockyPlanet;
                 }
@@ -597,19 +625,19 @@ public class NewInventory : MonoBehaviour
                 {
                     return ItemID.IceCometPlanet;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.MortalCoil)
+                else if (item.GetComponent<Plant>().type == PlanetType.MortalCoil)
                 {
                     return ItemID.GhostCometPlanet;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.Fossilium)
+                else if (item.GetComponent<Plant>().type == PlanetType.Fossilium)
                 {
                     return ItemID.FossilCometPlanet;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.DewDrop)
+                else if (item.GetComponent<Plant>().type == PlanetType.DewDrop)
                 {
                     return ItemID.WaterCometPlanet;
                 }
-                else if (item.GetComponent<Modifier>().modifierToApply == PlanetType.Sprout)
+                else if (item.GetComponent<Plant>().type == PlanetType.Sprout)
                 {
                     return ItemID.GrassCometPlanet;
                 }

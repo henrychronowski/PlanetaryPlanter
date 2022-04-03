@@ -11,9 +11,25 @@ public class SolarSystemInfo : MonoBehaviour
     public void UpdateRequirementsPanel()
     {
         List<Sprite> sprites = new List<Sprite>();
-        foreach(ObservatoryPlanetSpot spot in observatory.constellationSpots)
+        List<Observatory> observatories = new List<Observatory>();
+        if(observatory == null)
         {
-            sprites.Add(spot.GetComponent<PlanetInformationScript>().ReturnSpriteToDisplay(spot.species, spot.type));
+            char[] chars = gameObject.name.ToCharArray();
+            int index = int.Parse(chars[chars.Length - 1].ToString());
+            observatory = transform.parent.Find("SSView" + index.ToString()).gameObject.GetComponent<Observatory>();
+        }
+        if(requirements == null)
+        {
+            requirements = GameObject.Find("SolarSystemRequirements").GetComponent<SolarSystemRequirements>();
+        }
+        observatories.AddRange(observatory.gameObject.transform.parent.GetComponentsInChildren<Observatory>(true));
+        foreach(Observatory obs in observatories)
+        {
+            foreach(ObservatoryPlanetSpot spot in obs.GetPlanetSpots())
+            {
+                if(!spot.filled)
+                    sprites.Add(spot.GetComponent<PlanetInformationScript>().ReturnSpriteToDisplay(spot.species, spot.type));
+            }
         }
         requirements.UpdateInfo(sprites);
     }
@@ -21,6 +37,7 @@ public class SolarSystemInfo : MonoBehaviour
     void SetConstellationCamActive()
     {
         observatory.transform.Find("TestConstCam").gameObject.SetActive(true);
+        TutorialManagerScript.instance.Unlock("Solar System");
     }
 
     private void OnMouseEnter()
@@ -41,6 +58,5 @@ public class SolarSystemInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 }

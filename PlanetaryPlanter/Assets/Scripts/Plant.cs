@@ -6,6 +6,9 @@ using UnityEngine;
 public class Plant : MonoBehaviour
 {
     public bool inPot;
+
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
     public enum Stage
     {
         Stage1,
@@ -132,7 +135,7 @@ public class Plant : MonoBehaviour
         AlmanacProgression.instance.Unlock("WaterPlant");
         currentWater += waterToAdd;
         waterSound.pitch = Random.Range(0.5f, 1f);
-        waterSound.Play();
+        soundManager.PlaySound("WaterPlant");
         Instantiate(waterParticles, transform);
         if(currentWater > maxWater)
         {
@@ -149,6 +152,9 @@ public class Plant : MonoBehaviour
         originalScale = plantModels[(int)stage].transform.localScale;
         timeSinceLastGrowth = 0;
         UpdateUI();
+
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
