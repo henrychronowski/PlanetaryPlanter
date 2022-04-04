@@ -11,17 +11,20 @@ public class MoveAIThief : MonoBehaviour
     public GameObject inventory;
     public Transform detectionRadius; //how close the player must be to be noticed
     public Transform movementRadius; //the range on the map the ai can move
+    public float dropItemTime;
 
     Vector3 destination;
     GameObject stolenObject; //gameobject or what?
     bool newDestinationNeeded = false;
     bool playerSpotted = false;
     bool itemSpotFull = false;
+    float currentDropItemTime;
 
     // Start is called before the first frame update
     void Start()
     {
         newDestinationNeeded = true;
+        currentDropItemTime = dropItemTime;
     }
 
     // Update is called once per frame
@@ -56,6 +59,17 @@ public class MoveAIThief : MonoBehaviour
 
             destination = player.transform.position;
             gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
+        }
+
+        if (itemSpotFull == true)
+        {
+            currentDropItemTime -= Time.deltaTime;
+
+            if (currentDropItemTime <= 0.0f)
+            {
+                DropItem();
+                currentDropItemTime = dropItemTime;
+            }
         }
 
         CheckThiefLocation();
@@ -119,5 +133,16 @@ public class MoveAIThief : MonoBehaviour
                 itemSpotFull = true;
             }
         }
+    }
+
+    public void DropItem()
+    {
+        itemSpotFull = false;
+        stolenObject = null;
+    }
+
+    public GameObject GetStolenObject()
+    {
+        return stolenObject;
     }
 }
