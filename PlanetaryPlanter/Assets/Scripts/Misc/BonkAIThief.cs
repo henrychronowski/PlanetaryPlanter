@@ -23,7 +23,7 @@ public class BonkAIThief : MonoBehaviour
 
     void RecoverStolenItem()
     {
-        if (Input.GetKey(KeyCode.U))
+        if (Input.GetMouseButtonDown(1))
         {
             if (Vector3.Distance(gameObject.transform.position, thief.transform.position)
                 < 2.0f)
