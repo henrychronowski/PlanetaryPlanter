@@ -274,7 +274,7 @@ Varyings SplatmapVert(Attributes v)
     float curveAmount = distance(WS.xz, _WorldSpaceCameraPos.xz);
 
     curveAmount = curveAmount * 0.01f;
-    curveAmount = (0.0f + (-1.0f * (curveAmount * curveAmount)) * 100);
+    curveAmount = (0.0f + (-1.0f * (curveAmount * curveAmount)) * 2);
 
     Attributes  = GetVertexPositionInputs(v.positionOS.xyz + float3(0.0f, curveAmount, 0.0f));
 #else

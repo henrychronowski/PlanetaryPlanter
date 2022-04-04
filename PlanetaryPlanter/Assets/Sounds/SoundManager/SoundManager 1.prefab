@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5466290340956722311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5466290340956722305}
+  - component: {fileID: 5466290340956722304}
+  m_Layer: 0
+  m_Name: SoundManager 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5466290340956722305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466290340956722311}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 542.70715, y: 0.0066199303, z: 303.99323}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5466290340956722304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466290340956722311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f51dbf367500a0b469cd1e527726ea78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: CollectItem
+    clip: {fileID: 8300000, guid: 0d671c048bfc5494ca67b70df2c1815e, type: 3}
+    volume: 0.232
+  - name: WaterPlant
+    clip: {fileID: 8300000, guid: e31f5ee6f0ac4ca4c81d5f3de261d1cd, type: 3}
+    volume: 0.077
+  - name: PlacePlanet
+    clip: {fileID: 8300000, guid: 5b73ed9862173d14ba268b4fc6cfa5ab, type: 3}
+    volume: 0.424
+  - name: Harvest
+    clip: {fileID: 8300000, guid: d000aca1c56e6a7498b14df9b513a9cd, type: 3}
+    volume: 0.914
+  - name: OpenMenu
+    clip: {fileID: 8300000, guid: b007db42ea0704748adc9e8712ca2fd2, type: 3}
+    volume: 0.101
+  - name: FarmPort
+    clip: {fileID: 8300000, guid: 56960c563a52de740b980af82679903e, type: 3}
+    volume: 0.785
+  - name: Craft
+    clip: {fileID: 8300000, guid: 1906284e703708d439776044ba0e1e2c, type: 3}
+    volume: 0.32
+  - name: PlantingPlant
+    clip: {fileID: 8300000, guid: 8e8e2821fad2ffd4b9b2e5d856fa5f08, type: 3}
+    volume: 1
+  - name: EnterShed
+    clip: {fileID: 8300000, guid: 54ce40500b7305946b65351b76b9bd16, type: 3}
+    volume: 0.097
