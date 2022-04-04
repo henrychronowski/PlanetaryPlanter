@@ -3062,7 +3062,7 @@ MonoBehaviour:
   waterSound: {fileID: 438045005744908646}
   lastRecordedHour: 0
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 6385859021364286149, guid: 7e84ea67cc17389478f649cb51eb39bb, type: 3}
   species: 3
   type: 0
 --- !u!114 &5515507267454359476
@@ -3205,21 +3205,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Rocky Planet
   itemType: Plant
-  otherInfo: 
+  otherInfo: A fully grown rocky planet. Can be put in a solar system or modified
+    at the crafting table.
   fireModName: Firey Rocky Planet
-  fireModInfo: 
+  fireModInfo: A rocky world dotted with active volcanoes. Can be put in a solar
+    system.
   iceModName: Frozen Rocky Planet
-  iceModInfo: 
+  iceModInfo: A rocky planet covered in snow and tall icicles. Can be put in a solar
+    system.
   ghostModName: Ghostly Rocky Planet
-  ghostModInfo: 
+  ghostModInfo: A rocky planet inhabited by the spirits of the dead. Can be put in
+    a solar system.
   fossilModName: Fossilium Rocky Planet
-  fossilModInfo: 
+  fossilModInfo: 'A rocky world covered in vast deserts. Can be put in a solar system. '
   waterModName: Liquid Rocky Planet
-  waterModInfo: 
+  waterModInfo: A rocky world covered by an ocean and dotted with islands. Can be
+    put in a solar system.
   grassModName: Grassy Rocky Planet
-  grassModInfo: 
+  grassModInfo: A rocky world overflowing with plant life. Can be put in a solar
+    system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
-  itemID: 0
 --- !u!1 &5524384707740716646
 GameObject:
   m_ObjectHideFlags: 0

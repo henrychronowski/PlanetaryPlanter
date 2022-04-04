@@ -325,7 +325,7 @@ MonoBehaviour:
   waterSound: {fileID: 5992686230633381149}
   lastRecordedHour: 0
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 5815113187368580925, guid: d0ebc1362bcbb1b42bfd5e59c4767b2c, type: 3}
   species: 2
   type: 0
 --- !u!114 &8752458536398770647
@@ -468,19 +468,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Star Plant
   itemType: Plant
-  otherInfo: 
+  otherInfo: A seed born of stars. Can be planted to grow crops.
   fireModName: Fire Star
-  fireModInfo: 
+  fireModInfo: A scarlet star that incinerates anything that gets too close. Can
+    be put in a solar system.
   iceModName: Ice Star
-  iceModInfo: 
+  iceModInfo: An azure star that is so hot, it feels freezing cold. Can be put in
+    a solar system.
   ghostModName: Ghostly Star
-  ghostModInfo: 
+  ghostModInfo: A black space where a star used to be. Can be put in a solar system.
   fossilModName: Fossilium Star
-  fossilModInfo: 
+  fossilModInfo: A coppery star that is even older than it looks. Can be put in a
+    solar system.
   waterModName: Liquid Star
-  waterModInfo: 
+  waterModInfo: A cerulean star that swirls like a whirlpool. Can be put in a solar
+    system.
   grassModName: Grassy Star
-  grassModInfo: 
+  grassModInfo: A verdant star that makes plants face its light. Can be put in a
+    solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &9097207178865940958
 GameObject:
