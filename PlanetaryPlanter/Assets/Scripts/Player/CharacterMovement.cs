@@ -791,6 +791,7 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TutorialManagerScript.instance.Unlock("Welcome to Planetary Planter");
         characterController = GetComponent<CharacterController>();
         jumpSound = GetComponent<AudioSource>();
     }
