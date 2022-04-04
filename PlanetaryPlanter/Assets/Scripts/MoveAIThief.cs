@@ -11,9 +11,7 @@ public class MoveAIThief : MonoBehaviour
     public GameObject inventory;
     public Transform detectionRadius; //how close the player must be to be noticed
     public Transform movementRadius; //the range on the map the ai can move
-    public float dropItemCountdown;
 
-    float currentDropItemCountdown;
     Vector3 destination;
     GameObject stolenObject; //gameobject or what?
     bool newDestinationNeeded = false;
@@ -24,7 +22,6 @@ public class MoveAIThief : MonoBehaviour
     void Start()
     {
         newDestinationNeeded = true;
-        currentDropItemCountdown = dropItemCountdown;
     }
 
     // Update is called once per frame
@@ -55,23 +52,10 @@ public class MoveAIThief : MonoBehaviour
 
         if (playerSpotted == true)
         {
-            //Debug.Log("updating player position");
+            Debug.Log("updating player position");
 
             destination = player.transform.position;
             gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
-        }
-
-        if (itemSpotFull == true)
-        {
-            currentDropItemCountdown -= Time.deltaTime;
-
-            if (currentDropItemCountdown <= 0.0f)
-            {
-                Debug.Log("sqiumbus removed your item forever");
-                currentDropItemCountdown = dropItemCountdown;
-
-                DropItem();
-            }
         }
 
         CheckThiefLocation();
@@ -132,21 +116,8 @@ public class MoveAIThief : MonoBehaviour
                     (inventory.GetComponent<NewInventory>().spaces[randItem]);
                 inventory.GetComponent<NewInventory>().PopItem(
                    inventory.GetComponent<NewInventory>().spaces[randItem]);
-
                 itemSpotFull = true;
-                playerSpotted = false;
             }
         }
-    }
-
-    public void DropItem() //this is for when the player hits the ai
-    {
-        itemSpotFull = false;
-        stolenObject = null; //idk if this is how i wanna do this but we will try it
-    }
-
-    public GameObject GetStolenObject()
-    {
-        return stolenObject;
     }
 }
