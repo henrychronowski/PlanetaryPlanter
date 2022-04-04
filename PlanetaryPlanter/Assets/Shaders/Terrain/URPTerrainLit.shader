@@ -88,15 +88,19 @@ Shader "0CurvedURPCustoms/TerrainCurved"
     {
         Tags { "Queue" = "Geometry-100" "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" "UniversalMaterialType" = "Lit" "IgnoreProjector" = "False" "TerrainCompatible" = "True"}
 
+        Cull Off
+
         Pass
         {
             Name "ForwardLit"
             Tags { "LightMode" = "UniversalForward" }
             HLSLPROGRAM
             #pragma target 3.0
+            #pragma require geometry
 
             #pragma vertex SplatmapVert
             #pragma fragment SplatmapFragment
+            #pragma geometry GrassGeometry
 
             #define _METALLICSPECGLOSSMAP 1
             #define _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A 1
