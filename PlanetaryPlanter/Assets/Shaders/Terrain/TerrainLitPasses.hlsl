@@ -255,6 +255,38 @@ void TerrainInstancing(inout float4 positionOS, inout float3 normal)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+//                  Geometry function                                        //
+///////////////////////////////////////////////////////////////////////////////
+
+GeometryOut TransformGeomToClip(float3 pos, float3 offset, float3x3 transformationMatrix, float2 uv)
+{
+    GeometryOut o;
+
+    o.pos = TransformObjectToHClip(pos + mul(transformationMatrix, offset));
+    o.uv = uv;
+    o.ws = float4(TransformObjectToWorld(pos + mul(transformationMatrix, offset)), 1.0f);
+
+    return o;
+}
+
+[maxvertexcount(3)]
+void GrassGeometry(point Varyings input[1], inout TriangleStream<GeometryOut> triStream)
+{
+    float3 pos = input[0].positionWS;
+    float3 normal = input[0].normal.xyz;
+    float3 tan = float3(0, 0, 0);           // Non-tangent geometry? even though the varying has it
+    float3x3 transformationMatrix = float3x3(1, 0, 0,
+                                             0, 1, 0,
+                                             0, 0, 1);
+    
+    triStream.Append(TransformGeomToClip(pos, float3(-0.1f, 0.0f, 0.0f), transformationMatrix, float2(0.0f, 0.0f)));
+    triStream.Append(TransformGeomToClip(pos, float3(0.0f, 0.0f, 0.0f), transformationMatrix, float2(1.0f, 0.0f)));
+    triStream.Append(TransformGeomToClip(pos, float3(0.0f, 0.5f, 0.0f), transformationMatrix, float2(0.0f, 1.0f)));
+
+    triStream.RestartStrip();
+}
+
+///////////////////////////////////////////////////////////////////////////////
 //                  Vertex and Fragment functions                            //
 ///////////////////////////////////////////////////////////////////////////////
 
