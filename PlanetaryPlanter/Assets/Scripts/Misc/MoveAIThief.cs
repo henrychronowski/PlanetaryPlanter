@@ -14,7 +14,7 @@ public class MoveAIThief : MonoBehaviour
     public float dropItemTime;
 
     Vector3 destination;
-    GameObject stolenObject; //gameobject or what?
+    [SerializeField] GameObject stolenObject; //gameobject or what?
     bool newDestinationNeeded = false;
     bool playerSpotted = false;
     bool itemSpotFull = false;
@@ -135,6 +135,7 @@ public class MoveAIThief : MonoBehaviour
 
                 if (itemFound == true)
                 {
+                    TutorialManagerScript.instance.Unlock("Squimbus!");
                     Debug.Log("got your nose :)");
                     stolenObject = inventory.GetComponent<NewInventory>().GetItem
                         (inventory.GetComponent<NewInventory>().spaces[randItem]);
