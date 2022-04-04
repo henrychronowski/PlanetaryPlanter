@@ -27,7 +27,9 @@ public class CompostPlantScript : MonoBehaviour
     public string compostInteract;
     public string collectInteract;
 
-    public List<Slider> sliders; 
+    public GameObject fill;
+    public Transform noFill;
+    public Transform filled;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +48,7 @@ public class CompostPlantScript : MonoBehaviour
         CheckDistanceFromPlayer();
         CompostPlant();
         hasComposted = false;
-        UpdateSliders();
+        UpdateFillProgress();
 
         interactable.interactText = InteractText();
     }
@@ -97,11 +99,9 @@ public class CompostPlantScript : MonoBehaviour
         return compostInteract;
     }
 
-    void UpdateSliders()
+    void UpdateFillProgress()
     {
-        foreach(Slider slider in sliders)
-        {
-            slider.value = ((float)currentCompost / (float)minUntilFertilizer);
-        }    
+        float progress = ((float)currentCompost / (float)minUntilFertilizer);
+        fill.transform.position = Vector3.Lerp(noFill.position, filled.position, progress);
     }
 }
