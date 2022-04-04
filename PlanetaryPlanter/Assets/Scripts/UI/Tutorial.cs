@@ -23,6 +23,7 @@ public class Tutorial : MonoBehaviour
         if(!isUnlocked)
         {
             isUnlocked = true;
+            AlmanacProgression.instance.Unlock(title);
             tutorial.SetActive(true);
             descriptionText.text = description;
             titleText.text = title;
