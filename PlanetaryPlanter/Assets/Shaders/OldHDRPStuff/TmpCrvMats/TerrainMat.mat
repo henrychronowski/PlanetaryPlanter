@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: TerrainMat
   m_Shader: {fileID: 4800000, guid: 1d1fcb2ae3f89cd49967d015f4dc321a, type: 3}
-  m_ShaderKeywords: _NORMALMAP_TANGENT_SPACE _TERRAIN_INSTANCED_PERPIXEL_NORMAL
+  m_ShaderKeywords: _CURVE_ON _NORMALMAP_TANGENT_SPACE _TERRAIN_INSTANCED_PERPIXEL_NORMAL
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -206,6 +206,7 @@ Material:
     - _CoatMask: 0
     - _CullMode: 2
     - _CullModeForward: 2
+    - _Curve: 1
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
