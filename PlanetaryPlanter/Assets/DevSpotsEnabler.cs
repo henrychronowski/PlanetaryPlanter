@@ -18,5 +18,9 @@ public class DevSpotsEnabler : MonoBehaviour
             {
                 container.SetActive(true);
             }
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.B))
+        {
+            container.SetActive(true);
+        }
     }
 }
