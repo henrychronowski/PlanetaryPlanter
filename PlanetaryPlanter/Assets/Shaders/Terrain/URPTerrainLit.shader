@@ -96,10 +96,10 @@ Shader "0CurvedURPCustoms/TerrainCurved"
             Tags { "LightMode" = "UniversalForward" }
             HLSLPROGRAM
             #pragma target 3.0
-            #pragma require geometry
+            //#pragma require geometry
 
             #pragma vertex SplatmapVert
-                        #pragma geometry GrassGeometry
+            //            #pragma geometry GrassGeometry
 
             #pragma fragment SplatmapFragment
 
