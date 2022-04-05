@@ -99,8 +99,9 @@ Shader "0CurvedURPCustoms/TerrainCurved"
             #pragma require geometry
 
             #pragma vertex SplatmapVert
+                        #pragma geometry GrassGeometry
+
             #pragma fragment SplatmapFragment
-            #pragma geometry GrassGeometry
 
             #define _METALLICSPECGLOSSMAP 1
             #define _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A 1
