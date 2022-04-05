@@ -23,16 +23,24 @@ public class BonkAIThief : MonoBehaviour
 
     void RecoverStolenItem()
     {
-        if (Input.GetKey(KeyCode.U))
+        if (Input.GetMouseButtonDown(1))
         {
             if (Vector3.Distance(gameObject.transform.position, thief.transform.position)
                 < 2.0f)
             {
                 recoveredObject = thief.GetComponent<MoveAIThief>().GetStolenObject();
                 thief.GetComponent<MoveAIThief>().DropItem();
-
-                inventory.GetComponent<NewInventory>().AddItem(recoveredObject);
+                if(recoveredObject != null)
+                    inventory.GetComponent<NewInventory>().AddItem(recoveredObject);
             }
         }
+    }
+
+    public void RecoverStolenItemWithBonk()
+    {
+        recoveredObject = thief.GetComponent<MoveAIThief>().GetStolenObject();
+        thief.GetComponent<MoveAIThief>().DropItem();
+        if (recoveredObject != null)
+            inventory.GetComponent<NewInventory>().AddItem(recoveredObject);
     }
 }
