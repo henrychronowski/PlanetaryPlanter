@@ -25,5 +25,10 @@ public class PlayerEscaped : MonoBehaviour
         {
             thief.GetComponent<MoveAIThief>().PlayerEscaped();
         }
+
+        if (other.gameObject == thief)
+        {
+            thief.GetComponent<MoveAIThief>().ChangeDestinationNeeded(true);
+        }
     }
 }
