@@ -12,7 +12,7 @@ public class leavingHomePopup : MonoBehaviour
         {
             if (tutorialunlocked == false)
             {
-                TutorialManagerScript.instance.Unlock("Have you checked the observatory?");
+                TutorialManagerScript.instance.Unlock("A Sense of Direction.");
                 tutorialunlocked = true;
             }
         }
