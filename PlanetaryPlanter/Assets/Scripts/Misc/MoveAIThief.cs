@@ -33,22 +33,8 @@ public class MoveAIThief : MonoBehaviour
         if (newDestinationNeeded == true)
         {
             Debug.Log("picking new destination");
-            
-            float randX = 0.0f;
-            float randZ = 0.0f;
 
-            randX = Random.Range(movementRadius.transform.position.x -
-                movementRadius.GetComponent<SphereCollider>().radius,
-                movementRadius.transform.position.x +
-                movementRadius.GetComponent<SphereCollider>().radius);
-
-            randZ = Random.Range(movementRadius.transform.position.z -
-                movementRadius.GetComponent<SphereCollider>().radius,
-                movementRadius.transform.position.z +
-                movementRadius.GetComponent<SphereCollider>().radius);
-
-            destination = new Vector3(randX, 1, randZ);
-            gameObject.GetComponent<NavMeshAgent>().SetDestination(destination);
+            PickNewDestination();
 
             newDestinationNeeded = false;
         }
@@ -73,6 +59,27 @@ public class MoveAIThief : MonoBehaviour
         }
 
         CheckThiefLocation();
+    }
+
+    void PickNewDestination()
+    {
+        Debug.Log("picking new destination");
+
+        float randX = 0.0f;
+        float randZ = 0.0f;
+
+        randX = Random.Range(movementRadius.transform.position.x -
+            movementRadius.GetComponent<SphereCollider>().radius,
+            movementRadius.transform.position.x +
+            movementRadius.GetComponent<SphereCollider>().radius);
+
+        randZ = Random.Range(movementRadius.transform.position.z -
+            movementRadius.GetComponent<SphereCollider>().radius,
+            movementRadius.transform.position.z +
+            movementRadius.GetComponent<SphereCollider>().radius);
+
+        destination = new Vector3(randX, 1, randZ);
+        gameObject.GetComponent<NavMeshAgent>().SetDestination(destination);
     }
 
     void CheckThiefLocation()
@@ -159,5 +166,10 @@ public class MoveAIThief : MonoBehaviour
     public GameObject GetStolenObject()
     {
         return stolenObject;
+    }
+
+    public void ChangeDestinationNeeded(bool value)
+    {
+        newDestinationNeeded = value;
     }
 }
