@@ -10,6 +10,8 @@ public class InteractableObject : MonoBehaviour
 
     public InteractableEvent interactableEvent = new InteractableEvent();
 
+    public Sprite interactSprite;
+
     public InteractableEvent onInteractableEvent { get { return interactableEvent; } set { interactableEvent = value; } }
 
     public string interactText = "Test";
