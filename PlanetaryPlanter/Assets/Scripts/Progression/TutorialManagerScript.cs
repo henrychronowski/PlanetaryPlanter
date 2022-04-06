@@ -6,8 +6,8 @@ public class TutorialManagerScript : MonoBehaviour
 {
     public static TutorialManagerScript instance;
     public GameObject tutorialCanvas;
+    public GameObject comicCanvas;
     public List<Tutorial> tutorials;
-
     private void Awake()
     {
         if (instance == null)
@@ -35,7 +35,7 @@ public class TutorialManagerScript : MonoBehaviour
 
     void CheckActive()
     {
-        if(tutorialCanvas.activeInHierarchy)
+        if(tutorialCanvas.activeInHierarchy || comicCanvas.activeInHierarchy)
         {
             NewInventory.instance.SetSpacesActive(true);
             Time.timeScale = 0;
