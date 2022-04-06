@@ -1,3 +1,7 @@
+// Henry Chronowski
+// Built from the Unity URP base terrain lit shader
+// Grass functionality built off of Daniel Ilett's tutorial: https://danielilett.com/2021-08-24-tut5-17-stylised-grass/
+
 Shader "0CurvedURPCustoms/TerrainCurved"
 {
     Properties
@@ -40,9 +44,38 @@ Shader "0CurvedURPCustoms/TerrainCurved"
         [ToggleUI] _EnableInstancedPerPixelNormal("Enable Instanced peR-pixel normal", Float) = 1.0
 
         // Curved world toggle
-        [Space(20)]
+        [Space][Header(Curve toggle)]
 		[KeywordEnum(off, on)] _Curve ("Turn Off Curve", Float) = 0.0
-		
+
+        // Grass Colors
+        [Space][Header(Grass coloring)]
+		_BaseGrassColor("Grass Base Colour", Color) = (0.1, 1, 0.1, 1)
+        _TipColor("Grass Tip Colour", Color) = (0, 1, 0, 1)
+        _BladeTexture("Blade Texture", 2D) = "white" {}
+        
+        // Grass shape
+        [Space][Header(Grass shape)]
+        _BladeWidthMin("Minimum blade width", Range(0, 0.1)) = 0.02
+        _BladeWidthMax("Maximum blade width", Range(0, 0.5)) = 0.05
+        _BladeHeightMin("Minimum blade height", Range(0, 2)) = 0.1
+        _BladeHeightMax("Maximum blade height", Range(0, 2)) = 0.2
+        _BladeSegments("Number of blade segments", Range(1,10)) = 3
+        _BladeBendDistance("Ammount of blade bending", Float) = 0.38
+        _BladeBendCurve("Curvature of blade", Range(1, 4)) = 2
+        _BendDelta("Bend variation", Range(0,1)) = 0.2
+
+        // Grass LOD
+        [Space][Header(Grass LOD factors)]
+        _GrassTessalationDistance("Tessellation distance", Range(0.01, 2)) = 1
+        _GrassMap("Grass visibility map", 2D) = "white" {} // Hoping to replace this with a channel in the control map
+        _GrassThreshold("Grass visibility threshold", Range(-0.1, 1)) = 0.5
+        _GrassFalloff("Grass visibility fade-in falloff", Range(0, 0.5)) = 0.05
+
+        // Grass-affecting wind
+        [Space][Header(Grass wind)]
+        _WindMap("Wind map", 2D) = "bump" {}    // Maybe tie in with skybox wind
+        _WindVelocity("Wind velocity", Vector) = (1, 0, 0, 1)
+        _WindFrequency("Wind pulse frequency", Range(0, 1)) = 0.01
     }
 
     HLSLINCLUDE
@@ -55,14 +88,19 @@ Shader "0CurvedURPCustoms/TerrainCurved"
     {
         Tags { "Queue" = "Geometry-100" "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" "UniversalMaterialType" = "Lit" "IgnoreProjector" = "False" "TerrainCompatible" = "True"}
 
+        Cull Off
+
         Pass
         {
             Name "ForwardLit"
             Tags { "LightMode" = "UniversalForward" }
             HLSLPROGRAM
             #pragma target 3.0
+            //#pragma require geometry
 
             #pragma vertex SplatmapVert
+            //            #pragma geometry GrassGeometry
+
             #pragma fragment SplatmapFragment
 
             #define _METALLICSPECGLOSSMAP 1
