@@ -30,7 +30,7 @@ void ClipHoles(float2 uv)
 }
 #endif
 
-struct Attributes
+struct Attributes   // Vert input
 {
     float4 positionOS : POSITION;
     float3 normalOS : NORMAL;
@@ -38,7 +38,7 @@ struct Attributes
     UNITY_VERTEX_INPUT_INSTANCE_ID
 };
 
-struct Varyings
+struct Varyings     // Vert output
 {
     float4 uvMainAndLM              : TEXCOORD0; // xy: control, zw: lightmap
 #ifndef TERRAIN_SPLAT_BASEPASS
@@ -63,6 +63,14 @@ struct Varyings
 #endif
     float4 clipPos                  : SV_POSITION;
     UNITY_VERTEX_OUTPUT_STEREO
+};
+
+//  Geometry Shader output
+struct GeometryOut
+{
+    float4 pos : SV_POSITION;
+    float2 uv : TEXCOORD0;
+    float4 ws : TEXCOORD1;
 };
 
 void InitializeInputData(Varyings IN, half3 normalTS, out InputData input)
@@ -244,6 +252,38 @@ void TerrainInstancing(inout float4 positionOS, inout float3 normal)
 {
     float2 uv = { 0, 0 };
     TerrainInstancing(positionOS, normal, uv);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//                  Geometry function                                        //
+///////////////////////////////////////////////////////////////////////////////
+
+GeometryOut TransformGeomToClip(float3 pos, float3 offset, float3x3 transformationMatrix, float2 uv)
+{
+    GeometryOut o;
+
+    o.pos = TransformObjectToHClip(pos + mul(transformationMatrix, offset));
+    o.uv = uv;
+    o.ws = float4(TransformObjectToWorld(pos + mul(transformationMatrix, offset)), 1.0f);
+
+    return o;
+}
+
+[maxvertexcount(3)]
+void GrassGeometry(point Varyings input[1], inout TriangleStream<GeometryOut> triStream)
+{
+    float3 pos = input[0].positionWS;
+    float3 normal = input[0].normal.xyz;
+    float3 tan = float3(0, 0, 0);           // Non-tangent geometry? even though the varying has it
+    float3x3 transformationMatrix = float3x3(1, 0, 0,
+                                             0, 1, 0,
+                                             0, 0, 1);
+    
+    triStream.Append(TransformGeomToClip(pos, float3(-0.1f, 0.0f, 0.0f), transformationMatrix, float2(0.0f, 0.0f)));
+    triStream.Append(TransformGeomToClip(pos, float3(0.0f, 0.0f, 0.0f), transformationMatrix, float2(1.0f, 0.0f)));
+    triStream.Append(TransformGeomToClip(pos, float3(0.0f, 0.5f, 0.0f), transformationMatrix, float2(0.0f, 1.0f)));
+
+    triStream.RestartStrip();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
