@@ -37,6 +37,34 @@ CBUFFER_START(_Terrain)
     int _ObjectId;
     int _PassValue;
     #endif
+
+    // Grass Colors
+    float4 _BaseGrassColor;
+    float4 _TipColor;
+    sampler2D _BladeTexture;
+    float4 _ShadowColor;
+
+    // Grass Shape
+    float _BladeWidthMin;
+    float _BladeWidthMax;
+    float _BladeHeightMin;
+    float _BladeHeightMax;
+    //float _BladeSegments
+    float _BladeBendDistance;
+    float _BladeBendCurve;
+    float _BendDelta;
+
+    // Grass LOD
+    float _GrassTessalationDistance;
+    sampler2D _GrassMap;
+    float _GrassThreshold;
+    float _GrassFalloff;
+
+    // Wind
+    sampler2D _WindMap;
+    float4 _WindMap_ST;
+    float4 _WindVelocity;
+    float _WindFrequency;
 CBUFFER_END
 
 

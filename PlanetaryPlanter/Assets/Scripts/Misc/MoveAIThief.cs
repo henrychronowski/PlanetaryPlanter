@@ -11,17 +11,20 @@ public class MoveAIThief : MonoBehaviour
     public GameObject inventory;
     public Transform detectionRadius; //how close the player must be to be noticed
     public Transform movementRadius; //the range on the map the ai can move
+    public float dropItemTime;
 
     Vector3 destination;
-    GameObject stolenObject; //gameobject or what?
+    [SerializeField] GameObject stolenObject; //gameobject or what?
     bool newDestinationNeeded = false;
     bool playerSpotted = false;
     bool itemSpotFull = false;
+    float currentDropItemTime;
 
     // Start is called before the first frame update
     void Start()
     {
         newDestinationNeeded = true;
+        currentDropItemTime = dropItemTime;
     }
 
     // Update is called once per frame
@@ -30,22 +33,8 @@ public class MoveAIThief : MonoBehaviour
         if (newDestinationNeeded == true)
         {
             Debug.Log("picking new destination");
-            
-            float randX = 0.0f;
-            float randZ = 0.0f;
 
-            randX = Random.Range(movementRadius.transform.position.x -
-                movementRadius.GetComponent<SphereCollider>().radius,
-                movementRadius.transform.position.x +
-                movementRadius.GetComponent<SphereCollider>().radius);
-
-            randZ = Random.Range(movementRadius.transform.position.z -
-                movementRadius.GetComponent<SphereCollider>().radius,
-                movementRadius.transform.position.z +
-                movementRadius.GetComponent<SphereCollider>().radius);
-
-            destination = new Vector3(randX, 1, randZ);
-            gameObject.GetComponent<NavMeshAgent>().SetDestination(destination);
+            PickNewDestination();
 
             newDestinationNeeded = false;
         }
@@ -58,7 +47,39 @@ public class MoveAIThief : MonoBehaviour
             gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
         }
 
+        if (itemSpotFull == true)
+        {
+            currentDropItemTime -= Time.deltaTime;
+
+            if (currentDropItemTime <= 0.0f)
+            {
+                DropItem();
+                currentDropItemTime = dropItemTime;
+            }
+        }
+
         CheckThiefLocation();
+    }
+
+    void PickNewDestination()
+    {
+        Debug.Log("picking new destination");
+
+        float randX = 0.0f;
+        float randZ = 0.0f;
+
+        randX = Random.Range(movementRadius.transform.position.x -
+            movementRadius.GetComponent<SphereCollider>().radius,
+            movementRadius.transform.position.x +
+            movementRadius.GetComponent<SphereCollider>().radius);
+
+        randZ = Random.Range(movementRadius.transform.position.z -
+            movementRadius.GetComponent<SphereCollider>().radius,
+            movementRadius.transform.position.z +
+            movementRadius.GetComponent<SphereCollider>().radius);
+
+        destination = new Vector3(randX, 1, randZ);
+        gameObject.GetComponent<NavMeshAgent>().SetDestination(destination);
     }
 
     void CheckThiefLocation()
@@ -98,8 +119,6 @@ public class MoveAIThief : MonoBehaviour
     void StealFromPlayer() //take an item from the player inventory
     {
         int randItem;
-        if (NewInventory.instance.GetNumberOfItems() == 0)
-            return;
 
         //could be this or a collider contact
         if (Vector3.Distance(gameObject.transform.position, destination) < 1.0f)
@@ -107,19 +126,50 @@ public class MoveAIThief : MonoBehaviour
             if (inventory.GetComponent<NewInventory>().spaces.Count > 0 && itemSpotFull == false)
             {
                 randItem = (int)Random.Range(0, inventory.GetComponent<NewInventory>().spaces.Count);
+                bool itemFound = false;
 
-                while (inventory.GetComponent<NewInventory>().spaces[randItem].filled == false)
+                if (inventory.GetComponent<NewInventory>().spaces[randItem].filled == false)
                 {
-                    randItem = (int)Random.Range(0, inventory.GetComponent<NewInventory>().spaces.Count);
+                    for (randItem = 0; randItem < inventory.GetComponent<NewInventory>().spaces.Count; randItem++)
+                    {
+                        if (inventory.GetComponent<NewInventory>().spaces[randItem].filled == true)
+                        {
+                            itemFound = true;
+                            break;
+                        }
+                    }
                 }
 
-                Debug.Log("got your nose :)");
-                stolenObject = inventory.GetComponent<NewInventory>().GetItem
-                    (inventory.GetComponent<NewInventory>().spaces[randItem]);
-                inventory.GetComponent<NewInventory>().PopItem(
-                   inventory.GetComponent<NewInventory>().spaces[randItem]);
-                itemSpotFull = true;
+                if (itemFound == true)
+                {
+                    TutorialManagerScript.instance.Unlock("Squimbus!");
+                    Debug.Log("got your nose :)");
+                    stolenObject = inventory.GetComponent<NewInventory>().GetItem
+                        (inventory.GetComponent<NewInventory>().spaces[randItem]);
+                    inventory.GetComponent<NewInventory>().PopItem(
+                       inventory.GetComponent<NewInventory>().spaces[randItem]);
+                    itemSpotFull = true;
+                }
+
+                playerSpotted = false;
+                newDestinationNeeded = true;
             }
         }
+    }
+
+    public void DropItem()
+    {
+        itemSpotFull = false;
+        stolenObject = null;
+    }
+
+    public GameObject GetStolenObject()
+    {
+        return stolenObject;
+    }
+
+    public void ChangeDestinationNeeded(bool value)
+    {
+        newDestinationNeeded = value;
     }
 }
