@@ -9,6 +9,9 @@ public class ReturnToFarmScript : MonoBehaviour
     public GameObject returnSpot;
     public GameObject player;
     public Text returnMessage;
+    public float returnCountdown;
+
+    float currentReturnCountdown;
 
     // Audio Manager Script is set up here
     private SoundManager soundManager;
@@ -19,6 +22,7 @@ public class ReturnToFarmScript : MonoBehaviour
         //Audio Manager Is Opend Up here
         soundManager = SoundManager.instance;
         canReturn = false;
+        currentReturnCountdown = returnCountdown;
     }
 
     // Update is called once per frame
@@ -47,7 +51,17 @@ public class ReturnToFarmScript : MonoBehaviour
 
     void CheckInput()
     {
-        if(canReturn && Input.GetKeyDown(KeyCode.R))
+        if (canReturn && Input.GetKey(KeyCode.R))
+        {
+            currentReturnCountdown -= Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.R) == false)
+        {
+            currentReturnCountdown = returnCountdown;
+        }
+
+        if (currentReturnCountdown <= 0.0f)
         {
             player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = new Vector3(returnSpot.transform.position.x, returnSpot.transform.position.y, returnSpot.transform.position.z);
