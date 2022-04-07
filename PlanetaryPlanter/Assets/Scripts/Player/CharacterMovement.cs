@@ -677,6 +677,11 @@ public class CharacterMovement : MonoBehaviour
         velocity.y = bouncePower; 
     }
 
+    public void AddForce(Vector3 forceToAdd)
+    {
+        velocity += forceToAdd;
+    }
+
     public void Teleport(Transform newPosition)
     {
         characterController.enabled = false;
