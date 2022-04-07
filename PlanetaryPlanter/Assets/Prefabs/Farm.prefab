@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2058683720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2058683721}
+  - component: {fileID: 2058683723}
+  m_Layer: 0
+  m_Name: leaving home popup
+  m_TagString: homeleaving
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2058683721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058683720}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 551.4, y: 4.2, z: 299.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6472896187525127488}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2058683723
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058683720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 38.5
+  m_Height: 0
+  m_Direction: 1
+  m_Center: {x: 0, y: -14.1, z: 0}
 --- !u!1 &6472896187525127489
 GameObject:
   m_ObjectHideFlags: 0
@@ -23,13 +68,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6472896187525127489}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6472896188134651409}
   - {fileID: 6472896188569618652}
   - {fileID: 6472896188005365916}
+  - {fileID: 2058683721}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57,7 +103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6472896188005365917}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4429866518770971924}
@@ -137,7 +183,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6472896188569618653}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4429866519101395050}
@@ -270,6 +316,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantSpot (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 098ea708e2ddad64e89b1956339aed77, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f67a9f81c028f447b0542b47f8d5e69, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 406e21081e2965648a750d55e444d974, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantInteract
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
 --- !u!4 &4429866517457305059 stripped
@@ -393,6 +463,30 @@ PrefabInstance:
     - target: {fileID: 7254829409676039391, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
       propertyPath: m_Name
       value: PlantSpot (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 098ea708e2ddad64e89b1956339aed77, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f67a9f81c028f447b0542b47f8d5e69, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 406e21081e2965648a750d55e444d974, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantInteract
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
@@ -580,6 +674,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantSpot (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 098ea708e2ddad64e89b1956339aed77, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f67a9f81c028f447b0542b47f8d5e69, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 406e21081e2965648a750d55e444d974, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantInteract
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
 --- !u!4 &4429866518148233653 stripped
@@ -703,6 +821,30 @@ PrefabInstance:
     - target: {fileID: 7254829409676039391, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
       propertyPath: m_Name
       value: PlantSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 098ea708e2ddad64e89b1956339aed77, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f67a9f81c028f447b0542b47f8d5e69, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 406e21081e2965648a750d55e444d974, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantInteract
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
@@ -1014,6 +1156,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantSpot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 098ea708e2ddad64e89b1956339aed77, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f67a9f81c028f447b0542b47f8d5e69, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 406e21081e2965648a750d55e444d974, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantInteract
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
 --- !u!4 &4429866518467926545 stripped
@@ -1075,6 +1241,30 @@ PrefabInstance:
     - target: {fileID: 7254829409676039391, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
       propertyPath: m_Name
       value: PlantSpot (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 098ea708e2ddad64e89b1956339aed77, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f67a9f81c028f447b0542b47f8d5e69, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 406e21081e2965648a750d55e444d974, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantInteract
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
@@ -1448,6 +1638,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantSpot (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 098ea708e2ddad64e89b1956339aed77, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f67a9f81c028f447b0542b47f8d5e69, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 406e21081e2965648a750d55e444d974, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantInteract
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
 --- !u!4 &4429866518567737816 stripped
@@ -1758,6 +1972,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantSpot (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 098ea708e2ddad64e89b1956339aed77, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f67a9f81c028f447b0542b47f8d5e69, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 406e21081e2965648a750d55e444d974, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantInteract
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
 --- !u!4 &4429866519301046586 stripped
@@ -1882,6 +2120,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantSpot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 098ea708e2ddad64e89b1956339aed77, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f67a9f81c028f447b0542b47f8d5e69, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 406e21081e2965648a750d55e444d974, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantInteract
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
 --- !u!4 &4429866519277715206 stripped
@@ -1943,6 +2205,30 @@ PrefabInstance:
     - target: {fileID: 7254829409676039391, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
       propertyPath: m_Name
       value: PlantSpot (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 098ea708e2ddad64e89b1956339aed77, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f67a9f81c028f447b0542b47f8d5e69, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 406e21081e2965648a750d55e444d974, type: 3}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: placePlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: waterPlantInteract
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635374452464970999, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
+      propertyPath: harvestPlantInteract
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1005bda1bbb4434ca069040c4e4f5dd, type: 3}
