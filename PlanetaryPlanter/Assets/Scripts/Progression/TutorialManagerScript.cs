@@ -8,6 +8,8 @@ public class TutorialManagerScript : MonoBehaviour
     public GameObject tutorialCanvas;
     public List<Tutorial> tutorials;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
     private void Awake()
     {
         if (instance == null)
@@ -25,6 +27,8 @@ public class TutorialManagerScript : MonoBehaviour
     {
         tutorials.AddRange(GetComponents<Tutorial>());
         //Unlock("Welcome to Planetary Planter");
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
@@ -62,6 +66,7 @@ public class TutorialManagerScript : MonoBehaviour
         if(!tutorial.isUnlocked)
         {
             tutorial.TutorialEventTriggered();
+            soundManager.PlaySound("GainedStory");
         }
     }
 
