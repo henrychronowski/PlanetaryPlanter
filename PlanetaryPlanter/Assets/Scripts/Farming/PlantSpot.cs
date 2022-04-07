@@ -105,7 +105,6 @@ public class PlantSpot : MonoBehaviour
     {
         GameObject temp = transform.GetChild(0).transform.gameObject;
         Plant p = temp.GetComponent<Plant>();
-        soundManager.PlaySound("Harvest");
         if (p.stage != Plant.Stage.Ripe && p.stage != Plant.Stage.Rotten)
         {
             if (PlaceFertilizer())
@@ -118,6 +117,7 @@ public class PlantSpot : MonoBehaviour
         }
         if (p.stage == Plant.Stage.Rotten)
         {
+            soundManager.PlaySound("Harvest");
             AlmanacProgression.instance.Unlock("GetFertilizer");
             TutorialManagerScript.instance.Unlock("Fertilizer");
             GameObject temp2 = Instantiate(p.rottenPlant);
@@ -132,6 +132,7 @@ public class PlantSpot : MonoBehaviour
         }
         if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject)) //Returns false when inventory is full
         {
+            soundManager.PlaySound("Harvest");
             p.inPot = false;
             temp.transform.parent = null;
             temp.transform.position = new Vector3(0, 1000); //this is dumb but its 4:30am

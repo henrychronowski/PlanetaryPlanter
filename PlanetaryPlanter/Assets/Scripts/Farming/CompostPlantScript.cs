@@ -31,6 +31,9 @@ public class CompostPlantScript : MonoBehaviour
     public Transform noFill;
     public Transform filled;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,9 @@ public class CompostPlantScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         interactable = GetComponent<InteractableObject>();
+
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
@@ -61,6 +67,7 @@ public class CompostPlantScript : MonoBehaviour
             {
                 if (inventory.GetItem(inventory.selectedSpace).gameObject.tag == "Plant")
                 {
+                    soundManager.PlaySound("Composting");
                     inventory.PopItem();
                     currentCompost++;
                     hasComposted = true;
@@ -71,6 +78,7 @@ public class CompostPlantScript : MonoBehaviour
             {
                 currentCompost -= minUntilFertilizer;
                 inventory.AddItem(fertilizer);
+                soundManager.PlaySound("CollectItem");
             }
         }
     }
