@@ -19,6 +19,8 @@ public class MoveAIThief : MonoBehaviour
     bool playerSpotted = false;
     bool itemSpotFull = false;
     float currentDropItemTime;
+    [SerializeField] float knockback;
+    [SerializeField] float knockbackAngle;
 
     // Start is called before the first frame update
     void Start()
@@ -149,6 +151,8 @@ public class MoveAIThief : MonoBehaviour
                     inventory.GetComponent<NewInventory>().PopItem(
                        inventory.GetComponent<NewInventory>().spaces[randItem]);
                     itemSpotFull = true;
+                    Vector3 direction = (player.transform.position - transform.position).normalized;
+                    player.GetComponent<CharacterMovement>().AddForce((new Vector3(direction.x, knockbackAngle, direction.z)).normalized * knockback);
                 }
 
                 playerSpotted = false;
