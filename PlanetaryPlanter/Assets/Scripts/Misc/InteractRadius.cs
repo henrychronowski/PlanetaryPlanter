@@ -20,6 +20,7 @@ public class InteractRadius : MonoBehaviour
 
     public GameObject highlight;
     public TextMesh interactTip;
+    public SpriteRenderer interactSprite;
     public Transform interactBubble;
 
     void SetClosestInteractable()
@@ -44,6 +45,7 @@ public class InteractRadius : MonoBehaviour
         }
         closestInteractable = interactables[closestIndex].gameObject.GetComponent<InteractableObject>();
         interactTip.text = closestInteractable.interactText;
+        interactSprite.sprite = closestInteractable.interactSprite;
         
     }
 

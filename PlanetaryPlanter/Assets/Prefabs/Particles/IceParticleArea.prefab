@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,6 +136,10 @@ PrefabInstance:
       propertyPath: VelocityModule.speedModifier.scalar
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 1769153153489952028, guid: 6cc069461a58ed746bdcef9a50795b96, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3616088872763804505, guid: 6cc069461a58ed746bdcef9a50795b96, type: 3}
       propertyPath: m_Name
       value: IceParticles
