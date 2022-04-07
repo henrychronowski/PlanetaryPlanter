@@ -68,7 +68,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCanvas: {fileID: 0}
+  comicCanvas: {fileID: 0}
   tutorials: []
+  disabled: 1
 --- !u!114 &8981054008426009082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,12 +85,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlocked: 0
   title: Welcome to Planetary Planter
-  description: 'This build is for testing out our save system, as well as a new To-do
-    list detailing what you need to complete your last highlighted solar system.
-    Complete two solar systems to trigger the end state. '
+  description: This build is for testing out our new level design, as well as the
+    addition of Squimbus (he's a green sphere right now). Try to complete at least
+    Chapter 1's constellation in the Observatory (the round building).
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,9 +115,15 @@ MonoBehaviour:
     that can grow into a celestial body! To grow your first crop, go to a planter
     at your farm, select the seed by highlighting it with your mouse wheel, and then
     press E to plant it."
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,9 +141,15 @@ MonoBehaviour:
   description: "You\u2019ve collected a Resonant Modifier, an item found on Stellanova
     with mysterious properties. Try combining it with a crop at your farm\u2019s
     crafting table. The crafting table can be accessed inside the observatory building. "
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,9 +170,15 @@ MonoBehaviour:
     droplet symbol floating over it. Once the crop is ripe, press E to harvest the
     crop and put it into your inventory. Don\u2019t let it sit ripe for too long,
     though, or it\u2019ll rot! "
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,9 +196,15 @@ MonoBehaviour:
   description: "Uh oh! It looks like you left this crop alone for too long, and it's
     gone and rotten! It isn\u2019t a total loss, though. You can bring this to the
     composter to start making compost! The composter is the small box by the silo."
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,9 +222,15 @@ MonoBehaviour:
   description: You can store any excess items you have right here in the silo. Click
     on an item in your inventory, and place it in here until you're ready to use
     it again.
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,9 +248,15 @@ MonoBehaviour:
   description: Here's where you get to have some fun with making new celestial bodies.
     Place a plant in one slot, and a modifier in the other. Once that happens, click
     the craft button to see your new creation.
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,9 +275,15 @@ MonoBehaviour:
     create to fill up the blank night sky. To finish this constellation, you must
     complete each solar system that makes it up. To select a solar system to work
     on, Left Click on one of the stars.
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,9 +302,15 @@ MonoBehaviour:
     over a space to see what type of plant it requires, click on an plant in your
     inventory to select it, and click on that spot to place the plant. Keep in mind:
     you can only place the plant if it matches the description.'
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,9 +333,15 @@ MonoBehaviour:
     deleted until you put another item in the trash, so you can take the item back
     out if you change your mind. If you don\u2019t want to throw anything away, go
     to the silo on your farm. It's the tall building!"
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,9 +359,15 @@ MonoBehaviour:
   description: Congratulations! You've completed the demo for Planetary Planter.
     You may feel free to continue crafting more solar systems, or you may exit the
     game.
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &515388819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,9 +386,15 @@ MonoBehaviour:
     for getting over particularly high walls. These can be grown and harvested like
     regular plants. But, once harvested, they can be placed down at specific spots
     in the world by pressing E.
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &515388820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,9 +413,15 @@ MonoBehaviour:
     you have too many of them, or they're dead. Simply approach the bin, and press
     E to get rid of the highlighted item in your inventory. If you compost enough
     plants, you can collect some fertilizer!
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &515388821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,9 +440,15 @@ MonoBehaviour:
     body! Now, you can either combine it in the Crafting Menu (C) with a Resonant
     Modifier to create a variant crop, or you can place it into the sky at the Telescope
     (the building with the rounded top)."
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &515388822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,9 +466,15 @@ MonoBehaviour:
   description: This behemoth of a plant is useful for knocking through crystalline
     walls. Plant this like a standard plant, and harvest it when ready. Once harvested,
     use it in front of a cracked crystal wall by pressing E.
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &515388823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,9 +493,15 @@ MonoBehaviour:
     portals scattered throughout, and you need to discover them to use them. Once
     you have, stand on them, press E to open the map, and select your destination
     to warp to it.
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &515388824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,9 +518,15 @@ MonoBehaviour:
   title: Gliding Companion
   description: This little guy can help you travel further in the air to potentially
     collect some difficult to reach items. While airborne, press Spacebar to glide.
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &1969387582044915758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,9 +547,15 @@ MonoBehaviour:
     Click. If the items in the slots are a Modifier and a crop, you can Left Click
     the craft button to combine them into a new variant! Then you can pick up the
     crop and place it in your inventory using Left Click. '
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &4589171444758680412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,9 +578,15 @@ MonoBehaviour:
     you can place it into the sky by Left Clicking the item in your inventory to
     pick it up, and then Left Clicking on the spot where the celestial body needs
     to go."
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &7690199964057534012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,9 +606,15 @@ MonoBehaviour:
     almanac. You can move on to the next constellation by Left Clicking the button
     on the right of the telescope view. If you want to look at the previous constellation
     Left Click the left button."
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &1288102536132470311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,9 +632,15 @@ MonoBehaviour:
   description: "You\u2019ve upgraded your trusty trowel with Stellanovium, a durable
     crystal found only on Stellanova. Now you can use your trowel to shatter walls
     of Stellanovium! To do so, approach one of these crystal walls and press E."
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &3308128629154074538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,15 +654,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  title: Melmee
+  title: Melmee!
   description: "You\u2019ve befriended a Melmee, a pterodactyl-like creature! It
     can carry you while in the air, allowing you to glide! While in the air, press
     Shift to glide with your Melmee, and you\u2019ll glide until you touch down on
     solid ground. If you want to end your glide early, press Shift again while in
     the air."
+  isComic: 1
+  comicSprite: {fileID: 21300000, guid: 9e6b5dbd8f8b40545b0e5e6d7a2cbee0, type: 3}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &1686473225717106467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,15 +682,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  title: Bouncebloom
-  description: "Alpha version: You\u2019ve discovered the Bouncebloom, a funky flower
-    that can toss you up in the air! Luckily, Bounceblooms grow fast so they\u2019ve
-    already spread all over Stellanova in several convenient places! To use the Bouncebloom,
-    simply touch one to get launched sky high! Jump on top of one while holding Space
-    for the best results."
+  title: Bounceblooms!
+  description: Bounceblooms have spread across Stellanova in suspiciously convenient
+    areas! Jump on top of them while holding Space for the best results.
+  isComic: 1
+  comicSprite: {fileID: 21300000, guid: 2f7a086e62f3d6442ba1f7219e3dfa20, type: 3}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
 --- !u!114 &5601200245753977328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,6 +712,12 @@ MonoBehaviour:
     worry, you can still get them back! Chase the Squimbus down and press Right Mouse
     to bonk it on the head and get it to give your stuff back! Be careful when wandering
     near a Squimbus\u2019s den next time!"
+  isComic: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
