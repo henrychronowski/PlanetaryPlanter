@@ -15,6 +15,10 @@ public class PlantSpot : MonoBehaviour
     public string harvestPlantInteract;
     public string waterPlantInteract;
 
+    public Sprite placePlantSprite;
+    public Sprite harvestPlantSprite;
+    public Sprite waterPlantSprite;
+
     InteractableObject interactable;
 
     public GameObject fertilizerParticles;
@@ -168,8 +172,25 @@ public class PlantSpot : MonoBehaviour
             return waterPlantInteract;
         }
     }
-    // Start is called before the first frame update
-    void Start()
+
+    Sprite updateInteractSprite()
+    {
+        if (transform.childCount == 0)
+        {
+            return placePlantSprite;
+        }
+        if (GetComponentInChildren<Plant>().stage == Plant.Stage.Ripe || (GetComponentInChildren<Plant>().stage == Plant.Stage.Rotten))
+        {
+            return harvestPlantSprite;
+        }
+        else
+        {
+            return waterPlantSprite;
+        }
+
+    }
+        // Start is called before the first frame update
+     void Start()
     {
         //NewInventory.instance.AddItem(fertilizer);
         interactable = GetComponent<InteractableObject>();
@@ -187,5 +208,6 @@ public class PlantSpot : MonoBehaviour
     void Update()
     {
         interactable.interactText = UpdateInteractTip();
+        interactable.interactSprite = updateInteractSprite();
     }
 }
