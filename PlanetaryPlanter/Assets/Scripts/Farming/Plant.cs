@@ -136,7 +136,15 @@ public class Plant : MonoBehaviour
         currentWater += waterToAdd;
         waterSound.pitch = Random.Range(0.5f, 1f);
         soundManager.PlaySound("WaterPlant");
-        Instantiate(waterParticles, transform);
+        
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Vector3 spawnPosition = player.transform.position;
+        Quaternion spawnRotation = player.transform.rotation;
+        //spawnPoint.LookAt(transform, Vector3.up);
+        spawnRotation.SetLookRotation(transform.position - spawnPosition, Vector3.up);
+        Vector3 offset = new Vector3(0f, 0.1f, 0.5f);
+
+        Instantiate(waterParticles, spawnPosition + offset, spawnRotation);
         if(currentWater > maxWater)
         {
             currentWater = maxWater;
