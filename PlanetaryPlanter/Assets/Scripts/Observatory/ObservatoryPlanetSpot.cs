@@ -53,6 +53,9 @@ public class ObservatoryPlanetSpot : MonoBehaviour
         {
             if(newObject.GetComponent<Plant>().type == type && newObject.GetComponent<Plant>().species == species)
             {
+                if (newObject.GetComponent<Plant>().stage == Plant.Stage.Rotten)
+                    return false;
+
                 if(fromInventory)
                     newObject = NewInventory.instance.PopItemInCursor();
 
