@@ -4,13 +4,22 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class Tutorial : MonoBehaviour
 {
+    public enum TutorialType
+    {
+        Text,
+        Gif,
+        Comic
+    }
+
     public bool isUnlocked;
     public string title;
     public string description;
     public bool isComic;
+    public TutorialType type;
     public Sprite comicSprite;
     public Image comicCanvasImage;
     public GameObject comicTutorialCanvas;
@@ -19,6 +28,11 @@ public class Tutorial : MonoBehaviour
     public TextMeshProUGUI descriptionText;
     public TextMeshProUGUI comicTitleText;
     public TextMeshProUGUI comicDescriptionText;
+    public VideoClip gif;
+    public GameObject gifCanvas;
+    public VideoPlayer gifPlayer;
+    public TextMeshProUGUI gifTitleText;
+    public TextMeshProUGUI gifDescriptionText;
 
     public class TutorialManagerScript : UnityEvent { }
     public TutorialManagerScript tutorialEvent = new TutorialManagerScript();
@@ -30,12 +44,19 @@ public class Tutorial : MonoBehaviour
         {
             isUnlocked = true;
             AlmanacProgression.instance.Unlock(title);
-            if(isComic)
+            if(type == TutorialType.Comic)
             {
                 comicTutorialCanvas.SetActive(true);
                 comicCanvasImage.sprite = comicSprite;
                 comicDescriptionText.text = description;
                 comicTitleText.text = title;
+            }
+            else if(type == TutorialType.Gif)
+            {
+                gifCanvas.SetActive(true);
+                gifPlayer.clip = gif;
+                gifDescriptionText.text = description;
+                gifTitleText.text = title;
             }
             else
             {
