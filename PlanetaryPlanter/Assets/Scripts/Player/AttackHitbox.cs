@@ -10,6 +10,7 @@ public class AttackHitbox : MonoBehaviour
     private MeshRenderer render; //temporary
     private BoxCollider hitboxCollider;
     public bool canBreakRocks = false;
+    public BonkAIThief bonk;
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "BreakableWall" && canBreakRocks)
@@ -21,6 +22,7 @@ public class AttackHitbox : MonoBehaviour
         if(other.tag == "Squimbus")
         {
             Debug.Log("Hit Squimbus");
+            bonk.RecoverStolenItemWithBonk(other.gameObject);
         }
     }
     // Start is called before the first frame update

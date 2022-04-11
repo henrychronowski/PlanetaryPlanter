@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6142347064513047587}
   - component: {fileID: 6142347064513047586}
   - component: {fileID: 6142347064513047599}
+  - component: {fileID: 1233180733}
   m_Layer: 11
   m_Name: Thief
-  m_TagString: Untagged
+  m_TagString: Squimbus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -8548,7 +8549,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 8
+  m_VersionIndex: 17
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -8573,7 +8574,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 7f52d0d678a67784890f7ab08705e636, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8639,6 +8640,27 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1233180733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6142347064513047589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760a646f65375b947ac7fe8334e0f4c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thief: {fileID: 6142347064513047599}
+  player: {fileID: 0}
+  inventory: {fileID: 0}
+  detectionRadius: {fileID: 6142347066095338576}
+  movementRadius: {fileID: 0}
+  dropItemTime: 120
+  stolenObject: {fileID: 0}
+  knockback: 150
+  knockbackAngle: 0.25
 --- !u!1 &6142347066095338579
 GameObject:
   m_ObjectHideFlags: 0
@@ -8697,4 +8719,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  thief: {fileID: 0}
+  thief: {fileID: 6142347064513047589}

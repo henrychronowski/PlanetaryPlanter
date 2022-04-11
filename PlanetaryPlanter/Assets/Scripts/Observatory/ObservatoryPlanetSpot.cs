@@ -40,6 +40,8 @@ public class ObservatoryPlanetSpot : MonoBehaviour
     public GameObject asteroidFruit;
     public GameObject starFruit;
     public GameObject planetFruit;
+    public GameObject cometFruit;
+    public GameObject rockyFruit;
 
     public bool PlaceObject(GameObject newObject, bool fromInventory = true)
     {
@@ -53,6 +55,9 @@ public class ObservatoryPlanetSpot : MonoBehaviour
         {
             if(newObject.GetComponent<Plant>().type == type && newObject.GetComponent<Plant>().species == species)
             {
+                if (newObject.GetComponent<Plant>().stage == Plant.Stage.Rotten)
+                    return false;
+
                 if(fromInventory)
                     newObject = NewInventory.instance.PopItemInCursor();
 

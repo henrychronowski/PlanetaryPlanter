@@ -15,6 +15,10 @@ public class PlantSpot : MonoBehaviour
     public string harvestPlantInteract;
     public string waterPlantInteract;
 
+    public Sprite placePlantSprite;
+    public Sprite harvestPlantSprite;
+    public Sprite waterPlantSprite;
+
     InteractableObject interactable;
 
     public GameObject fertilizerParticles;
@@ -105,7 +109,6 @@ public class PlantSpot : MonoBehaviour
     {
         GameObject temp = transform.GetChild(0).transform.gameObject;
         Plant p = temp.GetComponent<Plant>();
-        soundManager.PlaySound("Harvest");
         if (p.stage != Plant.Stage.Ripe && p.stage != Plant.Stage.Rotten)
         {
             if (PlaceFertilizer())
@@ -118,6 +121,7 @@ public class PlantSpot : MonoBehaviour
         }
         if (p.stage == Plant.Stage.Rotten)
         {
+            soundManager.PlaySound("Harvest");
             AlmanacProgression.instance.Unlock("GetFertilizer");
             TutorialManagerScript.instance.Unlock("Fertilizer");
             GameObject temp2 = Instantiate(p.rottenPlant);
@@ -132,6 +136,7 @@ public class PlantSpot : MonoBehaviour
         }
         if (NewInventory.instance.AddItem(transform.GetChild(0).gameObject)) //Returns false when inventory is full
         {
+            soundManager.PlaySound("Harvest");
             p.inPot = false;
             temp.transform.parent = null;
             temp.transform.position = new Vector3(0, 1000); //this is dumb but its 4:30am
@@ -167,8 +172,25 @@ public class PlantSpot : MonoBehaviour
             return waterPlantInteract;
         }
     }
-    // Start is called before the first frame update
-    void Start()
+
+    Sprite updateInteractSprite()
+    {
+        if (transform.childCount == 0)
+        {
+            return placePlantSprite;
+        }
+        if (GetComponentInChildren<Plant>().stage == Plant.Stage.Ripe || (GetComponentInChildren<Plant>().stage == Plant.Stage.Rotten))
+        {
+            return harvestPlantSprite;
+        }
+        else
+        {
+            return waterPlantSprite;
+        }
+
+    }
+        // Start is called before the first frame update
+     void Start()
     {
         //NewInventory.instance.AddItem(fertilizer);
         interactable = GetComponent<InteractableObject>();
@@ -186,5 +208,6 @@ public class PlantSpot : MonoBehaviour
     void Update()
     {
         interactable.interactText = UpdateInteractTip();
+        interactable.interactSprite = updateInteractSprite();
     }
 }

@@ -27,7 +27,12 @@ public class CompostPlantScript : MonoBehaviour
     public string compostInteract;
     public string collectInteract;
 
-    public List<Slider> sliders; 
+    public GameObject fill;
+    public Transform noFill;
+    public Transform filled;
+
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +43,9 @@ public class CompostPlantScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         interactable = GetComponent<InteractableObject>();
+
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
@@ -46,7 +54,7 @@ public class CompostPlantScript : MonoBehaviour
         CheckDistanceFromPlayer();
         CompostPlant();
         hasComposted = false;
-        UpdateSliders();
+        UpdateFillProgress();
 
         interactable.interactText = InteractText();
     }
@@ -59,6 +67,7 @@ public class CompostPlantScript : MonoBehaviour
             {
                 if (inventory.GetItem(inventory.selectedSpace).gameObject.tag == "Plant")
                 {
+                    soundManager.PlaySound("Composting");
                     inventory.PopItem();
                     currentCompost++;
                     hasComposted = true;
@@ -69,6 +78,7 @@ public class CompostPlantScript : MonoBehaviour
             {
                 currentCompost -= minUntilFertilizer;
                 inventory.AddItem(fertilizer);
+                soundManager.PlaySound("CollectItem");
             }
         }
     }
@@ -97,11 +107,9 @@ public class CompostPlantScript : MonoBehaviour
         return compostInteract;
     }
 
-    void UpdateSliders()
+    void UpdateFillProgress()
     {
-        foreach(Slider slider in sliders)
-        {
-            slider.value = ((float)currentCompost / (float)minUntilFertilizer);
-        }    
+        float progress = ((float)currentCompost / (float)minUntilFertilizer);
+        fill.transform.position = Vector3.Lerp(noFill.position, filled.position, progress);
     }
 }

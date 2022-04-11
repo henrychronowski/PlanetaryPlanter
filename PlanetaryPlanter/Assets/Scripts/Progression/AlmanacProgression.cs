@@ -16,6 +16,9 @@ public class AlmanacProgression : MonoBehaviour
     public List<Achievement> achievements;
 
     public static AlmanacProgression instance;
+
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
     private void Awake()
     {
         if(instance == null)
@@ -36,6 +39,8 @@ public class AlmanacProgression : MonoBehaviour
         if (!ac.unlocked)
         {
             ac.InteractableEventTriggered();
+
+            soundManager.PlaySound("GainedStory");
         }
         else
         {
@@ -89,6 +94,8 @@ public class AlmanacProgression : MonoBehaviour
     void Start()
     {
         achievements.AddRange(GetComponents<Achievement>());
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
