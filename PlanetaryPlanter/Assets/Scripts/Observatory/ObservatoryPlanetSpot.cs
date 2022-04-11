@@ -40,6 +40,8 @@ public class ObservatoryPlanetSpot : MonoBehaviour
     public GameObject asteroidFruit;
     public GameObject starFruit;
     public GameObject planetFruit;
+    public GameObject cometFruit;
+    public GameObject rockyFruit;
 
     public bool PlaceObject(GameObject newObject, bool fromInventory = true)
     {

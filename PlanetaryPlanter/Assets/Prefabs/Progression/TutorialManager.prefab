@@ -34,6 +34,7 @@ GameObject:
   - component: {fileID: 3308128629154074538}
   - component: {fileID: 1686473225717106467}
   - component: {fileID: 5601200245753977328}
+  - component: {fileID: 680461697}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -69,8 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialCanvas: {fileID: 0}
   comicCanvas: {fileID: 0}
+  gifCanvas: {fileID: 0}
   tutorials: []
-  disabled: 1
 --- !u!114 &8981054008426009082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +90,7 @@ MonoBehaviour:
     addition of Squimbus (he's a green sphere right now). Try to complete at least
     Chapter 1's constellation in the Observatory (the round building).
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -97,6 +99,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +123,7 @@ MonoBehaviour:
     at your farm, select the seed by highlighting it with your mouse wheel, and then
     press E to plant it."
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -124,6 +132,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 32900000, guid: f9bd102f5d3076344bbdfbe3bced0574, type: 3}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +155,7 @@ MonoBehaviour:
     with mysterious properties. Try combining it with a crop at your farm\u2019s
     crafting table. The crafting table can be accessed inside the observatory building. "
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -150,6 +164,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +190,7 @@ MonoBehaviour:
     crop and put it into your inventory. Don\u2019t let it sit ripe for too long,
     though, or it\u2019ll rot! "
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -179,6 +199,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +222,7 @@ MonoBehaviour:
     gone and rotten! It isn\u2019t a total loss, though. You can bring this to the
     composter to start making compost! The composter is the small box by the silo."
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -205,6 +231,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +254,7 @@ MonoBehaviour:
     on an item in your inventory, and place it in here until you're ready to use
     it again.
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -231,6 +263,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +286,7 @@ MonoBehaviour:
     Place a plant in one slot, and a modifier in the other. Once that happens, click
     the craft button to see your new creation.
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -257,6 +295,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +319,7 @@ MonoBehaviour:
     complete each solar system that makes it up. To select a solar system to work
     on, Left Click on one of the stars.
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -284,6 +328,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +352,7 @@ MonoBehaviour:
     inventory to select it, and click on that spot to place the plant. Keep in mind:
     you can only place the plant if it matches the description.'
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -311,6 +361,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +389,7 @@ MonoBehaviour:
     out if you change your mind. If you don\u2019t want to throw anything away, go
     to the silo on your farm. It's the tall building!"
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -342,6 +398,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &8981054008426009072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +421,7 @@ MonoBehaviour:
     You may feel free to continue crafting more solar systems, or you may exit the
     game.
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -368,6 +430,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &515388819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +454,7 @@ MonoBehaviour:
     regular plants. But, once harvested, they can be placed down at specific spots
     in the world by pressing E.
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -395,6 +463,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &515388820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +487,7 @@ MonoBehaviour:
     E to get rid of the highlighted item in your inventory. If you compost enough
     plants, you can collect some fertilizer!
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -422,6 +496,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &515388821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +520,7 @@ MonoBehaviour:
     Modifier to create a variant crop, or you can place it into the sky at the Telescope
     (the building with the rounded top)."
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -449,6 +529,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &515388822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,6 +552,7 @@ MonoBehaviour:
     walls. Plant this like a standard plant, and harvest it when ready. Once harvested,
     use it in front of a cracked crystal wall by pressing E.
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -475,6 +561,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &515388823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,6 +585,7 @@ MonoBehaviour:
     you have, stand on them, press E to open the map, and select your destination
     to warp to it.
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -502,6 +594,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &515388824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +616,7 @@ MonoBehaviour:
   description: This little guy can help you travel further in the air to potentially
     collect some difficult to reach items. While airborne, press Spacebar to glide.
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -527,6 +625,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &1969387582044915758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,6 +651,7 @@ MonoBehaviour:
     the craft button to combine them into a new variant! Then you can pick up the
     crop and place it in your inventory using Left Click. '
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -556,6 +660,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &4589171444758680412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,6 +688,7 @@ MonoBehaviour:
     pick it up, and then Left Clicking on the spot where the celestial body needs
     to go."
   isComic: 0
+  type: 1
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -587,6 +697,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 32900000, guid: f9bd102f5d3076344bbdfbe3bced0574, type: 3}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &7690199964057534012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,6 +722,7 @@ MonoBehaviour:
     on the right of the telescope view. If you want to look at the previous constellation
     Left Click the left button."
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -615,6 +731,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &1288102536132470311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,6 +754,7 @@ MonoBehaviour:
     crystal found only on Stellanova. Now you can use your trowel to shatter walls
     of Stellanovium! To do so, approach one of these crystal walls and press E."
   isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -641,6 +763,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &3308128629154074538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,6 +788,7 @@ MonoBehaviour:
     solid ground. If you want to end your glide early, press Shift again while in
     the air."
   isComic: 1
+  type: 0
   comicSprite: {fileID: 21300000, guid: 9e6b5dbd8f8b40545b0e5e6d7a2cbee0, type: 3}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -669,6 +797,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &1686473225717106467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,6 +819,7 @@ MonoBehaviour:
   description: Bounceblooms have spread across Stellanova in suspiciously convenient
     areas! Jump on top of them while holding Space for the best results.
   isComic: 1
+  type: 2
   comicSprite: {fileID: 21300000, guid: 2f7a086e62f3d6442ba1f7219e3dfa20, type: 3}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -694,6 +828,11 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
 --- !u!114 &5601200245753977328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -713,6 +852,7 @@ MonoBehaviour:
     to bonk it on the head and get it to give your stuff back! Be careful when wandering
     near a Squimbus\u2019s den next time!"
   isComic: 0
+  type: 2
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
@@ -721,3 +861,39 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
+--- !u!114 &680461697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981054008426009073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636f176f31b48704684eb4f4ce1a6b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUnlocked: 0
+  title: A Sense of Direction.
+  description: Check your to-do table in order to have a good idea as to how to progress,
+    check the observatory for more information.
+  isComic: 0
+  type: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
+  tutorial: {fileID: 0}
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
