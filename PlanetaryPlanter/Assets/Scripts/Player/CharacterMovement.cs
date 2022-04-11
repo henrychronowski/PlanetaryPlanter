@@ -8,7 +8,7 @@ using UnityEngine;
 // Daniel Hartman
 public class CharacterMovement : MonoBehaviour
 {
-    private CharacterController characterController;
+    public CharacterController characterController;
     public Transform cam;
     public Animator animator;
 
@@ -675,6 +675,18 @@ public class CharacterMovement : MonoBehaviour
     public void Bounce(float bouncePower)
     {
         velocity.y = bouncePower; 
+    }
+
+    public void AddForce(Vector3 forceToAdd)
+    {
+        velocity += forceToAdd;
+    }
+
+    public void Teleport(Transform newPosition)
+    {
+        characterController.enabled = false;
+        transform.position = newPosition.position;
+        characterController.enabled = true;
     }
 
     void Integrate()
