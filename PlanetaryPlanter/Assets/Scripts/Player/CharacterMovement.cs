@@ -8,7 +8,7 @@ using UnityEngine;
 // Daniel Hartman
 public class CharacterMovement : MonoBehaviour
 {
-    private CharacterController characterController;
+    public CharacterController characterController;
     public Transform cam;
     public Animator animator;
 
@@ -388,7 +388,7 @@ public class CharacterMovement : MonoBehaviour
                 targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, airTurnSmoothTime);
                 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                //transform.rotation = Quaternion.Euler(transform.eulerAngles.x, angle, transform.eulerAngles.z);
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, angle, transform.eulerAngles.z);
             }
 
             if (wallrunning)
@@ -677,6 +677,18 @@ public class CharacterMovement : MonoBehaviour
         velocity.y = bouncePower; 
     }
 
+    public void AddForce(Vector3 forceToAdd)
+    {
+        velocity += forceToAdd;
+    }
+
+    public void Teleport(Transform newPosition)
+    {
+        characterController.enabled = false;
+        transform.position = newPosition.position;
+        characterController.enabled = true;
+    }
+
     void Integrate()
     {
         if (canMove) //Prevents movement in cutscenes and such
@@ -812,6 +824,9 @@ public class CharacterMovement : MonoBehaviour
         timeSinceLastLedgeGrab += Time.deltaTime;
         canLedgeGrab = timeSinceLastLedgeGrab > ledgeGrabCooldown;
         animator.SetBool("grounded", grounded || wallrunning);
+        Vector3 xzVel = new Vector3(velocity.x, 0, velocity.z);
+        animator.SetFloat("runSpeedModifier", xzVel.magnitude / maxSpeed);
+        //Debug.Log(velocity.magnitude);
     }
 
     private void FixedUpdate()
