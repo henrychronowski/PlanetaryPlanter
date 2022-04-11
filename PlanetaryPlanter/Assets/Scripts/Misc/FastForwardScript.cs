@@ -5,6 +5,10 @@ using UnityEngine;
 public class FastForwardScript : MonoBehaviour
 {
     public GameObject tutorialCanvas;
+    public GameObject gifCanvas;
+    public GameObject comicCanvas;
+
+
     public OpenAlmanacScript pauseControl;
     public float fastForwardSpeed = 4;
     public GameObject fastForwardImage;
@@ -22,7 +26,7 @@ public class FastForwardScript : MonoBehaviour
 
     void CheckInput()
     {
-        if(tutorialCanvas.activeInHierarchy || pauseControl.isPaused)
+        if(tutorialCanvas.activeInHierarchy || pauseControl.isPaused || gifCanvas.activeInHierarchy || comicCanvas.activeInHierarchy)
         {
             fastForwardImage.SetActive(false);
             Time.timeScale = 0;
