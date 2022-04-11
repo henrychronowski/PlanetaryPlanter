@@ -4017,7 +4017,7 @@ MonoBehaviour:
   waterSound: {fileID: 4183641843270292668}
   lastRecordedHour: 0
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 3
   type: 0
 --- !u!114 &8111109547284425326
@@ -4035,6 +4035,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &2853206581113629487
@@ -4179,6 +4180,9 @@ MonoBehaviour:
   grassModName: Grassy Rocky Planet
   grassModInfo: A rocky world overflowing with plant life. Can be put in a solar
     system.
+  rottenName: Rotten Rocky Planet
+  rottenInfo: The remains of a rocky planet. Can be turned into fertilizer at the
+    composter.
   isPlant: 1
 --- !u!1 &8120545470774080444
 GameObject:
