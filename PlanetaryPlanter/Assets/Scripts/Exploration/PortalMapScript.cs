@@ -110,6 +110,10 @@ public class PortalMapScript : MonoBehaviour
         if (!mapActive)
             return;
 
+        //Force inventory on so that the player can't move in this state
+        NewInventory.instance.SetSpacesActive(true);
+
+
         int i = 0;
         foreach (PortalFoundScript portal in portals)
         {

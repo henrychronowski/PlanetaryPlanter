@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Cinemachine;
 using System.Linq;
+using TMPro;
 
 
 //This class holds all code relating to inventory management. 
@@ -23,6 +24,7 @@ public class NewInventory : MonoBehaviour
 
     public InventoryItem selectedItem; // The inventory item your cursor is holding
     public List<InventorySpace> spaces;
+    public InventorySpace trash;
     public bool itemInCursor; // Is your cursor holding an item?
     public GameObject emptyInventoryObject;
     public InventorySpace selectedSpace;
@@ -36,6 +38,12 @@ public class NewInventory : MonoBehaviour
     public CloseAllMenus menuCloser;
     public AudioSource collectPop;
     public InventoryItemIndex index;
+    public TextMeshProUGUI itemNameTooltip;
+    public Color originalColor;
+    public Color fadeOutColor;
+    [SerializeField] float timeSinceNewSelection;
+    [SerializeField] float timeUntilFadeoutStart;
+    [SerializeField] float timeUntilCompletelyFadedOut;
 
     // This offsets the item in the mouse cursor's position so it is not obstructed by the mouse and avoids any potential bugs 
     // related to holding items in cursors preventing the cursor from clicking buttons
@@ -66,66 +74,66 @@ public class NewInventory : MonoBehaviour
         if (scrollWheel > 0)
         {
             if ((selectedIndex + 1) < spaces.Count)
-                selectedSpace = spaces[selectedIndex + 1];
+                SetSelectedInventorySpace(spaces[selectedIndex + 1]);
             else
-                selectedSpace = spaces[0];
+                SetSelectedInventorySpace(spaces[0]);
         }
         else if(scrollWheel < 0)
         {
             if ((selectedIndex - 1) >= 0)
-                selectedSpace = spaces[selectedIndex - 1];
+                SetSelectedInventorySpace(spaces[selectedIndex - 1]);
             else
-                selectedSpace = spaces[spaces.Count - 1];
+                SetSelectedInventorySpace(spaces[spaces.Count - 1]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            selectedSpace = spaces[0];
+            SetSelectedInventorySpace(spaces[0]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            selectedSpace = spaces[1];
+            SetSelectedInventorySpace(spaces[1]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            selectedSpace = spaces[2];
+            SetSelectedInventorySpace(spaces[2]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            selectedSpace = spaces[3];
+            SetSelectedInventorySpace(spaces[3]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            selectedSpace = spaces[4];
+            SetSelectedInventorySpace(spaces[4]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            selectedSpace = spaces[5];
+            SetSelectedInventorySpace(spaces[5]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            selectedSpace = spaces[6];
+            SetSelectedInventorySpace(spaces[6]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-            selectedSpace = spaces[7];
+            SetSelectedInventorySpace(spaces[7]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
-            selectedSpace = spaces[8];
+            SetSelectedInventorySpace(spaces[8]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            selectedSpace = spaces[9];
+            SetSelectedInventorySpace(spaces[9]);
         }
 
         selectionIndicator.transform.position = selectedSpace.gameObject.transform.position;
@@ -172,6 +180,12 @@ public class NewInventory : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             GameObject.FindObjectOfType<CameraController>().CameraState(true);
+            if(PlaceItemInOpenSpace(selectedItem))
+            {
+                selectedItem = null;
+                itemInCursor = false;
+
+            }
             grayOutLevelPanel.SetActive(false);
         }
     }
@@ -277,6 +291,24 @@ public class NewInventory : MonoBehaviour
         }
         return null;
     }
+
+    public void SetSelectedInventorySpace(InventorySpace space)
+    {
+        if (space.location != SpaceLocation.PlayerInventory)
+            return;
+
+        selectedSpace = space;
+        timeSinceNewSelection = 0;
+        if(space.filled)
+        {
+            itemNameTooltip.text = space.item.itemObject.GetComponent<TooltipInfo>().name;
+        }
+        else
+        {
+            itemNameTooltip.text = "";
+        }
+    }
+
     public bool AddItem(GameObject item)
     {
         for(int i = 0; i < spaces.Count; i++)
@@ -378,6 +410,30 @@ public class NewInventory : MonoBehaviour
             }
         }
         return spacesOpen;
+    }
+
+    public bool PlaceItemInOpenSpace(InventoryItem item)
+    {
+        for (int i = 0; i < spaces.Count; i++)
+        {
+            if (!spaces[i].filled)
+            {
+                spaces[i].item = item;
+                spaces[i].filled = true;
+                spaces[i].item.transform.parent = spaces[i].transform;
+                spaces[i].item.transform.localPosition = Vector3.zero;
+                return true;
+            }
+        }
+
+        //Put it in trash as a last resort
+
+        Destroy(trash.item.gameObject);
+        trash.item = selectedItem;
+        trash.filled = true;
+        trash.item.transform.parent = trash.transform;
+        trash.item.transform.localPosition = Vector3.zero;
+        return false;
     }
 
     public GameObject GetItem(InventorySpace slot)
@@ -785,6 +841,24 @@ public class NewInventory : MonoBehaviour
         return ItemID.Unidentified;
     }
 
+    void UpdateTooltipTextOpacity()
+    {
+        timeSinceNewSelection += Time.deltaTime;
+        if (timeSinceNewSelection >= timeUntilCompletelyFadedOut)
+        {
+            itemNameTooltip.color = new Color(itemNameTooltip.color.r, itemNameTooltip.color.g, itemNameTooltip.color.b, 0);
+        }
+        else if(timeSinceNewSelection > timeUntilFadeoutStart)
+        {
+            itemNameTooltip.color = new Color(itemNameTooltip.color.r, itemNameTooltip.color.g, itemNameTooltip.color.b, 
+                1 - (timeSinceNewSelection - timeUntilFadeoutStart) / (timeUntilCompletelyFadedOut - timeUntilFadeoutStart));
+        }
+        else
+        {
+            itemNameTooltip.color = new Color(itemNameTooltip.color.r, itemNameTooltip.color.g, itemNameTooltip.color.b, 1);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -797,6 +871,7 @@ public class NewInventory : MonoBehaviour
     {
         CheckInput();
         UpdateHeldItemPos();
+        UpdateTooltipTextOpacity();
         if(!forceActive)
         {
             if (menuCloser.AreMenusOpen() && !forceActive)

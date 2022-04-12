@@ -23,6 +23,7 @@ public class CloseAllMenus : MonoBehaviour
         bool menusClosed = false;
         if (GameObject.FindObjectOfType<ObservatoryMaster>().inObservatoryView)
         {
+            menusClosed = true;
             GameObject.FindObjectOfType<ObservatoryMaster>().EnterObservatory();
         }
         foreach(GameObject m in menus)
