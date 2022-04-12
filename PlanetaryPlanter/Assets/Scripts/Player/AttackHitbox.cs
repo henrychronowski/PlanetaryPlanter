@@ -22,7 +22,7 @@ public class AttackHitbox : MonoBehaviour
         if(other.tag == "Squimbus")
         {
             Debug.Log("Hit Squimbus");
-            bonk.RecoverStolenItemWithBonk();
+            bonk.RecoverStolenItemWithBonk(other.gameObject);
         }
     }
     // Start is called before the first frame update

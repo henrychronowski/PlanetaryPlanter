@@ -35,7 +35,7 @@ public class SolarSystemRequirements : MonoBehaviour
     void Lerp()
     {
         timeSpentLerping += Time.deltaTime;
-        if(NewInventory.instance.inventoryActive && !GameObject.FindObjectOfType<ObservatoryMaster>().inObservatoryView)
+        if(NewInventory.instance.inventoryActive && !GameObject.FindObjectOfType<ObservatoryMaster>().inObservatoryView && !FindObjectOfType<PortalMapScript>().mapActive)
         {
             if (!opening)
             {

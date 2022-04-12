@@ -19,6 +19,8 @@ public class MoveAIThief : MonoBehaviour
     bool playerSpotted = false;
     bool itemSpotFull = false;
     float currentDropItemTime;
+    [SerializeField] float knockback;
+    [SerializeField] float knockbackAngle;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,14 @@ public class MoveAIThief : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerSpotted == true)
+        {
+            Debug.Log("updating player position");
+
+            destination = player.transform.position;
+            gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
+        }
+
         if (newDestinationNeeded == true)
         {
             Debug.Log("picking new destination");
@@ -37,14 +47,6 @@ public class MoveAIThief : MonoBehaviour
             PickNewDestination();
 
             newDestinationNeeded = false;
-        }
-
-        if (playerSpotted == true)
-        {
-            Debug.Log("updating player position");
-
-            destination = player.transform.position;
-            gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
         }
 
         if (itemSpotFull == true)
@@ -56,6 +58,13 @@ public class MoveAIThief : MonoBehaviour
                 DropItem();
                 currentDropItemTime = dropItemTime;
             }
+        }
+
+        if (Vector3.Distance(thief.transform.position, movementRadius.transform.position)
+            > movementRadius.GetComponent<SphereCollider>().radius)
+        {
+            playerSpotted = false;
+            newDestinationNeeded = true;
         }
 
         CheckThiefLocation();
@@ -149,6 +158,8 @@ public class MoveAIThief : MonoBehaviour
                     inventory.GetComponent<NewInventory>().PopItem(
                        inventory.GetComponent<NewInventory>().spaces[randItem]);
                     itemSpotFull = true;
+                    Vector3 direction = (player.transform.position - transform.position).normalized;
+                    player.GetComponent<CharacterMovement>().AddForce((new Vector3(direction.x, knockbackAngle, direction.z)).normalized * knockback);
                 }
 
                 playerSpotted = false;
@@ -171,5 +182,10 @@ public class MoveAIThief : MonoBehaviour
     public void ChangeDestinationNeeded(bool value)
     {
         newDestinationNeeded = value;
+    }
+
+    public void ChangePlayerSpotted(bool val)
+    {
+        playerSpotted = val;
     }
 }

@@ -78,6 +78,56 @@ public class NewInventory : MonoBehaviour
                 selectedSpace = spaces[spaces.Count - 1];
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            selectedSpace = spaces[0];
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            selectedSpace = spaces[1];
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            selectedSpace = spaces[2];
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            selectedSpace = spaces[3];
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            selectedSpace = spaces[4];
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            selectedSpace = spaces[5];
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            selectedSpace = spaces[6];
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            selectedSpace = spaces[7];
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            selectedSpace = spaces[8];
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            selectedSpace = spaces[9];
+        }
+
         selectionIndicator.transform.position = selectedSpace.gameObject.transform.position;
 
     }
