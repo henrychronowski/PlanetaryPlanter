@@ -30,7 +30,7 @@ public class Sound
     {
         source.volume = volume;
         source.pitch = pitch * (1 + Random.Range(-pitchRand / 2, pitchRand / 2));
-        source.Play();
+        source.PlayOneShot(clip);
     }
 
     public void Pause()

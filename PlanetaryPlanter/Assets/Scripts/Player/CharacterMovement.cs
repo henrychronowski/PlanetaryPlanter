@@ -555,6 +555,7 @@ public class CharacterMovement : MonoBehaviour
         }
         if(velocity.y < -maxFallSpeed && !grounded)
         {
+            Debug.Log("Velocity hit " + velocity.y);
             velocity.y = -maxFallSpeed;
         }
     }
