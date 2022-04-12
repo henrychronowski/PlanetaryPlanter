@@ -180,12 +180,13 @@ public class NewInventory : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             GameObject.FindObjectOfType<CameraController>().CameraState(true);
-            if(PlaceItemInOpenSpace(selectedItem))
-            {
-                selectedItem = null;
-                itemInCursor = false;
+            if(itemInCursor)
+                if(PlaceItemInOpenSpace(selectedItem))
+                {
+                    selectedItem = null;
+                    itemInCursor = false;
+                }
 
-            }
             grayOutLevelPanel.SetActive(false);
         }
     }
