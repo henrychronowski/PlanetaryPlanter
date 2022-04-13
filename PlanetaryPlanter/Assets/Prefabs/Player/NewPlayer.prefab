@@ -1272,7 +1272,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   animator: {fileID: 429418673297392477}
   speed: 50
-  airSpeed: 25
+  airSpeed: 15
   jumpHeight: 13
   maxSpeed: 13
   gravity: 0.5
@@ -1295,8 +1295,8 @@ MonoBehaviour:
   velocity: {x: 0, y: -0, z: 0}
   verticalVelocity: 0
   jumpDetectRadius: 0.24
-  turnSmoothTime: 0.15
-  airTurnSmoothTime: 0.1
+  turnSmoothTime: 0.25
+  airTurnSmoothTime: 0.25
   axis: {x: 0, y: 0, z: 0}
   rayBack: {fileID: 715803723}
   rayMid: {fileID: 2115882608}
@@ -1308,7 +1308,7 @@ MonoBehaviour:
   rayBackLeft: {fileID: 2029012986}
   rayBackRight: {fileID: 773255333}
   slopeSlideAngle: 0.1
-  slideSpeed: 0
+  slideSpeed: 0.1
   slidingJumpPower: 0
   midRayMaxDistance: 0.45
   isSliding: 0
@@ -1338,7 +1338,7 @@ MonoBehaviour:
   crouchSlideDrag: 0.95
   crouchSlideMaxSpeed: 30
   slidingControlModifier: 0.5
-  slopeForce: 500
+  slopeForce: 0
   slopeForceRayLength: 3
   wallClimbing: 0
   ledgeGrabRayLocation: {fileID: 33637969}
