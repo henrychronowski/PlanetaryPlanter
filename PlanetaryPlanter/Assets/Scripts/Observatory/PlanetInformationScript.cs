@@ -24,6 +24,7 @@ public class PlanetInformationScript : MonoBehaviour
 
     public bool isHovering;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,16 +34,19 @@ public class PlanetInformationScript : MonoBehaviour
     void Update()
     {
         DisplayText();
+
     }
+
+    
 
     void OnMouseOver()
     {
-        isHovering = true;
+        //isHovering = true;
     }
 
     void OnMouseExit()
     {
-        isHovering = false;
+        //isHovering = false;
     }
 
     void DisplayText()
@@ -150,46 +154,4 @@ public class PlanetInformationScript : MonoBehaviour
         }
         return null;
     }
-    //public Sprite ReturnSpriteToDisplay(PlanetSpecies species, PlanetType type)
-    //{
-    //    switch (species)
-    //    {
-    //        case PlanetSpecies.Asteroid:
-    //            {
-    //                if((int)type >= asteroid.Length)
-
-    //                {
-
-    //                    return placeholder;
-
-    //                }
-    //                return asteroid[(int)type];
-    //            }
-    //        case PlanetSpecies.Planet:
-    //            {
-
-    //                if ((int)type >= planet.Length)
-
-    //                {
-
-    //                    return placeholder;
-
-    //                }
-    //                return planet[(int)type];
-    //            }
-    //        case PlanetSpecies.Star:
-    //            {
-
-    //                if ((int)type >= star.Length)
-
-    //                {
-
-    //                    return placeholder;
-
-    //                }
-    //                return star[(int)type];
-    //            }
-    //    }
-    //    return null;
-    //}
 }
