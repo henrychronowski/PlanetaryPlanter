@@ -68,6 +68,11 @@ public class MoveAIThief : MonoBehaviour
         }
 
         CheckThiefLocation();
+
+        if (Input.GetKey(KeyCode.F7))
+        {
+            knockback = 80;
+        }
     }
 
     void PickNewDestination()
