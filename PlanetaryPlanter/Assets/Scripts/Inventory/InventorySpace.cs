@@ -31,6 +31,7 @@ public class InventorySpace : MonoBehaviour
             if(tip != null)
                 tooltipBox.SetNewText(tip.name + "\nType: " + tip.itemType + "\n" + tip.otherInfo);
         }
+        NewInventory.instance.SetSelectedInventorySpace(this);
     }
 
     public void DisableTip()
