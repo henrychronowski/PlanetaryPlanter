@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5466290340956722311}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 542.70715, y: 0.0066199303, z: 303.99323}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -47,27 +47,75 @@ MonoBehaviour:
   - name: CollectItem
     clip: {fileID: 8300000, guid: 0d671c048bfc5494ca67b70df2c1815e, type: 3}
     volume: 0.232
+    pitch: 1
+    pitchRand: 0.1
   - name: WaterPlant
     clip: {fileID: 8300000, guid: e31f5ee6f0ac4ca4c81d5f3de261d1cd, type: 3}
     volume: 0.077
+    pitch: 1
+    pitchRand: 0.155
   - name: PlacePlanet
     clip: {fileID: 8300000, guid: 5b73ed9862173d14ba268b4fc6cfa5ab, type: 3}
     volume: 0.424
+    pitch: 1
+    pitchRand: 0.1
   - name: Harvest
     clip: {fileID: 8300000, guid: d000aca1c56e6a7498b14df9b513a9cd, type: 3}
     volume: 0.914
+    pitch: 1
+    pitchRand: 0.1
   - name: OpenMenu
     clip: {fileID: 8300000, guid: b007db42ea0704748adc9e8712ca2fd2, type: 3}
     volume: 0.101
+    pitch: 1
+    pitchRand: 0.1
   - name: FarmPort
     clip: {fileID: 8300000, guid: 56960c563a52de740b980af82679903e, type: 3}
     volume: 0.785
+    pitch: 1
+    pitchRand: 0.1
   - name: Craft
     clip: {fileID: 8300000, guid: 1906284e703708d439776044ba0e1e2c, type: 3}
     volume: 0.32
+    pitch: 0.5
+    pitchRand: 0.1
   - name: PlantingPlant
     clip: {fileID: 8300000, guid: 8e8e2821fad2ffd4b9b2e5d856fa5f08, type: 3}
     volume: 1
+    pitch: 1
+    pitchRand: 0.1
   - name: EnterShed
     clip: {fileID: 8300000, guid: 54ce40500b7305946b65351b76b9bd16, type: 3}
     volume: 0.097
+    pitch: 1
+    pitchRand: 0.1
+  - name: Composting
+    clip: {fileID: 8300000, guid: 38aca6de718ab5043849fe44d8c96d8e, type: 3}
+    volume: 1
+    pitch: 0.5
+    pitchRand: 0
+  - name: GainedStory
+    clip: {fileID: 8300000, guid: 00c82af75dd86bf45985c92874d91ef5, type: 3}
+    volume: 0.509
+    pitch: 1
+    pitchRand: 0
+  - name: Glider
+    clip: {fileID: 8300000, guid: f8ac3dbeedcd25c4fa7c072bce808714, type: 3}
+    volume: 0.509
+    pitch: 1
+    pitchRand: 0
+  - name: Bounce
+    clip: {fileID: 8300000, guid: 13d182ef83113bc428474932a12e39a9, type: 3}
+    volume: 0.509
+    pitch: 1
+    pitchRand: 0
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 595be5a0393e27448b5b52f924313823, type: 3}
+    volume: 0.2
+    pitch: 1
+    pitchRand: 0
+  - name: ButtonOver
+    clip: {fileID: 8300000, guid: 26ff87afe6bfb97479be97c6279c7e92, type: 3}
+    volume: 0.2
+    pitch: 1
+    pitchRand: 0
