@@ -37,6 +37,7 @@ public class SolarSystemInfo : MonoBehaviour
     void SetConstellationCamActive()
     {
         observatory.transform.Find("TestConstCam").gameObject.SetActive(true);
+        FindObjectOfType<ObservatoryMaster>().inSolarSystemView = true;
         TutorialManagerScript.instance.Unlock("Solar System");
     }
 
