@@ -85,7 +85,7 @@ public class ObservatoryPlanetSpot : MonoBehaviour
                         }
                     case PlanetSpecies.Comet:
                         {
-                            newObject = Instantiate(starFruit);
+                            newObject = Instantiate(cometFruit);
                             break;
                         }
                 }
