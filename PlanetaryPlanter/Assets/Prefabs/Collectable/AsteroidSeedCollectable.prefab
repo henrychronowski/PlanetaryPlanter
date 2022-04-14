@@ -158,9 +158,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canCollect: 0
+  infinite: 0
   seed: {fileID: 1275811182132510642, guid: 28fcd96306b94dd45b8006ec697c5947, type: 3}
   seedModel: {fileID: 2094002690546611705}
   hoursBeforeRespawn: 5
+  hourLastCollected: 0
+  canCollectTip: 
+  hoursSinceLastCollected: 0
 --- !u!114 &5992236199085103926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +192,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  interactSprite: {fileID: 0}
+  interactText: Test
+  interactLightAngle: 10
 --- !u!1001 &917595062295366219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,6 +248,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275811182132510645, guid: 28fcd96306b94dd45b8006ec697c5947, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518380293189190056, guid: 28fcd96306b94dd45b8006ec697c5947, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518380293189190056, guid: 28fcd96306b94dd45b8006ec697c5947, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5687205348158970681, guid: 28fcd96306b94dd45b8006ec697c5947, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5687205348158970681, guid: 28fcd96306b94dd45b8006ec697c5947, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5687205348158970681, guid: 28fcd96306b94dd45b8006ec697c5947, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616203516022601536, guid: 28fcd96306b94dd45b8006ec697c5947, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616203516022601536, guid: 28fcd96306b94dd45b8006ec697c5947, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616203516022601536, guid: 28fcd96306b94dd45b8006ec697c5947, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
