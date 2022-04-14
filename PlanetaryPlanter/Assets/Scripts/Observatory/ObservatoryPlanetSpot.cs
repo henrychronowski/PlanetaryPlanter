@@ -96,7 +96,12 @@ public class ObservatoryPlanetSpot : MonoBehaviour
                 newObject.transform.localScale = scale;
                 GetComponent<MeshRenderer>().enabled = false;
                 filled = true;
-                newObject.GetComponent<Plant>().inPot = false;
+                if(newObject.TryGetComponent<Plant>(out Plant plant))
+                {
+                    plant.GetComponent<Plant>().inPot = false;
+
+                }
+
                 return true;
                 //newObject.transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().enabled = false;
             }
