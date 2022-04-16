@@ -62,6 +62,7 @@ public class SaveManager : MonoBehaviour
     public ObservatoryMaster master;
     public int activeSceneIndex;
     public bool dataLoaded;
+    public bool loadingStarted;
     public bool loadDataIntended;
 
     
@@ -90,7 +91,10 @@ public class SaveManager : MonoBehaviour
 
     public void LoadData()
     {
-        playerData = SaveSystem.LoadAllData();
+        if(!loadingStarted)
+            playerData = SaveSystem.LoadAllData();
+
+        loadingStarted = true;
         //set all variables properly
         master = GameObject.FindObjectOfType<ObservatoryMaster>();
         player = GameObject.FindObjectOfType<CharacterMovement>();
@@ -118,6 +122,7 @@ public class SaveManager : MonoBehaviour
     {
         loadDataIntended = true;
         dataLoaded = false;
+        loadingStarted = false;
         SceneManager.LoadScene(activeSceneIndex);
     }
 

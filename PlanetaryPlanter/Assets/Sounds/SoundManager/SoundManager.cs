@@ -71,6 +71,9 @@ public class SoundManager : MonoBehaviour
         {
             if (sounds[i].name == _name)
             {
+                if (SaveManager.instance.loadingStarted && !SaveManager.instance.dataLoaded)
+                    return;
+
                 sounds[i].Play();
                 return;
             }
