@@ -31,6 +31,7 @@ public class ObservatoryMaster : MonoBehaviour
     public bool initted;
 
     public int currentChapterIndex;
+
     public enum Direction
     {
         Left,
