@@ -106,7 +106,7 @@ public class ObservatoryPlanetSpot : MonoBehaviour
                     Sprite spriteToUse = GetComponent<PlanetInformationScript>().ReturnSpriteToDisplay(plantObject.species, plantObject.type);
                     fruit.GetComponentInChildren<Image>().sprite = spriteToUse;
                     plant.GetComponent<Plant>().inPot = false;
-
+                    //transform.parent.parent.parent.GetComponent<Observatory>().CheckForCompletion();
                 }
 
                 return true;
