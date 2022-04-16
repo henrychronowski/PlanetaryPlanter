@@ -156,6 +156,8 @@ public class Plant : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!inPot)
+            return;
         lastRecordedHour = -1;
         originalScale = plantModels[(int)stage].transform.localScale;
         timeSinceLastGrowth = 0;

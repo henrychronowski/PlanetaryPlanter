@@ -8,6 +8,9 @@ public class ObservatoryMaster : MonoBehaviour
 {
     public GameObject playerCam;
     public bool inObservatoryView;
+    public bool inSolarSystemView;
+    public GameObject planetInfoPanel;
+    public GameObject minimap;
 
     public AudioSource telescope;
     public AudioSource main;
@@ -28,6 +31,7 @@ public class ObservatoryMaster : MonoBehaviour
     public bool initted;
 
     public int currentChapterIndex;
+
     public enum Direction
     {
         Left,
@@ -62,6 +66,11 @@ public class ObservatoryMaster : MonoBehaviour
             }
             //main.mute = false;
         }
+    }
+
+    public void ExitSolarSystemView()
+    {
+        inSolarSystemView = false;
     }
 
     public void UpdateToDoUI()
@@ -261,7 +270,7 @@ public class ObservatoryMaster : MonoBehaviour
             observatory.gameObject.SetActive(false);
         }
         initted = true;
-        
+        minimap = GameObject.FindGameObjectWithTag("Minimap");
     }
 
     // Update is called once per frame
@@ -270,5 +279,7 @@ public class ObservatoryMaster : MonoBehaviour
         LerpUpdate();
         ChangeConstellationButtonStatus();
         UpdateToDoUI();
+        planetInfoPanel.gameObject.SetActive(inSolarSystemView);
+        minimap.gameObject.SetActive(!inObservatoryView);
     }
 }
