@@ -48,7 +48,7 @@ public class MoveAIThief : MonoBehaviour
             }
         }
 
-        if (playerSpotted == true)
+        if (playerSpotted == true && stealCooldownActive == false)
         {
             Debug.Log("updating player position");
 
@@ -208,5 +208,6 @@ public class MoveAIThief : MonoBehaviour
     public void StealItemsCooldown()
     {
         stealCooldownActive = true;
+        newDestinationNeeded = true;
     }
 }
