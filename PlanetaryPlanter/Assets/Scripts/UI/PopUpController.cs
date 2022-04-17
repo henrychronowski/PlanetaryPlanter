@@ -33,6 +33,9 @@ public class PopUpController : MonoBehaviour
     float duration;
 
     [SerializeField]
+    float toInactiveDuration;
+
+    [SerializeField]
     float popupProgress;
 
     [SerializeField]

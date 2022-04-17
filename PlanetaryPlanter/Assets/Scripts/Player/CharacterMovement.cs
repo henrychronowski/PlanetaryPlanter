@@ -117,7 +117,7 @@ public class CharacterMovement : MonoBehaviour
     public GameObject gliderIndicator;
 
     Vector3 actualMovementDirection;
-    Vector3 actualVelocity;
+    public Vector3 actualVelocity;
     Vector3 previousPos;
     public float moveAlongWallAngleDifference;
     public float collisionMovementAngleDifference;
@@ -692,6 +692,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Integrate()
     {
+        previousPos = transform.position;
         if (canMove) //Prevents movement in cutscenes and such
             Move();
         else
@@ -710,22 +711,22 @@ public class CharacterMovement : MonoBehaviour
             velocity.y = 0;
         }
 
-        if ((characterController.collisionFlags & CollisionFlags.Sides) != 0)
-        {
-            Vector3 xzMove = new Vector3(velocity.x, 0, velocity.z);
-            float actualVelocityMagnitude = new Vector2(actualVelocity.x, actualVelocity.z).magnitude;
-            xzMove = Vector3.ClampMagnitude(xzMove, maxSpeed - (maxSpeed * (collisionMovementAngleDifference/90)));
-            velocity.x = xzMove.x;
-            velocity.z = xzMove.z;
-        }
         characterController.Move(Time.deltaTime * velocity);
         if ((characterController.collisionFlags & CollisionFlags.Sides) != 0)
         {
             touchingWall = true;
-            actualMovementDirection = ((transform.position - previousPos) /Time.deltaTime).normalized;
+            actualMovementDirection = ((transform.position - previousPos) / Time.deltaTime).normalized;
+
             actualVelocity = (((transform.position - previousPos).normalized * Vector3.Distance(transform.position, previousPos)) / Time.deltaTime);
-            
             //Debug.DrawRay(transform.position, actualMovementDirection);
+        }
+        else
+        {
+            if(touchingWall)
+            {
+                touchingWall = false;
+                velocity = new Vector3(actualVelocity.x, velocity.y, actualVelocity.z);
+            }
         }
         //Applied when leaving walls to prevent odd bursts of speed when running against a wall and leaving the wall
 
