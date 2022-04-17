@@ -50,7 +50,7 @@ public class PlantSpot : MonoBehaviour
 
                     break;
                 }
-            case PlanetSpecies.Planet:
+            case PlanetSpecies.GasPlanet:
                 {
                     plantObject = Instantiate(items.items[(int)ItemID.PlanetPlant], transform);
                     placedPlant = plantObject.GetComponent<Plant>();
