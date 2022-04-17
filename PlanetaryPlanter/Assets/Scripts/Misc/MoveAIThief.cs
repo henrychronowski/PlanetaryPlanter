@@ -12,6 +12,7 @@ public class MoveAIThief : MonoBehaviour
     public Transform detectionRadius; //how close the player must be to be noticed
     public Transform movementRadius; //the range on the map the ai can move
     public float dropItemTime;
+    public float stealCooldownTime;
 
     Vector3 destination;
     [SerializeField] GameObject stolenObject; //gameobject or what?
@@ -19,6 +20,9 @@ public class MoveAIThief : MonoBehaviour
     bool playerSpotted = false;
     bool itemSpotFull = false;
     float currentDropItemTime;
+    bool stealCooldownActive = false;
+    float currentStealCooldownTime;
+
     [SerializeField] float knockback;
     [SerializeField] float knockbackAngle;
 
@@ -27,11 +31,23 @@ public class MoveAIThief : MonoBehaviour
     {
         newDestinationNeeded = true;
         currentDropItemTime = dropItemTime;
+        currentStealCooldownTime = stealCooldownTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (stealCooldownActive == true)
+        {
+            currentStealCooldownTime -= Time.deltaTime;
+
+            if (currentStealCooldownTime <= 0.0f)
+            {
+                currentStealCooldownTime = stealCooldownTime;
+                stealCooldownActive = false;
+            }
+        }
+
         if (playerSpotted == true)
         {
             Debug.Log("updating player position");
@@ -68,11 +84,6 @@ public class MoveAIThief : MonoBehaviour
         }
 
         CheckThiefLocation();
-
-        if (Input.GetKey(KeyCode.F7))
-        {
-            knockback = 80;
-        }
     }
 
     void PickNewDestination()
@@ -135,7 +146,7 @@ public class MoveAIThief : MonoBehaviour
         int randItem;
 
         //could be this or a collider contact
-        if (Vector3.Distance(gameObject.transform.position, destination) < 1.0f)
+        if (Vector3.Distance(gameObject.transform.position, destination) < 1.0f && stealCooldownActive == false)
         {
             if (inventory.GetComponent<NewInventory>().spaces.Count > 0 && itemSpotFull == false)
             {
@@ -176,7 +187,7 @@ public class MoveAIThief : MonoBehaviour
     public void DropItem()
     {
         itemSpotFull = false;
-        stolenObject = null;
+        stolenObject = null; //maybe should just destroy it or something
     }
 
     public GameObject GetStolenObject()
@@ -192,5 +203,10 @@ public class MoveAIThief : MonoBehaviour
     public void ChangePlayerSpotted(bool val)
     {
         playerSpotted = val;
+    }
+
+    public void StealItemsCooldown()
+    {
+        stealCooldownActive = true;
     }
 }
