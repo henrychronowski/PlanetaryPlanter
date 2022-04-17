@@ -27,7 +27,7 @@ public class Observatory : MonoBehaviour
     public SolarSystemCountScript solarSystemCounter;
 
 
-    bool CheckForCompletion()
+    public bool CheckForCompletion()
     {
         foreach(ObservatoryPlanetSpot spot in constellationSpots)
         {
