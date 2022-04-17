@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public enum PlanetSpecies
 {
     Asteroid,
-    Planet,
+    GasPlanet,
     Star,
     RockPlanet,
     Comet,
@@ -71,7 +71,7 @@ public class ObservatoryPlanetSpot : MonoBehaviour
                             fruit = Instantiate(asteroidFruit);
                             break;
                         }
-                    case PlanetSpecies.Planet:
+                    case PlanetSpecies.GasPlanet:
                         {
                             fruit = Instantiate(asteroidFruit);
                             break;
