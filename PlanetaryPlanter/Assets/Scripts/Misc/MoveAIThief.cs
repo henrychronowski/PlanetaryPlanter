@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class MoveAIThief : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class MoveAIThief : MonoBehaviour
 
     [SerializeField] float knockback;
     [SerializeField] float knockbackAngle;
+    [SerializeField] Image itemIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +76,10 @@ public class MoveAIThief : MonoBehaviour
                 DropItem();
                 currentDropItemTime = dropItemTime;
             }
+        }
+        else
+        {
+            HideItem();
         }
 
         if (Vector3.Distance(thief.transform.position, movementRadius.transform.position)
@@ -174,9 +180,12 @@ public class MoveAIThief : MonoBehaviour
                     inventory.GetComponent<NewInventory>().PopItem(
                        inventory.GetComponent<NewInventory>().spaces[randItem]);
                     itemSpotFull = true;
-                    Vector3 direction = (player.transform.position - transform.position).normalized;
-                    player.GetComponent<CharacterMovement>().AddForce((new Vector3(direction.x, knockbackAngle, direction.z)).normalized * knockback);
+                    ShowItem();
+                    
                 }
+
+                Vector3 direction = (player.transform.position - transform.position).normalized;
+                player.GetComponent<CharacterMovement>().AddForce((new Vector3(direction.x, knockbackAngle, direction.z)).normalized * knockback);
 
                 playerSpotted = false;
                 newDestinationNeeded = true;
@@ -188,6 +197,17 @@ public class MoveAIThief : MonoBehaviour
     {
         itemSpotFull = false;
         stolenObject = null; //maybe should just destroy it or something
+    }
+
+    public void ShowItem()
+    {
+        itemIcon.enabled = true;
+        itemIcon.sprite = stolenObject.GetComponent<IconHolder>().icon;
+    }
+
+    public void HideItem()
+    {
+        itemIcon.enabled = false;
     }
 
     public GameObject GetStolenObject()

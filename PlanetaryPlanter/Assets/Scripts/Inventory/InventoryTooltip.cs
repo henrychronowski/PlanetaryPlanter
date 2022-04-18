@@ -32,6 +32,8 @@ public class InventoryTooltip : MonoBehaviour
         if(!NewInventory.instance.inventoryActive)
         {
             SetPanelActive(false);
+            text.enabled = false;
+
         }
     }
 

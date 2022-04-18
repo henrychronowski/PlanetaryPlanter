@@ -67,5 +67,9 @@ public class InventorySpace : MonoBehaviour
     void Update()
     {
         CheckForItem();
+        if(!NewInventory.instance.inventoryActive)
+        {
+            DisableTip();
+        }
     }
 }
