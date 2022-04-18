@@ -11,6 +11,7 @@ public class ObservatoryMaster : MonoBehaviour
     public bool inSolarSystemView;
     public GameObject planetInfoPanel;
     public GameObject minimap;
+    public GameObject welcomeTutorial;
 
     public AudioSource telescope;
     public AudioSource main;
@@ -250,12 +251,13 @@ public class ObservatoryMaster : MonoBehaviour
         if(lerping)
         {
             float t = Mathf.SmoothStep(0, 1, timeSpentLerping/lerpTime);
-            transform.position = Vector3.Lerp(lerpOrigin, lerpTarget, t);
+            Vector3 lerpedPos = Vector3.Lerp(lerpOrigin, lerpTarget, t);
+            transform.position = new Vector3(lerpedPos.x, lerpedPos.y, transform.position.z);
             timeSpentLerping += Time.deltaTime;
             if(timeSpentLerping>= lerpTime)
             {
                 timeSpentLerping = 0;
-                transform.position = lerpTarget;
+                transform.position = new Vector3(lerpTarget.x, lerpTarget.y, transform.position.z);
                 lerping = false;
             }
         }
@@ -271,6 +273,7 @@ public class ObservatoryMaster : MonoBehaviour
         }
         initted = true;
         minimap = GameObject.FindGameObjectWithTag("Minimap");
+        welcomeTutorial = GameObject.Find("WelcomeTutorial");
     }
 
     // Update is called once per frame
@@ -281,5 +284,6 @@ public class ObservatoryMaster : MonoBehaviour
         UpdateToDoUI();
         planetInfoPanel.gameObject.SetActive(inSolarSystemView);
         minimap.gameObject.SetActive(!inObservatoryView);
+        
     }
 }
