@@ -82,7 +82,7 @@ public class PlanetInformationScript : MonoBehaviour
                     preview.sprite = asteroid[(int)type];
                     break;
                 }
-            case PlanetSpecies.Planet:
+            case PlanetSpecies.GasPlanet:
                 {
                     preview.sprite = planet[(int)type];
                     break;
@@ -122,10 +122,9 @@ public class PlanetInformationScript : MonoBehaviour
                     {
                         return placeholder;
                     }
-                    preview.sprite = rocky[(int)type];
-                    break;
+                    return rocky[(int)type];
                 }
-            case PlanetSpecies.Planet:
+            case PlanetSpecies.GasPlanet:
                 {
                     if ((int)type >= planet.Length)
                     {
@@ -140,8 +139,8 @@ public class PlanetInformationScript : MonoBehaviour
                     {
                         return placeholder;
                     }
-                    preview.sprite = comet[(int)type];
-                    break;
+                    return comet[(int)type];
+                    
                 }
             case PlanetSpecies.Star:
                 {
