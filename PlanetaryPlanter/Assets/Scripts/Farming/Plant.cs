@@ -84,25 +84,16 @@ public class Plant : MonoBehaviour
             currentWater--;
             if(growthProgress % growthNeededForEachStage == 0 && stage != Stage.Rotten)
             {
+                Debug.Log("Next Stage");
+                plantModels[(int)stage].SetActive(false);
+                stage++;
+                plantModels[(int)stage].SetActive(true);
+
                 if (stage == Stage.Ripe)
                 {
                     GetComponent<IconHolder>().icon = grownIcon;
                     AlmanacProgression.instance.Unlock(species.ToString() + "CropGrown");
-                    if(growthProgress >= growthRequiredToRot)
-                    {
-                        Debug.Log("Next Stage");
-                        plantModels[(int)stage].SetActive(false);
-                        stage++;
-                        plantModels[(int)stage].SetActive(true);
-                    }
                     
-                }
-                else
-                {
-                    Debug.Log("Next Stage");
-                    plantModels[(int)stage].SetActive(false);
-                    stage++;
-                    plantModels[(int)stage].SetActive(true);
                 }
 
             }
