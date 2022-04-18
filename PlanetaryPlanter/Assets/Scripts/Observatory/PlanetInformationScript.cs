@@ -122,8 +122,7 @@ public class PlanetInformationScript : MonoBehaviour
                     {
                         return placeholder;
                     }
-                    preview.sprite = rocky[(int)type];
-                    break;
+                    return rocky[(int)type];
                 }
             case PlanetSpecies.GasPlanet:
                 {
@@ -140,8 +139,8 @@ public class PlanetInformationScript : MonoBehaviour
                     {
                         return placeholder;
                     }
-                    preview.sprite = comet[(int)type];
-                    break;
+                    return comet[(int)type];
+                    
                 }
             case PlanetSpecies.Star:
                 {
