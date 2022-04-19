@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-[CreateAssetMenu(fileName = "Skybox Parameters", menuName = "ScriptableObjects/Skybox", order =1)]
+[CreateAssetMenu(fileName = "Skybox Parameters", menuName = "Skybox/Skybox Parameters", order =1)]
 public class SkyboxParams : ScriptableObject
 {
     public string SkyName;
