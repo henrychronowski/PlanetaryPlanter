@@ -1271,14 +1271,14 @@ MonoBehaviour:
   characterController: {fileID: 0}
   cam: {fileID: 0}
   animator: {fileID: 429418673297392477}
-  speed: 50
-  airSpeed: 15
+  speed: 80
+  airSpeed: 20
   jumpHeight: 13
   maxSpeed: 13
   gravity: 0.5
   groundedGravity: 16
   maxFallSpeed: 15
-  movementDrag: 0.99
+  movementDrag: 0.9
   stoppedDrag: 0.7
   airDrag: 0.98
   holdJumpGravity: 0.35
@@ -1295,8 +1295,8 @@ MonoBehaviour:
   velocity: {x: 0, y: -0, z: 0}
   verticalVelocity: 0
   jumpDetectRadius: 0.24
-  turnSmoothTime: 0.25
-  airTurnSmoothTime: 0.25
+  turnSmoothTime: 0.15
+  airTurnSmoothTime: 0.15
   axis: {x: 0, y: 0, z: 0}
   rayBack: {fileID: 715803723}
   rayMid: {fileID: 2115882608}
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   actualVelocity: {x: 0, y: 0, z: 0}
   moveAlongWallAngleDifference: 0
   collisionMovementAngleDifference: 0
-  touchingWall: 1
+  touchingWall: 0
   touchingWallMaxSpeed: 0
   wallrunning: 0
   wallrunningGravity: 0.15
