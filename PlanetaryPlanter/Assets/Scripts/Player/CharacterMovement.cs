@@ -92,7 +92,7 @@ public class CharacterMovement : MonoBehaviour
 
     public Vector3 axis;
 
-    private AudioSource jumpSound;
+    [SerializeField] private AudioSource jumpSound;
     public Transform rayBack;
     public Transform rayMid;
     public Transform rayFront;
