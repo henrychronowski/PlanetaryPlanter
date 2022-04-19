@@ -2251,7 +2251,7 @@ MonoBehaviour:
   waterSound: {fileID: 6432860553442900605}
   lastRecordedHour: 0
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 3
   type: 4
 --- !u!114 &1410945299963592135
@@ -2269,6 +2269,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &4379431843395432637
@@ -2402,7 +2403,7 @@ MonoBehaviour:
   iceModName: Frozen Rocky Planet
   iceModInfo: A rocky planet covered in snow and tall icicles. Can be put in a solar
     system.
-  ghostModName: Ghostly Rocky Planet
+  ghostModName: Haunted Planet
   ghostModInfo: A rocky planet inhabited by the spirits of the dead. Can be put in
     a solar system.
   fossilModName: Fossilium Rocky Planet
@@ -2413,6 +2414,8 @@ MonoBehaviour:
   grassModName: Grassy Rocky Planet
   grassModInfo: A rocky world overflowing with plant life. Can be put in a solar
     system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &4338718485595727529
 GameObject:
