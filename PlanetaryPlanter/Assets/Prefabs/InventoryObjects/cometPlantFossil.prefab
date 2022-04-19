@@ -77,7 +77,7 @@ MonoBehaviour:
   waterSound: {fileID: 6555737838178559346}
   lastRecordedHour: 0
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 4
   type: 6
 --- !u!114 &1181513118917106592
@@ -95,6 +95,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &5146840900147337953
@@ -231,7 +232,7 @@ MonoBehaviour:
   ghostModName: Ghostly Comet
   ghostModInfo: A comet that carries ghosts across the stars. Can be put in a solar
     system.
-  fossilModName: Fossilium Comet
+  fossilModName: Aerolite
   fossilModInfo: A stony comet that turns living things into fossils. Can be put
     in a solar system.
   waterModName: Liquid Comet
@@ -240,6 +241,8 @@ MonoBehaviour:
   grassModName: Grassy Comet
   grassModInfo: A comet that spreads pollen across the stars. Can be put in a solar
     system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &1209912262730570230
 GameObject:
