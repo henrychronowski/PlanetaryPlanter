@@ -2826,7 +2826,7 @@ MonoBehaviour:
   waterSound: {fileID: 7159827205093644908}
   lastRecordedHour: 0
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 3
   type: 6
 --- !u!114 &4277776248702463250
@@ -2844,6 +2844,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &4349365647564678031
@@ -2980,7 +2981,7 @@ MonoBehaviour:
   ghostModName: Ghostly Rocky Planet
   ghostModInfo: A rocky planet inhabited by the spirits of the dead. Can be put in
     a solar system.
-  fossilModName: Fossilium Rocky Planet
+  fossilModName: Barren Planet
   fossilModInfo: 'A rocky world covered in vast deserts. Can be put in a solar system. '
   waterModName: Liquid Rocky Planet
   waterModInfo: A rocky world covered by an ocean and dotted with islands. Can be
@@ -2988,6 +2989,8 @@ MonoBehaviour:
   grassModName: Grassy Rocky Planet
   grassModInfo: A rocky world overflowing with plant life. Can be put in a solar
     system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &5281771049040854580
 GameObject:
