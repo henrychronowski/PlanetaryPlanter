@@ -1133,7 +1133,7 @@ MonoBehaviour:
   waterSound: {fileID: 8514017167423711155}
   lastRecordedHour: 17
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 1
   type: 2
 --- !u!114 &1504354546470707366
@@ -1151,6 +1151,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &6183330582295216206
@@ -1280,7 +1281,7 @@ MonoBehaviour:
     the crafting table.
   fireModName: Fire Planet
   fireModInfo: A planet of superheated gas. Can be put in a solar system.
-  iceModName: Ice Planet
+  iceModName: Ice Ring Planet
   iceModInfo: A gas planet that has had its ring frozen. Can be put in a solar system.
   ghostModName: Ghost Planet
   ghostModInfo: A gas planet with winds that constantly howl. Can be put in a solar
@@ -1292,6 +1293,8 @@ MonoBehaviour:
   waterModInfo: A gas planet wracked by constant storms. Can be put in a solar system.
   grassModName: Grass Planet
   grassModInfo: A planet of smelly gasses from plants. Can be put in a solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &3005881582178925823
 GameObject:

@@ -4183,7 +4183,7 @@ MonoBehaviour:
   waterSound: {fileID: 3174988383486712503}
   lastRecordedHour: 9
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 0
   type: 1
 --- !u!114 &6629674497832352649
@@ -4201,6 +4201,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &7061295166203361572
@@ -4328,7 +4329,7 @@ MonoBehaviour:
   itemType: Plant
   otherInfo: A fully grown cluster of asteroids. Can be put in a solar system or
     modified at the crafting table.
-  fireModName: Fire Asteroid
+  fireModName: Magma Asteroids
   fireModInfo: An asteroid cluster that leaks hot magma. Can be put in a solar system.
   iceModName: Ice Asteroid
   iceModInfo: An asteroid cluster made out of ice. Can be put in a solar system.
@@ -4343,6 +4344,8 @@ MonoBehaviour:
     a solar system.
   grassModName: Grass Asteroid
   grassModInfo: A cluster of asteroids covered in moss. Can be put in a solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &7602387180584238210
 GameObject:
