@@ -85,7 +85,7 @@ public class AlmanacProgression : MonoBehaviour
             if (FindAchievementByTitle(key) != null)
             {
                 FindAchievementByTitle(key).unlocked = true;
-                Debug.Log("Unlocked " + key);
+                Debug.Log("Unlocked " + key + " via Load Game");
             }
         }
     }

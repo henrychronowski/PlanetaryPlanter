@@ -92,7 +92,7 @@ public class CharacterMovement : MonoBehaviour
 
     public Vector3 axis;
 
-    private AudioSource jumpSound;
+    [SerializeField] private AudioSource jumpSound;
     public Transform rayBack;
     public Transform rayMid;
     public Transform rayFront;
@@ -718,11 +718,13 @@ public class CharacterMovement : MonoBehaviour
             actualMovementDirection = ((transform.position - previousPos) / Time.deltaTime).normalized;
 
             actualVelocity = (((transform.position - previousPos).normalized * Vector3.Distance(transform.position, previousPos)) / Time.deltaTime);
-            //Debug.DrawRay(transform.position, actualMovementDirection);
+            animator.SetFloat("runSpeedModifier", new Vector3(actualVelocity.x, 0, actualVelocity.z).magnitude / maxSpeed);
         }
         else
         {
-            if(touchingWall)
+            Vector3 xzVel = new Vector3(velocity.x, 0, velocity.z);
+            animator.SetFloat("runSpeedModifier", xzVel.magnitude / maxSpeed);
+            if (touchingWall)
             {
                 touchingWall = false;
                 velocity = new Vector3(actualVelocity.x, velocity.y, actualVelocity.z);
@@ -826,8 +828,7 @@ public class CharacterMovement : MonoBehaviour
         timeSinceLastLedgeGrab += Time.deltaTime;
         canLedgeGrab = timeSinceLastLedgeGrab > ledgeGrabCooldown;
         animator.SetBool("grounded", grounded || wallrunning);
-        Vector3 xzVel = new Vector3(velocity.x, 0, velocity.z);
-        animator.SetFloat("runSpeedModifier", xzVel.magnitude / maxSpeed);
+        
         //Debug.Log(velocity.magnitude);
     }
 
