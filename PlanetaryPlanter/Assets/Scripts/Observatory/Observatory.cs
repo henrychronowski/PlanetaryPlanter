@@ -65,7 +65,7 @@ public class Observatory : MonoBehaviour
 
     void Complete()
     {
-        soundManager.PlaySound("Craft");
+        SoundManager.instance.PlaySound("Craft");
         foreach (LineRenderer l in lines)
         {
             l.enabled = true;
