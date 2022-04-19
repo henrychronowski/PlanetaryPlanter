@@ -28,6 +28,12 @@ public class CraftingSlotCheckScript : MonoBehaviour
         {
             if (item.itemObject.tag == "Plant")
             {
+                if (item.itemObject.GetComponent<Plant>().stage == Plant.Stage.Rotten)
+                {
+                    isObject = false;
+                    isModifier = false;
+                    return;
+                }
                 isObject = true;
                 isModifier = false;
                 return;
