@@ -1729,7 +1729,7 @@ MonoBehaviour:
   waterSound: {fileID: 8997126170826258019}
   lastRecordedHour: 9
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 0
   type: 5
 --- !u!114 &923994787093993309
@@ -1747,6 +1747,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &3543531376109442544
@@ -1884,11 +1885,13 @@ MonoBehaviour:
   fossilModName: Fossil Asteroid Cluster
   fossilModInfo: A stony comet that turns living things into fossils. Can be put
     in a solar system.
-  waterModName: Water Asteroid
+  waterModName: Flooded Asteroids
   waterModInfo: An asteroid cluster surrounded by bubbles of water. Can be put in
     a solar system.
   grassModName: Grass Asteroid
   grassModInfo: A cluster of asteroids covered in moss. Can be put in a solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &4130644548914991190
 GameObject:
