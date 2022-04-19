@@ -72,8 +72,7 @@ public class WelcomeTutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (SaveManager.instance.dataLoaded) //Prevents this tutorial from appearing on pressing load game
-            Destroy(gameObject);
+
     }
 
     // Update is called once per frame
@@ -81,5 +80,7 @@ public class WelcomeTutorial : MonoBehaviour
     {
         CheckInput();
         CheckCompletion();
+        if (SaveManager.instance.dataLoaded) //Prevents this tutorial from appearing on pressing load game
+            Destroy(gameObject);
     }
 }
