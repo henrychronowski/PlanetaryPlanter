@@ -40,17 +40,17 @@ Material:
     - CloudEdge: 0.33
     - CloudHeight: 0.18
     - HorizonOffset: 0.537
-    - SkyRotationFactor: 0.0058
+    - SkyRotationFactor: 0.01
     - StarDensity: 4
     - StarSize: 80.7
     - SunBlend: 0.067
     - SunSize: 0.044
     - SunSpotOpacity: 0.439
-    - WindSpeed: 0.014
+    - WindSpeed: 0.05
     m_Colors:
-    - CloudColor: {r: 0.86274517, g: 0.43921572, b: 0.73333335, a: 1}
-    - HorizonColor: {r: 0.5058824, g: 0.24705884, b: 0.5176471, a: 1}
-    - SkyColor: {r: 0.09716078, g: 0.11261298, b: 0.29803923, a: 1}
-    - SunColor: {r: 0.9607844, g: 0.52156866, b: 0.29411766, a: 1}
-    - SunSpotColor: {r: 0.84313726, g: 0.8235294, b: 0, a: 1}
+    - CloudColor: {r: 0.86274517, g: 0.43921572, b: 0.73333335, a: 0}
+    - HorizonColor: {r: 0.5058824, g: 0.24705884, b: 0.5176471, a: 0}
+    - SkyColor: {r: 0.09019608, g: 0.10588236, b: 0.29411766, a: 0}
+    - SunColor: {r: 0.9607844, g: 0.52156866, b: 0.29411766, a: 0}
+    - SunSpotColor: {r: 0.85098046, g: 0.82745105, b: 0.18431373, a: 0}
   m_BuildTextureStacks: []
