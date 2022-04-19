@@ -4550,7 +4550,7 @@ MonoBehaviour:
   waterSound: {fileID: 4170716743744866194}
   lastRecordedHour: 9
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 0
   type: 6
 --- !u!114 &5327716644609009324
@@ -4568,6 +4568,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &8363269520623903745
@@ -4702,7 +4703,7 @@ MonoBehaviour:
   ghostModName: Gravestone Cluster
   ghostModInfo: An asteroid cluster that resembles alien headstones. Can be put in
     a solar system.
-  fossilModName: Fossil Asteroid Cluster
+  fossilModName: Bone Storm
   fossilModInfo: A stony comet that turns living things into fossils. Can be put
     in a solar system.
   waterModName: Water Asteroid
@@ -4710,6 +4711,8 @@ MonoBehaviour:
     a solar system.
   grassModName: Grass Asteroid
   grassModInfo: A cluster of asteroids covered in moss. Can be put in a solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &8291607435169461819
 GameObject:

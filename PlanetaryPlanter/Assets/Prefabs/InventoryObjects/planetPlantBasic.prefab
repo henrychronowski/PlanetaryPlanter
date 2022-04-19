@@ -358,7 +358,7 @@ MonoBehaviour:
   waterSound: {fileID: 1806240698267768707}
   lastRecordedHour: 17
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 1
   type: 0
 --- !u!114 &8498912384704096046
@@ -376,6 +376,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &7385285199163629120
@@ -499,7 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9da1641332a8c4db70345cdbad80ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Planet Plant
+  name: Gas Planet Plant
   itemType: Plant
   otherInfo: A fully grown gas planet. Can be put in a solar system or modified at
     the crafting table.
@@ -517,6 +518,8 @@ MonoBehaviour:
   waterModInfo: A gas planet wracked by constant storms. Can be put in a solar system.
   grassModName: Grass Planet
   grassModInfo: A planet of smelly gasses from plants. Can be put in a solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &745212261263003442
 GameObject:
