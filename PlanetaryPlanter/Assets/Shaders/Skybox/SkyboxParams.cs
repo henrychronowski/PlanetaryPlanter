@@ -11,17 +11,24 @@ public class SkyboxParams : ScriptableObject
     public Color SkyColor;
     public Color HorizonColor;
     public float StarDensity = 4.0f;
-    public float StarSize;
+    [Range(50f, 150f)]
+    public float StarSize = 100f;
     public Color SunColor;
-    public float SunSize;
-    public float SunBlend;
+    [Range(0f, 0.5f)]
+    public float SunSize = 0.1f;
+    [Range(0f,1f)]
+    public float SunBlend = 0.2f;
     public Color SunSpotColor;
-    public float SunSpotOpacity;
-    public float WindSpeed;
+    [Range(0f, 1f)]
+    public float SunSpotOpacity = 0.5f;
+    [Range(0f, 0.1f)]
+    public float WindSpeed = 0.05f;
     public Texture2D CloudTexture;
     public float CloudHeight;
     public float CloudEdge;
     public Color CloudColor;
-    public float SkyRotationSpeed;
-    public float HorizonOffset;
+    [Range(-0.1f, 0.1f)]
+    public float SkyRotationSpeed = 0.01f;
+    [Range(0f, 1f)]
+    public float HorizonOffset = 0f;
 }
