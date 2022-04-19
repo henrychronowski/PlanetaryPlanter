@@ -32,6 +32,7 @@ public class ObservatoryMaster : MonoBehaviour
     public bool initted;
 
     public int currentChapterIndex;
+    public float zPos = -80f;
 
     public enum Direction
     {
@@ -199,13 +200,13 @@ public class ObservatoryMaster : MonoBehaviour
     {
         if(dir == 1)
         {
-            StartLerp(observatoryPoints[observatoryCamTransformIndex].position, observatoryPoints[observatoryCamTransformIndex + 1].position);
+            StartLerp(observatoryPoints[observatoryCamTransformIndex].localPosition, observatoryPoints[observatoryCamTransformIndex + 1].localPosition);
             observatoryCamTransformIndex++;
         }   
         else
         {
             
-            StartLerp(observatoryPoints[observatoryCamTransformIndex].position, observatoryPoints[observatoryCamTransformIndex - 1].position);
+            StartLerp(observatoryPoints[observatoryCamTransformIndex].localPosition, observatoryPoints[observatoryCamTransformIndex - 1].localPosition);
             observatoryCamTransformIndex--;
         }
     }
@@ -252,15 +253,16 @@ public class ObservatoryMaster : MonoBehaviour
         {
             float t = Mathf.SmoothStep(0, 1, timeSpentLerping/lerpTime);
             Vector3 lerpedPos = Vector3.Lerp(lerpOrigin, lerpTarget, t);
-            transform.position = new Vector3(lerpedPos.x, lerpedPos.y, transform.position.z);
+            transform.localPosition = new Vector3(lerpedPos.x, lerpedPos.y, zPos);
             timeSpentLerping += Time.deltaTime;
             if(timeSpentLerping>= lerpTime)
             {
                 timeSpentLerping = 0;
-                transform.position = new Vector3(lerpTarget.x, lerpTarget.y, transform.position.z);
+                transform.localPosition = new Vector3(lerpTarget.x, lerpTarget.y, zPos);
                 lerping = false;
             }
         }
+
     }
 
     // Start is called before the first frame update
@@ -284,6 +286,6 @@ public class ObservatoryMaster : MonoBehaviour
         UpdateToDoUI();
         planetInfoPanel.gameObject.SetActive(inSolarSystemView);
         minimap.gameObject.SetActive(!inObservatoryView);
-        
+        welcomeTutorial.gameObject.SetActive(!inObservatoryView);
     }
 }
