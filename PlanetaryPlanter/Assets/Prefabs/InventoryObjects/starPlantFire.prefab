@@ -2598,7 +2598,7 @@ MonoBehaviour:
   waterSound: {fileID: 864918900721329105}
   lastRecordedHour: 3
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 2
   type: 1
 --- !u!114 &5634309708470496477
@@ -2616,6 +2616,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &4841171016368860612
@@ -2742,7 +2743,7 @@ MonoBehaviour:
   name: Star Plant
   itemType: Plant
   otherInfo: A seed born of stars. Can be planted to grow crops.
-  fireModName: Fire Star
+  fireModName: Superheated Star
   fireModInfo: A scarlet star that incinerates anything that gets too close. Can
     be put in a solar system.
   iceModName: Ice Star
@@ -2759,6 +2760,8 @@ MonoBehaviour:
   grassModName: Grassy Star
   grassModInfo: A verdant star that makes plants face its light. Can be put in a
     solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &7482414739155940645
 GameObject:
