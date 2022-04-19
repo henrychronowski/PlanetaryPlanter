@@ -17,6 +17,7 @@ public class SkyTransition : MonoBehaviour
     private float LerpTime;
     private float invTransitionTime;
     private Material skybox;
+    private bool toggle; // Toggle to prevent trigger being called twice on same instance
     
     void Start()
     {
@@ -25,13 +26,13 @@ public class SkyTransition : MonoBehaviour
         TargetSky = CurrentSky;
         invTransitionTime = 1f / TransitionTime;
         skybox = RenderSettings.skybox;
+        toggle = true;
     }
 
     void Update()
     {
         if (IsLerping)
         {
-            Debug.Log("Is Lerping");
             LerpTime += Time.deltaTime;
             float interpParam = LerpTime * invTransitionTime;
 
@@ -46,6 +47,7 @@ public class SkyTransition : MonoBehaviour
             else
 			{
                 IsLerping = false;
+                CurrentSky = TargetSky;
 			}
         }
     }
@@ -70,8 +72,27 @@ public class SkyTransition : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IsLerping = true;
-        TargetSky = !CurrentSky;
-        LerpTime = 0f;
+        if (toggle)
+        {
+            if (IsLerping)
+            {
+                TargetSky = !TargetSky;
+                CurrentSky = !CurrentSky;
+                //LerpTime = 1f - LerpTime;
+            }
+            else
+            {
+                IsLerping = true;
+                TargetSky = !CurrentSky;
+                LerpTime = 0f;
+            }
+
+            toggle = false;
+        }
     }
+
+	private void OnTriggerExit(Collider other)
+	{
+        toggle = true;
+	}
 }

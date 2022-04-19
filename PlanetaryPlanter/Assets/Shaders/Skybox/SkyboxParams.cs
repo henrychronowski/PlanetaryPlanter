@@ -34,7 +34,7 @@ public class SkyboxParams : ScriptableObject
 
     static public SkyboxParams Lerp(SkyboxParams from, SkyboxParams to, float interp)
 	{
-        SkyboxParams result = new SkyboxParams();
+        SkyboxParams result = SkyboxParams.CreateInstance<SkyboxParams>();
 
         result.SkyColor = Color.Lerp(from.SkyColor, to.SkyColor, interp);
         result.HorizonColor = Color.Lerp(from.HorizonColor, to.HorizonColor, interp);
