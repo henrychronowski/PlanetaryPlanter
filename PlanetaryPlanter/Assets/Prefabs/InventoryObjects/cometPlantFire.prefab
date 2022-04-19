@@ -159,7 +159,7 @@ MonoBehaviour:
   waterSound: {fileID: 5195791961232351292}
   lastRecordedHour: 0
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 4
   type: 1
 --- !u!114 &181290213814394606
@@ -177,6 +177,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &6164514270023655343
@@ -304,7 +305,7 @@ MonoBehaviour:
   itemType: Plant
   otherInfo: A fully grown comet. Can be put in a solar system or modified at a crafting
     table.
-  fireModName: Fire Comet
+  fireModName: Phoenix-trail Comet
   fireModInfo: An ever-burning comet that can reignite its own flames. Can be put
     in a solar system.
   iceModName: Ice Comet
@@ -322,6 +323,8 @@ MonoBehaviour:
   grassModName: Grassy Comet
   grassModInfo: A comet that spreads pollen across the stars. Can be put in a solar
     system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &775395273119601318
 GameObject:

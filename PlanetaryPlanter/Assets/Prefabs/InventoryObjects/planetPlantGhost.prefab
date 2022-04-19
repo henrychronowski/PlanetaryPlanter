@@ -1432,7 +1432,7 @@ MonoBehaviour:
   waterSound: {fileID: 4245891020294101523}
   lastRecordedHour: 17
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 1
   type: 4
 --- !u!114 &6201266418223721150
@@ -1450,6 +1450,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &5008192971110421456
@@ -1581,7 +1582,7 @@ MonoBehaviour:
   fireModInfo: A planet of superheated gas. Can be put in a solar system.
   iceModName: Ice Planet
   iceModInfo: A gas planet that has had its ring frozen. Can be put in a solar system.
-  ghostModName: Ghost Planet
+  ghostModName: Banshee Planet
   ghostModInfo: A gas planet with winds that constantly howl. Can be put in a solar
     system.
   fossilModName: Fossil Planet
@@ -1591,6 +1592,8 @@ MonoBehaviour:
   waterModInfo: A gas planet wracked by constant storms. Can be put in a solar system.
   grassModName: Grass Planet
   grassModInfo: A planet of smelly gasses from plants. Can be put in a solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &3313336702212139262
 GameObject:
