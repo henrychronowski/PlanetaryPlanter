@@ -43,12 +43,20 @@ public class SkyTransition : MonoBehaviour
                 to = (TargetSky) ? rhs : lhs;
 
                 SetParameters(SkyboxParams.Lerp(from, to, interpParam));
+                if (SystemInfo.supportsAsyncGPUReadback)
+                {
+                    DynamicGI.UpdateEnvironment();
+                }
             }
             else
 			{
                 IsLerping = false;
                 CurrentSky = TargetSky;
-			}
+                if (SystemInfo.supportsAsyncGPUReadback)
+                {
+                    DynamicGI.UpdateEnvironment();
+                }
+            }
         }
     }
 
@@ -72,7 +80,7 @@ public class SkyTransition : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (toggle)
+        if (toggle && other.CompareTag("Player"))
         {
             if (IsLerping)
             {
