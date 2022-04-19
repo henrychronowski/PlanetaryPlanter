@@ -17,6 +17,7 @@ public class Tutorial : MonoBehaviour
 
     public bool isUnlocked;
     public string title;
+    [TextArea(8, 50)]
     public string description;
     public bool isComic;
     public TutorialType type;
