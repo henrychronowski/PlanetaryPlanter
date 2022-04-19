@@ -2482,7 +2482,7 @@ MonoBehaviour:
   waterSound: {fileID: 3383743286933184509}
   lastRecordedHour: 17
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 1
   type: 6
 --- !u!114 &4762069555724808016
@@ -2500,6 +2500,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &5879936454473307710
@@ -2634,13 +2635,15 @@ MonoBehaviour:
   ghostModName: Ghost Planet
   ghostModInfo: A gas planet with winds that constantly howl. Can be put in a solar
     system.
-  fossilModName: Fossil Planet
+  fossilModName: Dustball Planet
   fossilModInfo: A gas planet of swirling sand and bone fragments. Can be put in
     a solar system.
   waterModName: Water Planet
   waterModInfo: A gas planet wracked by constant storms. Can be put in a solar system.
   grassModName: Grass Planet
   grassModInfo: A planet of smelly gasses from plants. Can be put in a solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &4685395154648841727
 GameObject:

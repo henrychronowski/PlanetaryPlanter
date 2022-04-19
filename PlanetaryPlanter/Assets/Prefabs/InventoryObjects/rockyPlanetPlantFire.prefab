@@ -3540,7 +3540,7 @@ MonoBehaviour:
   waterSound: {fileID: 3017928182398670836}
   lastRecordedHour: 0
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 3
   type: 1
 --- !u!114 &7169429953665018150
@@ -3558,6 +3558,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &3780276981719951463
@@ -3685,7 +3686,7 @@ MonoBehaviour:
   itemType: Plant
   otherInfo: A fully grown rocky planet. Can be put in a solar system or modified
     at the crafting table.
-  fireModName: Firey Rocky Planet
+  fireModName: Volcanic Planet
   fireModInfo: A rocky world dotted with active volcanoes. Can be put in a solar
     system.
   iceModName: Frozen Rocky Planet
@@ -3702,6 +3703,8 @@ MonoBehaviour:
   grassModName: Grassy Rocky Planet
   grassModInfo: A rocky world overflowing with plant life. Can be put in a solar
     system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &7235613616202298568
 GameObject:
