@@ -808,7 +808,7 @@ MonoBehaviour:
   waterSound: {fileID: 7864790745983164662}
   lastRecordedHour: 0
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 4
   type: 4
 --- !u!114 &2862709073221508644
@@ -826,6 +826,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &8120748587070562149
@@ -959,7 +960,7 @@ MonoBehaviour:
   iceModName: Ice Comet
   iceModInfo: A comet that flash freezes away the impurities of anything it touches.
     Can be put in a solar system.
-  ghostModName: Ghostly Comet
+  ghostModName: Ecto-trail Comet
   ghostModInfo: A comet that carries ghosts across the stars. Can be put in a solar
     system.
   fossilModName: Fossilium Comet
@@ -971,6 +972,8 @@ MonoBehaviour:
   grassModName: Grassy Comet
   grassModInfo: A comet that spreads pollen across the stars. Can be put in a solar
     system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &2925638219020493450
 GameObject:
