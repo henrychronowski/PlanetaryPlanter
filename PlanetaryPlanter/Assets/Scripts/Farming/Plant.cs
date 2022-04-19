@@ -91,9 +91,7 @@ public class Plant : MonoBehaviour
 
                 if (stage == Stage.Ripe)
                 {
-                    GetComponent<IconHolder>().icon = grownIcon;
                     AlmanacProgression.instance.Unlock(species.ToString() + "CropGrown");
-                    
                 }
 
             }
