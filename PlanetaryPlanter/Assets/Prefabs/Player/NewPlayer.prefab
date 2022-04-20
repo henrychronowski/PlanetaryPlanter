@@ -1268,17 +1268,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496af13f83365c0449ec419317ce5d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 0}
+  characterController: {fileID: 454173232008751413}
   cam: {fileID: 0}
   animator: {fileID: 429418673297392477}
-  speed: 50
-  airSpeed: 15
+  speed: 80
+  airSpeed: 20
   jumpHeight: 13
   maxSpeed: 13
   gravity: 0.5
   groundedGravity: 16
   maxFallSpeed: 15
-  movementDrag: 0.99
+  movementDrag: 0.9
   stoppedDrag: 0.7
   airDrag: 0.98
   holdJumpGravity: 0.35
@@ -1295,9 +1295,10 @@ MonoBehaviour:
   velocity: {x: 0, y: -0, z: 0}
   verticalVelocity: 0
   jumpDetectRadius: 0.24
-  turnSmoothTime: 0.25
-  airTurnSmoothTime: 0.25
+  turnSmoothTime: 0.15
+  airTurnSmoothTime: 0.15
   axis: {x: 0, y: 0, z: 0}
+  jumpSound: {fileID: 0}
   rayBack: {fileID: 715803723}
   rayMid: {fileID: 2115882608}
   rayFront: {fileID: 1702514616}
@@ -1321,7 +1322,7 @@ MonoBehaviour:
   actualVelocity: {x: 0, y: 0, z: 0}
   moveAlongWallAngleDifference: 0
   collisionMovementAngleDifference: 0
-  touchingWall: 1
+  touchingWall: 0
   touchingWallMaxSpeed: 0
   wallrunning: 0
   wallrunningGravity: 0.15
@@ -1529,6 +1530,8 @@ GameObject:
   m_Component:
   - component: {fileID: 978867094939349533}
   - component: {fileID: 429418673297392477}
+  - component: {fileID: 1533630172}
+  - component: {fileID: 1533630170}
   m_Layer: 0
   m_Name: farmerModel
   m_TagString: Untagged
@@ -1571,6 +1574,117 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &1533630172
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494959192488929447}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.123
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1533630170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494959192488929447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b394b89407a704347bc3e38b265340bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepSounds:
+  - {fileID: 8300000, guid: f2c08516f3382d64aa827549a9193657, type: 3}
+  - {fileID: 8300000, guid: a373e90593a036d4882fc25f455321a7, type: 3}
 --- !u!1 &716223958412303890
 GameObject:
   m_ObjectHideFlags: 0
