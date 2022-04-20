@@ -6,13 +6,13 @@ using System.Collections.Generic;
 
 public static class SaveSystem
 {
-    public static void SaveAllData(CharacterMovement player, ObservatoryMaster observatoryMaster, AlmanacProgression alm, TutorialManagerScript tutorials, NewInventory inventory, PlantsData plants)
+    public static void SaveAllData(CharacterMovement player, ObservatoryMaster observatoryMaster, AlmanacProgression alm, TutorialManagerScript tutorials, NewInventory inventory, PlantsData plants, PortalMapScript portals)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/squimbus.progress";
         FileStream fs = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(player, observatoryMaster, alm, tutorials, inventory, plants);
+        PlayerData data = new PlayerData(player, observatoryMaster, alm, tutorials, inventory, plants, portals);
 
         try
         {
