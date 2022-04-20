@@ -9,10 +9,15 @@ public class BonkAIThief : MonoBehaviour
 
     GameObject recoveredObject;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
@@ -32,6 +37,7 @@ public class BonkAIThief : MonoBehaviour
                 thief.GetComponent<MoveAIThief>().DropItem();
                 if(recoveredObject != null)
                     inventory.GetComponent<NewInventory>().AddItem(recoveredObject);
+                soundManager.PlaySound("SquimHit");
             }
         }
     }
