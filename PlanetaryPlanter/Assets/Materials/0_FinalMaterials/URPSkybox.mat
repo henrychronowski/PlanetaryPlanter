@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkyboxTest
+  m_Name: URPSkybox
   m_Shader: {fileID: -6465566751694194690, guid: 86daece31561f2b499233228deb12e3d, type: 3}
   m_ShaderKeywords: _SUNDISK_HIGH_QUALITY
   m_LightmapFlags: 4
@@ -40,17 +40,17 @@ Material:
     - CloudEdge: 0.33
     - CloudHeight: 0.18
     - HorizonOffset: 0.537
-    - SkyRotationFactor: 0.0058
+    - SkyRotationFactor: 0.01
     - StarDensity: 4
     - StarSize: 80.7
     - SunBlend: 0.067
     - SunSize: 0.044
     - SunSpotOpacity: 0.439
-    - WindSpeed: 0.014
+    - WindSpeed: 0.05
     m_Colors:
-    - CloudColor: {r: 0.86274517, g: 0.43921572, b: 0.73333335, a: 1}
-    - HorizonColor: {r: 0.5058824, g: 0.24705884, b: 0.5176471, a: 1}
-    - SkyColor: {r: 0.09716078, g: 0.11261298, b: 0.29803923, a: 1}
-    - SunColor: {r: 0.9607844, g: 0.52156866, b: 0.29411766, a: 1}
-    - SunSpotColor: {r: 0.84313726, g: 0.8235294, b: 0, a: 1}
+    - CloudColor: {r: 0.862713, g: 0.43939424, b: 0.7334124, a: 0}
+    - HorizonColor: {r: 0.505837, g: 0.24722126, b: 0.5177334, a: 0}
+    - SkyColor: {r: 0.09019608, g: 0.10588382, b: 0.29411766, a: 0}
+    - SunColor: {r: 0.9607507, g: 0.5216287, b: 0.2941484, a: 0}
+    - SunSpotColor: {r: 0.85098046, g: 0.82745105, b: 0.18431373, a: 0}
   m_BuildTextureStacks: []
