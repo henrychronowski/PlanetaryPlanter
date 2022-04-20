@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using System.Linq;
 
 public class PortalMapScript : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    [SerializeField] List<PortalFoundScript> portals;
+    [SerializeField] public List<PortalFoundScript> portals;
     [SerializeField] List<GameObject> activePortalButtons;
     [SerializeField] GameObject teleportButton;
     [SerializeField] CinemachineVirtualCamera portalMapCam;
@@ -58,7 +59,6 @@ public class PortalMapScript : MonoBehaviour
                         portalInHotBiome=true;
                     if(portal.location == PortalFoundScript.Biome.Cold)
                         portalInColdBiome=true;
-
                 }
             }
             //Set the camera pos based on what portals have been unlocked
@@ -139,10 +139,24 @@ public class PortalMapScript : MonoBehaviour
         }
     }
 
+    public bool[] GetPortalsFound()
+    {
+        List<bool> result = new List<bool>();
+
+        for(int i = 0; i < portals.Count; i++)
+        {
+            result.Add(portals[i].portalFound);
+        }
+        
+
+        return result.ToArray();
+    }
+
     private void Start()
     {
         portals = new List<PortalFoundScript>();
-        portals.AddRange(FindObjectsOfType<PortalFoundScript>());
+        portals.AddRange(GameObject.FindObjectsOfType<PortalFoundScript>().OrderBy(gameObject => gameObject.name).ToArray());
+
         soundManager = FindObjectOfType<SoundManager>();
     }
 

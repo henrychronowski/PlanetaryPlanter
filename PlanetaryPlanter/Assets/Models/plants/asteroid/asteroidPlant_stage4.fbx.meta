@@ -3,7 +3,12 @@ guid: ae77e2cae95f3c945afe193997bfa4a8
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: asteroidPlantTexture
+    second: {fileID: 2100000, guid: 9824d293ae95e834c8ec6c00b933c4e3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

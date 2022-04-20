@@ -35,18 +35,28 @@ public class BonkAIThief : MonoBehaviour
             {
                 recoveredObject = thief.GetComponent<MoveAIThief>().GetStolenObject();
                 thief.GetComponent<MoveAIThief>().DropItem();
-                if(recoveredObject != null)
+
+                if (recoveredObject != null)
+                {
                     inventory.GetComponent<NewInventory>().AddItem(recoveredObject);
-                soundManager.PlaySound("SquimHit");
+                    thief.GetComponent<MoveAIThief>().StealItemsCooldown();
+                }
             }
         }
     }
+              
+        
+
 
     public void RecoverStolenItemWithBonk(GameObject thief)
     {
         recoveredObject = thief.GetComponent<MoveAIThief>().GetStolenObject();
         thief.GetComponent<MoveAIThief>().DropItem();
+        soundManager.PlaySound("SquimHit");
         if (recoveredObject != null)
+        {
             inventory.GetComponent<NewInventory>().AddItem(recoveredObject);
+            thief.GetComponent<MoveAIThief>().StealItemsCooldown();
+        }
     }
 }

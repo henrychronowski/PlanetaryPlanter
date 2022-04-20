@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum PlanetSpecies
 {
     Asteroid,
-    Planet,
+    GasPlanet,
     Star,
     RockPlanet,
     Comet,
@@ -61,65 +62,63 @@ public class ObservatoryPlanetSpot : MonoBehaviour
                 if(fromInventory)
                     newObject = NewInventory.instance.PopItemInCursor();
 
+                GameObject fruit = null;
+
                 switch(newObject.GetComponent<Plant>().species)
                 {
                     case PlanetSpecies.Asteroid:
                         {
-                            newObject = Instantiate(asteroidFruit);
+                            fruit = Instantiate(asteroidFruit);
                             break;
                         }
-                    case PlanetSpecies.Planet:
+                    case PlanetSpecies.GasPlanet:
                         {
-                            newObject = Instantiate(planetFruit);
+                            fruit = Instantiate(asteroidFruit);
                             break;
                         }
                     case PlanetSpecies.Star:
                         {
-                            newObject = Instantiate(starFruit);
+                            fruit = Instantiate(asteroidFruit);
                             break;
                         }
                     case PlanetSpecies.RockPlanet:
                         {
-                            newObject = Instantiate(starFruit);
+                            fruit = Instantiate(asteroidFruit);
                             break;
                         }
                     case PlanetSpecies.Comet:
                         {
-                            newObject = Instantiate(starFruit);
+                            fruit = Instantiate(asteroidFruit);
                             break;
                         }
                 }
-                heldObject = newObject;
-                Vector3 scale = newObject.transform.localScale;
-                newObject.transform.parent = transform;
-                newObject.transform.localPosition = Vector3.zero;
-                newObject.transform.localScale = scale;
+                heldObject = fruit;
+                Vector3 scale = fruit.transform.localScale;
+                fruit.transform.parent = transform;
+                fruit.transform.localPosition = Vector3.zero;
+                fruit.transform.localScale = scale;
                 GetComponent<MeshRenderer>().enabled = false;
+                
                 filled = true;
-                newObject.GetComponent<Plant>().inPot = false;
+                if(newObject.TryGetComponent<Plant>(out Plant plant))
+                {
+                    Plant plantObject = newObject.GetComponent<Plant>();
+                    Sprite spriteToUse = GetComponent<PlanetInformationScript>().ReturnSpriteToDisplay(plantObject.species, plantObject.type);
+                    fruit.GetComponentInChildren<Image>().sprite = spriteToUse;
+                    plant.GetComponent<Plant>().inPot = false;
+                    //transform.parent.parent.parent.GetComponent<Observatory>().CheckForCompletion();
+                }
+
                 return true;
-                //newObject.transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().enabled = false;
             }
         }
         else
         {
             return false;
-            //Debug.Log("Filled");
         }
         return false;
-        //Observatory.instance.
     }
 
-    public void RemoveObject()
-    {
-        if (filled)
-        {
-            Destroy(heldObject);
-            filled = false;
-            GetComponent<MeshRenderer>().enabled = true;
-
-        }
-    }
 
     private void FixedUpdate()
     {

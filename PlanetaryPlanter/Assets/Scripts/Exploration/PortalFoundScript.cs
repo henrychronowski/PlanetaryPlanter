@@ -24,8 +24,6 @@ public class PortalFoundScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        portalFound = false;
-        canTeleport = false;
 
         player = GameObject.FindObjectOfType<CharacterMovement>();
         portalMap = GameObject.FindObjectOfType<PortalMapScript>();

@@ -3,7 +3,12 @@ guid: d01ac322d93ec804f9b68031f14eaf97
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rockyPlantTexture
+    second: {fileID: 2100000, guid: 8eaba4accef5a174aa033912dd5e013b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

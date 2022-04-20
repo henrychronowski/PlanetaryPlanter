@@ -303,7 +303,7 @@ MonoBehaviour:
   waterSound: {fileID: 9049140817910807045}
   lastRecordedHour: 3
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 2
   type: 3
 --- !u!114 &4586028203992200457
@@ -321,6 +321,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &3655381290797937680
@@ -461,9 +462,11 @@ MonoBehaviour:
   waterModName: Liquid Star
   waterModInfo: A cerulean star that swirls like a whirlpool. Can be put in a solar
     system.
-  grassModName: Grassy Star
+  grassModName: Star Flower
   grassModInfo: A verdant star that makes plants face its light. Can be put in a
     solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &1604176498640743665
 GameObject:
