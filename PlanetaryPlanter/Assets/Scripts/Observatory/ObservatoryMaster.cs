@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -286,6 +287,14 @@ public class ObservatoryMaster : MonoBehaviour
         UpdateToDoUI();
         planetInfoPanel.gameObject.SetActive(inSolarSystemView);
         minimap.gameObject.SetActive(!inObservatoryView);
-        welcomeTutorial.gameObject.SetActive(!inObservatoryView);
+        try
+        {
+            welcomeTutorial.gameObject.SetActive(!inObservatoryView);
+
+        }
+        catch(Exception e)
+        {
+            
+        }
     }
 }

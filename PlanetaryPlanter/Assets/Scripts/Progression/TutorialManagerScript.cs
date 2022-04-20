@@ -92,7 +92,7 @@ public class TutorialManagerScript : MonoBehaviour
             if (FindTutorialEntry(key) != null)
             {
                 FindTutorialEntry(key).isUnlocked = true;
-                Debug.Log("Unlocked " + key);
+                Debug.Log("Unlocked " + key + " via Load Game");
             }
         }
     }
