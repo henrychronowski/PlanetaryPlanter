@@ -24,9 +24,7 @@ GameObject:
   - component: {fileID: 515388819}
   - component: {fileID: 515388820}
   - component: {fileID: 515388821}
-  - component: {fileID: 515388822}
   - component: {fileID: 515388823}
-  - component: {fileID: 515388824}
   - component: {fileID: 1969387582044915758}
   - component: {fileID: 4589171444758680412}
   - component: {fileID: 7690199964057534012}
@@ -34,6 +32,8 @@ GameObject:
   - component: {fileID: 3308128629154074538}
   - component: {fileID: 1686473225717106467}
   - component: {fileID: 5601200245753977328}
+  - component: {fileID: 3517668093438780859}
+  - component: {fileID: 680461697}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -533,38 +533,6 @@ MonoBehaviour:
   gifPlayer: {fileID: 0}
   gifTitleText: {fileID: 0}
   gifDescriptionText: {fileID: 0}
---- !u!114 &515388822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8981054008426009073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 636f176f31b48704684eb4f4ce1a6b9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isUnlocked: 0
-  title: Cudgelroot
-  description: This behemoth of a plant is useful for knocking through crystalline
-    walls. Plant this like a standard plant, and harvest it when ready. Once harvested,
-    use it in front of a cracked crystal wall by pressing E.
-  isComic: 0
-  type: 0
-  comicSprite: {fileID: 0}
-  comicCanvasImage: {fileID: 0}
-  comicTutorialCanvas: {fileID: 0}
-  tutorial: {fileID: 0}
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  comicTitleText: {fileID: 0}
-  comicDescriptionText: {fileID: 0}
-  gif: {fileID: 0}
-  gifCanvas: {fileID: 0}
-  gifPlayer: {fileID: 0}
-  gifTitleText: {fileID: 0}
-  gifDescriptionText: {fileID: 0}
 --- !u!114 &515388823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,37 +551,6 @@ MonoBehaviour:
     portals scattered throughout, and you need to discover them to use them. Once
     you have, stand on them, press E to open the map, and select your destination
     to warp to it.
-  isComic: 0
-  type: 0
-  comicSprite: {fileID: 0}
-  comicCanvasImage: {fileID: 0}
-  comicTutorialCanvas: {fileID: 0}
-  tutorial: {fileID: 0}
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  comicTitleText: {fileID: 0}
-  comicDescriptionText: {fileID: 0}
-  gif: {fileID: 0}
-  gifCanvas: {fileID: 0}
-  gifPlayer: {fileID: 0}
-  gifTitleText: {fileID: 0}
-  gifDescriptionText: {fileID: 0}
---- !u!114 &515388824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8981054008426009073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 636f176f31b48704684eb4f4ce1a6b9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isUnlocked: 0
-  title: Gliding Companion
-  description: This little guy can help you travel further in the air to potentially
-    collect some difficult to reach items. While airborne, press Spacebar to glide.
   isComic: 0
   type: 0
   comicSprite: {fileID: 0}
@@ -752,9 +689,9 @@ MonoBehaviour:
   description: "You\u2019ve upgraded your trusty trowel with Stellanovium, a durable
     crystal found only on Stellanova. Now you can use your trowel to shatter walls
     of Stellanovium! To do so, approach one of these crystal walls and press E."
-  isComic: 0
+  isComic: 1
   type: 2
-  comicSprite: {fileID: 0}
+  comicSprite: {fileID: 21300000, guid: 5cc37a3a08e675f49bf0259ac0774253, type: 3}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
@@ -788,7 +725,7 @@ MonoBehaviour:
     the air."
   isComic: 1
   type: 2
-  comicSprite: {fileID: 21300000, guid: 9e6b5dbd8f8b40545b0e5e6d7a2cbee0, type: 3}
+  comicSprite: {fileID: 21300000, guid: 0e9cba08f63ba9449adab5335ca3e088, type: 3}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
@@ -819,7 +756,7 @@ MonoBehaviour:
     areas! Jump on top of them while holding Space for the best results.
   isComic: 1
   type: 2
-  comicSprite: {fileID: 21300000, guid: 2f7a086e62f3d6442ba1f7219e3dfa20, type: 3}
+  comicSprite: {fileID: 21300000, guid: 46e94e4988cf08f4bb4345166a9fa933, type: 3}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
   tutorial: {fileID: 0}
@@ -851,7 +788,70 @@ MonoBehaviour:
     to bonk it on the head and get it to give your stuff back! Be careful when wandering
     near a Squimbus\u2019s den next time!"
   isComic: 0
-  type: 2
+  type: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
+  tutorial: {fileID: 0}
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
+--- !u!114 &3517668093438780859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981054008426009073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636f176f31b48704684eb4f4ce1a6b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUnlocked: 0
+  title: Plant Ready!
+  description: Looks like you have a plant ready to be harvested at your farm! Whenever
+    a plant is ready to be harvested, a ! message will appear next to your map on
+    the top of your screen. Use this to prevent plants from rotting!
+  isComic: 0
+  type: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
+  tutorial: {fileID: 0}
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
+--- !u!114 &680461697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981054008426009073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636f176f31b48704684eb4f4ce1a6b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUnlocked: 0
+  title: A Sense of Direction.
+  description: Check your to-do table in order to have a good idea as to how to progress,
+    check the observatory for more information.
+  isComic: 0
+  type: 0
   comicSprite: {fileID: 0}
   comicCanvasImage: {fileID: 0}
   comicTutorialCanvas: {fileID: 0}
