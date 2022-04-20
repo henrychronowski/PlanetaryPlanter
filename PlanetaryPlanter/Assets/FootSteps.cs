@@ -7,7 +7,7 @@ public class FootSteps : MonoBehaviour
     [SerializeField] AudioClip[] stepSounds;
 
     AudioSource audioSource;
-
+    int lastPlayedSound;
     void Step()
     {
         audioSource.PlayOneShot(GetRandomClip());
@@ -15,7 +15,13 @@ public class FootSteps : MonoBehaviour
 
     AudioClip GetRandomClip()
     {
-        return stepSounds[Random.Range(0, stepSounds.Length)];
+        int index = Random.Range(0, stepSounds.Length);
+        while(index == lastPlayedSound)
+        {
+            index = Random.Range(0, stepSounds.Length);
+        }
+        lastPlayedSound = index;
+        return stepSounds[index];
     }
 
     // Start is called before the first frame update
