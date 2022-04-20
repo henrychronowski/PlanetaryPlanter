@@ -27,8 +27,7 @@ public class CraftingScript : MonoBehaviour
 
     void ActivateCraft()
     {
-        if ((slot1.GetComponent<CraftingSlotCheckScript>().isModifier == true && slot2.GetComponent<CraftingSlotCheckScript>().isObject == true)
-            || (slot1.GetComponent<CraftingSlotCheckScript>().isObject == true && slot2.GetComponent<CraftingSlotCheckScript>().isModifier == true))
+        if (slot1.GetComponent<CraftingSlotCheckScript>().isModifier == true && slot2.GetComponent<CraftingSlotCheckScript>().isObject == true)
         {
             craftButton.GetComponent<Button>().interactable = true;
         }
@@ -40,24 +39,11 @@ public class CraftingScript : MonoBehaviour
 
     public void CraftItems()
     {
-        if (slot1.GetComponent<CraftingSlotCheckScript>().isObject == true && slot2.GetComponent<CraftingSlotCheckScript>().isModifier == true)
-        {
-            soundManager.PlaySound("Craft");
-            slot1.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<Plant>().type = 
-                slot2.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<Modifier>().modifierToApply;
-            Destroy(slot2.GetComponent<CraftingSlotCheckScript>().item.gameObject);
-            slot1.GetComponent<CraftingSlotCheckScript>().item.Init(slot1.GetComponent<CraftingSlotCheckScript>().item.itemObject);
-            return;
-        }
-
-        else if (slot2.GetComponent<CraftingSlotCheckScript>().isObject == true && slot1.GetComponent<CraftingSlotCheckScript>().isModifier == true)
-        {
-            soundManager.PlaySound("Craft");
-            slot2.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<Plant>().type =
-                slot1.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<Modifier>().modifierToApply;
-            Destroy(slot1.GetComponent<CraftingSlotCheckScript>().item.gameObject);
-            slot2.GetComponent<CraftingSlotCheckScript>().item.Init(slot2.GetComponent<CraftingSlotCheckScript>().item.itemObject);
-            return;
-        }
+        soundManager.PlaySound("Craft");
+        slot2.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<Plant>().type =
+            slot1.GetComponent<CraftingSlotCheckScript>().item.itemObject.GetComponent<Modifier>().modifierToApply;
+        Destroy(slot1.GetComponent<CraftingSlotCheckScript>().item.gameObject);
+        slot2.GetComponent<CraftingSlotCheckScript>().item.Init(slot2.GetComponent<CraftingSlotCheckScript>().item.itemObject);
+        return;
     }
 }

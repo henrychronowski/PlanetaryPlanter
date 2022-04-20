@@ -846,7 +846,7 @@ MonoBehaviour:
   waterSound: {fileID: 4878102373005078849}
   lastRecordedHour: 3
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 2
   type: 2
 --- !u!114 &6219869000469849497
@@ -864,6 +864,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &8280109125098128418
@@ -993,7 +994,7 @@ MonoBehaviour:
   fireModName: Fire Star
   fireModInfo: A scarlet star that incinerates anything that gets too close. Can
     be put in a solar system.
-  iceModName: Ice Star
+  iceModName: Cold Star
   iceModInfo: An azure star that is so hot, it feels freezing cold. Can be put in
     a solar system.
   ghostModName: Ghostly Star
@@ -1007,6 +1008,8 @@ MonoBehaviour:
   grassModName: Grassy Star
   grassModInfo: A verdant star that makes plants face its light. Can be put in a
     solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &3522638432367412479
 GameObject:

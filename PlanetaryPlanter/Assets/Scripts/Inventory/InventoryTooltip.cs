@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryTooltip : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class InventoryTooltip : MonoBehaviour
     public float xOffset;
     public float yOffset;
     public TextMeshProUGUI text;
-
+    public Image panel;
     public void SetNewText(string newText)
     {
         text.text = newText;
@@ -20,16 +21,25 @@ public class InventoryTooltip : MonoBehaviour
         if(NewInventory.instance.itemInCursor)
         {
             text.enabled = false;
+            SetPanelActive(false);
         }
         else
         {
-            if(text.enabled == false)
-            {
-                text.text = "";
-            }
-            text.enabled = true;
-            
+                text.enabled = true;
+                
+                SetPanelActive(text.text != "");
         }
+        if(!NewInventory.instance.inventoryActive)
+        {
+            SetPanelActive(false);
+            text.enabled = false;
+
+        }
+    }
+
+    public void SetPanelActive(bool enabled)
+    {
+        panel.enabled = enabled;
     }
 
     // Start is called before the first frame update

@@ -10,8 +10,14 @@ public class Sound
     public AudioClip clip;
 
     [Range (0f,1f)]
-    public float volume;
-    
+    public float volume = 0.7f;
+
+    [Range (0.5f, 1.5f)]
+    public float pitch = 1f;
+
+    [Range (0f, 0.5f)]
+    public float pitchRand = 0.1f;
+
     private AudioSource source;
 
     public void SetSource(AudioSource _source)
@@ -23,7 +29,8 @@ public class Sound
     public void Play()
     {
         source.volume = volume;
-        source.Play();
+        source.pitch = pitch * (1 + Random.Range(-pitchRand / 2, pitchRand / 2));
+        source.PlayOneShot(clip);
     }
 
     public void Pause()
@@ -64,6 +71,9 @@ public class SoundManager : MonoBehaviour
         {
             if (sounds[i].name == _name)
             {
+                if (SaveManager.instance.loadingStarted && !SaveManager.instance.dataLoaded)
+                    return;
+
                 sounds[i].Play();
                 return;
             }

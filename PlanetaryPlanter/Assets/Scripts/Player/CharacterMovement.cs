@@ -8,7 +8,7 @@ using UnityEngine;
 // Daniel Hartman
 public class CharacterMovement : MonoBehaviour
 {
-    private CharacterController characterController;
+    public CharacterController characterController;
     public Transform cam;
     public Animator animator;
 
@@ -92,7 +92,7 @@ public class CharacterMovement : MonoBehaviour
 
     public Vector3 axis;
 
-    private AudioSource jumpSound;
+    [SerializeField] private AudioSource jumpSound;
     public Transform rayBack;
     public Transform rayMid;
     public Transform rayFront;
@@ -117,7 +117,7 @@ public class CharacterMovement : MonoBehaviour
     public GameObject gliderIndicator;
 
     Vector3 actualMovementDirection;
-    Vector3 actualVelocity;
+    public Vector3 actualVelocity;
     Vector3 previousPos;
     public float moveAlongWallAngleDifference;
     public float collisionMovementAngleDifference;
@@ -211,11 +211,11 @@ public class CharacterMovement : MonoBehaviour
         if (collisionDot < 0.1f && !grounded && !holdingGlider && collision.gameObject.tag != "Player" && !grabbingLedge)
         {
             //Draw velocity ray
-            Debug.DrawRay(collision.GetContact(0).point, Vector3.ProjectOnPlane(velocity, collision.GetContact(0).normal), Color.cyan);
+           // Debug.DrawRay(collision.GetContact(0).point, Vector3.ProjectOnPlane(velocity, collision.GetContact(0).normal), Color.cyan);
             currentWall = collision.gameObject;
             //Dot product with the XZ velocity since we don't care about Y velocity here
             Vector3 xzVelocity = new Vector3(velocity.x, 0, velocity.z);
-            Debug.Log(Vector3.Dot(collision.GetContact(0).normal, xzVelocity.normalized));
+            //Debug.Log(Vector3.Dot(collision.GetContact(0).normal, xzVelocity.normalized));
             if(Vector3.Dot(collision.GetContact(0).normal, xzVelocity.normalized) >= wallRunningAngleRequirement && wallNormal != collision.GetContact(0).normal)
             {
                 if(!wallrunning) //Set the rotations only once when entering the wallrun
@@ -232,7 +232,7 @@ public class CharacterMovement : MonoBehaviour
                     }
                     wallrunning = true;
                 }
-                Debug.Log("Wallrun");
+                //Debug.Log("Wallrun");
                 wallNormal = collision.GetContact(0).normal;
             }
         }
@@ -312,7 +312,7 @@ public class CharacterMovement : MonoBehaviour
 
         Ray ray = new Ray(ledgeGrabRayLocation.position, Vector3.down);
         Physics.Raycast(ledgeGrabRayLocation.position, Vector3.down, out RaycastHit hitInfo, ledgeGrabRayLength);
-        Debug.DrawLine(ledgeGrabRayLocation.position, ray.GetPoint(ledgeGrabRayLength), Color.red);
+        //Debug.DrawLine(ledgeGrabRayLocation.position, ray.GetPoint(ledgeGrabRayLength), Color.red);
         if (velocity.y <= 0)
         {
             //Debug.Log("Normal" + hitInfo.normal);
@@ -555,6 +555,7 @@ public class CharacterMovement : MonoBehaviour
         }
         if(velocity.y < -maxFallSpeed && !grounded)
         {
+            //Debug.Log("Velocity hit " + velocity.y);
             velocity.y = -maxFallSpeed;
         }
     }
@@ -677,8 +678,21 @@ public class CharacterMovement : MonoBehaviour
         velocity.y = bouncePower; 
     }
 
+    public void AddForce(Vector3 forceToAdd)
+    {
+        velocity += forceToAdd;
+    }
+
+    public void Teleport(Transform newPosition)
+    {
+        characterController.enabled = false;
+        transform.position = newPosition.position;
+        characterController.enabled = true;
+    }
+
     void Integrate()
     {
+        previousPos = transform.position;
         if (canMove) //Prevents movement in cutscenes and such
             Move();
         else
@@ -697,22 +711,24 @@ public class CharacterMovement : MonoBehaviour
             velocity.y = 0;
         }
 
-        if ((characterController.collisionFlags & CollisionFlags.Sides) != 0)
-        {
-            Vector3 xzMove = new Vector3(velocity.x, 0, velocity.z);
-            float actualVelocityMagnitude = new Vector2(actualVelocity.x, actualVelocity.z).magnitude;
-            xzMove = Vector3.ClampMagnitude(xzMove, maxSpeed - (maxSpeed * (collisionMovementAngleDifference/90)));
-            velocity.x = xzMove.x;
-            velocity.z = xzMove.z;
-        }
         characterController.Move(Time.deltaTime * velocity);
         if ((characterController.collisionFlags & CollisionFlags.Sides) != 0)
         {
             touchingWall = true;
-            actualMovementDirection = ((transform.position - previousPos) /Time.deltaTime).normalized;
+            actualMovementDirection = ((transform.position - previousPos) / Time.deltaTime).normalized;
+
             actualVelocity = (((transform.position - previousPos).normalized * Vector3.Distance(transform.position, previousPos)) / Time.deltaTime);
-            
-            //Debug.DrawRay(transform.position, actualMovementDirection);
+            animator.SetFloat("runSpeedModifier", new Vector3(actualVelocity.x, 0, actualVelocity.z).magnitude / maxSpeed);
+        }
+        else
+        {
+            Vector3 xzVel = new Vector3(velocity.x, 0, velocity.z);
+            animator.SetFloat("runSpeedModifier", xzVel.magnitude / maxSpeed);
+            if (touchingWall)
+            {
+                touchingWall = false;
+                velocity = new Vector3(actualVelocity.x, velocity.y, actualVelocity.z);
+            }
         }
         //Applied when leaving walls to prevent odd bursts of speed when running against a wall and leaving the wall
 
@@ -724,12 +740,12 @@ public class CharacterMovement : MonoBehaviour
         Physics.Raycast(transform.position, Vector3.down, out slopeHit, characterController.height/2 * slopeForceRayLength);
 
         Ray ray = new Ray(transform.position, Vector3.down);
-        Debug.DrawLine(transform.position, ray.GetPoint(characterController.height / 2 * slopeForceRayLength), Color.green);
+        //Debug.DrawLine(transform.position, ray.GetPoint(characterController.height / 2 * slopeForceRayLength), Color.green);
 
         if(slopeHit.normal != Vector3.up && slopeHit.normal != Vector3.zero && velocity.y <= 0)
         {
             Vector3 force = Vector3.down * characterController.height / 2 * slopeForce;
-            Debug.Log(force);
+            //Debug.Log(force);
             //grounded = true;
             return force;
         }
@@ -747,7 +763,7 @@ public class CharacterMovement : MonoBehaviour
             float slopeFactor = Mathf.Abs(1 - Vector3.Dot(Vector3.up, slopeHit.normal));
             Vector3 slideForce = Vector3.ProjectOnPlane(Vector3.down, slopeHit.normal).normalized * slopeFactor * crouchSlideSpeed;
             //Ray sticks around for 5 seconds
-            Debug.DrawRay(slopeHit.point, slideForce, Color.green, 5f);
+            //Debug.DrawRay(slopeHit.point, slideForce, Color.green, 5f);
 
             return slideForce;
         }
@@ -812,8 +828,7 @@ public class CharacterMovement : MonoBehaviour
         timeSinceLastLedgeGrab += Time.deltaTime;
         canLedgeGrab = timeSinceLastLedgeGrab > ledgeGrabCooldown;
         animator.SetBool("grounded", grounded || wallrunning);
-        Vector3 xzVel = new Vector3(velocity.x, 0, velocity.z);
-        animator.SetFloat("runSpeedModifier", xzVel.magnitude / maxSpeed);
+        
         //Debug.Log(velocity.magnitude);
     }
 

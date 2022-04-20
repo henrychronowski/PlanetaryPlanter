@@ -27,7 +27,7 @@ public class Observatory : MonoBehaviour
     public SolarSystemCountScript solarSystemCounter;
 
 
-    bool CheckForCompletion()
+    public bool CheckForCompletion()
     {
         foreach(ObservatoryPlanetSpot spot in constellationSpots)
         {
@@ -65,7 +65,7 @@ public class Observatory : MonoBehaviour
 
     void Complete()
     {
-        soundManager.PlaySound("Craft");
+        SoundManager.instance.PlaySound("Craft");
         foreach (LineRenderer l in lines)
         {
             l.enabled = true;

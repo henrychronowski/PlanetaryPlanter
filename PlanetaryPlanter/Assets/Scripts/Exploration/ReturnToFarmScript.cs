@@ -9,6 +9,11 @@ public class ReturnToFarmScript : MonoBehaviour
     public GameObject returnSpot;
     public GameObject player;
     public Text returnMessage;
+    public string returnText = "Hold R to return to farm.";
+    public float returnCountdown;
+
+    float currentReturnCountdown;
+    bool canCountdown = false;
 
     // Audio Manager Script is set up here
     private SoundManager soundManager;
@@ -19,6 +24,7 @@ public class ReturnToFarmScript : MonoBehaviour
         //Audio Manager Is Opend Up here
         soundManager = SoundManager.instance;
         canReturn = false;
+        currentReturnCountdown = returnCountdown;
     }
 
     // Update is called once per frame
@@ -31,6 +37,7 @@ public class ReturnToFarmScript : MonoBehaviour
     {
         if(col.tag == "Player")
         {
+            canCountdown = false;
             canReturn = false;
             returnMessage.text = "";
         }
@@ -40,19 +47,32 @@ public class ReturnToFarmScript : MonoBehaviour
     {
         if (col.tag == "Player")
         {
-            canReturn = true;
-            returnMessage.text = "Press R to return to farm.";
+            canCountdown = true;
+            //canReturn = true;
+            returnMessage.text = returnText;
         }
     }
 
     void CheckInput()
     {
-        if(canReturn && Input.GetKeyDown(KeyCode.R))
+        if (canCountdown && Input.GetKey(KeyCode.R))
+        {
+            currentReturnCountdown -= Time.deltaTime;
+        }
+
+        if (currentReturnCountdown <= 0.0f)
+        {
+            canReturn = true;
+        }
+
+        if (canReturn)
         {
             player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = new Vector3(returnSpot.transform.position.x, returnSpot.transform.position.y, returnSpot.transform.position.z);
             player.GetComponent<CharacterController>().enabled = true;
             soundManager.PlaySound("FarmPort");
+
+            currentReturnCountdown = returnCountdown;
         }
     }
 }

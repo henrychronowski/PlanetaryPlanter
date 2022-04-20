@@ -487,7 +487,7 @@ MonoBehaviour:
   waterSound: {fileID: 5983435152908374830}
   lastRecordedHour: 0
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 4
   type: 2
 --- !u!114 &1843755304912465404
@@ -505,6 +505,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &5665113549130951869
@@ -635,7 +636,7 @@ MonoBehaviour:
   fireModName: Fire Comet
   fireModInfo: An ever-burning comet that can reignite its own flames. Can be put
     in a solar system.
-  iceModName: Ice Comet
+  iceModName: Frozen Purity
   iceModInfo: A comet that flash freezes away the impurities of anything it touches.
     Can be put in a solar system.
   ghostModName: Ghostly Comet
@@ -650,6 +651,8 @@ MonoBehaviour:
   grassModName: Grassy Comet
   grassModInfo: A comet that spreads pollen across the stars. Can be put in a solar
     system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1
 --- !u!1 &2424534914732376767
 GameObject:

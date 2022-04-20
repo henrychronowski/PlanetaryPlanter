@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class MoveAIThief : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MoveAIThief : MonoBehaviour
     public Transform detectionRadius; //how close the player must be to be noticed
     public Transform movementRadius; //the range on the map the ai can move
     public float dropItemTime;
+    public float stealCooldownTime;
 
     Vector3 destination;
     [SerializeField] GameObject stolenObject; //gameobject or what?
@@ -19,17 +21,43 @@ public class MoveAIThief : MonoBehaviour
     bool playerSpotted = false;
     bool itemSpotFull = false;
     float currentDropItemTime;
+    bool stealCooldownActive = false;
+    float currentStealCooldownTime;
+
+    [SerializeField] float knockback;
+    [SerializeField] float knockbackAngle;
+    [SerializeField] Image itemIcon;
 
     // Start is called before the first frame update
     void Start()
     {
         newDestinationNeeded = true;
         currentDropItemTime = dropItemTime;
+        currentStealCooldownTime = stealCooldownTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (stealCooldownActive == true)
+        {
+            currentStealCooldownTime -= Time.deltaTime;
+
+            if (currentStealCooldownTime <= 0.0f)
+            {
+                currentStealCooldownTime = stealCooldownTime;
+                stealCooldownActive = false;
+            }
+        }
+
+        if (playerSpotted == true && stealCooldownActive == false)
+        {
+            Debug.Log("updating player position");
+
+            destination = player.transform.position;
+            gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
+        }
+
         if (newDestinationNeeded == true)
         {
             Debug.Log("picking new destination");
@@ -37,14 +65,6 @@ public class MoveAIThief : MonoBehaviour
             PickNewDestination();
 
             newDestinationNeeded = false;
-        }
-
-        if (playerSpotted == true)
-        {
-            Debug.Log("updating player position");
-
-            destination = player.transform.position;
-            gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
         }
 
         if (itemSpotFull == true)
@@ -56,6 +76,17 @@ public class MoveAIThief : MonoBehaviour
                 DropItem();
                 currentDropItemTime = dropItemTime;
             }
+        }
+        else
+        {
+            HideItem();
+        }
+
+        if (Vector3.Distance(thief.transform.position, movementRadius.transform.position)
+            > movementRadius.GetComponent<SphereCollider>().radius)
+        {
+            playerSpotted = false;
+            newDestinationNeeded = true;
         }
 
         CheckThiefLocation();
@@ -121,7 +152,7 @@ public class MoveAIThief : MonoBehaviour
         int randItem;
 
         //could be this or a collider contact
-        if (Vector3.Distance(gameObject.transform.position, destination) < 1.0f)
+        if (Vector3.Distance(gameObject.transform.position, destination) < 1.0f && stealCooldownActive == false)
         {
             if (inventory.GetComponent<NewInventory>().spaces.Count > 0 && itemSpotFull == false)
             {
@@ -149,7 +180,12 @@ public class MoveAIThief : MonoBehaviour
                     inventory.GetComponent<NewInventory>().PopItem(
                        inventory.GetComponent<NewInventory>().spaces[randItem]);
                     itemSpotFull = true;
+                    ShowItem();
+                    
                 }
+
+                Vector3 direction = (player.transform.position - transform.position).normalized;
+                player.GetComponent<CharacterMovement>().AddForce((new Vector3(direction.x, knockbackAngle, direction.z)).normalized * knockback);
 
                 playerSpotted = false;
                 newDestinationNeeded = true;
@@ -160,7 +196,18 @@ public class MoveAIThief : MonoBehaviour
     public void DropItem()
     {
         itemSpotFull = false;
-        stolenObject = null;
+        stolenObject = null; //maybe should just destroy it or something
+    }
+
+    public void ShowItem()
+    {
+        itemIcon.enabled = true;
+        itemIcon.sprite = stolenObject.GetComponent<IconHolder>().icon;
+    }
+
+    public void HideItem()
+    {
+        itemIcon.enabled = false;
     }
 
     public GameObject GetStolenObject()
@@ -171,5 +218,16 @@ public class MoveAIThief : MonoBehaviour
     public void ChangeDestinationNeeded(bool value)
     {
         newDestinationNeeded = value;
+    }
+
+    public void ChangePlayerSpotted(bool val)
+    {
+        playerSpotted = val;
+    }
+
+    public void StealItemsCooldown()
+    {
+        stealCooldownActive = true;
+        newDestinationNeeded = true;
     }
 }

@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{B6F0A9CD-F468-4FD4-84C6-683319B6BADB}" SchemaVersion="103">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{B6F0A9CD-F468-4FD4-84C6-683319B6BADB}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{B6F0A9CD-F468-4FD4-84C6-683319B6BADB}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="MainMenu" ID="{6960B712-0A7B-40F0-A9E8-C1F039CED045}" ShortID="299437725">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{88BBB5EB-E248-4191-8C2E-3803159B9DFA}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{FCE47502-5DDC-4FE2-AA0A-BD7B21AE7032}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="MainMenu" ID="{9BF3F618-69F4-4A5B-B296-E95C4233B2F1}">
+							<PropertyList>
+								<Property Name="FadeInDuration" Type="Real64" Value="3.0549306745599"/>
+								<Property Name="FadeOutDuration" Type="Real64" Value="5.49887521420783"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="99.5907399906528"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>MainMenu.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="264208222"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="MainMenu" ID="{9BF3F618-69F4-4A5B-B296-E95C4233B2F1}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

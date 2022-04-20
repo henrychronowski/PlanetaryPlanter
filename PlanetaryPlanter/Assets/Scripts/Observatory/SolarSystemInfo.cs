@@ -16,6 +16,8 @@ public class SolarSystemInfo : MonoBehaviour
         {
             char[] chars = gameObject.name.ToCharArray();
             int index = int.Parse(chars[chars.Length - 1].ToString());
+            if (index == 0) //band aid fix for constellations with 10 solar systems, over 10 will break this code
+                index = 10;
             observatory = transform.parent.Find("SSView" + index.ToString()).gameObject.GetComponent<Observatory>();
         }
         if(requirements == null)
@@ -37,6 +39,7 @@ public class SolarSystemInfo : MonoBehaviour
     void SetConstellationCamActive()
     {
         observatory.transform.Find("TestConstCam").gameObject.SetActive(true);
+        FindObjectOfType<ObservatoryMaster>().inSolarSystemView = true;
         TutorialManagerScript.instance.Unlock("Solar System");
     }
 
@@ -50,6 +53,8 @@ public class SolarSystemInfo : MonoBehaviour
         char[] chars = gameObject.name.ToCharArray();
         button = GetComponent<Button>();
         int index = int.Parse(chars[chars.Length - 1].ToString());
+        if (index == 0) //band aid fix for constellations with 10 solar systems, over 10 will break this code
+            index = 10;
         observatory = transform.parent.Find("SSView" + index.ToString()).gameObject.GetComponent<Observatory>();
         requirements = GameObject.Find("SolarSystemRequirements").GetComponent<SolarSystemRequirements>();
         button.onClick.AddListener(SetConstellationCamActive);
