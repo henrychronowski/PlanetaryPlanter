@@ -16,7 +16,7 @@ public class FootSteps : MonoBehaviour
     AudioClip GetRandomClip()
     {
         int index = Random.Range(0, stepSounds.Length);
-        while(index == lastPlayedSound)
+        while(index == lastPlayedSound && stepSounds.Length != 1)
         {
             index = Random.Range(0, stepSounds.Length);
         }
