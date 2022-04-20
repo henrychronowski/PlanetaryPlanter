@@ -29,14 +29,21 @@ public class InventorySpace : MonoBehaviour
 
             TooltipInfo tip = item.itemObject.GetComponent<TooltipInfo>();
             if(tip != null)
+            {
                 tooltipBox.SetNewText(tip.name + "\nType: " + tip.itemType + "\n" + tip.otherInfo);
+                tooltipBox.SetPanelActive(true);
+            }
         }
+        NewInventory.instance.SetSelectedInventorySpace(this);
     }
 
     public void DisableTip()
     {
         if(filled)
-            tooltipBox.gameObject.SetActive(false);
+        {
+            tooltipBox.SetNewText("");
+            tooltipBox.SetPanelActive(false);
+        }
     }
 
     void CheckForItem()
@@ -60,5 +67,9 @@ public class InventorySpace : MonoBehaviour
     void Update()
     {
         CheckForItem();
+        if(!NewInventory.instance.inventoryActive)
+        {
+            DisableTip();
+        }
     }
 }

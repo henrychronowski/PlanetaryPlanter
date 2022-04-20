@@ -7,10 +7,14 @@ public class BouncePadScript : MonoBehaviour
     public float bounceSpeed = 25.0f;
     public GameObject player;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
@@ -23,6 +27,7 @@ public class BouncePadScript : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<CharacterMovement>().Bounce(bounceSpeed);
+            soundManager.PlaySound("Bounce");
         }
     }
 

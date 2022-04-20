@@ -3084,7 +3084,7 @@ MonoBehaviour:
   waterSound: {fileID: 1338485324185015275}
   lastRecordedHour: 3
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 2
   type: 4
 --- !u!114 &5810374368792943847
@@ -3102,6 +3102,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &6754490162514632190
@@ -3234,7 +3235,7 @@ MonoBehaviour:
   iceModName: Ice Star
   iceModInfo: An azure star that is so hot, it feels freezing cold. Can be put in
     a solar system.
-  ghostModName: Ghostly Star
+  ghostModName: Black Hole
   ghostModInfo: A black space where a star used to be. Can be put in a solar system.
   fossilModName: Fossilium Star
   fossilModInfo: A coppery star that is even older than it looks. Can be put in a
@@ -3245,4 +3246,6 @@ MonoBehaviour:
   grassModName: Grassy Star
   grassModInfo: A verdant star that makes plants face its light. Can be put in a
     solar system.
+  rottenName: 
+  rottenInfo: 
   isPlant: 1

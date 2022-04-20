@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BonkAIThief : MonoBehaviour
 {
-    public GameObject thief;
+    //public GameObject thief;
     public GameObject inventory;
 
     GameObject recoveredObject;
@@ -18,10 +18,10 @@ public class BonkAIThief : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RecoverStolenItem();
+        //RecoverStolenItem();
     }
 
-    void RecoverStolenItem()
+    void RecoverStolenItem(GameObject thief)
     {
         if (Input.GetMouseButtonDown(1))
         {
@@ -30,17 +30,25 @@ public class BonkAIThief : MonoBehaviour
             {
                 recoveredObject = thief.GetComponent<MoveAIThief>().GetStolenObject();
                 thief.GetComponent<MoveAIThief>().DropItem();
-                if(recoveredObject != null)
+
+                if (recoveredObject != null)
+                {
                     inventory.GetComponent<NewInventory>().AddItem(recoveredObject);
+                    thief.GetComponent<MoveAIThief>().StealItemsCooldown();
+                }
             }
         }
     }
 
-    public void RecoverStolenItemWithBonk()
+    public void RecoverStolenItemWithBonk(GameObject thief)
     {
         recoveredObject = thief.GetComponent<MoveAIThief>().GetStolenObject();
         thief.GetComponent<MoveAIThief>().DropItem();
+
         if (recoveredObject != null)
+        {
             inventory.GetComponent<NewInventory>().AddItem(recoveredObject);
+            thief.GetComponent<MoveAIThief>().StealItemsCooldown();
+        }
     }
 }

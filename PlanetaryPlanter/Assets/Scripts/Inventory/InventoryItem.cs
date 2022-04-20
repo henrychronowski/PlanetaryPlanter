@@ -58,7 +58,7 @@ public class InventoryItem : MonoBehaviour
             iconDisplay.sprite = itemObject.GetComponent<IconHolder>().icon;
             if(item.tag == "Plant")
             {
-                if(item.GetComponent<Plant>().species == PlanetSpecies.Planet)
+                if(item.GetComponent<Plant>().species == PlanetSpecies.GasPlanet)
                 {
                     if (item.GetComponent<Plant>().type == PlanetType.VolcanicAsh)
                     {

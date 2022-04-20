@@ -4,34 +4,40 @@ using UnityEngine;
 
 public class PortalFoundScript : MonoBehaviour
 {
+    public enum Biome
+    {
+        Temperate,
+        Hot,
+        Cold
+    }
+    
     public bool portalFound;
     public bool canTeleport;
-    Transform player;
+    CharacterMovement player;
+    public Biome location;
 
     [SerializeField]
     float distanceFromPortalPlant;
 
-    public GameObject portalMap;
+    [SerializeField] PortalMapScript portalMap;
 
     // Start is called before the first frame update
     void Start()
     {
-        portalFound = false;
-        canTeleport = false;
 
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindObjectOfType<CharacterMovement>();
+        portalMap = GameObject.FindObjectOfType<PortalMapScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckDistanceFromPlayer();
-        Teleport();
     }
 
     void CheckDistanceFromPlayer()
     {
-        float distance = Vector3.Distance(player.position, transform.position);
+        float distance = Vector3.Distance(player.gameObject.transform.position, transform.position);
         if (distanceFromPortalPlant > distance)
         {
             portalFound = true;
@@ -55,12 +61,17 @@ public class PortalFoundScript : MonoBehaviour
         }
     }
 
-    void Teleport()
+    public void Teleport()
     {
-        if(Input.GetKeyDown(KeyCode.E) && canTeleport == true)
-        {
-            portalMap.SetActive(true);
-            NewInventory.instance.SetSpacesActive(true);
-        }
+        player.Teleport(transform.position);
+        portalMap.CloseMap();
     }
+
+    
+
+    public void Interact()
+    {
+        portalMap.OpenMap(this);
+    }
+
 }

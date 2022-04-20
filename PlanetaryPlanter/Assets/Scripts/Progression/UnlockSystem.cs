@@ -11,6 +11,8 @@ public class UnlockSystem : MonoBehaviour
     public GameObject silo1;
     public GameObject silo2;
     public GameObject bounceblooms;
+
+    public bool seniorShowUnlocks;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,11 +34,82 @@ public class UnlockSystem : MonoBehaviour
         {
             currentChapter++;
             observatoryMaster.unlockedConstellations[currentChapter] = true;
-            Unlock();
+            Unlock(false);
         }
     }
 
-    void Unlock() //0 = Chapter 1, 1 = Chapter 2, etc
+    void Unlock(bool showTutorial = true) //0 = Chapter 1, 1 = Chapter 2, etc
+    {
+        if(seniorShowUnlocks)
+        {
+            SeniorShowUnlock(showTutorial);
+            return;
+        }
+
+        switch (currentChapter)
+        {
+            case 1:
+                {
+                    //new silo
+                    silo1.SetActive(true);
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("New Silo");
+
+                    break;
+                }
+            case 2:
+                {
+                    //new planters
+                    planterSet1.SetActive(true);
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("New Planters");
+                    break;
+                }
+            case 3:
+                {
+                    //set all bouncy plants to active
+                    bounceblooms.SetActive(true);
+
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("Bouncebloom");
+                    break;
+                }
+            case 4:
+                {
+                    planterSet2.SetActive(true);
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("New Planters 2");
+                    break;
+                }
+            case 5:
+                {
+                    silo2.SetActive(true);
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("New Silo Again");
+                    break;
+                }
+            case 6:
+                {
+                    GameObject.FindObjectOfType<AttackHitbox>().canBreakRocks = true;
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("Stallanovium Trowel");
+
+                    break;
+                }
+            case 7:
+                {
+                    GameObject.FindObjectOfType<CharacterMovement>().canGlide = true;
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("Melmee");
+
+                    //glider
+                    break;
+                }
+            case 8:
+                {
+                    break;
+                }
+            case 9:
+                {
+                    break;
+                }
+        }
+    }
+
+    void SeniorShowUnlock(bool showTutorial = true) //0 = Chapter 1, 1 = Chapter 2, etc
     {
         switch (currentChapter)
         {
@@ -44,50 +117,46 @@ public class UnlockSystem : MonoBehaviour
                 {
                     //set all bouncy plants to active
                     bounceblooms.SetActive(true);
-
-                    TutorialManagerScript.instance.Unlock("Bouncebloom");
+                    if(showTutorial) TutorialManagerScript.instance.Unlock("Bounceblooms!");
                     break;
                 }
             case 2:
                 {
-                    GameObject.FindObjectOfType<CharacterMovement>().canGlide = true;
-                    TutorialManagerScript.instance.Unlock("Melmee");
-
-                    //glider
+                    GameObject.FindObjectOfType<AttackHitbox>().canBreakRocks = true;
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("Stallanovium Trowel");
                     break;
                 }
             case 3:
                 {
-                    //new silo
-                    silo1.SetActive(true);
-                    TutorialManagerScript.instance.Unlock("New Silo");
-
+                    //glider
+                    GameObject.FindObjectOfType<CharacterMovement>().canGlide = true;
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("Melmee!");
                     break;
                 }
             case 4:
                 {
-                    //new planters
-                    planterSet1.SetActive(true);
-                    TutorialManagerScript.instance.Unlock("New Planters");
+                    //new silo
+                    silo1.SetActive(true);
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("New Silo");
                     break;
                 }
             case 5:
                 {
-                    silo2.SetActive(true);
-                    TutorialManagerScript.instance.Unlock("New Silo Again");
+                    //new planters
+                    planterSet1.SetActive(true);
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("New Planters");
                     break;
                 }
             case 6:
                 {
-                    planterSet2.SetActive(true);
-                    TutorialManagerScript.instance.Unlock("New Planters 2");
+                    silo2.SetActive(true);
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("New Silo Again");
                     break;
                 }
             case 7:
                 {
-                    GameObject.FindObjectOfType<AttackHitbox>().canBreakRocks = true;
-                    TutorialManagerScript.instance.Unlock("Stallanovium Trowel");
-
+                    planterSet2.SetActive(true);
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("New Planters 2");
                     break;
                 }
             case 8:
