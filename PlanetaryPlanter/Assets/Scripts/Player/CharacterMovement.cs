@@ -169,6 +169,14 @@ public class CharacterMovement : MonoBehaviour
         else if((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.JoystickButton1)) && !grounded && canGlide)
         {
             holdingGlider = !holdingGlider; //Swaps value of holdingGlider
+            if(holdingGlider)
+            {
+                //Play start sound
+            }
+            else
+            {
+                //Play end sound
+            }
             ExitWall();
         }
         if(Input.GetKeyDown(KeyCode.LeftControl) && canSlide)
@@ -777,6 +785,12 @@ public class CharacterMovement : MonoBehaviour
         {
             grounded = true;
             jumping = false;
+
+            if(holdingGlider)
+            {
+                //play exit sound
+            }
+
             holdingGlider = false;
             wallNormal = Vector3.zero;
         }
@@ -784,7 +798,14 @@ public class CharacterMovement : MonoBehaviour
         {
             grounded = true;
             jumping = false;
+
+            if (holdingGlider)
+            {
+                //play exit sound
+            }
+
             holdingGlider = false;
+            
         }
         else
         {
