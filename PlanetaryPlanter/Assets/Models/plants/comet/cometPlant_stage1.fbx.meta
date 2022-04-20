@@ -3,7 +3,12 @@ guid: 2d8724b885b56c74b88df4ac1e252037
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cometPlantTexture
+    second: {fileID: 2100000, guid: d4091e657fd3c694d92e3f4a54cd7f3e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
