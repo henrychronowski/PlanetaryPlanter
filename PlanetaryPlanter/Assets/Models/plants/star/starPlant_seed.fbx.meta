@@ -3,7 +3,12 @@ guid: a8436fae3df666b45ab3311245c4d7da
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sunPlantTexture
+    second: {fileID: 2100000, guid: 0abfc334cc0cbae4f8e3292f343ad7c0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
