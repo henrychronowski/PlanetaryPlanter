@@ -1364,9 +1364,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
+    enabled: 1
     mode: 0
-    timeMode: 0
+    timeMode: 2
     fps: 30
     frameOverTime:
       serializedVersion: 2
@@ -1475,15 +1475,15 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     speedRange: {x: 0, y: 1}
-    tilesX: 1
+    tilesX: 3
     tilesY: 1
-    animationType: 0
+    animationType: 1
     rowIndex: 0
-    cycles: 1
+    cycles: 3
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: 21300000, guid: 557ce70cea6240b40914751db4239d32, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -4762,7 +4762,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1bb011b3e91aa334694859cd075d4a8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6183,10 +6183,10 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
+    enabled: 1
     mode: 0
-    timeMode: 0
-    fps: 30
+    timeMode: 2
+    fps: 15
     frameOverTime:
       serializedVersion: 2
       minMaxState: 1
@@ -6294,15 +6294,15 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     speedRange: {x: 0, y: 1}
-    tilesX: 1
-    tilesY: 1
+    tilesX: 3
+    tilesY: 2
     animationType: 0
     rowIndex: 0
-    cycles: 1
+    cycles: 3
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: 21300000, guid: 557ce70cea6240b40914751db4239d32, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -9581,7 +9581,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5695b2b2dc157174e9376ab16431b9d7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
