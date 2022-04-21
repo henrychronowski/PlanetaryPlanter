@@ -28,6 +28,8 @@ public class ObservatoryMaster : MonoBehaviour
 
     public Button leftButton;
     public Button rightButton;
+    public Button exitButton;
+    public Button exitSolarSystemButton;
 
     public GameObject basePlant;
     public bool initted;
@@ -74,6 +76,7 @@ public class ObservatoryMaster : MonoBehaviour
     public void ExitSolarSystemView()
     {
         inSolarSystemView = false;
+        GameObject.FindGameObjectWithTag("SolarSystemCam").SetActive(false);
     }
 
     public void UpdateToDoUI()
@@ -141,6 +144,8 @@ public class ObservatoryMaster : MonoBehaviour
 
         return result.ToArray();
     }
+
+
 
     public void LoadFilledSpots(bool[] filledSpots, int currentChapter)
     {
@@ -266,6 +271,26 @@ public class ObservatoryMaster : MonoBehaviour
 
     }
 
+    void SetButtonVisibility()
+    {
+        planetInfoPanel.gameObject.SetActive(inSolarSystemView);
+        leftButton.gameObject.SetActive(!inSolarSystemView);
+        rightButton.gameObject.SetActive(!inSolarSystemView);
+        minimap.gameObject.SetActive(!inObservatoryView);
+        exitSolarSystemButton.gameObject.SetActive(inSolarSystemView);
+        exitButton.gameObject.SetActive(!inSolarSystemView);
+
+        try
+        {
+            welcomeTutorial.gameObject.SetActive(!inObservatoryView);
+
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -285,16 +310,6 @@ public class ObservatoryMaster : MonoBehaviour
         LerpUpdate();
         ChangeConstellationButtonStatus();
         UpdateToDoUI();
-        planetInfoPanel.gameObject.SetActive(inSolarSystemView);
-        minimap.gameObject.SetActive(!inObservatoryView);
-        try
-        {
-            welcomeTutorial.gameObject.SetActive(!inObservatoryView);
-
-        }
-        catch(Exception e)
-        {
-            
-        }
+        SetButtonVisibility();
     }
 }
