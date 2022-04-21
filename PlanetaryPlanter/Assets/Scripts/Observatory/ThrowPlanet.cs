@@ -22,6 +22,7 @@ public class ThrowPlanet : MonoBehaviour
                     if (hitInfo.collider.gameObject.GetComponent<ObservatoryPlanetSpot>().PlaceObject(NewInventory.instance.GetItemInCursor()))
                     {
                         soundManager.PlaySound("PlacePlanet");
+                        FindObjectOfType<InventoryTooltip>().SetPanelActive(false);
                     }
                         //only plays when placing successfully
                 }
