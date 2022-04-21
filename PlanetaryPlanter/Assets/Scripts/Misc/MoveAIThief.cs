@@ -28,6 +28,9 @@ public class MoveAIThief : MonoBehaviour
     [SerializeField] float knockbackAngle;
     [SerializeField] Image itemIcon;
 
+    int[] filledSpaces;
+    int filledSpacesCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -150,46 +153,48 @@ public class MoveAIThief : MonoBehaviour
     void StealFromPlayer() //take an item from the player inventory
     {
         int randItem;
+        bool itemFound = false;
 
         //could be this or a collider contact
-        if (Vector3.Distance(gameObject.transform.position, destination) < 1.0f && stealCooldownActive == false)
-        {
-            if (inventory.GetComponent<NewInventory>().spaces.Count > 0 && itemSpotFull == false)
+        if (itemSpotFull == false)
+        {            
+            for (randItem = 0; randItem < inventory.GetComponent<NewInventory>().spaces.Count; randItem++)
             {
-                randItem = (int)Random.Range(0, inventory.GetComponent<NewInventory>().spaces.Count);
-                bool itemFound = false;
-
-                if (inventory.GetComponent<NewInventory>().spaces[randItem].filled == false)
+                if (inventory.GetComponent<NewInventory>().spaces[randItem].filled == true)
                 {
-                    for (randItem = 0; randItem < inventory.GetComponent<NewInventory>().spaces.Count; randItem++)
-                    {
-                        if (inventory.GetComponent<NewInventory>().spaces[randItem].filled == true)
-                        {
-                            itemFound = true;
-                            break;
-                        }
-                    }
+                    filledSpaces[filledSpacesCount] = randItem;
+                    filledSpacesCount++;
+
+                    break;
                 }
-
-                if (itemFound == true)
-                {
-                    TutorialManagerScript.instance.Unlock("Squimbus!");
-                    Debug.Log("got your nose :)");
-                    stolenObject = inventory.GetComponent<NewInventory>().GetItem
-                        (inventory.GetComponent<NewInventory>().spaces[randItem]);
-                    inventory.GetComponent<NewInventory>().PopItem(
-                       inventory.GetComponent<NewInventory>().spaces[randItem]);
-                    itemSpotFull = true;
-                    ShowItem();
-                    
-                }
-
-                Vector3 direction = (player.transform.position - transform.position).normalized;
-                player.GetComponent<CharacterMovement>().AddForce((new Vector3(direction.x, knockbackAngle, direction.z)).normalized * knockback);
-
-                playerSpotted = false;
-                newDestinationNeeded = true;
             }
+
+            int tmp = 0;
+            randItem = filledSpaces[Random.Range(0, filledSpaces.Length)];
+
+            if (inventory.GetComponent<NewInventory>().spaces[randItem].filled == true)
+            {
+                itemFound = true;
+            }
+
+            if (itemFound == true)
+            {
+                TutorialManagerScript.instance.Unlock("Squimbus!");
+                Debug.Log("got your nose >:)");
+                stolenObject = inventory.GetComponent<NewInventory>().GetItem
+                    (inventory.GetComponent<NewInventory>().spaces[randItem]);
+                inventory.GetComponent<NewInventory>().PopItem(
+                   inventory.GetComponent<NewInventory>().spaces[randItem]);
+                itemSpotFull = true;
+                ShowItem();
+                    
+            }
+
+            Vector3 direction = (player.transform.position - transform.position).normalized;
+            player.GetComponent<CharacterMovement>().AddForce((new Vector3(direction.x, knockbackAngle, direction.z)).normalized * knockback);
+        
+            playerSpotted = false;
+            newDestinationNeeded = true;
         }
     }
 
