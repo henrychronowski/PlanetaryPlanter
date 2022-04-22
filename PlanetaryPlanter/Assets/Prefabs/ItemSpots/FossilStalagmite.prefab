@@ -93,6 +93,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  interactSprite: {fileID: 0}
   interactText: Collect (E)
   interactLightAngle: 10
 --- !u!1 &2741169712633501267
@@ -4961,7 +4962,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 014d859f6bc191848acbd6282c0ed95b, type: 2}
+  - {fileID: 2100000, guid: 489e42f747af06c40a4e86f58c0f4516, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5136,6 +5137,8 @@ MonoBehaviour:
   waterModInfo: 
   grassModName: 
   grassModInfo: 
+  rottenName: 
+  rottenInfo: 
   isPlant: 0
 --- !u!1 &2741169713069721954
 GameObject:
