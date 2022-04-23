@@ -5,12 +5,13 @@ using UnityEngine;
 public class FootSteps : MonoBehaviour
 {
     [SerializeField] AudioClip[] stepSounds;
-
+    [SerializeField] GameObject stepParticles;
     AudioSource audioSource;
     int lastPlayedSound;
     void Step()
     {
         audioSource.PlayOneShot(GetRandomClip());
+        Instantiate(stepParticles, transform);
     }
 
     AudioClip GetRandomClip()
