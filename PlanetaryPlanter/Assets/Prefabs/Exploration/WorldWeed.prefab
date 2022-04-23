@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31113456d842f2445a8f70177d323254, type: 2}
+  - {fileID: 2100000, guid: ffceb338680f69b4db8b033d215ee0fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -306,6 +306,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 26f9ee656100a7c4bbe45caf0b1c5f8f, type: 3}
       propertyPath: m_Name
       value: WorldWeed_Closed
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 26f9ee656100a7c4bbe45caf0b1c5f8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26f9ee656100a7c4bbe45caf0b1c5f8f, type: 3}
