@@ -8,10 +8,13 @@ public class FootSteps : MonoBehaviour
     [SerializeField] GameObject stepParticles;
     AudioSource audioSource;
     int lastPlayedSound;
+    [SerializeField] private Vector3 spawnOffset;// = new Vector3(0.0f, -0.1f, 0.0f);
+
     void Step()
     {
         audioSource.PlayOneShot(GetRandomClip());
-        Instantiate(stepParticles, transform);
+
+        Instantiate(stepParticles, transform.position + spawnOffset, transform.rotation);
     }
 
     AudioClip GetRandomClip()
