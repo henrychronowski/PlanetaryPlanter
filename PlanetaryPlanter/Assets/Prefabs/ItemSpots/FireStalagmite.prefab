@@ -71,6 +71,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6927964366221999331, guid: 15cf46a8c5d8bf34e872a8f56c1b6ccd, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927964366221999331, guid: 15cf46a8c5d8bf34e872a8f56c1b6ccd, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7656418440587237232, guid: 15cf46a8c5d8bf34e872a8f56c1b6ccd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
