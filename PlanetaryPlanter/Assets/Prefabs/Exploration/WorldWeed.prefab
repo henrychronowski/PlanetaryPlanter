@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2496208910606625547}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4333605730705866094}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4333605730705866089}
   - component: {fileID: 122194016}
   m_Layer: 3
-  m_Name: PortalPlant (1)
+  m_Name: WorldWeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4333605730705866088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 481.4, y: -0.5, z: 293}
+  m_LocalPosition: {x: 481.4, y: 1, z: 293}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6629159663886094553}
@@ -265,7 +265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26f9ee656100a7c4bbe45caf0b1c5f8f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26f9ee656100a7c4bbe45caf0b1c5f8f, type: 3}
       propertyPath: m_LocalPosition.z
