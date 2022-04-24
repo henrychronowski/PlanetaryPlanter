@@ -19,7 +19,7 @@ public class InteractRadius : MonoBehaviour
 
 
     public GameObject highlight;
-    public TextMesh interactTip;
+    public GameObject interactTip;
     public SpriteRenderer interactSprite;
     public Transform interactBubble;
 
@@ -44,7 +44,6 @@ public class InteractRadius : MonoBehaviour
             }
         }
         closestInteractable = interactables[closestIndex].gameObject.GetComponent<InteractableObject>();
-        interactTip.text = closestInteractable.interactText;
         interactSprite.sprite = closestInteractable.interactSprite;
         
     }
@@ -54,7 +53,7 @@ public class InteractRadius : MonoBehaviour
         if(inRange)
         {
             highlight.SetActive(true);
-            interactTip.gameObject.SetActive(true);
+            interactSprite.gameObject.SetActive(true);
             
             
             highlight.transform.position = closestInteractable.transform.position;
@@ -75,7 +74,7 @@ public class InteractRadius : MonoBehaviour
         else
         {
             highlight.SetActive(false);
-            interactTip.gameObject.SetActive(false);
+            interactSprite.gameObject.SetActive(false);
             GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>().animator.SetBool("Interacting", false);
         }
     }
