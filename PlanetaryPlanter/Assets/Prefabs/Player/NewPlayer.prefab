@@ -1552,7 +1552,7 @@ MonoBehaviour:
   closestInteractable: {fileID: 0}
   inRange: 0
   highlight: {fileID: 1246541095681494542}
-  interactTip: {fileID: 8892834537391818594}
+  interactTip: {fileID: 0}
   interactSprite: {fileID: 1264032530}
   interactBubble: {fileID: 1248674473144987124}
 --- !u!54 &1664540709130207227
@@ -1770,6 +1770,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f2c08516f3382d64aa827549a9193657, type: 3}
   - {fileID: 8300000, guid: a373e90593a036d4882fc25f455321a7, type: 3}
   stepParticles: {fileID: 7365456089763390105, guid: 971b899ede137224496114c2d8340901, type: 3}
+  spawnOffset: {x: 0, y: 0.1, z: 0}
 --- !u!1 &716223958412303890
 GameObject:
   m_ObjectHideFlags: 0
@@ -3309,7 +3310,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2257212951403650518}
   - component: {fileID: 5045127870098197444}
-  - component: {fileID: 8892834537391818594}
   - component: {fileID: 6099920063263683088}
   m_Layer: 0
   m_Name: InteractText
@@ -3375,30 +3375,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!102 &8892834537391818594
-TextMesh:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6417461295704145201}
-  m_Text: 'Interact?
-
-    (E)'
-  m_OffsetZ: 0
-  m_CharacterSize: 1
-  m_LineSpacing: 1
-  m_Anchor: 4
-  m_Alignment: 1
-  m_TabSize: 4
-  m_FontSize: 90
-  m_FontStyle: 0
-  m_RichText: 1
-  m_Font: {fileID: 12800000, guid: 48ef3f2688ca59c4ab41d175e3ac9c2c, type: 3}
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
 --- !u!114 &6099920063263683088
 MonoBehaviour:
   m_ObjectHideFlags: 0
