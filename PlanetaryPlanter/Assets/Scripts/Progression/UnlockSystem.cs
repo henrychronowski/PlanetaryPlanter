@@ -17,7 +17,8 @@ public class UnlockSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        actManager = gameObject.GetComponent<ActManagerScript>();
+        //actManager = gameObject.GetComponent<ActManagerScript>();
+        actManager = FindObjectOfType<ActManagerScript>();
         observatoryMaster = GameObject.FindObjectOfType<ObservatoryMaster>();
     }
 
