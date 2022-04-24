@@ -9,9 +9,12 @@ public class FootSteps : MonoBehaviour
     AudioSource audioSource;
     int lastPlayedSound;
     [SerializeField] private Vector3 spawnOffset;// = new Vector3(0.0f, -0.1f, 0.0f);
+    CharacterMovement player;
 
     void Step()
     {
+        if (!player.grounded)
+            return;
         audioSource.PlayOneShot(GetRandomClip());
 
         Instantiate(stepParticles, transform.position + spawnOffset, transform.rotation);
@@ -32,6 +35,7 @@ public class FootSteps : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        player = FindObjectOfType<CharacterMovement>();
     }
 
     // Update is called once per frame
