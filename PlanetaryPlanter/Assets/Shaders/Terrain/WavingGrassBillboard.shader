@@ -44,8 +44,8 @@ Shader "0CurvedURPCustoms/BillboardWavingDoublePassCurved"
             #pragma fragment LitPassFragmentGrass
             #define _ALPHATEST_ON
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/WavingGrassInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/WavingGrassPasses.hlsl"
+            #include "WavingGrassInput.hlsl"
+            #include "WavingGrassPasses.hlsl"
             ENDHLSL
         }
 
@@ -73,8 +73,8 @@ Shader "0CurvedURPCustoms/BillboardWavingDoublePassCurved"
             // GPU Instancing
             #pragma multi_compile_instancing
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/WavingGrassInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/WavingGrassPasses.hlsl"
+            #include "WavingGrassInput.hlsl"
+            #include "WavingGrassPasses.hlsl"
             ENDHLSL
         }
 
@@ -101,8 +101,8 @@ Shader "0CurvedURPCustoms/BillboardWavingDoublePassCurved"
             // GPU Instancing
             #pragma multi_compile_instancing
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/WavingGrassInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Terrain/WavingGrassPasses.hlsl"
+            #include "WavingGrassInput.hlsl"
+            #include "WavingGrassPasses.hlsl"
             ENDHLSL
         }
     }

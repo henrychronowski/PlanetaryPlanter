@@ -123,6 +123,14 @@ GrassVertexOutput WavingGrassVert(GrassVertexInput v)
     float waveAmount = v.color.a * _WaveAndDistance.z;
     o.color = TerrainWaveGrass (v.vertex, waveAmount, v.color);
 
+    // float2 WS = v.vertex.xz;
+    // float curveAmount = distance(WS, _WorldSpaceCameraPos.xz);
+
+    // curveAmount *= 0.1f;
+    // curveAmount = (0.0f + (-1.0f * (curveAmount * curveAmount)) * 2);
+
+    // v.vertex = float4(v.vertex.xyz + float3(0.0f, curveAmount, 0.0f), v.vertex.w);
+
     InitializeVertData(v, o);
 
     return o;
@@ -140,8 +148,16 @@ GrassVertexOutput WavingGrassBillboardVert(GrassVertexInput v)
     float waveAmount = v.tangent.y;
     o.color = TerrainWaveGrass (v.vertex, waveAmount, v.color);
 
-    InitializeVertData(v, o);
+    float2 WS = mul(unity_ObjectToWorld, v.vertex).xz;
+    float curveAmount = distance(WS, _WorldSpaceCameraPos.xz);
 
+    curveAmount *= 0.01f;
+    curveAmount = (0.0f + (-1.0f * (curveAmount * curveAmount)) * 3);
+
+    v.vertex = float4(v.vertex.xyz + float3(0.0f, curveAmount, 0.0f), v.vertex.w);
+
+    InitializeVertData(v, o);
+    
     return o;
 }
 
