@@ -155,6 +155,8 @@ public class MoveAIThief : MonoBehaviour
         int randItem = 0;
         bool itemFound = false;
 
+        int attemptsToSteal = 0;
+
         //could be this or a collider contact
         if (itemSpotFull == false)
         {
@@ -170,9 +172,21 @@ public class MoveAIThief : MonoBehaviour
                 itemFound = true;
             }
             
-            while (stolenObject == null && itemFound == false)
+            while (stolenObject == null && itemFound == false && attemptsToSteal < 15)
             {
                 randItem = Random.Range(0, inventory.GetComponent<NewInventory>().spaces.Count);
+
+                stolenObject = inventory.GetComponent<NewInventory>().GetItem
+                (inventory.GetComponent<NewInventory>().spaces[randItem]);
+                inventory.GetComponent<NewInventory>().PopItem(
+                   inventory.GetComponent<NewInventory>().spaces[randItem]);
+
+                attemptsToSteal++;
+            }
+
+            if (stolenObject == null)
+            {
+                DropItem();
             }
             
             TutorialManagerScript.instance.Unlock("Squimbus!");
@@ -184,7 +198,11 @@ public class MoveAIThief : MonoBehaviour
                //inventory.GetComponent<NewInventory>().spaces[val]);
             
             itemSpotFull = true;
-            ShowItem();
+
+            if (stolenObject != null)
+            {
+                ShowItem();
+            }           
 
             Vector3 direction = (player.transform.position - transform.position).normalized;
             player.GetComponent<CharacterMovement>().AddForce((new Vector3(direction.x, knockbackAngle, direction.z)).normalized * knockback);
