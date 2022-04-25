@@ -190,17 +190,11 @@ public class MoveAIThief : MonoBehaviour
             }
             
             TutorialManagerScript.instance.Unlock("Squimbus!");
-            Debug.Log("got your nose >:)");
-            
-            //stolenObject = inventory.GetComponent<NewInventory>().GetItem
-                //(inventory.GetComponent<NewInventory>().spaces[randItem]);
-            //inventory.GetComponent<NewInventory>().PopItem(
-               //inventory.GetComponent<NewInventory>().spaces[val]);
-            
-            itemSpotFull = true;
+            Debug.Log("got your nose >:)");           
 
             if (stolenObject != null)
             {
+                itemSpotFull = true;
                 ShowItem();
             }           
 
