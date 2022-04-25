@@ -15,6 +15,7 @@ public class PortalFoundScript : MonoBehaviour
     public bool canTeleport;
     CharacterMovement player;
     public Biome location;
+    public GameObject openModel, closedModel;
 
     [SerializeField]
     float distanceFromPortalPlant;
@@ -24,8 +25,6 @@ public class PortalFoundScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        portalFound = false;
-        canTeleport = false;
 
         player = GameObject.FindObjectOfType<CharacterMovement>();
         portalMap = GameObject.FindObjectOfType<PortalMapScript>();
@@ -43,6 +42,7 @@ public class PortalFoundScript : MonoBehaviour
         if (distanceFromPortalPlant > distance)
         {
             portalFound = true;
+            openPlant(true);
             TutorialManagerScript.instance.Unlock("Portal Plant");
         }
     }
@@ -76,4 +76,17 @@ public class PortalFoundScript : MonoBehaviour
         portalMap.OpenMap(this);
     }
 
+    public void openPlant(bool open)
+    {
+        if(open)
+        {
+            openModel.SetActive(true);
+            closedModel.SetActive(false);
+        }
+        else
+        {
+            openModel.SetActive(false);
+            closedModel.SetActive(true);
+        }
+    }
 }

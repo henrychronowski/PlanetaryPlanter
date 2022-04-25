@@ -20,6 +20,7 @@ public class Observatory : MonoBehaviour
     LineRenderer baseLine; //used as a base when new connections are made in Start()
     public List<LineRenderer> lines;
     public int filledSpots;
+    bool uiUpdated = false;
 
     // Audio Manager Script is set up here
     private SoundManager soundManager;
@@ -27,7 +28,7 @@ public class Observatory : MonoBehaviour
     public SolarSystemCountScript solarSystemCounter;
 
 
-    bool CheckForCompletion()
+    public bool CheckForCompletion()
     {
         foreach(ObservatoryPlanetSpot spot in constellationSpots)
         {
@@ -65,7 +66,7 @@ public class Observatory : MonoBehaviour
 
     void Complete()
     {
-        soundManager.PlaySound("Craft");
+        SoundManager.instance.PlaySound("Craft");
         foreach (LineRenderer l in lines)
         {
             l.enabled = true;
@@ -73,10 +74,35 @@ public class Observatory : MonoBehaviour
         
         completed = true;
         solarSystemButton.GetComponent<UnityEngine.UI.Image>().sprite = completedConstellationSprite;
+        numComplete.text = constellationSpots.Count + "/" + constellationSpots.Count;
 
         solarSystemCounter.numSolarSystemsComplete++;
         AlmanacProgression.instance.Unlock(completionAchievementName + solarSystemCounter.numSolarSystemsComplete.ToString());
+        uiUpdated = true;
+    }
 
+    public void LoadComplete()
+    {
+        foreach (LineRenderer l in lines)
+        {
+            l.enabled = true;
+        }
+
+        completed = true;
+        solarSystemButton.GetComponent<UnityEngine.UI.Image>().sprite = completedConstellationSprite;
+
+        if (solarSystemCounter == null)
+            solarSystemCounter = FindObjectOfType<SolarSystemCountScript>();
+        solarSystemCounter.numSolarSystemsComplete++;
+        AlmanacProgression.instance.Unlock(completionAchievementName + solarSystemCounter.numSolarSystemsComplete.ToString());
+        if (numComplete == null)
+            Debug.Log("Numcomplete null");
+        if (constellationSpots == null)
+            Debug.Log("Spots null");
+
+        if (constellationSpots.Count == 0)
+            Debug.Log("0!!@!");
+        numComplete.text = constellationSpots.Count + "/" + constellationSpots.Count;
     }
 
     // Start is called before the first frame update
@@ -106,8 +132,16 @@ public class Observatory : MonoBehaviour
             GetFilledSpots();
             CheckForCompletion();
         }
-        else
+        else if(!uiUpdated)
         {
+            foreach (LineRenderer l in lines)
+            {
+                l.enabled = true;
+            }
+            solarSystemButton.GetComponent<UnityEngine.UI.Image>().sprite = completedConstellationSprite;
+
+            numComplete.text = constellationSpots.Count + "/" + constellationSpots.Count;
+            uiUpdated = true;
         }
     }
 

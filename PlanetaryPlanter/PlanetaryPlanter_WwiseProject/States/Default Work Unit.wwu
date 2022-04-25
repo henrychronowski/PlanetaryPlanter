@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{17F9F68E-C242-43D6-AC21-A1D5F746AA14}" SchemaVersion="103">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{17F9F68E-C242-43D6-AC21-A1D5F746AA14}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{17F9F68E-C242-43D6-AC21-A1D5F746AA14}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="Game_Music" ID="{3293D283-C9F4-43C0-BD57-CA3357AEF3C7}">
+					<ChildrenList>
+						<State Name="None" ID="{471A8ABC-1D1D-45EA-B3F6-1CD0CB7D4CEE}"/>
+						<State Name="Temperate_Event" ID="{03D43B69-D0D2-4C3B-944B-C6FC0A0DA0B2}"/>
+						<State Name="Cold_Event" ID="{F70825C8-8022-4E96-9730-3002E1B1B65E}"/>
+						<State Name="Hot_Event" ID="{11A137B0-D9DA-40EA-9BDE-405B8BD1CD51}"/>
+						<State Name="Observatory_Event" ID="{DE4A13C1-EB34-4E8B-9432-B1948BD01737}"/>
+						<State Name="Farm_Event" ID="{D5B59F7E-89D9-478D-82BD-90FA964FAFCD}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

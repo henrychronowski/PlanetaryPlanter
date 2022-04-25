@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class ObservatoryMaster : MonoBehaviour
     public bool inSolarSystemView;
     public GameObject planetInfoPanel;
     public GameObject minimap;
+    public GameObject welcomeTutorial;
 
     public AudioSource telescope;
     public AudioSource main;
@@ -26,11 +28,14 @@ public class ObservatoryMaster : MonoBehaviour
 
     public Button leftButton;
     public Button rightButton;
+    public Button exitButton;
+    public Button exitSolarSystemButton;
 
     public GameObject basePlant;
     public bool initted;
 
     public int currentChapterIndex;
+    public float zPos = -80f;
 
     public enum Direction
     {
@@ -71,6 +76,7 @@ public class ObservatoryMaster : MonoBehaviour
     public void ExitSolarSystemView()
     {
         inSolarSystemView = false;
+        GameObject.FindGameObjectWithTag("SolarSystemCam").SetActive(false);
     }
 
     public void UpdateToDoUI()
@@ -139,6 +145,8 @@ public class ObservatoryMaster : MonoBehaviour
         return result.ToArray();
     }
 
+
+
     public void LoadFilledSpots(bool[] filledSpots, int currentChapter)
     {
         
@@ -177,10 +185,11 @@ public class ObservatoryMaster : MonoBehaviour
         {
             //fill up each chapter's spots
             List<ObservatoryPlanetSpot> spots = GetPlanetSpotsOfChapter(i + 1);
-
             foreach (ObservatoryPlanetSpot spot in spots)
             {
                 GameObject temp = Instantiate(basePlant);
+                spot.transform.parent.parent.GetComponent<Observatory>().LoadComplete();
+
                 temp.GetComponent<Plant>().type = spot.type;
                 temp.GetComponent<Plant>().species = spot.species;
 
@@ -198,13 +207,13 @@ public class ObservatoryMaster : MonoBehaviour
     {
         if(dir == 1)
         {
-            StartLerp(observatoryPoints[observatoryCamTransformIndex].position, observatoryPoints[observatoryCamTransformIndex + 1].position);
+            StartLerp(observatoryPoints[observatoryCamTransformIndex].localPosition, observatoryPoints[observatoryCamTransformIndex + 1].localPosition);
             observatoryCamTransformIndex++;
         }   
         else
         {
             
-            StartLerp(observatoryPoints[observatoryCamTransformIndex].position, observatoryPoints[observatoryCamTransformIndex - 1].position);
+            StartLerp(observatoryPoints[observatoryCamTransformIndex].localPosition, observatoryPoints[observatoryCamTransformIndex - 1].localPosition);
             observatoryCamTransformIndex--;
         }
     }
@@ -250,14 +259,36 @@ public class ObservatoryMaster : MonoBehaviour
         if(lerping)
         {
             float t = Mathf.SmoothStep(0, 1, timeSpentLerping/lerpTime);
-            transform.position = Vector3.Lerp(lerpOrigin, lerpTarget, t);
+            Vector3 lerpedPos = Vector3.Lerp(lerpOrigin, lerpTarget, t);
+            transform.localPosition = new Vector3(lerpedPos.x, lerpedPos.y, zPos);
             timeSpentLerping += Time.deltaTime;
             if(timeSpentLerping>= lerpTime)
             {
                 timeSpentLerping = 0;
-                transform.position = lerpTarget;
+                transform.localPosition = new Vector3(lerpTarget.x, lerpTarget.y, zPos);
                 lerping = false;
             }
+        }
+
+    }
+
+    void SetButtonVisibility()
+    {
+        planetInfoPanel.gameObject.SetActive(inSolarSystemView);
+        leftButton.gameObject.SetActive(!inSolarSystemView);
+        rightButton.gameObject.SetActive(!inSolarSystemView);
+        minimap.gameObject.SetActive(!inObservatoryView);
+        exitSolarSystemButton.gameObject.SetActive(inSolarSystemView);
+        exitButton.gameObject.SetActive(!inSolarSystemView);
+
+        try
+        {
+            welcomeTutorial.gameObject.SetActive(!inObservatoryView);
+
+        }
+        catch (Exception e)
+        {
+
         }
     }
 
@@ -271,6 +302,7 @@ public class ObservatoryMaster : MonoBehaviour
         }
         initted = true;
         minimap = GameObject.FindGameObjectWithTag("Minimap");
+        welcomeTutorial = GameObject.Find("WelcomeTutorial");
     }
 
     // Update is called once per frame
@@ -279,7 +311,6 @@ public class ObservatoryMaster : MonoBehaviour
         LerpUpdate();
         ChangeConstellationButtonStatus();
         UpdateToDoUI();
-        planetInfoPanel.gameObject.SetActive(inSolarSystemView);
-        minimap.gameObject.SetActive(!inObservatoryView);
+        SetButtonVisibility();
     }
 }

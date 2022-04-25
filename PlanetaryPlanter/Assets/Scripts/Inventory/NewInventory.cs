@@ -606,7 +606,7 @@ public class NewInventory : MonoBehaviour
 
         if (item.tag == "Plant")
         {
-            if (item.GetComponent<Plant>().species == PlanetSpecies.Planet)
+            if (item.GetComponent<Plant>().species == PlanetSpecies.GasPlanet)
             {
                 if(item.GetComponent<Plant>().stage == Plant.Stage.Rotten)
                 {
@@ -789,7 +789,7 @@ public class NewInventory : MonoBehaviour
 
         if (item.tag == "Seed")
         {
-            if (item.GetComponent<Seed>().species == PlanetSpecies.Planet)
+            if (item.GetComponent<Seed>().species == PlanetSpecies.GasPlanet)
             {
                 return ItemID.PlanetSeed;
             }

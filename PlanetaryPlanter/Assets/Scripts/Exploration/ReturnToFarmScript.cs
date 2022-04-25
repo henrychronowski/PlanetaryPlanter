@@ -9,6 +9,7 @@ public class ReturnToFarmScript : MonoBehaviour
     public GameObject returnSpot;
     public GameObject player;
     public Text returnMessage;
+    public string returnText = "Hold R to return to farm.";
     public float returnCountdown;
 
     float currentReturnCountdown;
@@ -48,7 +49,7 @@ public class ReturnToFarmScript : MonoBehaviour
         {
             canCountdown = true;
             //canReturn = true;
-            returnMessage.text = "Press R to return to farm.";
+            returnMessage.text = returnText;
         }
     }
 

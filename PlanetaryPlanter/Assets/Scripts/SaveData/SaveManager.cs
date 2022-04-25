@@ -57,9 +57,12 @@ public class SaveManager : MonoBehaviour
 
     public float timeBetweenSaves;
     public float timeSinceLastSave;
+    public float timeSinceLoad;
+    public float loadGracePeriod; //disables some systems for the alotted time, avoids some loading weirdness
     public PlayerData playerData;
     public CharacterMovement player;
     public ObservatoryMaster master;
+    public PortalMapScript portalMap;
     public int activeSceneIndex;
     public bool dataLoaded;
     public bool loadingStarted;
@@ -86,7 +89,8 @@ public class SaveManager : MonoBehaviour
         plantSpots.AddRange(GameObject.FindObjectsOfType<PlantSpot>(true).OrderBy(gameObject => gameObject.name).ToArray());
         master = GameObject.FindObjectOfType<ObservatoryMaster>();
         player = GameObject.FindObjectOfType<CharacterMovement>();
-        SaveSystem.SaveAllData(player, master, AlmanacProgression.instance, TutorialManagerScript.instance, NewInventory.instance, new PlantsData(plantSpots));
+        portalMap = GameObject.FindObjectOfType<PortalMapScript>();
+        SaveSystem.SaveAllData(player, master, AlmanacProgression.instance, TutorialManagerScript.instance, NewInventory.instance, new PlantsData(plantSpots), portalMap);
     }
 
     public void LoadData()
@@ -98,6 +102,7 @@ public class SaveManager : MonoBehaviour
         //set all variables properly
         master = GameObject.FindObjectOfType<ObservatoryMaster>();
         player = GameObject.FindObjectOfType<CharacterMovement>();
+        portalMap = GameObject.FindObjectOfType<PortalMapScript>();
         if (master == null || player == null || AlmanacProgression.instance == null || TutorialManagerScript.instance == null)
         {
             Debug.Log("Loading");
@@ -115,6 +120,11 @@ public class SaveManager : MonoBehaviour
         {
             planters[i].PlacePlantOfType(playerData.plants.speciesArray[i], playerData.plants.growthValue[i]);
             //planters[i].placedPlant.currentWater = playerData.plants.waterValue[i];
+        }
+
+        for(int i = 0; i < portalMap.portals.Count; i++)
+        {
+            portalMap.portals[i].portalFound = playerData.portalsFound[i];
         }
     }
 
@@ -163,6 +173,7 @@ public class SaveManager : MonoBehaviour
                 else
                 {
                     GameObject.FindObjectOfType<UnlockSystem>().UnlockChapters(playerData.currentChapter);
+
                 }
             }
             else if (SceneManager.GetSceneByBuildIndex(activeSceneIndex).isLoaded && !loadDataIntended && !dataLoaded)
@@ -174,6 +185,8 @@ public class SaveManager : MonoBehaviour
             }
 
         }
+        if(dataLoaded)
+            timeSinceLoad += Time.deltaTime;
 
         //if (Input.GetKeyDown(KeyCode.K))
         //{
