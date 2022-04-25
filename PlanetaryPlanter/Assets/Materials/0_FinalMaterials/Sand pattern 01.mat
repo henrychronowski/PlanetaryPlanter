@@ -9,7 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Sand pattern 01
   m_Shader: {fileID: 4800000, guid: 3693cc048cf504a489b4482a1ea59b79, type: 3}
-  m_ShaderKeywords: _CURVE_ON _SPECULAR_COLOR
+  m_ShaderKeywords: _CURVE_ON _NORMALMAP _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A _SPECULAR_COLOR
+    _SPECULAR_SETUP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -74,15 +75,15 @@ Material:
     - _GlossinessSource: 0
     - _Metallic: 0
     - _MetallicSpecGlossMapToggle: 0
-    - _MetallicSpecToggle: 0
-    - _NormalMapToggle: 0
+    - _MetallicSpecToggle: 1
+    - _NormalMapToggle: 1
     - _OcclusionStrength: 1
     - _OcclusionToggle: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Shininess: 0.03
     - _Smoothness: 0.03
-    - _SmoothnessSource: 0
+    - _SmoothnessSource: 1
     - _SpecSource: 0
     - _SpecularHighlights: 0
     - _SrcBlend: 1
