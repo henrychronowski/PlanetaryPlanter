@@ -173,6 +173,7 @@ public class SaveManager : MonoBehaviour
                 else
                 {
                     GameObject.FindObjectOfType<UnlockSystem>().UnlockChapters(playerData.currentChapter);
+
                 }
             }
             else if (SceneManager.GetSceneByBuildIndex(activeSceneIndex).isLoaded && !loadDataIntended && !dataLoaded)
