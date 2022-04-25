@@ -185,10 +185,11 @@ public class ObservatoryMaster : MonoBehaviour
         {
             //fill up each chapter's spots
             List<ObservatoryPlanetSpot> spots = GetPlanetSpotsOfChapter(i + 1);
-
             foreach (ObservatoryPlanetSpot spot in spots)
             {
                 GameObject temp = Instantiate(basePlant);
+                spot.transform.parent.parent.GetComponent<Observatory>().LoadComplete();
+
                 temp.GetComponent<Plant>().type = spot.type;
                 temp.GetComponent<Plant>().species = spot.species;
 

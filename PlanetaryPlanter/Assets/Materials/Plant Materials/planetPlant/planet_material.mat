@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: planet_material
   m_Shader: {fileID: 4800000, guid: 3693cc048cf504a489b4482a1ea59b79, type: 3}
-  m_ShaderKeywords: _CURVE_OFF _EMISSION _SPECULARHIGHLIGHTS_OFF
+  m_ShaderKeywords: _CURVE_ON _EMISSION _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -101,7 +101,7 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
-    - _Curve: 0
+    - _Curve: 1
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1

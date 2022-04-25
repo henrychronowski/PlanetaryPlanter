@@ -302,13 +302,19 @@ Varyings SplatmapVert(Attributes v)
     VertexPositionInputs Attributes;
 
 #ifdef _CURVE_ON
-    float3 WS = mul(unity_ObjectToWorld, v.positionOS).xyz;
+    float4 WS = mul(unity_ObjectToWorld, v.positionOS);
     float curveAmount = distance(WS.xz, _WorldSpaceCameraPos.xz);
 
     curveAmount = curveAmount * 0.01f;
-    curveAmount = (0.0f + (-1.0f * (curveAmount * curveAmount)) * 2);
+    //curveAmount = curveAmount * 0.1f;
+    curveAmount = (0.0f + (-1.0f * (curveAmount * curveAmount)) * 3);
 
-    Attributes  = GetVertexPositionInputs(v.positionOS.xyz + float3(0.0f, curveAmount, 0.0f));
+    //v.positionOS.y += curveAmount;
+
+    //Attributes  = GetVertexPositionInputs(v.positionOS.xyz + float3(0.0f, curveAmount, 0.0f));
+    WS.y += curveAmount;
+    v.positionOS = mul(unity_WorldToObject, WS);
+    Attributes  = GetVertexPositionInputs(v.positionOS.xyz);
 #else
     Attributes  = GetVertexPositionInputs(v.positionOS.xyz);
 #endif
