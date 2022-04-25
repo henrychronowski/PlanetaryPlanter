@@ -129,9 +129,11 @@ public class Plant : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector3 spawnPosition = player.transform.position;
         Quaternion spawnRotation = player.transform.rotation;
-        //spawnPoint.LookAt(transform, Vector3.up);
-        spawnRotation.SetLookRotation(transform.position - spawnPosition, Vector3.up);
-        Vector3 offset = new Vector3(0f, 0.1f, 0.5f);
+        spawnRotation.SetLookRotation(2.0f*player.transform.up + player.transform.forward, player.transform.up);
+        //spawnRotation.SetLookRotation(transform.position - spawnPosition, Vector3.up);
+        Vector3 offset = player.transform.forward * 0.65f;
+        offset += player.transform.right * 0.25f;
+        offset += player.transform.up * 0.1f;
 
         Instantiate(waterParticles, spawnPosition + offset, spawnRotation);
         if(currentWater > maxWater)

@@ -220,7 +220,8 @@ Shader "0CurvedURPCustoms/URPLitCurve" {
 					float curveAmount = distance(WS.xz, _WorldSpaceCameraPos.xz);
 
 					curveAmount = curveAmount * 0.01f;
-					curveAmount = (0.0f + (1.0f * (curveAmount * curveAmount)) * 3);
+					//curveAmount = curveAmount * 0.1f;
+					curveAmount = (0.0f + (1.0f * (curveAmount * curveAmount)) * 5);
 					
 					OUT.positionCS = positionInputs.positionCS;
 					OUT.positionWS = positionInputs.positionWS;
