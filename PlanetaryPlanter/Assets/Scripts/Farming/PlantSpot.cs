@@ -148,7 +148,7 @@ public class PlantSpot : MonoBehaviour
             soundManager.PlaySound("Harvest");
             p.inPot = false;
             temp.transform.parent = null;
-            temp.transform.position = new Vector3(0, 1000); //this is dumb but its 4:30am
+            temp.transform.position = new Vector3(0, -1000); //this is dumb but its 4:30am
             plantObject = null;
             placedPlant = null;
             Debug.Log("Added to inv");

@@ -11,11 +11,14 @@ public class UnlockSystem : MonoBehaviour
     public GameObject silo1;
     public GameObject silo2;
     public GameObject bounceblooms;
+    public ActManagerScript actManager;
 
     public bool seniorShowUnlocks;
     // Start is called before the first frame update
     void Start()
     {
+        //actManager = gameObject.GetComponent<ActManagerScript>();
+        actManager = FindObjectOfType<ActManagerScript>();
         observatoryMaster = GameObject.FindObjectOfType<ObservatoryMaster>();
     }
 
@@ -53,7 +56,7 @@ public class UnlockSystem : MonoBehaviour
                     //new silo
                     silo1.SetActive(true);
                     if (showTutorial) TutorialManagerScript.instance.Unlock("New Silo");
-
+                    actManager.Unlock("The Prologue");
                     break;
                 }
             case 2:
@@ -75,6 +78,7 @@ public class UnlockSystem : MonoBehaviour
                 {
                     planterSet2.SetActive(true);
                     if (showTutorial) TutorialManagerScript.instance.Unlock("New Planters 2");
+                    actManager.Unlock("Act 1");
                     break;
                 }
             case 5:
@@ -87,7 +91,7 @@ public class UnlockSystem : MonoBehaviour
                 {
                     GameObject.FindObjectOfType<AttackHitbox>().canBreakRocks = true;
                     if (showTutorial) TutorialManagerScript.instance.Unlock("Stallanovium Trowel");
-
+                    actManager.Unlock("Act 2");
                     break;
                 }
             case 7:
@@ -104,6 +108,7 @@ public class UnlockSystem : MonoBehaviour
                 }
             case 9:
                 {
+                    actManager.Unlock("Act 3");
                     break;
                 }
         }
@@ -118,6 +123,7 @@ public class UnlockSystem : MonoBehaviour
                     //set all bouncy plants to active
                     bounceblooms.SetActive(true);
                     if(showTutorial) TutorialManagerScript.instance.Unlock("Bounceblooms!");
+                    ActManagerScript.instance.Unlock("The Prologue");
                     break;
                 }
             case 2:
@@ -138,6 +144,7 @@ public class UnlockSystem : MonoBehaviour
                     //new silo
                     silo1.SetActive(true);
                     if (showTutorial) TutorialManagerScript.instance.Unlock("New Silo");
+                    actManager.Unlock("Act 1");
                     break;
                 }
             case 5:
@@ -151,6 +158,7 @@ public class UnlockSystem : MonoBehaviour
                 {
                     silo2.SetActive(true);
                     if (showTutorial) TutorialManagerScript.instance.Unlock("New Silo Again");
+                    actManager.Unlock("Act 2");
                     break;
                 }
             case 7:
@@ -165,6 +173,7 @@ public class UnlockSystem : MonoBehaviour
                 }
             case 9:
                 {
+                    actManager.Unlock("Act 3");
                     break;
                 }
         }
