@@ -121,7 +121,11 @@ public class MoveAIThief : MonoBehaviour
     void CheckThiefLocation()
     {
         //maybe change this to a distance close to the destination (with a slight pause?)
-        if (Vector3.Distance(gameObject.transform.position, destination) < 2.0f)
+        // I think this will fix it sometimes struggling to stop, sometimes its destination
+        // is lower than what the terrain allows so just ignoring the destination Y val might fix it
+        // -Daniel
+        
+        if (Vector3.Distance(gameObject.transform.position, new Vector3(destination.x, transform.position.y, destination.z)) < 2.0f)
         {
             //pick new location to move to
             newDestinationNeeded = true;
@@ -209,6 +213,11 @@ public class MoveAIThief : MonoBehaviour
             squimbusAnimator.SetBool("moving", false);
 
         squimbusAnimator.SetFloat("moveSpeed", thief.velocity.magnitude / thief.speed);
+
+        if(thief.velocity.magnitude / thief.speed < 0.1f)
+        {
+            squimbusAnimator.SetBool("moving", false);
+        }
     }
 
     public GameObject GetStolenObject()
