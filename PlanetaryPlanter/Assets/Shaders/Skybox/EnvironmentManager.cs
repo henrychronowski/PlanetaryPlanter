@@ -25,12 +25,9 @@ public class EnvironmentManager : MonoBehaviour
     [SerializeField] private float TransitionTime = 1f;
 
     private bool IsLerping;
-    private bool CurrentSky; // 0 = lhs, 1 = rhs. Starts as lhs always
-    private bool TargetSky;
     private float LerpTime;
     private float invTransitionTime;
     private Material skybox;
-    private bool toggle; // Toggle to prevent trigger being called twice on same instance
     private SkyboxParams[] Environments;
 
     public enum EnvironmentType
@@ -41,12 +38,12 @@ public class EnvironmentManager : MonoBehaviour
     private EnvironmentType Current;
     private EnvironmentType Target;
 
-    private void start()
+    private void Start()
     {
-        Current = EnvironmentType.Cold;
+        skybox = RenderSettings.skybox;
+        Current = EnvironmentType.Temperate;
         Environments = new SkyboxParams[] {ColdParams, TemperateParams, HotParams};
         SetParameters(Environments[((int)Current)]);
-        skybox = RenderSettings.skybox;
         IsLerping = false;
         invTransitionTime = 1f/TransitionTime;
     }
@@ -73,7 +70,7 @@ public class EnvironmentManager : MonoBehaviour
             else
 			{
                 IsLerping = false;
-                CurrentSky = TargetSky;
+                Current = Target;
                 if (SystemInfo.supportsAsyncGPUReadback)
                 {
                     DynamicGI.UpdateEnvironment();
