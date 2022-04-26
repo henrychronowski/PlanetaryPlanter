@@ -154,49 +154,25 @@ public class MoveAIThief : MonoBehaviour
     {
         int randItem = 0;
         bool itemFound = false;
+        InventorySpace[] filledSpaces;
 
         int attemptsToSteal = 0;
+
+        filledSpaces = inventory.GetComponent<NewInventory>().GetFilledSpaces();
 
         //could be this or a collider contact
         if (itemSpotFull == false)
         {
-            randItem = Random.Range(0, inventory.GetComponent<NewInventory>().spaces.Count);
+            randItem = Random.Range(0, filledSpaces.Length);
 
-            stolenObject = inventory.GetComponent<NewInventory>().GetItem
-                (inventory.GetComponent<NewInventory>().spaces[randItem]);
-            inventory.GetComponent<NewInventory>().PopItem(
-               inventory.GetComponent<NewInventory>().spaces[randItem]);
-
-            if (stolenObject != null)
-            {
-                itemFound = true;
-            }
-            
-            while (stolenObject == null && itemFound == false && attemptsToSteal < 15)
-            {
-                randItem = Random.Range(0, inventory.GetComponent<NewInventory>().spaces.Count);
-
-                stolenObject = inventory.GetComponent<NewInventory>().GetItem
-                (inventory.GetComponent<NewInventory>().spaces[randItem]);
-                inventory.GetComponent<NewInventory>().PopItem(
-                   inventory.GetComponent<NewInventory>().spaces[randItem]);
-
-                attemptsToSteal++;
-            }
-
-            if (stolenObject == null)
-            {
-                DropItem();
-            }
+            stolenObject = filledSpaces[randItem].item.itemObject;
+            inventory.GetComponent<NewInventory>().PopItem(filledSpaces[randItem]);
             
             TutorialManagerScript.instance.Unlock("Squimbus!");
-            Debug.Log("got your nose >:)");           
-
-            if (stolenObject != null)
-            {
-                itemSpotFull = true;
-                ShowItem();
-            }           
+            Debug.Log("got your nose >:)");
+            
+            itemSpotFull = true;
+            ShowItem();                      
 
             Vector3 direction = (player.transform.position - transform.position).normalized;
             player.GetComponent<CharacterMovement>().AddForce((new Vector3(direction.x, knockbackAngle, direction.z)).normalized * knockback);
