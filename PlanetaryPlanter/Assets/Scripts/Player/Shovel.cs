@@ -17,6 +17,7 @@ public class Shovel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse1) && !isSwinging && character.canMove)
         {
             isSwinging = true;
+            character.animator.SetBool("usedShovel", true);
         }
     }
 
@@ -30,6 +31,8 @@ public class Shovel : MonoBehaviour
             {
                 isSwinging = false;
                 timeSinceSwingStart = 0;
+                character.animator.SetBool("usedShovel", false);
+
                 return;
             }
             else if(timeSinceSwingStart > activeTime + startupTime) //returns true when the hitbox has exhausted its active time
