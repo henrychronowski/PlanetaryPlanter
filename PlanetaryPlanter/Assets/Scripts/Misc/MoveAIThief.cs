@@ -27,7 +27,7 @@ public class MoveAIThief : MonoBehaviour
     [SerializeField] float knockback;
     [SerializeField] float knockbackAngle;
     [SerializeField] Image itemIcon;
-
+    [SerializeField] Animator squimbusAnimator;
     GameObject[] itemsToSteal;
     InventorySpace[] spaces;
 
@@ -93,6 +93,7 @@ public class MoveAIThief : MonoBehaviour
         }
 
         CheckThiefLocation();
+        UpdateAnimValues();
     }
 
     void PickNewDestination()
@@ -114,12 +115,17 @@ public class MoveAIThief : MonoBehaviour
 
         destination = new Vector3(randX, 1, randZ);
         gameObject.GetComponent<NavMeshAgent>().SetDestination(destination);
+        
     }
 
     void CheckThiefLocation()
     {
         //maybe change this to a distance close to the destination (with a slight pause?)
-        if (Vector3.Distance(gameObject.transform.position, destination) < 2.0f)
+        // I think this will fix it sometimes struggling to stop, sometimes its destination
+        // is lower than what the terrain allows so just ignoring the destination Y val might fix it
+        // -Daniel
+        
+        if (Vector3.Distance(gameObject.transform.position, new Vector3(destination.x, transform.position.y, destination.z)) < 2.0f)
         {
             //pick new location to move to
             newDestinationNeeded = true;
@@ -197,6 +203,21 @@ public class MoveAIThief : MonoBehaviour
     public void HideItem()
     {
         itemIcon.enabled = false;
+    }
+
+    void UpdateAnimValues()
+    {        
+        if (thief.velocity.magnitude > 0)
+            squimbusAnimator.SetBool("moving", true);
+        else
+            squimbusAnimator.SetBool("moving", false);
+
+        squimbusAnimator.SetFloat("moveSpeed", thief.velocity.magnitude / thief.speed);
+
+        if(thief.velocity.magnitude / thief.speed < 0.1f)
+        {
+            squimbusAnimator.SetBool("moving", false);
+        }
     }
 
     public GameObject GetStolenObject()

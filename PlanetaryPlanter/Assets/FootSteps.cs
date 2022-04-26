@@ -9,6 +9,10 @@ public class FootSteps : MonoBehaviour
     AudioSource audioSource;
     int lastPlayedSound;
     [SerializeField] private Vector3 spawnOffset;// = new Vector3(0.0f, -0.1f, 0.0f);
+    [SerializeField] private Transform spawnOffsetLeft;// = new Vector3(0.0f, -0.1f, 0.0f);
+    [SerializeField] private Transform spawnOffsetRight;// = new Vector3(0.0f, -0.1f, 0.0f);
+
+
     CharacterMovement player;
 
     void Step()
@@ -17,7 +21,22 @@ public class FootSteps : MonoBehaviour
             return;
         audioSource.PlayOneShot(GetRandomClip());
 
-        Instantiate(stepParticles, transform.position + spawnOffset, transform.rotation);
+    }
+
+    void StepRight()
+    {
+        Step();
+
+        GameObject particle = Instantiate(stepParticles, spawnOffsetRight.position, transform.rotation);
+        particle.transform.Rotate(Vector3.up, player.gameObject.transform.rotation.y);
+    }
+
+    void StepLeft()
+    {
+        Step();
+
+        GameObject particle = Instantiate(stepParticles, spawnOffsetLeft.position, transform.rotation);
+        particle.transform.Rotate(Vector3.up, player.gameObject.transform.rotation.y);
     }
 
     AudioClip GetRandomClip()
