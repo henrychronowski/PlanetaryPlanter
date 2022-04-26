@@ -535,6 +535,19 @@ public class NewInventory : MonoBehaviour
         }
     }
 
+    public InventorySpace[] GetFilledSpaces()
+    {
+        List<InventorySpace> filledSpaces = new List<InventorySpace>();
+        foreach(InventorySpace s in spaces)
+        {
+            if(s.filled)
+            {
+                filledSpaces.Add(s);
+            }
+        }
+        return filledSpaces.ToArray();
+    }
+
     void OpenCraftingMenu()
     {
         craftingMenu.SetActive(true);

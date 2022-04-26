@@ -22,7 +22,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: GroundBase
   m_Shader: {fileID: 4800000, guid: 3693cc048cf504a489b4482a1ea59b79, type: 3}
-  m_ShaderKeywords: _CURVE_ON _PARALLAXMAP _SPECULARHIGHLIGHTS_OFF
+  m_ShaderKeywords: _CURVE_ON _NORMALMAP _PARALLAXMAP _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+    _SPECULARHIGHLIGHTS_OFF _SPECULAR_SETUP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -300,10 +301,10 @@ Material:
     - _MetallicRemapMax: 1
     - _MetallicRemapMin: 0
     - _MetallicSpecGlossMapToggle: 0
-    - _MetallicSpecToggle: 0
+    - _MetallicSpecToggle: 1
     - _Mode: 0
     - _NormalMapSpace: 0
-    - _NormalMapToggle: 0
+    - _NormalMapToggle: 1
     - _NormalScale: 1
     - _OcclusionStrength: 1
     - _OcclusionToggle: 0
@@ -325,7 +326,7 @@ Material:
     - _Smoothness: 0.26
     - _SmoothnessRemapMax: 0
     - _SmoothnessRemapMin: 0
-    - _SmoothnessSource: 0
+    - _SmoothnessSource: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
