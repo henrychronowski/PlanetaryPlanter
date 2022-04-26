@@ -9,7 +9,12 @@ ModelImporter:
   - first:
       74: -3100369314251171874
     second: Idle
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: squimbusTexture
+    second: {fileID: 2100000, guid: cc979bc45a1f9f241b989f302011a0e0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

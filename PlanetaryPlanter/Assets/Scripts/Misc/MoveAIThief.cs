@@ -27,7 +27,7 @@ public class MoveAIThief : MonoBehaviour
     [SerializeField] float knockback;
     [SerializeField] float knockbackAngle;
     [SerializeField] Image itemIcon;
-
+    [SerializeField] Animator squimbusAnimator;
     GameObject[] itemsToSteal;
     InventorySpace[] spaces;
 
@@ -93,6 +93,7 @@ public class MoveAIThief : MonoBehaviour
         }
 
         CheckThiefLocation();
+        UpdateAnimValues();
     }
 
     void PickNewDestination()
@@ -114,6 +115,7 @@ public class MoveAIThief : MonoBehaviour
 
         destination = new Vector3(randX, 1, randZ);
         gameObject.GetComponent<NavMeshAgent>().SetDestination(destination);
+        
     }
 
     void CheckThiefLocation()
@@ -197,6 +199,16 @@ public class MoveAIThief : MonoBehaviour
     public void HideItem()
     {
         itemIcon.enabled = false;
+    }
+
+    void UpdateAnimValues()
+    {        
+        if (thief.velocity.magnitude > 0)
+            squimbusAnimator.SetBool("moving", true);
+        else
+            squimbusAnimator.SetBool("moving", false);
+
+        squimbusAnimator.SetFloat("moveSpeed", thief.velocity.magnitude / thief.speed);
     }
 
     public GameObject GetStolenObject()
