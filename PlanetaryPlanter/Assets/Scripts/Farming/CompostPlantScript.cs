@@ -11,7 +11,7 @@ public class CompostPlantScript : MonoBehaviour
     [SerializeField]
     float distanceFromCompostBin;
 
-    bool canCompost;
+    public bool canCompost;
     bool hasComposted;
 
     //Counts how many plants you've composted
