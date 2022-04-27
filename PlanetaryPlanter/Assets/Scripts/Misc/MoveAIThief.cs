@@ -24,6 +24,11 @@ public class MoveAIThief : MonoBehaviour
     bool stealCooldownActive = false;
     float currentStealCooldownTime;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
+    public int RandSound;
+    public float AlSoundTimer = 3.0f;
+
     [SerializeField] float knockback;
     [SerializeField] float knockbackAngle;
     [SerializeField] Image itemIcon;
@@ -34,6 +39,8 @@ public class MoveAIThief : MonoBehaviour
         newDestinationNeeded = true;
         currentDropItemTime = dropItemTime;
         currentStealCooldownTime = stealCooldownTime;
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
@@ -56,6 +63,7 @@ public class MoveAIThief : MonoBehaviour
 
             destination = player.transform.position;
             gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
+
         }
 
         if (newDestinationNeeded == true)
@@ -90,6 +98,13 @@ public class MoveAIThief : MonoBehaviour
         }
 
         CheckThiefLocation();
+
+        if (playerSpotted == true)
+        {
+            AlSoundTimer -= Time.deltaTime;
+        }
+
+        Debug.Log(AlSoundTimer);
     }
 
     void PickNewDestination()
@@ -111,6 +126,7 @@ public class MoveAIThief : MonoBehaviour
 
         destination = new Vector3(randX, 1, randZ);
         gameObject.GetComponent<NavMeshAgent>().SetDestination(destination);
+        
     }
 
     void CheckThiefLocation()
@@ -136,6 +152,29 @@ public class MoveAIThief : MonoBehaviour
         destination = player.transform.position;
         gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
         playerSpotted = true;
+
+        RandSound = Random.Range(1, 5);
+
+        switch (RandSound)
+        {
+            case 1: soundManager.PlaySound("SquimAl1"); break;
+            case 2: soundManager.PlaySound("SquimAl2"); break;
+            case 3: soundManager.PlaySound("SquimAl3"); break;
+            case 4: soundManager.PlaySound("SquimAl4"); break;
+        }
+
+        if (playerSpotted == true && AlSoundTimer < 1)
+        {
+            RandSound = Random.Range(1, 3);
+
+            switch (RandSound)
+            {
+                case 1: soundManager.PlaySound("SquimCh1"); break;
+                case 2: soundManager.PlaySound("SquimCh2"); break;
+            }
+
+            AlSoundTimer = 20.0f;
+        }
     }
 
     public void PlayerEscaped()
@@ -181,7 +220,14 @@ public class MoveAIThief : MonoBehaviour
                        inventory.GetComponent<NewInventory>().spaces[randItem]);
                     itemSpotFull = true;
                     ShowItem();
-                    
+                    RandSound = Random.Range(1, 3);
+
+                    switch (RandSound)
+                    {
+                        case 1: soundManager.PlaySound("SquimSt1"); break;
+                        case 2: soundManager.PlaySound("SquimSt2"); break;
+                    }
+
                 }
 
                 Vector3 direction = (player.transform.position - transform.position).normalized;

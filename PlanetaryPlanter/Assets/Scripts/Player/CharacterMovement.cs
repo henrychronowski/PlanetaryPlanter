@@ -157,6 +157,11 @@ public class CharacterMovement : MonoBehaviour
     public float ledgeShuffleSpeed;
 
     public bool canGlide = false;
+
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
+
+    public int MelRand;
     void CheckInput()
     {
         xMove = Input.GetAxisRaw("Horizontal");
@@ -171,11 +176,26 @@ public class CharacterMovement : MonoBehaviour
             holdingGlider = !holdingGlider; //Swaps value of holdingGlider
             if(holdingGlider)
             {
-                //Play start sound
+                MelRand = Random.Range(1, 3);
+
+                switch (MelRand)
+                {
+                    case 1: soundManager.PlaySound("MelExit1"); break;
+                    case 2: soundManager.PlaySound("MelExit2"); break;
+                }
+
+                
+                //soundManager.PlaySound("Glider");
             }
             else
             {
-                //Play end sound
+                MelRand = Random.Range(1, 3);
+
+                switch (MelRand)
+                {
+                    case 1: soundManager.PlaySound("MelExit1"); break;
+                    case 2: soundManager.PlaySound("MelExit2"); break;
+                }
             }
             ExitWall();
         }
@@ -788,7 +808,13 @@ public class CharacterMovement : MonoBehaviour
 
             if(holdingGlider)
             {
-                //play exit sound
+                MelRand = Random.Range(1, 3);
+
+                switch (MelRand)
+                {
+                    case 1: soundManager.PlaySound("MelExit1"); break;
+                    case 2: soundManager.PlaySound("MelExit2"); break;
+                }
             }
 
             holdingGlider = false;
@@ -801,7 +827,13 @@ public class CharacterMovement : MonoBehaviour
 
             if (holdingGlider)
             {
-                //play exit sound
+                MelRand = Random.Range(1, 3);
+
+                switch (MelRand)
+                {
+                    case 1: soundManager.PlaySound("MelExit1"); break;
+                    case 2: soundManager.PlaySound("MelExit2"); break;
+                }
             }
 
             holdingGlider = false;
@@ -840,6 +872,8 @@ public class CharacterMovement : MonoBehaviour
         TutorialManagerScript.instance.Unlock("Welcome to Planetary Planter");
         characterController = GetComponent<CharacterController>();
         jumpSound = GetComponent<AudioSource>();
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame

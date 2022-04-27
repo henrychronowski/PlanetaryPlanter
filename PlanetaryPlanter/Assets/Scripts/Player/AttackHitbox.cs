@@ -14,6 +14,8 @@ public class AttackHitbox : MonoBehaviour
 
     // Audio Manager Script is set up here
     private SoundManager soundManager;
+
+    public int RandWh;
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "BreakableWall" && canBreakRocks)
@@ -28,6 +30,17 @@ public class AttackHitbox : MonoBehaviour
             Debug.Log("Hit Squimbus");
             bonk.RecoverStolenItemWithBonk(other.gameObject);
             soundManager.PlaySound("SquimHit");
+
+            RandWh = Random.Range(1, 5);
+
+            switch (RandWh)
+            {
+                case 1: soundManager.PlaySound("SquimWh1"); break;
+                case 2: soundManager.PlaySound("SquimWh2"); break;
+                case 3: soundManager.PlaySound("SquimWh3"); break;
+                case 4: soundManager.PlaySound("SquimWh4"); break;
+            }
+
         }
     }
     // Start is called before the first frame update
