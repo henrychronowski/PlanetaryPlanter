@@ -24,14 +24,12 @@ public class MoveAIThief : MonoBehaviour
     bool stealCooldownActive = false;
     float currentStealCooldownTime;
 
-    // Audio Manager Script is set up here
-    private SoundManager soundManager;
-    public int RandSound;
-    public float AlSoundTimer = 3.0f;
-
     [SerializeField] float knockback;
     [SerializeField] float knockbackAngle;
     [SerializeField] Image itemIcon;
+    [SerializeField] Animator squimbusAnimator;
+    GameObject[] itemsToSteal;
+    InventorySpace[] spaces;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +37,6 @@ public class MoveAIThief : MonoBehaviour
         newDestinationNeeded = true;
         currentDropItemTime = dropItemTime;
         currentStealCooldownTime = stealCooldownTime;
-        //Audio Manager Is Opend Up here
-        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
@@ -63,7 +59,6 @@ public class MoveAIThief : MonoBehaviour
 
             destination = player.transform.position;
             gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
-
         }
 
         if (newDestinationNeeded == true)
@@ -98,13 +93,7 @@ public class MoveAIThief : MonoBehaviour
         }
 
         CheckThiefLocation();
-
-        if (playerSpotted == true)
-        {
-            AlSoundTimer -= Time.deltaTime;
-        }
-
-        Debug.Log(AlSoundTimer);
+        UpdateAnimValues();
     }
 
     void PickNewDestination()
@@ -132,7 +121,11 @@ public class MoveAIThief : MonoBehaviour
     void CheckThiefLocation()
     {
         //maybe change this to a distance close to the destination (with a slight pause?)
-        if (Vector3.Distance(gameObject.transform.position, destination) < 2.0f)
+        // I think this will fix it sometimes struggling to stop, sometimes its destination
+        // is lower than what the terrain allows so just ignoring the destination Y val might fix it
+        // -Daniel
+        
+        if (Vector3.Distance(gameObject.transform.position, new Vector3(destination.x, transform.position.y, destination.z)) < 2.0f)
         {
             //pick new location to move to
             newDestinationNeeded = true;
@@ -152,29 +145,6 @@ public class MoveAIThief : MonoBehaviour
         destination = player.transform.position;
         gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
         playerSpotted = true;
-
-        RandSound = Random.Range(1, 5);
-
-        switch (RandSound)
-        {
-            case 1: soundManager.PlaySound("SquimAl1"); break;
-            case 2: soundManager.PlaySound("SquimAl2"); break;
-            case 3: soundManager.PlaySound("SquimAl3"); break;
-            case 4: soundManager.PlaySound("SquimAl4"); break;
-        }
-
-        if (playerSpotted == true && AlSoundTimer < 1)
-        {
-            RandSound = Random.Range(1, 3);
-
-            switch (RandSound)
-            {
-                case 1: soundManager.PlaySound("SquimCh1"); break;
-                case 2: soundManager.PlaySound("SquimCh2"); break;
-            }
-
-            AlSoundTimer = 20.0f;
-        }
     }
 
     public void PlayerEscaped()
@@ -188,54 +158,33 @@ public class MoveAIThief : MonoBehaviour
 
     void StealFromPlayer() //take an item from the player inventory
     {
-        int randItem;
+        int randItem = 0;
+        bool itemFound = false;
+        InventorySpace[] filledSpaces;
+
+        int attemptsToSteal = 0;
+
+        filledSpaces = inventory.GetComponent<NewInventory>().GetFilledSpaces();
 
         //could be this or a collider contact
-        if (Vector3.Distance(gameObject.transform.position, destination) < 1.0f && stealCooldownActive == false)
+        if (itemSpotFull == false)
         {
-            if (inventory.GetComponent<NewInventory>().spaces.Count > 0 && itemSpotFull == false)
-            {
-                randItem = (int)Random.Range(0, inventory.GetComponent<NewInventory>().spaces.Count);
-                bool itemFound = false;
+            randItem = Random.Range(0, filledSpaces.Length);
 
-                if (inventory.GetComponent<NewInventory>().spaces[randItem].filled == false)
-                {
-                    for (randItem = 0; randItem < inventory.GetComponent<NewInventory>().spaces.Count; randItem++)
-                    {
-                        if (inventory.GetComponent<NewInventory>().spaces[randItem].filled == true)
-                        {
-                            itemFound = true;
-                            break;
-                        }
-                    }
-                }
+            stolenObject = filledSpaces[randItem].item.itemObject;
+            inventory.GetComponent<NewInventory>().PopItem(filledSpaces[randItem]);
+            
+            TutorialManagerScript.instance.Unlock("Squimbus!");
+            Debug.Log("got your nose >:)");
+            
+            itemSpotFull = true;
+            ShowItem();                      
 
-                if (itemFound == true)
-                {
-                    TutorialManagerScript.instance.Unlock("Squimbus!");
-                    Debug.Log("got your nose :)");
-                    stolenObject = inventory.GetComponent<NewInventory>().GetItem
-                        (inventory.GetComponent<NewInventory>().spaces[randItem]);
-                    inventory.GetComponent<NewInventory>().PopItem(
-                       inventory.GetComponent<NewInventory>().spaces[randItem]);
-                    itemSpotFull = true;
-                    ShowItem();
-                    RandSound = Random.Range(1, 3);
-
-                    switch (RandSound)
-                    {
-                        case 1: soundManager.PlaySound("SquimSt1"); break;
-                        case 2: soundManager.PlaySound("SquimSt2"); break;
-                    }
-
-                }
-
-                Vector3 direction = (player.transform.position - transform.position).normalized;
-                player.GetComponent<CharacterMovement>().AddForce((new Vector3(direction.x, knockbackAngle, direction.z)).normalized * knockback);
-
-                playerSpotted = false;
-                newDestinationNeeded = true;
-            }
+            Vector3 direction = (player.transform.position - transform.position).normalized;
+            player.GetComponent<CharacterMovement>().AddForce((new Vector3(direction.x, knockbackAngle, direction.z)).normalized * knockback);
+        
+            playerSpotted = false;
+            newDestinationNeeded = true;
         }
     }
 
@@ -254,6 +203,21 @@ public class MoveAIThief : MonoBehaviour
     public void HideItem()
     {
         itemIcon.enabled = false;
+    }
+
+    void UpdateAnimValues()
+    {        
+        if (thief.velocity.magnitude > 0)
+            squimbusAnimator.SetBool("moving", true);
+        else
+            squimbusAnimator.SetBool("moving", false);
+
+        squimbusAnimator.SetFloat("moveSpeed", thief.velocity.magnitude / thief.speed);
+
+        if(thief.velocity.magnitude / thief.speed < 0.1f)
+        {
+            squimbusAnimator.SetBool("moving", false);
+        }
     }
 
     public GameObject GetStolenObject()
@@ -276,4 +240,5 @@ public class MoveAIThief : MonoBehaviour
         stealCooldownActive = true;
         newDestinationNeeded = true;
     }
+
 }

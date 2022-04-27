@@ -105,6 +105,14 @@ public class PlantSpot : MonoBehaviour
         return false;
     }
 
+    public bool GetPlantStatus()
+    {
+        if(placedPlant == null)
+            return false;
+
+        return placedPlant.stage == Plant.Stage.Ripe || placedPlant.stage == Plant.Stage.Rotten;
+    }
+
     void TakePlant()
     {
         GameObject temp = transform.GetChild(0).transform.gameObject;
@@ -131,6 +139,7 @@ public class PlantSpot : MonoBehaviour
                 temp.transform.parent = null;
                 temp.transform.position = new Vector3(0, 1000);
                 plantObject = null;
+                placedPlant = null;
             }
             return;
         }
@@ -139,8 +148,9 @@ public class PlantSpot : MonoBehaviour
             soundManager.PlaySound("Harvest");
             p.inPot = false;
             temp.transform.parent = null;
-            temp.transform.position = new Vector3(0, 1000); //this is dumb but its 4:30am
+            temp.transform.position = new Vector3(0, -1000); //this is dumb but its 4:30am
             plantObject = null;
+            placedPlant = null;
             Debug.Log("Added to inv");
         }
     }
