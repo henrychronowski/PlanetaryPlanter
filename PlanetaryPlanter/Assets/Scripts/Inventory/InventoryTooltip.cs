@@ -11,6 +11,7 @@ public class InventoryTooltip : MonoBehaviour
     public float yOffset;
     public TextMeshProUGUI text;
     public Image panel;
+    public bool forcedOff;
     public void SetNewText(string newText)
     {
         text.text = newText;
@@ -23,7 +24,7 @@ public class InventoryTooltip : MonoBehaviour
             text.enabled = false;
             SetPanelActive(false);
         }
-        else
+        else if(!forcedOff)
         {
                 text.enabled = true;
                 
@@ -39,7 +40,10 @@ public class InventoryTooltip : MonoBehaviour
 
     public void SetPanelActive(bool enabled)
     {
-        panel.enabled = enabled;
+        if (forcedOff)
+            panel.enabled = false;
+        else
+            panel.enabled = enabled;
     }
 
     // Start is called before the first frame update
