@@ -26,8 +26,9 @@ public class InventorySpace : MonoBehaviour
         if(filled)
         {
             tooltipBox.gameObject.SetActive(true);
-
+            tooltipBox.forcedOff = false;
             TooltipInfo tip = item.itemObject.GetComponent<TooltipInfo>();
+            
             if(tip != null)
             {
                 tooltipBox.SetNewText(tip.name + "\nType: " + tip.itemType + "\n" + tip.otherInfo);
