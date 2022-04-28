@@ -19,6 +19,10 @@ public class ApplyButtonSound : MonoBehaviour
             if (button.gameObject.tag == "Inventory")
                 continue;
 
+            if (button.gameObject.TryGetComponent<InventorySpace>(out InventorySpace space))
+            {
+                continue;
+            }
             button.onClick.AddListener(PlayButtonSound);
             var pointerHover = new EventTrigger.Entry();
             pointerHover.eventID = EventTriggerType.PointerEnter;

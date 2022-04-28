@@ -97,7 +97,14 @@ public class PlantSpot : MonoBehaviour
             fertilizerCheck = NewInventory.instance.PopItemOfTag("Fertilizer");
             if(fertilizerCheck)
             {
-                p.growthNeededForEachStage -= 3;
+                p.stage = Plant.Stage.Ripe;
+                p.plantModels[0].SetActive(false);
+                p.plantModels[1].SetActive(false);
+                p.plantModels[2].SetActive(true);
+                p.plantModels[3].SetActive(false);
+
+
+
                 Instantiate(fertilizerParticles, transform);
                 return true;
             }
@@ -123,7 +130,6 @@ public class PlantSpot : MonoBehaviour
                 return;
             else
             {
-                p.AddWater(10);
                 return;
             }
         }
