@@ -15,6 +15,6 @@ public class ForwardIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, 60, player.transform.position.z);
+
     }
 }
