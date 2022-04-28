@@ -22,7 +22,7 @@ public class Plant : MonoBehaviour
     public Stage stage;
 
     [SerializeField]
-    List<GameObject> plantModels;
+    public List<GameObject> plantModels;
 
     public float currentWater; //energy needed for plant to grow
 
@@ -81,7 +81,6 @@ public class Plant : MonoBehaviour
         {
             UpdateUI();
             growthProgress++;
-            currentWater--;
             if(growthProgress % growthNeededForEachStage == 0 && stage != Stage.Rotten)
             {
                 Debug.Log("Next Stage");
