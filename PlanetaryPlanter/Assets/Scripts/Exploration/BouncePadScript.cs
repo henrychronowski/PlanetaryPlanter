@@ -36,6 +36,7 @@ public class BouncePadScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<CharacterMovement>().Bounce(bounceSpeed);
+            soundManager.PlaySound("Bounce");
         }
     }
 }
