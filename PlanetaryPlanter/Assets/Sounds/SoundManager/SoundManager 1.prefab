@@ -56,7 +56,7 @@ MonoBehaviour:
     pitchRand: 0.155
   - name: PlacePlanet
     clip: {fileID: 8300000, guid: 5b73ed9862173d14ba268b4fc6cfa5ab, type: 3}
-    volume: 0.424
+    volume: 0.509
     pitch: 1
     pitchRand: 0.1
   - name: Harvest
@@ -80,8 +80,8 @@ MonoBehaviour:
     pitch: 0.5
     pitchRand: 0.1
   - name: PlantingPlant
-    clip: {fileID: 8300000, guid: 8e8e2821fad2ffd4b9b2e5d856fa5f08, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 9253c0149ff084c4796530d49ad04dd5, type: 3}
+    volume: 0.807
     pitch: 1
     pitchRand: 0.1
   - name: EnterShed
@@ -96,8 +96,8 @@ MonoBehaviour:
     pitchRand: 0
   - name: GainedStory
     clip: {fileID: 8300000, guid: 00c82af75dd86bf45985c92874d91ef5, type: 3}
-    volume: 0.509
-    pitch: 1
+    volume: 0.25
+    pitch: 0.763
     pitchRand: 0
   - name: Glider
     clip: {fileID: 8300000, guid: f8ac3dbeedcd25c4fa7c072bce808714, type: 3}
@@ -105,17 +105,107 @@ MonoBehaviour:
     pitch: 1
     pitchRand: 0
   - name: Bounce
-    clip: {fileID: 8300000, guid: 13d182ef83113bc428474932a12e39a9, type: 3}
-    volume: 0.509
-    pitch: 1
+    clip: {fileID: 8300000, guid: d2d19b165582655428bb2e1c9b9294ab, type: 3}
+    volume: 0.35
+    pitch: 1.186
     pitchRand: 0
   - name: ButtonPress
     clip: {fileID: 8300000, guid: 595be5a0393e27448b5b52f924313823, type: 3}
-    volume: 0.2
+    volume: 0.094
     pitch: 1
     pitchRand: 0
   - name: ButtonOver
     clip: {fileID: 8300000, guid: 26ff87afe6bfb97479be97c6279c7e92, type: 3}
-    volume: 0.2
+    volume: 0
+    pitch: 1
+    pitchRand: 0
+  - name: HitSquim
+    clip: {fileID: 8300000, guid: e1704fe40e74fda4690772a199ecd388, type: 3}
+    volume: 0.163
+    pitch: 1
+    pitchRand: 0
+  - name: BreakRocks
+    clip: {fileID: 8300000, guid: f5a38de6714e7dd46a8f0e0d1a96f715, type: 3}
+    volume: 0.491
+    pitch: 1
+    pitchRand: 0
+  - name: SquimAl1
+    clip: {fileID: 8300000, guid: 066b6cd374e294b4c9afb5627ed72e95, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SquimAl2
+    clip: {fileID: 8300000, guid: dd87dc3e3988028418cc367d937c95ca, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SquimAl3
+    clip: {fileID: 8300000, guid: 080d07ef88a495d4c914d36f2b9fea6e, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SquimAl4
+    clip: {fileID: 8300000, guid: a47cbea32b5a0e44c9f01899e72d80a1, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SquimAl5
+    clip: {fileID: 8300000, guid: c700837762ecae149beec5ba70bb0654, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SquimCh1
+    clip: {fileID: 8300000, guid: c8b5c5ddb3807db41a1ca26675a0a656, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SquimCh2
+    clip: {fileID: 8300000, guid: ec743875baf68844e81b206a6dba51c9, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SquimSt1
+    clip: {fileID: 8300000, guid: ad288d9ac6c67d14488185ca446b8a1b, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SquimSt2
+    clip: {fileID: 8300000, guid: e750d8158c9e5b244b3c4642e11b35d6, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SquimWh1
+    clip: {fileID: 8300000, guid: 890580d0d9c575d44afe38c291503bf1, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SquimWh2
+    clip: {fileID: 8300000, guid: c04ae2327943b8b40b6b6e6a31c8b2cf, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SquimWh3
+    clip: {fileID: 8300000, guid: 91f2568b4628825488a599c371b8b4b3, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SquimWh4
+    clip: {fileID: 8300000, guid: 8a97e760526566b48aeebaab6c22ed2d, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: Mel1
+    clip: {fileID: 8300000, guid: 5350462e1dae17d469e0663942aa803d, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: Mel2
+    clip: {fileID: 8300000, guid: 46c06bbf780f86f4ba5aa8a8c26a6603, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitchRand: 0
+  - name: SwingShovel
+    clip: {fileID: 8300000, guid: e7e981f6f128eb64cb1fbb5311a3eb01, type: 3}
+    volume: 0.839
     pitch: 1
     pitchRand: 0
