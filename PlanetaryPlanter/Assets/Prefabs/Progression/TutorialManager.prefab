@@ -34,6 +34,7 @@ GameObject:
   - component: {fileID: 5601200245753977328}
   - component: {fileID: 3517668093438780859}
   - component: {fileID: 680461697}
+  - component: {fileID: 825032694291548434}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -182,11 +183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlocked: 0
   title: Maintaining Plants
-  description: "You\u2019ve planted a seed! But you can\u2019t just leave it alone.
-    Show some love to your plant by pressing E while near it to water it with Stardust.
-    If a plant is starting to wilt from a lack of Stardust, you\u2019ll see a water
-    droplet symbol floating over it. Once the crop is ripe, press E to harvest the
-    crop and put it into your inventory. Don\u2019t let it sit ripe for too long,
+  description: "You\u2019ve planted a seed! Once the crop is ripe, press E to harvest
+    the crop and put it into your inventory. Don\u2019t let it sit ripe for too long,
     though, or it\u2019ll rot! "
   isComic: 0
   type: 0
@@ -835,6 +833,37 @@ MonoBehaviour:
   gifTitleText: {fileID: 0}
   gifDescriptionText: {fileID: 0}
 --- !u!114 &680461697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981054008426009073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636f176f31b48704684eb4f4ce1a6b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUnlocked: 0
+  title: A Sense of Direction.
+  description: Check your to-do table in order to have a good idea as to how to progress,
+    check the observatory for more information.
+  isComic: 0
+  type: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
+  tutorial: {fileID: 0}
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
+--- !u!114 &825032694291548434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
