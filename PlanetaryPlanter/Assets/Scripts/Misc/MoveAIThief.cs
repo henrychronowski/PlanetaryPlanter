@@ -14,6 +14,7 @@ public class MoveAIThief : MonoBehaviour
     public Transform movementRadius; //the range on the map the ai can move
     public float dropItemTime;
     public float stealCooldownTime;
+    public float stuckCountdown;
 
     Vector3 destination;
     [SerializeField] GameObject stolenObject; //gameobject or what?
@@ -28,8 +29,14 @@ public class MoveAIThief : MonoBehaviour
     [SerializeField] float knockbackAngle;
     [SerializeField] Image itemIcon;
     [SerializeField] Animator squimbusAnimator;
+
     GameObject[] itemsToSteal;
     InventorySpace[] spaces;
+
+    Vector3 currentLocation;
+    Vector3 pastLocation;
+    float currentStuckCountdown;
+    bool isStuck = false;
 
     // Audio Manager Script is set up here
     private SoundManager soundManager;
@@ -40,13 +47,22 @@ public class MoveAIThief : MonoBehaviour
         newDestinationNeeded = true;
         currentDropItemTime = dropItemTime;
         currentStealCooldownTime = stealCooldownTime;
-        //Audio Manager Is Opend Up here
+        currentStuckCountdown = stuckCountdown;
+
+        //Audio Manager Is Opened Up here
         soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
+        currentLocation = gameObject.transform.position;
+
+        if (Vector3.Distance(currentLocation, pastLocation) < 1.0f) //maybe make this a distance thing?
+        {
+            isStuck = true;
+        }
+
         if (stealCooldownActive == true)
         {
             currentStealCooldownTime -= Time.deltaTime;
@@ -99,6 +115,24 @@ public class MoveAIThief : MonoBehaviour
 
         CheckThiefLocation();
         UpdateAnimValues();
+
+        if (playerSpotted == true && itemSpotFull == true)
+        {
+            PickNewDestination();
+        }
+
+        if (isStuck == true)
+        {
+            currentStuckCountdown -= Time.deltaTime;
+
+            if (currentStuckCountdown <= 0.0f)
+            {
+                PickNewDestination();
+                isStuck = false;
+            }
+        }
+
+        pastLocation = currentLocation;
     }
 
     void PickNewDestination()
