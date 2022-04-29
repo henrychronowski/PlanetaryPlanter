@@ -72,5 +72,7 @@ public class InventorySpace : MonoBehaviour
         {
             DisableTip();
         }
+        if(filled)
+            item.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(GetComponent<RectTransform>().rect.width, GetComponent<RectTransform>().rect.height);
     }
 }

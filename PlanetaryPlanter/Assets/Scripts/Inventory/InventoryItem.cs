@@ -47,9 +47,11 @@ public class InventoryItem : MonoBehaviour
     public Sprite grassRockyPlanet;
 
     public ItemID itemID;
-   
+
+    private RectTransform rect;
     public void Init(GameObject item)
     {
+        
         itemObject = item;
         iconDisplay = GetComponent<Image>();
         if (itemObject)

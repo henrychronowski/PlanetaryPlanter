@@ -521,6 +521,7 @@ public class NewInventory : MonoBehaviour
                 selectedItem.gameObject.transform.position = new Vector3(10000, 10000);
             }
             RectTransform itemTransform = selectedItem.gameObject.GetComponent<RectTransform>();
+            itemTransform.sizeDelta = new Vector2(50, 50); //Resets item image size to default when clicked
             selectedItem.gameObject.transform.position = new Vector3(Input.mousePosition.x + (itemTransform.rect.width),
             Input.mousePosition.y + (itemTransform.rect.height + heldItemPositionOffset), Input.mousePosition.z);
 
@@ -858,7 +859,7 @@ public class NewInventory : MonoBehaviour
     void UpdateTooltipTextOpacity()
     {
         timeSinceNewSelection += Time.deltaTime;
-        if (timeSinceNewSelection >= timeUntilCompletelyFadedOut)
+        if (timeSinceNewSelection >= timeUntilCompletelyFadedOut || !selectedSpace.filled)
         {
             itemNameTooltip.color = new Color(itemNameTooltip.color.r, itemNameTooltip.color.g, itemNameTooltip.color.b, 0);
         }
