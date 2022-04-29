@@ -9,6 +9,7 @@ public class BouncePadScript : MonoBehaviour
 
     // Audio Manager Script is set up here
     private SoundManager soundManager;
+    public Animation stretchAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,8 @@ public class BouncePadScript : MonoBehaviour
         {
             collision.gameObject.GetComponent<CharacterMovement>().Bounce(bounceSpeed);
             soundManager.PlaySound("Bounce");
+            stretchAnim.Play();
+
         }
     }
 
@@ -37,6 +40,7 @@ public class BouncePadScript : MonoBehaviour
         {
             other.gameObject.GetComponent<CharacterMovement>().Bounce(bounceSpeed);
             soundManager.PlaySound("Bounce");
+            stretchAnim.Play();
         }
     }
 }
