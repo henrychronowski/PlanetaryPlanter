@@ -37,6 +37,13 @@ public class Sound
     {
         source.Pause();
     }
+
+    public void Play(float newPitch)
+    {
+        source.volume = volume;
+        source.pitch = newPitch;
+        source.PlayOneShot(clip);
+    }
 }
 public class SoundManager : MonoBehaviour
 {
@@ -80,6 +87,24 @@ public class SoundManager : MonoBehaviour
         }
         Debug.LogWarning("SoundManager: Sound not found in sounds list:" + _name);
     }
+
+
+    public void PlaySoundWithPitch(string _name, float newPitch)
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].name == _name)
+            {
+                if (SaveManager.instance.loadingStarted && !SaveManager.instance.dataLoaded)
+                    return;
+
+                sounds[i].Play(newPitch);
+                return;
+            }
+        }
+        Debug.LogWarning("SoundManager: Sound not found in sounds list:" + _name);
+    }
+
     public void PauseSound(string _name)
     {
         for (int i = 0; i < sounds.Length; i++)

@@ -31,6 +31,7 @@ public class NewInventory : MonoBehaviour
     public GameObject selectionIndicator;
     public GameObject grayOutLevelPanel;
     public GameObject craftingMenu;
+    public PortalMapScript portalMapScript;
     public int selectedIndex;
     public float scrollWheel;
     public bool inventoryActive; // True when the mouse has been unconfined and can click on things, only when UI is open
@@ -228,6 +229,14 @@ public class NewInventory : MonoBehaviour
             
             if(space.item == null)
             {
+                if(space.disallowCrops && selectedItem.itemObject.TryGetComponent<Plant>(out Plant p) ||
+                    space.disallowMods && selectedItem.itemObject.TryGetComponent<Modifier>(out Modifier m))
+                {
+                    SoundManager.instance.PlaySoundWithPitch("ButtonPress", 0.25f);
+                    return;
+                }
+                
+
                 space.item = selectedItem;
                 selectedItem = null;
                 itemInCursor = false;
@@ -879,6 +888,7 @@ public class NewInventory : MonoBehaviour
     {
         //DontDestroyOnLoad(this);
         SetSpacesActive(false);
+        portalMapScript = FindObjectOfType<PortalMapScript>();
     }
 
     // Update is called once per frame
@@ -903,7 +913,10 @@ public class NewInventory : MonoBehaviour
             CheckForObservatoryState();
             
         }
-        
+        if(portalMapScript.mapActive)
+        {
+            grayOutLevelPanel.SetActive(false);
+        }
     }
 }
 
