@@ -7,7 +7,7 @@ public class FastForwardScript : MonoBehaviour
     public GameObject tutorialCanvas;
     public GameObject gifCanvas;
     public GameObject comicCanvas;
-
+    public DevSpotsEnabler dev;
 
     public OpenAlmanacScript pauseControl;
     public float fastForwardSpeed = 4;
@@ -32,7 +32,7 @@ public class FastForwardScript : MonoBehaviour
             Time.timeScale = 0;
             return;
         }
-        else if (Input.GetKey(KeyCode.F))
+        else if (Input.GetKey(KeyCode.F) && dev.cheatsOn)
         {
             Time.timeScale = fastForwardSpeed;
             fastForwardImage.SetActive(true);

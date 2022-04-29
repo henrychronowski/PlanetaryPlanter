@@ -12,12 +12,16 @@ public class Shovel : MonoBehaviour
     [SerializeField] AttackHitbox hitbox;
     [SerializeField] CharacterMovement character;
     public bool canBreakObjects;
+
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
     void CheckInput()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1) && !isSwinging && character.canMove)
         {
             isSwinging = true;
             character.animator.SetBool("usedShovel", true);
+            soundManager.PlaySound("SwingShovel");
         }
     }
 
@@ -51,6 +55,8 @@ public class Shovel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
