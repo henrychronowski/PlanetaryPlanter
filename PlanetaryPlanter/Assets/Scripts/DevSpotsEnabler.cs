@@ -5,7 +5,7 @@ using UnityEngine;
 public class DevSpotsEnabler : MonoBehaviour
 {
     public GameObject container;
-    public bool enabled = false;
+    public bool cheatsOn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,18 +18,18 @@ public class DevSpotsEnabler : MonoBehaviour
             if(Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.U) && Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.B))
             {
                 container.SetActive(true);
-            enabled = true;
+            cheatsOn = true;
             }
         if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.B))
         {
             container.SetActive(true);
-            enabled = true;
+            cheatsOn = true;
             
         }
         if (Input.GetKey(KeyCode.F) && Input.GetKey(KeyCode.L) && Input.GetKey(KeyCode.Y))
         {
             FindObjectOfType<UnlockSystem>().UnlockChapters(10);
-            enabled = true;
+            cheatsOn = true;
         }
     }
 }
