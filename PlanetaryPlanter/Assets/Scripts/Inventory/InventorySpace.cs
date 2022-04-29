@@ -18,6 +18,9 @@ public class InventorySpace : MonoBehaviour
     public InventoryItem item;
     public InventoryTooltip tooltipBox;
     Button button;
+    public bool disallowCrops = false;
+    public bool disallowMods = false;
+
 
     public void ShowTip()
     {
