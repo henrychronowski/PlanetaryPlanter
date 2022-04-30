@@ -67,8 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b4dcfb9700ab7c447898926dd0847f80, type: 2}
-  - {fileID: 2100000, guid: 2f56536ddfeae174fa08e72eb8f4a2fa, type: 2}
+  - {fileID: 2100000, guid: e1fc6c0007e754645ac10be8a6c6e056, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
   distanceFromCompostBin: 5
+  canCompost: 0
   currentCompost: 0
   minUntilFertilizer: 3
   fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
@@ -167,6 +167,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!1 &3039925249042964542
@@ -292,6 +293,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 24094e476d45e994e993edefb6d6e4b7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d5143e6b31e31ff488d8b94a1b25159a, type: 2}
     - target: {fileID: -927199367670048503, guid: 24094e476d45e994e993edefb6d6e4b7, type: 3}
       propertyPath: m_Name
       value: CompostFill
