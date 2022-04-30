@@ -2358,7 +2358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fd45350b63d29144982c968f44ef06db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4deb7f63e4458345963fceae4a861dd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3178,7 +3178,7 @@ Transform:
   m_GameObject: {fileID: 8113239319783847979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 542.49, y: 1.85, z: 299.23}
-  m_LocalScale: {x: 2.6756, y: 2.9502776, z: 2.6756003}
+  m_LocalScale: {x: 1.541, y: 1.541, z: 1.541}
   m_Children:
   - {fileID: 8113239318005756267}
   m_Father: {fileID: 0}
@@ -3191,7 +3191,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8113239319783847979}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 9043053738813206602, guid: b8f842d39db9f5040add0dad66ffffbc, type: 3}
 --- !u!23 &8113239319783847983
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3244,10 +3244,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1.1083454
+  m_Height: 4.597774
   m_Direction: 1
-  m_Center: {x: -0.000015258789, y: -0.0000038146973, z: 0}
+  m_Center: {x: 0, y: 2.298887, z: 0}
 --- !u!114 &8113239319783847977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3275,6 +3275,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  interactSprite: {fileID: 0}
   interactText: Open Silo (E)
   interactLightAngle: 50
 --- !u!114 &8113239319783847976

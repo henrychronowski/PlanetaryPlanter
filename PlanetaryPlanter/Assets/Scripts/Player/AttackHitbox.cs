@@ -42,7 +42,6 @@ public class AttackHitbox : MonoBehaviour
     void Start()
     {
         hitboxCollider = GetComponent<BoxCollider>();
-        render = GetComponent<MeshRenderer>();
         //Audio Manager Is Opend Up here
         soundManager = SoundManager.instance;
     }
@@ -51,6 +50,5 @@ public class AttackHitbox : MonoBehaviour
     void Update()
     {
         hitboxCollider.enabled = isActive;
-        render.enabled = isActive;
     }
 }

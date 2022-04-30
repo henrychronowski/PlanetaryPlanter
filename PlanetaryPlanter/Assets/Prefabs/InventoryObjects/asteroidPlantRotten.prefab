@@ -575,6 +575,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &1649005879234742348
@@ -702,20 +703,20 @@ MonoBehaviour:
   itemType: Junk
   otherInfo: A fully grown cluster of asteroids. Can be put in a solar system or
     modified at the crafting table.
-  fireModName: Fire Asteroid
+  fireModName: Magma Asteroids
   fireModInfo: An asteroid cluster that leaks hot magma. Can be put in a solar system.
-  iceModName: Ice Asteroid
+  iceModName: Iceteroid Cluster
   iceModInfo: An asteroid cluster made out of ice. Can be put in a solar system.
   ghostModName: Gravestone Cluster
   ghostModInfo: An asteroid cluster that resembles alien headstones. Can be put in
     a solar system.
-  fossilModName: Fossil Asteroid Cluster
+  fossilModName: Bone Storm
   fossilModInfo: A stony comet that turns living things into fossils. Can be put
     in a solar system.
-  waterModName: Water Asteroid
+  waterModName: Flooded Asteroids
   waterModInfo: An asteroid cluster surrounded by bubbles of water. Can be put in
     a solar system.
-  grassModName: Grass Asteroid
+  grassModName: Mossteroid Cluster
   grassModInfo: A cluster of asteroids covered in moss. Can be put in a solar system.
   rottenName: Rotten Asteroid Cluster
   rottenInfo: 'The remains of an asteroid cluster. Can be turned into fertilizer

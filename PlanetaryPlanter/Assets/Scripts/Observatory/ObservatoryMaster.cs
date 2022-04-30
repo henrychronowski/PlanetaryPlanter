@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -303,6 +304,7 @@ public class ObservatoryMaster : MonoBehaviour
         initted = true;
         minimap = GameObject.FindGameObjectWithTag("Minimap");
         welcomeTutorial = GameObject.Find("WelcomeTutorial");
+        playerCam = GameObject.Find("PlayerVCam");
     }
 
     // Update is called once per frame

@@ -487,7 +487,7 @@ MonoBehaviour:
   waterSound: {fileID: 4701402433816794361}
   lastRecordedHour: 0
   sinFactor: 0.2
-  fertilizer: {fileID: 6069283911487194163, guid: 7a4552820e2512b4c9f5266ef8835a88, type: 3}
+  rottenPlant: {fileID: 0}
   species: 4
   type: 0
 --- !u!114 &838100149320444459
@@ -505,6 +505,7 @@ MonoBehaviour:
   interactableEvent:
     m_PersistentCalls:
       m_Calls: []
+  interactSprite: {fileID: 0}
   interactText: Test
   interactLightAngle: 10
 --- !u!114 &6676961146165865322
@@ -632,24 +633,26 @@ MonoBehaviour:
   itemType: Plant
   otherInfo: A fully grown comet. Can be put in a solar system or modified at a crafting
     table.
-  fireModName: Fire Comet
+  fireModName: Phoenix-trail Comet
   fireModInfo: An ever-burning comet that can reignite its own flames. Can be put
     in a solar system.
-  iceModName: Ice Comet
+  iceModName: Frozen Purity
   iceModInfo: A comet that flash freezes away the impurities of anything it touches.
     Can be put in a solar system.
-  ghostModName: Ghostly Comet
+  ghostModName: Ecto-trail Comet
   ghostModInfo: A comet that carries ghosts across the stars. Can be put in a solar
     system.
-  fossilModName: Fossilium Comet
+  fossilModName: Aerolite
   fossilModInfo: A stony comet that turns living things into fossils. Can be put
     in a solar system.
-  waterModName: Liquid Comet
+  waterModName: Dripmelt-trail Comet
   waterModInfo: A melting comet that leaves a trail of water droplets. Can be put
     in a solar system.
-  grassModName: Grassy Comet
+  grassModName: Pollen-trail Comet
   grassModInfo: A comet that spreads pollen across the stars. Can be put in a solar
     system.
+  rottenName: Rotten Comet
+  rottenInfo: 'The remains of a comet. Can be turned into fertilizer at the composter. '
   isPlant: 1
 --- !u!1 &2429293603107915779
 GameObject:
