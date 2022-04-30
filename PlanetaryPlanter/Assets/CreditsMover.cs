@@ -16,16 +16,18 @@ public class CreditsMover : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z);
-        if(transform.position.y > heightToExit)
-        {
-            SceneManager.LoadScene(0);
-        }
+        
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        transform.position = new Vector3(transform.position.x, transform.position.y + (speed * Time.deltaTime), transform.position.z);
+        Debug.Log(transform.position.y);
+        if (transform.position.y > heightToExit)
+        {
+            SceneManager.LoadScene(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(0);
         }
