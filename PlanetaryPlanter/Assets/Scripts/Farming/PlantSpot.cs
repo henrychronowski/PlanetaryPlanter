@@ -73,7 +73,7 @@ public class PlantSpot : MonoBehaviour
                     placedPlant.AddElapsedHours((int)growth);
                     break;
                 }
-            case PlanetSpecies.RockPlanet:
+            case PlanetSpecies.RockyPlanet:
                 {
                     plantObject = Instantiate(items.items[(int)ItemID.RockyPlanetPlant], transform);
                     placedPlant = plantObject.GetComponent<Plant>();

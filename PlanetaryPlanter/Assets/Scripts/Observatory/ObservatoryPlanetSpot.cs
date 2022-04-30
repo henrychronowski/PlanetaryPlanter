@@ -8,7 +8,7 @@ public enum PlanetSpecies
     Asteroid,
     GasPlanet,
     Star,
-    RockPlanet,
+    RockyPlanet,
     Comet,
     Unidentified
 }
@@ -81,7 +81,7 @@ public class ObservatoryPlanetSpot : MonoBehaviour
                             fruit = Instantiate(asteroidFruit);
                             break;
                         }
-                    case PlanetSpecies.RockPlanet:
+                    case PlanetSpecies.RockyPlanet:
                         {
                             fruit = Instantiate(asteroidFruit);
                             break;

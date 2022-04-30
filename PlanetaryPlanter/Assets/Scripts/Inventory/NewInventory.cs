@@ -741,7 +741,7 @@ public class NewInventory : MonoBehaviour
                 }
             }
 
-            if (item.GetComponent<Plant>().species == PlanetSpecies.RockPlanet)
+            if (item.GetComponent<Plant>().species == PlanetSpecies.RockyPlanet)
             {
                 if (item.GetComponent<Plant>().stage == Plant.Stage.Rotten)
                 {
@@ -828,7 +828,7 @@ public class NewInventory : MonoBehaviour
             {
                 return ItemID.AsteroidSeed;
             }
-            else if (item.GetComponent<Seed>().species == PlanetSpecies.RockPlanet)
+            else if (item.GetComponent<Seed>().species == PlanetSpecies.RockyPlanet)
             {
                 return ItemID.RockyPlanetSeed;
             }
