@@ -360,6 +360,8 @@ MonoBehaviour:
   location: 0
   item: {fileID: 0}
   tooltipBox: {fileID: 0}
+  disallowCrops: 0
+  disallowMods: 0
 --- !u!1 &471332247692189301
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +594,7 @@ MonoBehaviour:
   selectionIndicator: {fileID: 1621747145}
   grayOutLevelPanel: {fileID: 8797254370740603699}
   craftingMenu: {fileID: 1310214822763016198}
+  portalCamera: {fileID: 0}
   selectedIndex: 0
   scrollWheel: 0
   inventoryActive: 0
@@ -1538,6 +1541,7 @@ GameObject:
   - component: {fileID: 4728730912895038492}
   - component: {fileID: 5304679414410553702}
   - component: {fileID: 6796179732495945461}
+  - component: {fileID: 7998773690759849501}
   m_Layer: 5
   m_Name: Crafting
   m_TagString: Untagged
@@ -1737,6 +1741,33 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &7998773690759849501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3431023492677014012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 358c82c86bac1754892dc804be6a0c78, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &5890402762063266785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,6 +1864,8 @@ MonoBehaviour:
   location: 1
   item: {fileID: 0}
   tooltipBox: {fileID: 0}
+  disallowCrops: 0
+  disallowMods: 1
 --- !u!114 &3355363617416770834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,6 +2094,8 @@ MonoBehaviour:
   location: 1
   item: {fileID: 0}
   tooltipBox: {fileID: 0}
+  disallowCrops: 1
+  disallowMods: 0
 --- !u!114 &1052947076522719461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2554,6 +2589,7 @@ GameObject:
   - component: {fileID: 3932258582840951571}
   - component: {fileID: 520001328}
   - component: {fileID: 66421137467458212}
+  - component: {fileID: 4036250748816428881}
   m_Layer: 5
   m_Name: Trash Icon
   m_TagString: Untagged
@@ -2619,6 +2655,36 @@ MonoBehaviour:
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!114 &66421137467458212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066460772938882468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f6398e52de29d2f4d90d1c30b18a59a3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4036250748816428881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3623,11 +3689,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80a0fba088dd90a4abe2a169c2ed1421, type: 3}
---- !u!224 &8333530912985160274 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8443163091000974773, guid: 80a0fba088dd90a4abe2a169c2ed1421, type: 3}
-  m_PrefabInstance: {fileID: 471332247559653351}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8333530912985160275 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8443163091000974772, guid: 80a0fba088dd90a4abe2a169c2ed1421, type: 3}
@@ -3639,6 +3700,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c34ded5a33c9424cb825037c3ef5639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &8333530912985160274 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8443163091000974773, guid: 80a0fba088dd90a4abe2a169c2ed1421, type: 3}
+  m_PrefabInstance: {fileID: 471332247559653351}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &471332247740953408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4712,6 +4778,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80a0fba088dd90a4abe2a169c2ed1421, type: 3}
+--- !u!224 &8333530911655406809 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8443163091000974773, guid: 80a0fba088dd90a4abe2a169c2ed1421, type: 3}
+  m_PrefabInstance: {fileID: 471332248889094508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8333530911655406808 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8443163091000974772, guid: 80a0fba088dd90a4abe2a169c2ed1421, type: 3}
@@ -4723,11 +4794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c34ded5a33c9424cb825037c3ef5639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &8333530911655406809 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8443163091000974773, guid: 80a0fba088dd90a4abe2a169c2ed1421, type: 3}
-  m_PrefabInstance: {fileID: 471332248889094508}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &471332248912836148
 PrefabInstance:
   m_ObjectHideFlags: 0

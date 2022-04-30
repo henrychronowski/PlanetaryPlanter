@@ -31,12 +31,17 @@ public class MoveAIThief : MonoBehaviour
     GameObject[] itemsToSteal;
     InventorySpace[] spaces;
 
+    // Audio Manager Script is set up here
+    private SoundManager soundManager;
+
     // Start is called before the first frame update
     void Start()
     {
         newDestinationNeeded = true;
         currentDropItemTime = dropItemTime;
         currentStealCooldownTime = stealCooldownTime;
+        //Audio Manager Is Opend Up here
+        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
@@ -142,6 +147,15 @@ public class MoveAIThief : MonoBehaviour
         //make the ai move after the player now
         Debug.Log("player spotted");
 
+        switch (Random.Range(0, 5))
+        {
+            case 0: soundManager.PlaySound("SquimAl1"); break;
+            case 1: soundManager.PlaySound("SquimAl2"); break;
+            case 2: soundManager.PlaySound("SquimAl3"); break;
+            case 3: soundManager.PlaySound("SquimAl4"); break;
+            case 4: soundManager.PlaySound("SquimAl5"); break;
+        }
+
         destination = player.transform.position;
         gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
         playerSpotted = true;
@@ -176,7 +190,13 @@ public class MoveAIThief : MonoBehaviour
             
             TutorialManagerScript.instance.Unlock("Squimbus!");
             Debug.Log("got your nose >:)");
-            
+
+            switch (Random.Range(0, 2))
+            {
+                case 0: soundManager.PlaySound("SquimSt1"); break;
+                case 1: soundManager.PlaySound("SquimSt2"); break;
+            }
+
             itemSpotFull = true;
             ShowItem();                      
 
