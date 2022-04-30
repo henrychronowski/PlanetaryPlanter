@@ -21,6 +21,7 @@ public class ApplyButtonSound : MonoBehaviour
 
             if (button.gameObject.TryGetComponent<InventorySpace>(out InventorySpace space))
             {
+                button.onClick.AddListener(PlayButtonSound);
                 continue;
             }
             button.onClick.AddListener(PlayButtonSound);

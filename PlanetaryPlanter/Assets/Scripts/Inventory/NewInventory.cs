@@ -31,6 +31,7 @@ public class NewInventory : MonoBehaviour
     public GameObject selectionIndicator;
     public GameObject grayOutLevelPanel;
     public GameObject craftingMenu;
+    public PortalMapScript portalMapScript;
     public int selectedIndex;
     public float scrollWheel;
     public bool inventoryActive; // True when the mouse has been unconfined and can click on things, only when UI is open
@@ -228,6 +229,14 @@ public class NewInventory : MonoBehaviour
             
             if(space.item == null)
             {
+                if(space.disallowCrops && selectedItem.itemObject.TryGetComponent<Plant>(out Plant p) ||
+                    space.disallowMods && selectedItem.itemObject.TryGetComponent<Modifier>(out Modifier m))
+                {
+                    SoundManager.instance.PlaySoundWithPitch("ButtonPress", 0.25f);
+                    return;
+                }
+                
+
                 space.item = selectedItem;
                 selectedItem = null;
                 itemInCursor = false;
@@ -324,13 +333,17 @@ public class NewInventory : MonoBehaviour
                 spaces[i].filled = true;
                 spaces[i].item.gameObject.transform.localPosition = Vector3.zero;
 
-                if(item.GetComponent<Plant>())
+                if(item.TryGetComponent<Plant>(out Plant p))
                 {
                     TutorialManagerScript.instance.Unlock("Harvesting Plants");
 
-                    string species = item.GetComponent<Plant>().species.ToString();
+                    string species = p.species.ToString();
 
-                    AlmanacProgression.instance.Unlock("Collect" + species + "Plant");
+                    if(p.stage == Plant.Stage.Rotten)
+                        AlmanacProgression.instance.Unlock("Rotten" + species);
+                    else
+                        AlmanacProgression.instance.Unlock("Collect" + species + "Plant");
+
                 }
 
                 if(item.GetComponent<Seed>())
@@ -521,6 +534,7 @@ public class NewInventory : MonoBehaviour
                 selectedItem.gameObject.transform.position = new Vector3(10000, 10000);
             }
             RectTransform itemTransform = selectedItem.gameObject.GetComponent<RectTransform>();
+            itemTransform.sizeDelta = new Vector2(50, 50); //Resets item image size to default when clicked
             selectedItem.gameObject.transform.position = new Vector3(Input.mousePosition.x + (itemTransform.rect.width),
             Input.mousePosition.y + (itemTransform.rect.height + heldItemPositionOffset), Input.mousePosition.z);
 
@@ -858,7 +872,7 @@ public class NewInventory : MonoBehaviour
     void UpdateTooltipTextOpacity()
     {
         timeSinceNewSelection += Time.deltaTime;
-        if (timeSinceNewSelection >= timeUntilCompletelyFadedOut)
+        if (timeSinceNewSelection >= timeUntilCompletelyFadedOut || !selectedSpace.filled)
         {
             itemNameTooltip.color = new Color(itemNameTooltip.color.r, itemNameTooltip.color.g, itemNameTooltip.color.b, 0);
         }
@@ -878,6 +892,7 @@ public class NewInventory : MonoBehaviour
     {
         //DontDestroyOnLoad(this);
         SetSpacesActive(false);
+        portalMapScript = FindObjectOfType<PortalMapScript>();
     }
 
     // Update is called once per frame
@@ -902,7 +917,10 @@ public class NewInventory : MonoBehaviour
             CheckForObservatoryState();
             
         }
-        
+        if(portalMapScript.mapActive)
+        {
+            grayOutLevelPanel.SetActive(false);
+        }
     }
 }
 
