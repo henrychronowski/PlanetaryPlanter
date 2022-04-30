@@ -18,6 +18,9 @@ public class InventorySpace : MonoBehaviour
     public InventoryItem item;
     public InventoryTooltip tooltipBox;
     Button button;
+    public bool disallowCrops = false;
+    public bool disallowMods = false;
+
 
     public void ShowTip()
     {
@@ -26,8 +29,9 @@ public class InventorySpace : MonoBehaviour
         if(filled)
         {
             tooltipBox.gameObject.SetActive(true);
-
+            tooltipBox.forcedOff = false;
             TooltipInfo tip = item.itemObject.GetComponent<TooltipInfo>();
+            
             if(tip != null)
             {
                 tooltipBox.SetNewText(tip.name + "\nType: " + tip.itemType + "\n" + tip.otherInfo);
@@ -71,5 +75,7 @@ public class InventorySpace : MonoBehaviour
         {
             DisableTip();
         }
+        if(item)
+            item.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(GetComponent<RectTransform>().rect.width, GetComponent<RectTransform>().rect.height);
     }
 }

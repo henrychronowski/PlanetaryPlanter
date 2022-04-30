@@ -155,7 +155,7 @@ MonoBehaviour:
   hoursElapsed: 0
   timeSinceLastGrowth: 0
   timeBetweenGrowths: 1.5
-  growthRequiredToRot: 50
+  growthRequiredToRot: 60
   originalScale: {x: 0, y: 0, z: 0}
   smallIcon: {fileID: 21300000, guid: 3796f9cd8113e554cb982bfc3a7fd1c6, type: 3}
   grownIcon: {fileID: 21300000, guid: b77a8ee68f11a0d41b8a5b53bafeae94, type: 3}
@@ -311,22 +311,22 @@ MonoBehaviour:
   itemType: Plant
   otherInfo: A fully grown gas planet. Can be put in a solar system or modified at
     the crafting table.
-  fireModName: Fire Planet
+  fireModName: Burning Planet
   fireModInfo: A planet of superheated gas. Can be put in a solar system.
-  iceModName: Ice Planet
+  iceModName: Ice Ring Planet
   iceModInfo: A gas planet that has had its ring frozen. Can be put in a solar system.
-  ghostModName: Ghost Planet
+  ghostModName: Banshee Planet
   ghostModInfo: A gas planet with winds that constantly howl. Can be put in a solar
     system.
-  fossilModName: Fossil Planet
+  fossilModName: Dustball Planet
   fossilModInfo: A gas planet of swirling sand and bone fragments. Can be put in
     a solar system.
-  waterModName: Water Planet
+  waterModName: Stormwrought Planet
   waterModInfo: A gas planet wracked by constant storms. Can be put in a solar system.
-  grassModName: Grass Planet
+  grassModName: Murky Planet
   grassModInfo: A planet of smelly gasses from plants. Can be put in a solar system.
-  rottenName: 
-  rottenInfo: 
+  rottenName: 'Rotten Gas Planet '
+  rottenInfo: The remains of a gas planet. Can be turned into fertilizer at the composter.
   isPlant: 1
 --- !u!1 &5685003054936208045
 GameObject:

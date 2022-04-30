@@ -155,7 +155,7 @@ MonoBehaviour:
   hoursElapsed: 0
   timeSinceLastGrowth: 0
   timeBetweenGrowths: 1
-  growthRequiredToRot: 25
+  growthRequiredToRot: 35
   originalScale: {x: 0, y: 0, z: 0}
   smallIcon: {fileID: 21300000, guid: 3796f9cd8113e554cb982bfc3a7fd1c6, type: 3}
   grownIcon: {fileID: 21300000, guid: 810d6bba139332a458b740017db48ad5, type: 3}
@@ -311,23 +311,24 @@ MonoBehaviour:
   itemType: Plant
   otherInfo: A fully grown cluster of asteroids. Can be put in a solar system or
     modified at the crafting table.
-  fireModName: Fire Asteroid
+  fireModName: Magma Asteroids
   fireModInfo: An asteroid cluster that leaks hot magma. Can be put in a solar system.
-  iceModName: Ice Asteroid
+  iceModName: Iceteroid Cluster
   iceModInfo: An asteroid cluster made out of ice. Can be put in a solar system.
   ghostModName: Gravestone Cluster
   ghostModInfo: An asteroid cluster that resembles alien headstones. Can be put in
     a solar system.
-  fossilModName: Fossil Asteroid Cluster
+  fossilModName: Bone Storm
   fossilModInfo: A stony comet that turns living things into fossils. Can be put
     in a solar system.
-  waterModName: Water Asteroid
+  waterModName: Flooded Asteroids
   waterModInfo: An asteroid cluster surrounded by bubbles of water. Can be put in
     a solar system.
-  grassModName: Grass Asteroid
+  grassModName: Mossteroid Cluster
   grassModInfo: A cluster of asteroids covered in moss. Can be put in a solar system.
-  rottenName: 
-  rottenInfo: 
+  rottenName: Rotten Asteroid Cluster
+  rottenInfo: 'The remains of an asteroid cluster. Can be turned into fertilizer
+    at the composter. '
   isPlant: 1
 --- !u!1 &6905500716569491998
 GameObject:
