@@ -27,7 +27,11 @@ public class SolarSystemCountScript : MonoBehaviour
     {
         if(numSolarSystemsComplete == numSolarSystemsTotal)
         {
-            SceneManager.LoadScene(2);
+            TutorialManagerScript.instance.Unlock("Credits");
+        }
+        if (numSolarSystemsComplete == 75)
+        {
+            TutorialManagerScript.instance.Unlock("All Lore Unlocked!");
         }
     }
 }
