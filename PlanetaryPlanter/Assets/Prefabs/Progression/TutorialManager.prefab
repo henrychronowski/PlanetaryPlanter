@@ -32,6 +32,7 @@ GameObject:
   - component: {fileID: 3308128629154074538}
   - component: {fileID: 1686473225717106467}
   - component: {fileID: 5601200245753977328}
+  - component: {fileID: 4087381712309168273}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -782,6 +783,38 @@ MonoBehaviour:
     worry, you can still get them back! Chase the Squimbus down and press Right Mouse
     to bonk it on the head and get it to give your stuff back! Be careful when wandering
     near a Squimbus\u2019s den next time!"
+  isComic: 0
+  type: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
+  tutorial: {fileID: 0}
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
+  gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
+--- !u!114 &4087381712309168273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981054008426009073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636f176f31b48704684eb4f4ce1a6b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUnlocked: 0
+  title: All Lore Unlocked!
+  description: Congratulations, you've unlocked the final page of the story! However,
+    there's still some solar systems remaining for you to complete. Complete those
+    to view the credits. Thanks for playing!
   isComic: 0
   type: 0
   comicSprite: {fileID: 0}

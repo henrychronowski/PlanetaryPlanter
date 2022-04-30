@@ -257,7 +257,7 @@ public class InventoryItem : MonoBehaviour
                     }
                 }
 
-                if (item.GetComponent<Plant>().species == PlanetSpecies.RockPlanet)
+                if (item.GetComponent<Plant>().species == PlanetSpecies.RockyPlanet)
                 {
                     GameObject plantItem = index.items[(int)ItemID.RockyPlanetPlant];
 
