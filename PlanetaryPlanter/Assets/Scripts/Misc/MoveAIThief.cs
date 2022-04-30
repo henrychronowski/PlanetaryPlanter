@@ -38,6 +38,10 @@ public class MoveAIThief : MonoBehaviour
     float currentStuckCountdown;
     bool isStuck = false;
 
+    bool stunned = false;
+    float currentStunCountdown;
+    public float stunCountdown;
+
     // Audio Manager Script is set up here
     private SoundManager soundManager;
 
@@ -48,6 +52,7 @@ public class MoveAIThief : MonoBehaviour
         currentDropItemTime = dropItemTime;
         currentStealCooldownTime = stealCooldownTime;
         currentStuckCountdown = stuckCountdown;
+        currentStunCountdown = stunCountdown;
 
         //Audio Manager Is Opened Up here
         soundManager = SoundManager.instance;
@@ -56,83 +61,97 @@ public class MoveAIThief : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentLocation = gameObject.transform.position;
+        //currentLocation = gameObject.transform.position;
 
-        if (Vector3.Distance(currentLocation, pastLocation) < 1.0f) //maybe make this a distance thing?
+        if (stunned == false)
         {
-            isStuck = true;
-        }
-
-        if (stealCooldownActive == true)
-        {
-            currentStealCooldownTime -= Time.deltaTime;
-
-            if (currentStealCooldownTime <= 0.0f)
+            if (Vector3.Distance(currentLocation, pastLocation) < 1.0f) //maybe make this a distance thing?
             {
-                currentStealCooldownTime = stealCooldownTime;
-                stealCooldownActive = false;
+                isStuck = true;
             }
-        }
 
-        if (playerSpotted == true && stealCooldownActive == false)
-        {
-            Debug.Log("updating player position");
-
-            destination = player.transform.position;
-            gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
-        }
-
-        if (newDestinationNeeded == true)
-        {
-            Debug.Log("picking new destination");
-
-            PickNewDestination();
-
-            newDestinationNeeded = false;
-        }
-
-        if (itemSpotFull == true)
-        {
-            currentDropItemTime -= Time.deltaTime;
-
-            if (currentDropItemTime <= 0.0f)
+            if (stealCooldownActive == true)
             {
-                DropItem();
-                currentDropItemTime = dropItemTime;
+                currentStealCooldownTime -= Time.deltaTime;
+
+                if (currentStealCooldownTime <= 0.0f)
+                {
+                    currentStealCooldownTime = stealCooldownTime;
+                    stealCooldownActive = false;
+                }
             }
-        }
-        else
-        {
-            HideItem();
-        }
 
-        if (Vector3.Distance(thief.transform.position, movementRadius.transform.position)
-            > movementRadius.GetComponent<SphereCollider>().radius)
-        {
-            playerSpotted = false;
-            newDestinationNeeded = true;
-        }
+            if (playerSpotted == true && stealCooldownActive == false)
+            {
+                Debug.Log("updating player position");
 
-        CheckThiefLocation();
-        UpdateAnimValues();
+                destination = player.transform.position;
+                gameObject.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
+            }
 
-        if (playerSpotted == true && itemSpotFull == true)
-        {
-            PickNewDestination();
-        }
+            if (newDestinationNeeded == true)
+            {
+                Debug.Log("picking new destination");
 
-        if (isStuck == true)
-        {
-            currentStuckCountdown -= Time.deltaTime;
+                PickNewDestination();
 
-            if (currentStuckCountdown <= 0.0f)
+                newDestinationNeeded = false;
+            }
+
+            if (itemSpotFull == true)
+            {
+                currentDropItemTime -= Time.deltaTime;
+
+                if (currentDropItemTime <= 0.0f)
+                {
+                    DropItem();
+                    currentDropItemTime = dropItemTime;
+                }
+            }
+            else
+            {
+                HideItem();
+            }
+
+            if (Vector3.Distance(thief.transform.position, movementRadius.transform.position)
+                > movementRadius.GetComponent<SphereCollider>().radius)
+            {
+                playerSpotted = false;
+                newDestinationNeeded = true;
+            }
+
+            CheckThiefLocation();
+            UpdateAnimValues();
+
+            if (playerSpotted == true && itemSpotFull == true)
             {
                 PickNewDestination();
-                isStuck = false;
+            }
+
+            //if (isStuck == true)
+            //{
+            //    currentStuckCountdown -= Time.deltaTime;
+
+            //    if (currentStuckCountdown <= 0.0f)
+            //    {
+            //        PickNewDestination();
+            //        isStuck = false;
+            //    }
+            //}
+        }
+
+        if (stunned == true)
+        {
+            currentStunCountdown -= Time.deltaTime;
+
+            if (currentStunCountdown <= 0.0f)
+            {
+                currentStunCountdown = stunCountdown;
+                stunned = false;
             }
         }
 
-        pastLocation = currentLocation;
+        //pastLocation = currentLocation;
     }
 
     void PickNewDestination()
@@ -232,7 +251,7 @@ public class MoveAIThief : MonoBehaviour
             }
 
             itemSpotFull = true;
-            ShowItem();                      
+            ShowItem();
 
             Vector3 direction = (player.transform.position - transform.position).normalized;
             player.GetComponent<CharacterMovement>().AddForce((new Vector3(direction.x, knockbackAngle, direction.z)).normalized * knockback);
@@ -246,6 +265,7 @@ public class MoveAIThief : MonoBehaviour
     {
         itemSpotFull = false;
         stolenObject = null; //maybe should just destroy it or something
+        stunned = true;
     }
 
     public void ShowItem()
@@ -293,5 +313,17 @@ public class MoveAIThief : MonoBehaviour
     {
         stealCooldownActive = true;
         newDestinationNeeded = true;
+    }
+
+    public void ChangeStunState()
+    {
+        if (stunned == false)
+        {
+            stunned = true;
+        }
+        else if (stunned == true)
+        {
+            stunned = false;
+        }
     }
 }
