@@ -333,13 +333,17 @@ public class NewInventory : MonoBehaviour
                 spaces[i].filled = true;
                 spaces[i].item.gameObject.transform.localPosition = Vector3.zero;
 
-                if(item.GetComponent<Plant>())
+                if(item.TryGetComponent<Plant>(out Plant p))
                 {
                     TutorialManagerScript.instance.Unlock("Harvesting Plants");
 
-                    string species = item.GetComponent<Plant>().species.ToString();
+                    string species = p.species.ToString();
 
-                    AlmanacProgression.instance.Unlock("Collect" + species + "Plant");
+                    if(p.stage == Plant.Stage.Rotten)
+                        AlmanacProgression.instance.Unlock("Rotten" + species);
+                    else
+                        AlmanacProgression.instance.Unlock("Collect" + species + "Plant");
+
                 }
 
                 if(item.GetComponent<Seed>())
