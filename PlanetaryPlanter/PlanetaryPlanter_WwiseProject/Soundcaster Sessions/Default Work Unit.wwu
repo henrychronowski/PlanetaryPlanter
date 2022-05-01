@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{275BF5D3-717E-4109-811D-8CCBA7277A9F}" SchemaVersion="103">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{275BF5D3-717E-4109-811D-8CCBA7277A9F}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{275BF5D3-717E-4109-811D-8CCBA7277A9F}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="New Soundcaster Session" ID="{977C9994-4346-4C40-9F82-AEAD5896E843}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Hot_Event" ID="{B141D07C-8583-47C2-9337-7DF78319BCAE}" WorkUnitID="{4873F100-2662-4601-ABFA-5650B10E15D6}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Temperate_Event" ID="{4740BD09-468C-42EA-96B3-107ED562F831}" WorkUnitID="{4873F100-2662-4601-ABFA-5650B10E15D6}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Cold_Event" ID="{2609EB0D-2508-43B4-BB07-34C9F4969B95}" WorkUnitID="{4873F100-2662-4601-ABFA-5650B10E15D6}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Farm_Event" ID="{B48DBEB9-DA8C-46F4-A289-C55BA320B9D9}" WorkUnitID="{4873F100-2662-4601-ABFA-5650B10E15D6}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Main_Menu_Event" ID="{4D6CF813-5AE1-4C49-8870-8D02035F4759}" WorkUnitID="{4873F100-2662-4601-ABFA-5650B10E15D6}"/>
+							<Position X="3" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Observatory_Event" ID="{AE1DCF19-124D-402B-85E8-7BCA5F26C853}" WorkUnitID="{4873F100-2662-4601-ABFA-5650B10E15D6}"/>
+							<Position X="4" Y="1"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="Observatory_Event" ID="{DE4A13C1-EB34-4E8B-9432-B1948BD01737}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>
