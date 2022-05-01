@@ -6,17 +6,11 @@ public class SceneRestart : MonoBehaviour
 {
     public int sceneToLoad = 0;
     // Start is called before the first frame update
-    void Start()
+
+    public void SceneLoader()
     {
-        
+        SceneManager.LoadScene(sceneToLoad);
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            SceneManager.LoadScene(sceneToLoad);
-        }
-    }
 }

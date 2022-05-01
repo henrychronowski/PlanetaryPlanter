@@ -28,6 +28,12 @@ public static class SaveSystem
         Debug.Log("Save complete to " + path);
     }
 
+    public static bool CheckForData()
+    {
+        string path = Application.persistentDataPath + "/squimbus.progress";
+        return File.Exists(path);
+    }
+
     public static PlayerData LoadAllData()
     {
         string path = Application.persistentDataPath + "/squimbus.progress";
