@@ -20,6 +20,7 @@ public class FootSteps : MonoBehaviour
         if (!player.grounded)
             return;
         audioSource.PlayOneShot(GetRandomClip());
+        //AudioSource.PlayClipAtPoint(GetRandomClip(), spawnOffset);
 
     }
 

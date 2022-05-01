@@ -17,7 +17,7 @@ public class Shovel : MonoBehaviour
     private SoundManager soundManager;
     void CheckInput()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1) && !isSwinging && character.canMove)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && !isSwinging && character.canMove && character.grounded)
         {
             isSwinging = true;
             character.animator.SetBool("usedShovel", true);
@@ -41,6 +41,8 @@ public class Shovel : MonoBehaviour
             }
             else if(timeSinceSwingStart > activeTime + startupTime) //returns true when the hitbox has exhausted its active time
             {
+                character.animator.SetBool("usedShovel", false);
+
                 hitbox.isActive = false;
                 return;
             }
