@@ -105,12 +105,12 @@ public class ObservatoryMaster : MonoBehaviour
 
     public List<ObservatoryPlanetSpot> GetPlanetSpotsOfChapter(int chapter)
     {
-        if (chapter == 0)
-            chapter = 1;
+        //if (chapter == 0)
+        //    chapter = 1;
 
         List <ObservatoryPlanetSpot> spots = new List<ObservatoryPlanetSpot>();
 
-        spots.AddRange(observatoryPoints[chapter - 1].GetComponentsInChildren<ObservatoryPlanetSpot>());
+        spots.AddRange(observatoryPoints[chapter].GetComponentsInChildren<ObservatoryPlanetSpot>());
 
         return spots;
     }
@@ -152,7 +152,7 @@ public class ObservatoryMaster : MonoBehaviour
     {
         
         currentChapterSpots = GetPlanetSpotsOfChapter(currentChapter);
-        FillChapterSpots(currentChapter - 1); //fill all previous chapters
+        FillChapterSpots(currentChapter); //fill all previous chapters
         
         
 
@@ -173,6 +173,11 @@ public class ObservatoryMaster : MonoBehaviour
             temp.GetComponent<Plant>().species = currentChapterSpots[i].species;
 
             currentChapterSpots[i].PlaceObject(temp, false);
+
+            if(currentChapterSpots[i].transform.parent.parent.GetComponent<Observatory>().IsComplete())
+            {
+                currentChapterSpots[i].transform.parent.parent.GetComponent<Observatory>().LoadComplete();
+            }
         }
         for(int i = 0; i < currentChapter; i++)
         {
@@ -185,7 +190,7 @@ public class ObservatoryMaster : MonoBehaviour
         for (int i = 0; i < chaptersToFill; i++)
         {
             //fill up each chapter's spots
-            List<ObservatoryPlanetSpot> spots = GetPlanetSpotsOfChapter(i + 1);
+            List<ObservatoryPlanetSpot> spots = GetPlanetSpotsOfChapter(i);
             foreach (ObservatoryPlanetSpot spot in spots)
             {
                 GameObject temp = Instantiate(basePlant);
