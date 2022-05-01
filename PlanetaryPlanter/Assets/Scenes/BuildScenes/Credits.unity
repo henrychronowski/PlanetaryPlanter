@@ -2513,7 +2513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  heightToExit: 5000
+  heightToExit: 4900
 --- !u!1001 &1959458006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2634,6 +2634,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 414798401}
+    - target: {fileID: 454173232008751410, guid: 7d6ffccce2af71b4ba3542864fdd2295, type: 3}
+      propertyPath: canGlide
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 454173232008751412, guid: 7d6ffccce2af71b4ba3542864fdd2295, type: 3}
       propertyPath: m_Name
       value: NewPlayer

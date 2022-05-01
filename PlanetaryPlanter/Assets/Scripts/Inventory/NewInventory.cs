@@ -232,7 +232,7 @@ public class NewInventory : MonoBehaviour
                 if(space.disallowCrops && selectedItem.itemObject.TryGetComponent<Plant>(out Plant p) ||
                     space.disallowMods && selectedItem.itemObject.TryGetComponent<Modifier>(out Modifier m))
                 {
-                    SoundManager.instance.PlaySoundWithPitch("ButtonPress", 0.25f);
+                    SoundManager.instance.PlaySound("ButtonError");
                     return;
                 }
                 
