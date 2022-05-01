@@ -44,6 +44,15 @@ public class Sound
         source.pitch = newPitch;
         source.PlayOneShot(clip);
     }
+
+    public void Play(Vector3 location)
+    {
+        source.volume = volume;
+        source.pitch = pitch * (1 + Random.Range(-pitchRand / 2, pitchRand / 2)); ;
+        //source.PlayOneShot(clip);
+        
+        AudioSource.PlayClipAtPoint(clip, location);
+    }
 }
 public class SoundManager : MonoBehaviour
 {
@@ -99,6 +108,22 @@ public class SoundManager : MonoBehaviour
                     return;
 
                 sounds[i].Play(newPitch);
+                return;
+            }
+        }
+        Debug.LogWarning("SoundManager: Sound not found in sounds list:" + _name);
+    }
+
+    public void PlaySoundAtLocation(string _name, Vector3 location)
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].name == _name)
+            {
+                if (SaveManager.instance.loadingStarted && !SaveManager.instance.dataLoaded)
+                    return;
+
+                sounds[i].Play(location);
                 return;
             }
         }

@@ -11,6 +11,7 @@ public class UnlockSystem : MonoBehaviour
     public GameObject silo1;
     public GameObject silo2;
     public GameObject bounceblooms;
+    public GameObject goldSquimbus;
     public ActManagerScript actManager;
 
     public bool seniorShowUnlocks;
@@ -20,6 +21,7 @@ public class UnlockSystem : MonoBehaviour
         //actManager = gameObject.GetComponent<ActManagerScript>();
         actManager = FindObjectOfType<ActManagerScript>();
         observatoryMaster = GameObject.FindObjectOfType<ObservatoryMaster>();
+
     }
 
     void CheckForNewChapter()
@@ -36,8 +38,8 @@ public class UnlockSystem : MonoBehaviour
         while (currentChapter < chaptersToUnlock)
         {
             currentChapter++;
-            observatoryMaster.unlockedConstellations[currentChapter] = true;
             Unlock(false);
+            observatoryMaster.unlockedConstellations[currentChapter] = true;
         }
     }
 
@@ -111,6 +113,11 @@ public class UnlockSystem : MonoBehaviour
                     actManager.Unlock("Act 3");
                     break;
                 }
+            case 10:
+                {
+                    goldSquimbus.SetActive(true);
+                    break;
+                }
         }
     }
 
@@ -174,6 +181,12 @@ public class UnlockSystem : MonoBehaviour
             case 9:
                 {
                     actManager.Unlock("Act 3");
+                    break;
+                }
+            case 10:
+                {
+                    goldSquimbus.SetActive(true);
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("Credits");
                     break;
                 }
         }

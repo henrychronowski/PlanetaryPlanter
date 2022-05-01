@@ -27,7 +27,12 @@ ModelImporter:
   - first:
       74: 6389516895938140069
     second: farmer_shovelHitRun
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basecolor_farmer
+    second: {fileID: 2100000, guid: 8798072f9681ac84ab1f38857a67634c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -296,11 +301,25 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.06504077
+        functionName: StepLeft
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.53252035
+        functionName: StepRight
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 211
     isReadable: 0
   meshes:
     lODScreenPercentages: []

@@ -152,9 +152,18 @@ public class Plant : MonoBehaviour
         originalScale = plantModels[(int)stage].transform.localScale;
         timeSinceLastGrowth = 0;
         UpdateUI();
-
         //Audio Manager Is Opend Up here
         soundManager = SoundManager.instance;
+        if (transform.parent == null)
+            inPot = false;
+        else if(transform.parent.TryGetComponent<PlantSpot>(out PlantSpot p))
+        {
+            inPot = true;
+        }
+        else
+        {
+            inPot = false;
+        }
     }
 
     // Update is called once per frame

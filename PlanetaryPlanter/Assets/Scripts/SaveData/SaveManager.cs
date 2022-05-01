@@ -128,6 +128,12 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    public bool GameDataFound()
+    {
+        GameObject.Find("LoadGame").SetActive(SaveSystem.CheckForData());
+        return false;
+    }
+
     public void LoadGame()
     {
         loadDataIntended = true;
@@ -151,6 +157,10 @@ public class SaveManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        if(SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
         if (SceneManager.GetActiveScene().buildIndex == activeSceneIndex)
         {
             timeSinceLastSave += Time.deltaTime;
