@@ -14,13 +14,22 @@ public class FootSteps : MonoBehaviour
 
 
     CharacterMovement player;
+    [SerializeField] float stepVolume = 1.0f;
+    [SerializeField] bool useLocation = true;
+    [SerializeField] bool groundedRequired = true;
+
 
     void Step()
     {
-        if (!player.grounded)
+        if (!player.grounded && groundedRequired)
             return;
-        audioSource.PlayOneShot(GetRandomClip());
-        //AudioSource.PlayClipAtPoint(GetRandomClip(), spawnOffset);
+        AudioClip clip = GetRandomClip();
+
+        if(useLocation)
+            AudioSource.PlayClipAtPoint(GetRandomClip(), transform.position, stepVolume);
+        else
+            audioSource.PlayOneShot(clip, stepVolume);
+
 
     }
 
@@ -48,6 +57,7 @@ public class FootSteps : MonoBehaviour
             index = Random.Range(0, stepSounds.Length);
         }
         lastPlayedSound = index;
+        
         return stepSounds[index];
     }
 

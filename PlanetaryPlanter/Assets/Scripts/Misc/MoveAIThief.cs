@@ -149,11 +149,11 @@ public class MoveAIThief : MonoBehaviour
 
         switch (Random.Range(0, 5))
         {
-            case 0: soundManager.PlaySound("SquimAl1"); break;
-            case 1: soundManager.PlaySound("SquimAl2"); break;
-            case 2: soundManager.PlaySound("SquimAl3"); break;
-            case 3: soundManager.PlaySound("SquimAl4"); break;
-            case 4: soundManager.PlaySound("SquimAl5"); break;
+            case 0: soundManager.PlaySoundAtLocation("SquimAl1", transform.position); break;
+            case 1: soundManager.PlaySoundAtLocation("SquimAl2", transform.position); break;
+            case 2: soundManager.PlaySoundAtLocation("SquimAl3", transform.position); break;
+            case 3: soundManager.PlaySoundAtLocation("SquimAl4", transform.position); break;
+            case 4: soundManager.PlaySoundAtLocation("SquimAl5", transform.position); break;
         }
 
         destination = player.transform.position;
@@ -193,8 +193,8 @@ public class MoveAIThief : MonoBehaviour
 
             switch (Random.Range(0, 2))
             {
-                case 0: soundManager.PlaySound("SquimSt1"); break;
-                case 1: soundManager.PlaySound("SquimSt2"); break;
+                case 0: soundManager.PlaySoundAtLocation("SquimSt1", transform.position); break;
+                case 1: soundManager.PlaySoundAtLocation("SquimSt2", transform.position); break;
             }
 
             itemSpotFull = true;

@@ -51,7 +51,7 @@ public class Sound
         source.pitch = pitch * (1 + Random.Range(-pitchRand / 2, pitchRand / 2)); ;
         //source.PlayOneShot(clip);
         
-        AudioSource.PlayClipAtPoint(clip, location);
+        AudioSource.PlayClipAtPoint(clip, location, source.volume);
     }
 }
 public class SoundManager : MonoBehaviour
