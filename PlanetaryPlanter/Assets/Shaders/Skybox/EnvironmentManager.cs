@@ -44,6 +44,10 @@ public class EnvironmentManager : MonoBehaviour
         Current = EnvironmentType.Temperate;
         Environments = new SkyboxParams[] {ColdParams, TemperateParams, HotParams};
         SetParameters(Environments[((int)Current)]);
+        if (SystemInfo.supportsAsyncGPUReadback)
+                {
+                    DynamicGI.UpdateEnvironment();
+                }
         IsLerping = false;
         invTransitionTime = 1f/TransitionTime;
     }

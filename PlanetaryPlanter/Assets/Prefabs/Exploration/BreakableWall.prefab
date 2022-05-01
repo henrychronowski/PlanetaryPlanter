@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7623957583846362948}
   - component: {fileID: 6803265991044448952}
   - component: {fileID: 2311180778358155525}
-  - component: {fileID: 5468092188407553144}
   m_Layer: 6
   m_Name: WallModel (1)
   m_TagString: BreakableWall
@@ -98,19 +97,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8733429697405204941, guid: 35046a8be8f116e458dcd8f25f9ffefd, type: 3}
---- !u!65 &5468092188407553144
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420050917118536336}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 17.350468, y: 11.311908, z: 3.555509}
-  m_Center: {x: -1.1232027, y: 5.2255116, z: -0.50584227}
 --- !u!1 &3722989821344855843
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,8 +207,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 17.350468, y: 11.311908, z: 3.0672963}
-  m_Center: {x: -1.1232336, y: 5.2255116, z: -1.2206098}
+  m_Size: {x: 17.350468, y: 11.311908, z: 6}
+  m_Center: {x: -1.1232336, y: 5.2255116, z: -2}
 --- !u!1 &5076711944491515977
 GameObject:
   m_ObjectHideFlags: 0
