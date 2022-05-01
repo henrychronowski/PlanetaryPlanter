@@ -30,7 +30,7 @@ public class AlmanacProgression : MonoBehaviour
             Destroy(this);
         }
     }
-    public void Unlock(string title)
+    public void Unlock(string title, bool loadingGame = false)
     {
         Achievement ac = FindAchievementByTitle(title);
         if (ac == null)
@@ -38,9 +38,17 @@ public class AlmanacProgression : MonoBehaviour
 
         if (!ac.unlocked)
         {
-            ac.InteractableEventTriggered();
+            if(!loadingGame)
+            {
+                ac.InteractableEventTriggered();
+                soundManager.PlaySound("GainedStory");
 
-            soundManager.PlaySound("GainedStory");
+            }
+            else
+            {
+                ac.unlocked = true;
+
+            }
         }
         else
         {
