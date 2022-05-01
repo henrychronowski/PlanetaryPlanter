@@ -43,6 +43,19 @@ public class Observatory : MonoBehaviour
 
     }
 
+    public bool IsComplete()
+    {
+        foreach (ObservatoryPlanetSpot spot in constellationSpots)
+        {
+            if (!spot.filled)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public int GetFilledSpots()
     {
         int filled = 0;
@@ -94,7 +107,7 @@ public class Observatory : MonoBehaviour
         if (solarSystemCounter == null)
             solarSystemCounter = FindObjectOfType<SolarSystemCountScript>();
         solarSystemCounter.numSolarSystemsComplete++;
-        AlmanacProgression.instance.Unlock(completionAchievementName + solarSystemCounter.numSolarSystemsComplete.ToString());
+        AlmanacProgression.instance.Unlock(completionAchievementName + solarSystemCounter.numSolarSystemsComplete.ToString(), true);
         if (numComplete == null)
             Debug.Log("Numcomplete null");
         if (constellationSpots == null)
@@ -111,6 +124,8 @@ public class Observatory : MonoBehaviour
         constellationSpots.AddRange(GetComponentsInChildren<ObservatoryPlanetSpot>());
         lines = new List<LineRenderer>();
         lines.AddRange(GetComponentsInChildren<LineRenderer>());
+        solarSystemCounter = FindObjectOfType<SolarSystemCountScript>();
+        soundManager = SoundManager.instance;
         for (int i = 0; i < connections.Count; i++)
         {
             lines[i].SetPosition(0, solarSystemButton.transform.position);
@@ -118,10 +133,8 @@ public class Observatory : MonoBehaviour
             lines[i].enabled = false;
         }
 
-        solarSystemCounter = FindObjectOfType<SolarSystemCountScript>();
 
         //Audio Manager Is Opend Up here
-        soundManager = SoundManager.instance;
     }
 
     // Update is called once per frame
