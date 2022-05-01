@@ -5,10 +5,20 @@
 			<ChildrenList>
 				<Event Name="Main_Menu_Event" ID="{4D6CF813-5AE1-4C49-8870-8D02035F4759}">
 					<ChildrenList>
-						<Action Name="" ID="{85D3084C-AFCC-431A-8DB3-2D41534ECE15}" ShortID="676187907">
+						<Action Name="" ID="{B3EE2775-8552-4CBC-A04E-B450384ED421}" ShortID="800263647">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="MainMenu" ID="{6960B712-0A7B-40F0-A9E8-C1F039CED045}" WorkUnitID="{B6F0A9CD-F468-4FD4-84C6-683319B6BADB}"/>
+									<ObjectRef Name="MainMenu" ID="{00D5DBDA-0F0C-4015-A527-E4763F64AE0F}" WorkUnitID="{17F9F68E-C242-43D6-AC21-A1D5F746AA14}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{FF90386B-2476-4486-8257-1D742C27C869}" ShortID="590621083">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="New Music Switch Container" ID="{4F596088-90A0-4456-8AF3-9A2FC4E6A79D}" WorkUnitID="{A3732061-5A90-4C63-BF88-B170D919C81B}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -37,13 +47,6 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Farm_Event" ID="{D5B59F7E-89D9-478D-82BD-90FA964FAFCD}" WorkUnitID="{17F9F68E-C242-43D6-AC21-A1D5F746AA14}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{CF20BA37-FE1F-4ED1-9F08-22EE20DD2CB5}" ShortID="263267272">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="New Music Switch Container" ID="{4F596088-90A0-4456-8AF3-9A2FC4E6A79D}" WorkUnitID="{A3732061-5A90-4C63-BF88-B170D919C81B}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

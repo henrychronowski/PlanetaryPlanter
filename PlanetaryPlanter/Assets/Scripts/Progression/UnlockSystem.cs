@@ -58,7 +58,7 @@ public class UnlockSystem : MonoBehaviour
                     //new silo
                     silo1.SetActive(true);
                     if (showTutorial) TutorialManagerScript.instance.Unlock("New Silo");
-                    actManager.Unlock("The Prologue");
+                    
                     break;
                 }
             case 2:
@@ -66,6 +66,7 @@ public class UnlockSystem : MonoBehaviour
                     //new planters
                     planterSet1.SetActive(true);
                     if (showTutorial) TutorialManagerScript.instance.Unlock("New Planters");
+                    actManager.Unlock("The Prologue");
                     break;
                 }
             case 3:
@@ -80,26 +81,28 @@ public class UnlockSystem : MonoBehaviour
                 {
                     planterSet2.SetActive(true);
                     if (showTutorial) TutorialManagerScript.instance.Unlock("New Planters 2");
-                    actManager.Unlock("Act 1");
+                    
                     break;
                 }
             case 5:
                 {
                     silo2.SetActive(true);
                     if (showTutorial) TutorialManagerScript.instance.Unlock("New Silo Again");
+                    actManager.Unlock("Act 1");
                     break;
                 }
             case 6:
                 {
                     GameObject.FindObjectOfType<AttackHitbox>().canBreakRocks = true;
                     if (showTutorial) TutorialManagerScript.instance.Unlock("Stallanovium Trowel");
-                    actManager.Unlock("Act 2");
+                    
                     break;
                 }
             case 7:
                 {
                     GameObject.FindObjectOfType<CharacterMovement>().canGlide = true;
                     if (showTutorial) TutorialManagerScript.instance.Unlock("Melmee");
+                    actManager.Unlock("Act 2");
 
                     //glider
                     break;
@@ -110,12 +113,13 @@ public class UnlockSystem : MonoBehaviour
                 }
             case 9:
                 {
-                    actManager.Unlock("Act 3");
+                    
                     break;
                 }
             case 10:
                 {
                     goldSquimbus.SetActive(true);
+                    actManager.Unlock("Act 3");
                     break;
                 }
         }
