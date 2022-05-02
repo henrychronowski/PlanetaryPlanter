@@ -8,7 +8,8 @@ public class PortalFoundScript : MonoBehaviour
     {
         Temperate,
         Hot,
-        Cold
+        Cold,
+        Farm
     }
     
     public bool portalFound;
@@ -22,12 +23,23 @@ public class PortalFoundScript : MonoBehaviour
 
     [SerializeField] PortalMapScript portalMap;
 
+    public AudioSource farmSource;
+    public AudioSource hotSource;
+    public AudioSource coldSource;
+    public AudioSource temperateSource;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
 
         player = GameObject.FindObjectOfType<CharacterMovement>();
         portalMap = GameObject.FindObjectOfType<PortalMapScript>();
+        farmSource = GameObject.Find("FarmMusic").GetComponent<AudioSource>();
+        hotSource = GameObject.Find("HotBiomeMusic").GetComponent<AudioSource>();
+        coldSource = GameObject.Find("ColdBiomeMusic").GetComponent<AudioSource>();
+        temperateSource = GameObject.Find("Main Camera").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -66,10 +78,44 @@ public class PortalFoundScript : MonoBehaviour
     public void Teleport()
     {
         player.Teleport(transform.position);
+        
+
+        ChangeMusic();
+
         portalMap.CloseMap();
     }
 
-    
+    void ChangeMusic()
+    {
+        coldSource.Stop();
+        hotSource.Stop();
+        farmSource.Stop();
+        temperateSource.Stop();
+
+        switch (location)
+        {
+            case Biome.Farm:
+                {
+                    farmSource.Play();
+                    break;
+                }
+            case Biome.Cold:
+                {
+                    coldSource.Play();
+                    break;
+                }
+            case Biome.Hot:
+                {
+                    hotSource.Play();
+                    break;
+                }
+            case Biome.Temperate:
+                {
+                    temperateSource.Play();
+                    break;
+                }
+        }
+    }
 
     public void Interact()
     {
