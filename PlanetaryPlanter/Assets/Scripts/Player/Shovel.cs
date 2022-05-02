@@ -21,7 +21,7 @@ public class Shovel : MonoBehaviour
         {
             isSwinging = true;
             character.animator.SetBool("usedShovel", true);
-            soundManager.PlaySound("SwingShovel");
+            soundManager.PlaySoundAtLocation("SwingShovel", transform.position);
         }
     }
 

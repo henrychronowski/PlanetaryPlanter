@@ -33,6 +33,7 @@ GameObject:
   - component: {fileID: 1686473225717106467}
   - component: {fileID: 5601200245753977328}
   - component: {fileID: 4087381712309168273}
+  - component: {fileID: 290635329}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -84,9 +85,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlocked: 0
   title: Welcome to Planetary Planter
-  description: This build is for testing out our new level design, as well as the
-    addition of Squimbus (he's a green sphere right now). Try to complete at least
-    Chapter 1's constellation in the Observatory (the round building).
+  description: 'You are a farmer on the distant planet of Stellanova. The night sky
+    has been dim for too long, devoid of constellations. Using the strange plants
+    of your world, fill the sky''s inky canvas with starry art! '
   isComic: 0
   type: 0
   comicSprite: {fileID: 0}
@@ -375,14 +376,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlocked: 0
   title: Full Inventory
-  description: "Uh oh, it looks like you\u2019ve filled up your bag with items! Fortunately,
-    there are many different ways to deal with this. You can hit Tab to enter inventory
-    management mode, where you can Left Click an item to pick it up, and then either
-    Left Click on another item to put it down and pick up the other item, or put
-    it in the trash can with Left Click. Don\u2019t worry, the item won\u2019t be
-    deleted until you put another item in the trash, so you can take the item back
-    out if you change your mind. If you don\u2019t want to throw anything away, go
-    to the silo on your farm. It's the tall building!"
+  description: "Uh oh, it looks like you\u2019ve filled up your bag! You can throw
+    items out by placing them in your trash slot. They won't be deleted until you
+    throw out another item. If you want to store items, bring them to the silo. It's
+    the tall building!"
   isComic: 0
   type: 0
   comicSprite: {fileID: 0}
@@ -411,10 +408,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  title: Demo Over
+  title: Demo Over!
   description: Congratulations! You've completed the demo for Planetary Planter.
     You may feel free to continue crafting more solar systems, or you may exit the
-    game.
+    game. Interact with the Golden Squimbus at the farm to view the credits!
   isComic: 0
   type: 0
   comicSprite: {fileID: 0}
@@ -444,7 +441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlocked: 0
   title: Bouncy Shroom
-  description: Looks like you've unlocked the Bouncy Shroom. This plant is useful
+  description: Looks like you've unlocked the Bounceshroom. This plant is useful
     for getting over particularly high walls. These can be grown and harvested like
     regular plants. But, once harvested, they can be placed down at specific spots
     in the world by pressing E.
@@ -543,10 +540,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlocked: 0
   title: Portal Plant
-  description: This plant makes traveling around the world easier. There are a few
-    portals scattered throughout, and you need to discover them to use them. Once
-    you have, stand on them, press E to open the map, and select your destination
-    to warp to it.
+  description: "You\u2019ve found a flower of the Worldweed! This massive plant snakes
+    all around Stellanova. You can use it to quickly travel to any flower you\u2019ve
+    seen before, including back to your farm. To use it, step on the flower and press
+    E, then select the flower you want to go to! "
   isComic: 0
   type: 0
   comicSprite: {fileID: 0}
@@ -611,14 +608,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlocked: 0
   title: Solar System
-  description: "This is one of the many solar systems you need to fill out in order
-    to complete your constellations. Each solar system requires different components
-    in order to be completed. To see what the solar system needs, hover your mouse
-    over one of the blank spots, and you\u2019ll get information about what type
-    of celestial body needs to go there. If you have an item the solar system needs,
-    you can place it into the sky by Left Clicking the item in your inventory to
-    pick it up, and then Left Clicking on the spot where the celestial body needs
-    to go."
+  description: This is one of the many solar systems you need to fill out in order
+    to complete your constellations. Each solar system requires different crops in
+    order to be completed. You can see what a solar system needs by hovering over
+    a slot. If you have an item the solar system needs, you can place it into the
+    sky by picking it up and placing it in the spot with Left Click.
   isComic: 0
   type: 1
   comicSprite: {fileID: 0}
@@ -683,8 +677,8 @@ MonoBehaviour:
   isUnlocked: 0
   title: Stallanovium Trowel
   description: "You\u2019ve upgraded your trusty trowel with Stellanovium, a durable
-    crystal found only on Stellanova. Now you can use your trowel to shatter walls
-    of Stellanovium! To do so, approach one of these crystal walls and press E."
+    crystal found only on Stellanova. You can shatter Stellanovium walls by approaching
+    one and right clicking. You can use this to access the Hot Biome out East."
   isComic: 1
   type: 2
   comicSprite: {fileID: 21300000, guid: 5cc37a3a08e675f49bf0259ac0774253, type: 3}
@@ -749,7 +743,8 @@ MonoBehaviour:
   isUnlocked: 0
   title: Bounceblooms!
   description: Bounceblooms have spread across Stellanova in suspiciously convenient
-    areas! Jump on top of them while holding Space for the best results.
+    areas! Jump on top of them while holding Space for the best results. You can
+    use these to access the Cold Biome, out West.
   isComic: 1
   type: 2
   comicSprite: {fileID: 21300000, guid: 46e94e4988cf08f4bb4345166a9fa933, type: 3}
@@ -826,6 +821,39 @@ MonoBehaviour:
   comicTitleText: {fileID: 0}
   comicDescriptionText: {fileID: 0}
   gif: {fileID: 0}
+  gifCanvas: {fileID: 0}
+  gifPlayer: {fileID: 0}
+  gifTitleText: {fileID: 0}
+  gifDescriptionText: {fileID: 0}
+--- !u!114 &290635329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981054008426009073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636f176f31b48704684eb4f4ce1a6b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUnlocked: 0
+  title: Credits
+  description: You've completed every constellation in the game! As a reward, you've
+    been visited by a rare one-of-a-kind Golden Squimbus! Feel free to continue playing,
+    and when you're ready, speak to Golden Squimbus to view the credits. Thanks for
+    playing!
+  isComic: 0
+  type: 0
+  comicSprite: {fileID: 0}
+  comicCanvasImage: {fileID: 0}
+  comicTutorialCanvas: {fileID: 0}
+  tutorial: {fileID: 0}
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  comicTitleText: {fileID: 0}
+  comicDescriptionText: {fileID: 0}
+  gif: {fileID: 32900000, guid: 8efd6487c3ae06d4cbe757698fe95fce, type: 3}
   gifCanvas: {fileID: 0}
   gifPlayer: {fileID: 0}
   gifTitleText: {fileID: 0}

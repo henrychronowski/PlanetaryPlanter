@@ -172,9 +172,12 @@ public class CharacterMovement : MonoBehaviour
             if(holdingGlider)
             {
                 //Play start sound
+                SoundManager.instance.PlaySound("Mel2");
             }
             else
             {
+                SoundManager.instance.PlaySound("Mel1");
+
                 //Play end sound
             }
             ExitWall();
