@@ -51,11 +51,11 @@ public class MusicTransitionScript : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            if (other.GetType() == typeof(CapsuleCollider))
+                return;
             tempBiome.Stop();
             newBiome.Play();
             //Debug.Log(other.GetType());
-            //if (other.GetType() == typeof(CapsuleCollider))
-            //    return;
             //if(activeCoroutine == MusicFadeOut(tempBiome, tempVolume, newBiome, newVolume))
             //{
             //    Debug.Log("Duplicate transition detected");
@@ -123,11 +123,11 @@ public class MusicTransitionScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            if (other.GetType() == typeof(CapsuleCollider))
+                return;
             newBiome.Stop();
             tempBiome.Play();
             //insideTrigger = false;
-            //if (other.GetType() == typeof(CapsuleCollider))
-            //    return;
             //if(!isTransitioning)
             //    StartCoroutine(MusicFadeOut(newBiome, newVolume, tempBiome, tempVolume));
 
