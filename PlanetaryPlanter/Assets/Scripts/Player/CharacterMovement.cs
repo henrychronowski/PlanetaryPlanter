@@ -584,26 +584,26 @@ public class CharacterMovement : MonoBehaviour
         RaycastHit hitBackRight;
 
 
-        Physics.Raycast(rayBack.position, Vector3.down, out hitBack);
-        Physics.Raycast(rayMid.position, Vector3.down, out hitMid);
-        Physics.Raycast(rayFront.position, Vector3.down, out hitFront);
-        Physics.Raycast(rayRight.position, Vector3.down, out hitRight);
-        Physics.Raycast(rayLeft.position, Vector3.down, out hitLeft);
-        Physics.Raycast(rayFrontRight.position, Vector3.down, out hitFrontRight);
-        Physics.Raycast(rayFrontLeft.position, Vector3.down, out hitFrontLeft);
-        Physics.Raycast(rayBackLeft.position, Vector3.down, out hitBackLeft);
-        Physics.Raycast(rayBackRight.position, Vector3.down, out hitBackRight);
+        Physics.Raycast(rayBack.position, Vector3.down, out hitBack, 25f, LayerMask.GetMask("Ground", "Interactable"));
+        Physics.Raycast(rayMid.position, Vector3.down, out hitMid, 25f, LayerMask.GetMask("Ground", "Interactable"));
+        Physics.Raycast(rayFront.position, Vector3.down, out hitFront, 25f, LayerMask.GetMask("Ground", "Interactable"));
+        Physics.Raycast(rayRight.position, Vector3.down, out hitRight, 25f, LayerMask.GetMask("Ground", "Interactable"));
+        Physics.Raycast(rayLeft.position, Vector3.down, out hitLeft, 25f, LayerMask.GetMask("Ground", "Interactable"));
+        Physics.Raycast(rayFrontRight.position, Vector3.down, out hitFrontRight, 25f, LayerMask.GetMask("Ground", "Interactable"));
+        Physics.Raycast(rayFrontLeft.position, Vector3.down, out hitFrontLeft, 25f, LayerMask.GetMask("Ground", "Interactable"));
+        Physics.Raycast(rayBackLeft.position, Vector3.down, out hitBackLeft, 25f, LayerMask.GetMask("Ground", "Interactable"));
+        Physics.Raycast(rayBackRight.position, Vector3.down, out hitBackRight, 25f, LayerMask.GetMask("Ground", "Interactable"));
 
 
-        //Debug.DrawLine(rayBack.position, hitBack.point, Color.red);
-        //Debug.DrawLine(rayMid.position, hitMid.point, Color.green);
-        //Debug.DrawLine(rayFront.position, hitFront.point, Color.blue);
-        //Debug.DrawLine(rayRight.position, hitRight.point, Color.yellow);
-        //Debug.DrawLine(rayLeft.position, hitLeft.point, Color.yellow);
-        //Debug.DrawLine(rayFrontRight.position, hitFrontRight.point, Color.cyan);
-        //Debug.DrawLine(rayFrontLeft.position, hitFrontLeft.point, Color.grey);
-        //Debug.DrawLine(rayBackLeft.position, hitBackLeft.point, Color.cyan);
-        //Debug.DrawLine(rayBackRight.position, hitBackRight.point, Color.grey);
+        Debug.DrawLine(rayBack.position, hitBack.point, Color.red);
+        Debug.DrawLine(rayMid.position, hitMid.point, Color.green);
+        Debug.DrawLine(rayFront.position, hitFront.point, Color.blue);
+        Debug.DrawLine(rayRight.position, hitRight.point, Color.yellow);
+        Debug.DrawLine(rayLeft.position, hitLeft.point, Color.yellow);
+        Debug.DrawLine(rayFrontRight.position, hitFrontRight.point, Color.cyan);
+        Debug.DrawLine(rayFrontLeft.position, hitFrontLeft.point, Color.grey);
+        Debug.DrawLine(rayBackLeft.position, hitBackLeft.point, Color.cyan);
+        Debug.DrawLine(rayBackRight.position, hitBackRight.point, Color.grey);
 
 
 
@@ -618,13 +618,21 @@ public class CharacterMovement : MonoBehaviour
             Vector3 slideDir = Vector3.zero;
             float slideAngle;
             slideAngle = slopeSlideAngle;
+            
+            List<float> angles = new List<float>();            
+            angles.Add(frontBackAngle);
+            angles.Add(leftRightAngle);
+            angles.Add(diagonalLeftAngle);
+            angles.Add(diagonalRightAngle);
+            angles.Sort();
 
-            if (frontBackAngle > slideAngle) //Front/back slope check
+            if (angles[angles.Count-1] == frontBackAngle) //Front/back slope check
             {
                 if(hitFront.point.y > hitBack.point.y)
                 {
                     //move backwards and down the slope
                     slideDir += (hitBack.point - hitFront.point).normalized;
+                    
                 }
                 else if(hitFront.point.y < hitBack.point.y)
                 {
@@ -632,7 +640,7 @@ public class CharacterMovement : MonoBehaviour
                     slideDir += (hitFront.point - hitBack.point).normalized;
                 }
             }
-            if (leftRightAngle > slideAngle) //Front/back slope check
+            else if (leftRightAngle == angles[angles.Count-1]) //Front/back slope check
             {
                 if (hitLeft.point.y > hitRight.point.y)
                 {
@@ -645,20 +653,20 @@ public class CharacterMovement : MonoBehaviour
                     slideDir += (hitLeft.point - hitRight.point).normalized;
                 }
             }
-            if (diagonalRightAngle > slideAngle) //Front/back slope check
+            else if (diagonalRightAngle == angles[angles.Count-1]) //Front/back slope check
             {
                 if (hitBackLeft.point.y > hitFrontRight.point.y)
                 {
-                    //move backwards and down the slope
                     slideDir += (hitFrontRight.point - hitBackLeft.point).normalized;
+                    //move backwards and down the slope
                 }
                 else if (hitBackLeft.point.y < hitFrontRight.point.y)
                 {
-                    //move forwards and down the slope
                     slideDir += (hitBackLeft.point - hitFrontRight.point).normalized;
+                    //move forwards and down the slope
                 }
             }
-            if (diagonalLeftAngle > slideAngle) //Front/back slope check
+            else if (diagonalLeftAngle == angles[angles.Count-1]) //Front/back slope check
             {
                 if (hitBackRight.point.y > hitFrontLeft.point.y)
                 {
@@ -731,7 +739,7 @@ public class CharacterMovement : MonoBehaviour
             actualVelocity = (((transform.position - previousPos).normalized * Vector3.Distance(transform.position, previousPos)) / Time.deltaTime);
             animator.SetFloat("runSpeedModifier", new Vector3(actualVelocity.x, 0, actualVelocity.z).magnitude / maxSpeed);
         }
-        else
+        else 
         {
             Vector3 xzVel = new Vector3(velocity.x, 0, velocity.z);
             animator.SetFloat("runSpeedModifier", xzVel.magnitude / maxSpeed);
@@ -851,8 +859,12 @@ public class CharacterMovement : MonoBehaviour
         timeSinceLastLedgeGrab += Time.deltaTime;
         canLedgeGrab = timeSinceLastLedgeGrab > ledgeGrabCooldown;
         animator.SetBool("grounded", grounded || wallrunning);
-        
+
         //Debug.Log(velocity.magnitude);
+        //previousPos = transform.position;
+        //Integrate();
+        //GroundCheck();
+        //GlideCheck();
     }
 
     private void FixedUpdate()
