@@ -731,6 +731,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
         characterController.Move(Time.deltaTime * velocity);
+        Debug.Log(Time.deltaTime);
         if ((characterController.collisionFlags & CollisionFlags.Sides) != 0)
         {
             touchingWall = true;
@@ -850,6 +851,7 @@ public class CharacterMovement : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         jumpSound = GetComponent<AudioSource>();
+        //Application.targetFrameRate = 30;
     }
 
     // Update is called once per frame
