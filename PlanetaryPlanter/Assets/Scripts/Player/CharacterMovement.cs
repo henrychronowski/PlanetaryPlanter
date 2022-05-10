@@ -410,13 +410,13 @@ public class CharacterMovement : MonoBehaviour
 
             
             if(isCrouchSliding)
-                velocity += moveDir.normalized * (speed * slidingControlModifier) * Time.deltaTime;
+                velocity += moveDir.normalized * (speed * slidingControlModifier);
             else if (grounded)
-                velocity += moveDir.normalized * speed * Time.deltaTime;
+                velocity += moveDir.normalized * speed;
             else if(isGliding)
-                velocity += moveDir.normalized * glideAirSpeed * Time.deltaTime;
+                velocity += moveDir.normalized * glideAirSpeed;
             else
-                velocity += moveDir.normalized * airSpeed * Time.deltaTime;
+                velocity += moveDir.normalized * airSpeed;
 
             if (isCrouchSliding)
                 velocity += GetSlideForce();
@@ -493,7 +493,7 @@ public class CharacterMovement : MonoBehaviour
             velocity.y = 0;
             if(jumping)
             {
-                velocity += (Vector3.up).normalized * ledgeJumpPower;
+                velocity += (Vector3.up).normalized * ledgeJumpPower * Time.deltaTime;
                 ExitWall();
                 jumping = false;
                 grabbingLedge = false;
@@ -508,7 +508,7 @@ public class CharacterMovement : MonoBehaviour
                 if (velocity.y < 0)
                     velocity.y = 0;
 
-                velocity += (wallNormal + Vector3.up).normalized * wallJumpPower;
+                velocity += (wallNormal + Vector3.up).normalized * wallJumpPower * Time.deltaTime;
                 ExitWall();
                 jumping = false;
             }
@@ -518,11 +518,11 @@ public class CharacterMovement : MonoBehaviour
         {
             if(velocity.y > 0) //Gliding only kicks in when falling
             {
-                velocity.y += -gravity;
+                velocity.y += -gravity * Time.deltaTime;
             }
             else
             {
-                velocity.y = -glidingGravity;
+                velocity.y = -glidingGravity * Time.deltaTime;
             }
 
             return;
@@ -546,7 +546,7 @@ public class CharacterMovement : MonoBehaviour
             }
             else
             {
-                velocity.y += -holdJumpGravity;
+                velocity.y += -holdJumpGravity * Time.deltaTime;
             }
         }
         else if(grounded && velocity.y <= 0) //Gravity when grounded
@@ -561,7 +561,7 @@ public class CharacterMovement : MonoBehaviour
             }
             else
             {
-                velocity.y += -gravity;
+                velocity.y += -gravity * Time.deltaTime;
             }
         }
         if(velocity.y < -maxFallSpeed && !grounded)
@@ -683,7 +683,7 @@ public class CharacterMovement : MonoBehaviour
                 isSliding = true;
             else
                 isSliding = false;
-            characterController.Move(slideDir.normalized * slideSpeed);
+            characterController.Move(slideDir.normalized * slideSpeed * Time.deltaTime);
         }
         else
         {
@@ -863,18 +863,18 @@ public class CharacterMovement : MonoBehaviour
         animator.SetBool("grounded", grounded || wallrunning);
 
         //Debug.Log(velocity.magnitude);
-        //previousPos = transform.position;
-        //Integrate();
-        //GroundCheck();
-        //GlideCheck();
-    }
-
-    private void FixedUpdate()
-    {
         previousPos = transform.position;
         Integrate();
         GroundCheck();
         GlideCheck();
+    }
+
+    private void FixedUpdate()
+    {
+        //previousPos = transform.position;
+        //Integrate();
+        //GroundCheck();
+        //GlideCheck();
 
     }
 
