@@ -162,7 +162,7 @@
 													<MusicCue Name="Exit Cue" ID="{C17023F1-0BCE-4F95-B926-F75BF89558A9}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="1000"/>
+															<Property Name="TimeMs" Type="Real64" Value="93750"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -186,7 +186,19 @@
 							</TransitionList>
 							<ObjectLists/>
 							<Playlist>
-								<MusicPlaylistItem Name="" ID="{4F12C628-7228-4FD3-9035-0BFDD99AD45B}" ShortID="414657138"/>
+								<MusicPlaylistItem Name="" ID="{4F12C628-7228-4FD3-9035-0BFDD99AD45B}" ShortID="414657138">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{793DE1FC-0FFF-4E01-8197-93529E040213}" ShortID="577908303">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="MainMenu" ID="{35F0AD68-17E0-4621-A32C-11B877EBBA66}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="Farm" ID="{6F62D5F5-DFBC-46B7-B3D6-DF476EE4A1B7}" ShortID="595124644">
@@ -338,7 +350,7 @@
 													<MusicCue Name="Exit Cue" ID="{F71A7609-3C56-4006-B4ED-BD56F4A20410}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="1000"/>
+															<Property Name="TimeMs" Type="Real64" Value="45000"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -362,7 +374,19 @@
 							</TransitionList>
 							<ObjectLists/>
 							<Playlist>
-								<MusicPlaylistItem Name="" ID="{FDFF7BCD-2C65-468F-811F-1AD6B7F9D4AA}" ShortID="449087929"/>
+								<MusicPlaylistItem Name="" ID="{FDFF7BCD-2C65-468F-811F-1AD6B7F9D4AA}" ShortID="449087929">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{DC63AE33-990C-4300-AEB2-C4F2F10B3BB5}" ShortID="917161396">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="Farm" ID="{B451D2B1-91E3-44D3-B608-3772DF64C3DD}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="TemperateBiome" ID="{8CB02613-6423-4C3C-9CA4-AD7A1D26AAC2}" ShortID="279263165">
@@ -514,7 +538,7 @@
 													<MusicCue Name="Exit Cue" ID="{952B00E6-DC9F-4809-8494-34C2B59D027A}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="1000"/>
+															<Property Name="TimeMs" Type="Real64" Value="45000"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -538,7 +562,19 @@
 							</TransitionList>
 							<ObjectLists/>
 							<Playlist>
-								<MusicPlaylistItem Name="" ID="{96190952-ED84-4949-8C63-91612B4B74FF}" ShortID="1056567853"/>
+								<MusicPlaylistItem Name="" ID="{96190952-ED84-4949-8C63-91612B4B74FF}" ShortID="1056567853">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{A20CA3F6-5FE8-41A5-BA46-09EA62BB731E}" ShortID="1004715536">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="TemperateBiome" ID="{B92560BD-CF35-4B14-ADD0-A2B69D7ED17B}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="ColdBiome" ID="{BCC2F6D0-388B-4870-ABBA-422CB7228264}" ShortID="892194119">
@@ -691,7 +727,7 @@
 													<MusicCue Name="Exit Cue" ID="{F88B48D4-B63F-4F8E-B96D-BEF7FE1612E6}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="1000"/>
+															<Property Name="TimeMs" Type="Real64" Value="48750"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -715,7 +751,19 @@
 							</TransitionList>
 							<ObjectLists/>
 							<Playlist>
-								<MusicPlaylistItem Name="" ID="{DE43BD92-3453-4C52-A091-406BD23244C3}" ShortID="166750172"/>
+								<MusicPlaylistItem Name="" ID="{DE43BD92-3453-4C52-A091-406BD23244C3}" ShortID="166750172">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{8AA66D84-EF37-464C-A24D-02AD2097A7EF}" ShortID="200695162">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="ColdBiome" ID="{CF2E4AF4-31DA-40BA-84B8-D4914C5DD4DD}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="HotBiome" ID="{947EFC1A-2BA6-4F6F-A7F3-2D341E5DCD9D}" ShortID="437803980">
@@ -867,7 +915,7 @@
 													<MusicCue Name="Exit Cue" ID="{305C2273-B85F-4C4D-A817-D01FFF80E38A}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="1000"/>
+															<Property Name="TimeMs" Type="Real64" Value="112500"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -891,7 +939,19 @@
 							</TransitionList>
 							<ObjectLists/>
 							<Playlist>
-								<MusicPlaylistItem Name="" ID="{6F1E78AD-DC7C-46B9-B73C-77B922AC1E4A}" ShortID="794920418"/>
+								<MusicPlaylistItem Name="" ID="{6F1E78AD-DC7C-46B9-B73C-77B922AC1E4A}" ShortID="794920418">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{72BBE9CC-E5FD-42BF-B999-12CA3B9F7F4A}" ShortID="619199584">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="HotBiome" ID="{C6C09EBB-16A7-42E0-AC1E-DB8D5D9D0F6F}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="Observatory" ID="{74DA1FF9-E74C-4EBE-B5EA-0863F7A708D1}" ShortID="255013878">
@@ -1043,7 +1103,7 @@
 													<MusicCue Name="Exit Cue" ID="{04D3C19D-D19A-42D7-A8B0-E05C6A1BC0FF}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="1000"/>
+															<Property Name="TimeMs" Type="Real64" Value="82243.5625"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -1067,7 +1127,19 @@
 							</TransitionList>
 							<ObjectLists/>
 							<Playlist>
-								<MusicPlaylistItem Name="" ID="{9BC89C38-B3EC-438E-9FA0-D2E417BA21DD}" ShortID="913138446"/>
+								<MusicPlaylistItem Name="" ID="{9BC89C38-B3EC-438E-9FA0-D2E417BA21DD}" ShortID="913138446">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{4A3AE70C-7BAE-4C93-B1A1-585046CCFD93}" ShortID="81665699">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="Observatory" ID="{59289855-1A9A-40A6-8F88-9A7A302A85EB}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicSegment Name="Transition" ID="{20F5F345-B74C-4BC2-A7E3-2A9F9230F634}" ShortID="12894753">
@@ -1207,7 +1279,7 @@
 											<MusicCue Name="Exit Cue" ID="{6315CA2D-0710-41ED-B809-D1F34CF55A14}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="8000"/>
+													<Property Name="TimeMs" Type="Real64" Value="7500"/>
 												</PropertyList>
 											</MusicCue>
 										</Local>
@@ -1638,7 +1710,7 @@
 								<PathElementRef Name="Game_Music" ID="{3293D283-C9F4-43C0-BD57-CA3357AEF3C7}"/>
 							</Path>
 							<AudioNodeInfo>
-								<NoObject Platform="Linked"/>
+								<AudioNodeRef Name="MainMenu" ID="{5211B9D0-17E9-4289-8C6F-B4E69AA256A2}" WorkUnitID="{A3732061-5A90-4C63-BF88-B170D919C81B}" Platform="Linked"/>
 							</AudioNodeInfo>
 						</Entry>
 						<Entry>
@@ -1646,7 +1718,7 @@
 								<PathElementRef Name="Temperate_Event" ID="{03D43B69-D0D2-4C3B-944B-C6FC0A0DA0B2}"/>
 							</Path>
 							<AudioNodeInfo>
-								<NoObject Platform="Linked"/>
+								<AudioNodeRef Name="TemperateBiome" ID="{8CB02613-6423-4C3C-9CA4-AD7A1D26AAC2}" WorkUnitID="{A3732061-5A90-4C63-BF88-B170D919C81B}" Platform="Linked"/>
 							</AudioNodeInfo>
 						</Entry>
 						<Entry>
@@ -1654,7 +1726,7 @@
 								<PathElementRef Name="Cold_Event" ID="{F70825C8-8022-4E96-9730-3002E1B1B65E}"/>
 							</Path>
 							<AudioNodeInfo>
-								<NoObject Platform="Linked"/>
+								<AudioNodeRef Name="ColdBiome" ID="{BCC2F6D0-388B-4870-ABBA-422CB7228264}" WorkUnitID="{A3732061-5A90-4C63-BF88-B170D919C81B}" Platform="Linked"/>
 							</AudioNodeInfo>
 						</Entry>
 						<Entry>
@@ -1670,7 +1742,7 @@
 								<PathElementRef Name="Hot_Event" ID="{11A137B0-D9DA-40EA-9BDE-405B8BD1CD51}"/>
 							</Path>
 							<AudioNodeInfo>
-								<NoObject Platform="Linked"/>
+								<AudioNodeRef Name="HotBiome" ID="{947EFC1A-2BA6-4F6F-A7F3-2D341E5DCD9D}" WorkUnitID="{A3732061-5A90-4C63-BF88-B170D919C81B}" Platform="Linked"/>
 							</AudioNodeInfo>
 						</Entry>
 						<Entry>
@@ -1678,7 +1750,7 @@
 								<PathElementRef Name="Farm_Event" ID="{D5B59F7E-89D9-478D-82BD-90FA964FAFCD}"/>
 							</Path>
 							<AudioNodeInfo>
-								<NoObject Platform="Linked"/>
+								<AudioNodeRef Name="Farm" ID="{6F62D5F5-DFBC-46B7-B3D6-DF476EE4A1B7}" WorkUnitID="{A3732061-5A90-4C63-BF88-B170D919C81B}" Platform="Linked"/>
 							</AudioNodeInfo>
 						</Entry>
 						<Entry>
@@ -1686,7 +1758,7 @@
 								<PathElementRef Name="Observatory_Event" ID="{DE4A13C1-EB34-4E8B-9432-B1948BD01737}"/>
 							</Path>
 							<AudioNodeInfo>
-								<NoObject Platform="Linked"/>
+								<AudioNodeRef Name="Observatory" ID="{74DA1FF9-E74C-4EBE-B5EA-0863F7A708D1}" WorkUnitID="{A3732061-5A90-4C63-BF88-B170D919C81B}" Platform="Linked"/>
 							</AudioNodeInfo>
 						</Entry>
 						<Entry>
@@ -1694,7 +1766,7 @@
 								<PathElementRef Name="MainMenu" ID="{00D5DBDA-0F0C-4015-A527-E4763F64AE0F}"/>
 							</Path>
 							<AudioNodeInfo>
-								<NoObject Platform="Linked"/>
+								<AudioNodeRef Name="MainMenu" ID="{5211B9D0-17E9-4289-8C6F-B4E69AA256A2}" WorkUnitID="{A3732061-5A90-4C63-BF88-B170D919C81B}" Platform="Linked"/>
 							</AudioNodeInfo>
 						</Entry>
 					</EntryList>
