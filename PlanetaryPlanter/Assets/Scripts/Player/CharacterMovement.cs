@@ -12,6 +12,8 @@ public class CharacterMovement : MonoBehaviour
     public Transform cam;
     public Animator animator;
 
+    public bool moveInUpdate = false;
+
     [SerializeField]
     float speed;
 
@@ -159,6 +161,10 @@ public class CharacterMovement : MonoBehaviour
     public bool canGlide = false;
     void CheckInput()
     {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            moveInUpdate = !moveInUpdate;
+        }
         xMove = Input.GetAxisRaw("Horizontal");
         zMove = Input.GetAxisRaw("Vertical");
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0)) && (grounded || wallrunning || grabbingLedge))
@@ -534,9 +540,16 @@ public class CharacterMovement : MonoBehaviour
         }
         else if (jumping && grounded) //Grounded but pressed jump
         {
-            velocity.y = jumpHeight;
-            grounded = false;
-            jumping = false;
+            Physics.Raycast(rayMid.position, Vector3.down, out RaycastHit hitMid, 25f, LayerMask.GetMask("Ground", "Interactable"));
+
+            if (Vector3.Distance(hitMid.point, rayMid.transform.position) < midRayMaxDistance)
+            {
+                velocity.y = jumpHeight;
+                grounded = false;
+                jumping = false;
+
+            }
+
         }
         if(!grounded && (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))) //Holding jump while airborne
         {
@@ -730,7 +743,9 @@ public class CharacterMovement : MonoBehaviour
             velocity.y = 0;
         }
 
-        characterController.Move(Time.deltaTime * velocity);
+        if(!moveInUpdate)
+            characterController.Move(Time.deltaTime * velocity);
+
         Debug.Log(Time.deltaTime);
         if ((characterController.collisionFlags & CollisionFlags.Sides) != 0)
         {
@@ -795,6 +810,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (Physics.CheckSphere(groundChecker.position, jumpDetectRadius, ground) && velocity.y <= 0)
         {
+
             grounded = true;
             jumping = false;
 
@@ -861,6 +877,8 @@ public class CharacterMovement : MonoBehaviour
         timeSinceLastLedgeGrab += Time.deltaTime;
         canLedgeGrab = timeSinceLastLedgeGrab > ledgeGrabCooldown;
         animator.SetBool("grounded", grounded || wallrunning);
+        if(moveInUpdate)
+            characterController.Move(Time.deltaTime * velocity);
 
         //Debug.Log(velocity.magnitude);
         //previousPos = transform.position;
