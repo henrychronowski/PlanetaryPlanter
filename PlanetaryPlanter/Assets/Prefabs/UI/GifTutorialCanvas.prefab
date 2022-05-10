@@ -121,22 +121,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2118713859050633615}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NewInventory, Assembly-CSharp
-        m_MethodName: SetSpacesActive
-        m_Mode: 6
+      - m_Target: {fileID: 1687837373338534648}
+        m_TargetAssemblyTypeName: TutorialPopup, Assembly-CSharp
+        m_MethodName: FadeOutStart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -157,13 +145,15 @@ GameObject:
   - component: {fileID: 2118713859050633618}
   - component: {fileID: 2118713859050633617}
   - component: {fileID: 2118713859050633616}
+  - component: {fileID: 4812482315459511605}
+  - component: {fileID: 1687837373338534648}
   m_Layer: 5
   m_Name: GifTutorialCanvas
   m_TagString: Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2118713859050633619
 RectTransform:
   m_ObjectHideFlags: 0
@@ -248,6 +238,37 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &4812482315459511605
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118713859050633615}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1687837373338534648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118713859050633615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c0895b918d5c0d488d7ac3c6c405a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: {fileID: 4812482315459511605}
+  totalFadeInTime: 0.5
+  totalFadeOutTime: 0.5
+  timeSinceFadeInStart: 0
+  timeSinceFadeOutStart: 0
+  fadeIn: 0
+  fadeOut: 0
 --- !u!1 &2118713859451497078
 GameObject:
   m_ObjectHideFlags: 0
