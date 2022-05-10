@@ -43,18 +43,25 @@ public class Tutorial : MonoBehaviour
     {
         if(!isUnlocked)
         {
+            float deltaTime = Time.deltaTime;
             isUnlocked = true;
             AlmanacProgression.instance.Unlock(title);
             if(type == TutorialType.Comic)
             {
                 comicTutorialCanvas.SetActive(true);
+                comicTutorialCanvas.GetComponent<TutorialPopup>().FadeInStart();
+                comicTutorialCanvas.GetComponent<TutorialPopup>().setDeltaTime = deltaTime;
                 comicCanvasImage.sprite = comicSprite;
                 comicDescriptionText.text = description;
                 comicTitleText.text = title;
             }
             else if(type == TutorialType.Gif)
             {
+
                 gifCanvas.SetActive(true);
+                gifCanvas.GetComponent<TutorialPopup>().FadeInStart();
+                gifCanvas.GetComponent<TutorialPopup>().setDeltaTime = deltaTime;
+
                 gifPlayer.clip = gif;
                 gifDescriptionText.text = description;
                 gifTitleText.text = title;
@@ -62,6 +69,8 @@ public class Tutorial : MonoBehaviour
             else
             {
                 tutorial.SetActive(true);
+                tutorial.GetComponent<TutorialPopup>().FadeInStart();
+                tutorial.GetComponent<TutorialPopup>().setDeltaTime = deltaTime; 
                 descriptionText.text = description;
                 titleText.text = title;
             }
