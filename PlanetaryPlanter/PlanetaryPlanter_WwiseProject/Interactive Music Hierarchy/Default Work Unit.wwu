@@ -30,6 +30,11 @@
 								<MusicSegment Name="MainMenu" ID="{35F0AD68-17E0-4621-A32C-11B877EBBA66}" ShortID="357530887">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="104564.444444444"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-7</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -218,6 +223,11 @@
 								<MusicSegment Name="Farm" ID="{B451D2B1-91E3-44D3-B608-3772DF64C3DD}" ShortID="479825584">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="97567.3469387755"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-7</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -350,7 +360,7 @@
 													<MusicCue Name="Exit Cue" ID="{F71A7609-3C56-4006-B4ED-BD56F4A20410}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="45000"/>
+															<Property Name="TimeMs" Type="Real64" Value="90000"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -406,6 +416,11 @@
 								<MusicSegment Name="TemperateBiome" ID="{B92560BD-CF35-4B14-ADD0-A2B69D7ED17B}" ShortID="146175890">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="97567.3469387755"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-10</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -538,7 +553,7 @@
 													<MusicCue Name="Exit Cue" ID="{952B00E6-DC9F-4809-8494-34C2B59D027A}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="45000"/>
+															<Property Name="TimeMs" Type="Real64" Value="89765.625"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -594,6 +609,11 @@
 								<MusicSegment Name="ColdBiome" ID="{CF2E4AF4-31DA-40BA-84B8-D4914C5DD4DD}" ShortID="516071199">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="112500"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-7</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -727,7 +747,7 @@
 													<MusicCue Name="Exit Cue" ID="{F88B48D4-B63F-4F8E-B96D-BEF7FE1612E6}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="48750"/>
+															<Property Name="TimeMs" Type="Real64" Value="97500"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -783,6 +803,11 @@
 								<MusicSegment Name="HotBiome" ID="{C6C09EBB-16A7-42E0-AC1E-DB8D5D9D0F6F}" ShortID="1000289477">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="150000"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-7</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -971,6 +996,11 @@
 								<MusicSegment Name="Observatory" ID="{59289855-1A9A-40A6-8F88-9A7A302A85EB}" ShortID="233682208">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="97567.3469387755"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-7</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -1103,7 +1133,7 @@
 													<MusicCue Name="Exit Cue" ID="{04D3C19D-D19A-42D7-A8B0-E05C6A1BC0FF}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="82243.5625"/>
+															<Property Name="TimeMs" Type="Real64" Value="90000"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -1147,6 +1177,11 @@
 								<Property Name="EndPosition" Type="Real64" Value="45000"/>
 								<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
 								<Property Name="Tempo" Type="Real64" Value="64"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-7</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">

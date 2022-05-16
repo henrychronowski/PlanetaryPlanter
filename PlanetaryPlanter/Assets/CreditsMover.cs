@@ -7,6 +7,7 @@ public class CreditsMover : MonoBehaviour
 {
     public float speed;
     public float heightToExit;
+    public AkEvent mainMusic;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,10 +27,12 @@ public class CreditsMover : MonoBehaviour
         if (transform.position.y > heightToExit)
         {
             SceneManager.LoadScene(0);
+            mainMusic.Stop(0);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(0);
+            mainMusic.Stop(0);
         }
     }
 }
