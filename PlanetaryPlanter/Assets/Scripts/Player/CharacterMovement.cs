@@ -161,10 +161,7 @@ public class CharacterMovement : MonoBehaviour
     public bool canGlide = false;
     void CheckInput()
     {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            moveInUpdate = !moveInUpdate;
-        }
+
         xMove = Input.GetAxisRaw("Horizontal");
         zMove = Input.GetAxisRaw("Vertical");
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0)) && (grounded || wallrunning || grabbingLedge))
