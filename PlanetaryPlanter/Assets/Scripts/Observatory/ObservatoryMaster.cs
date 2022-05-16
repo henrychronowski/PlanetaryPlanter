@@ -15,8 +15,8 @@ public class ObservatoryMaster : MonoBehaviour
     public GameObject minimap;
     public GameObject welcomeTutorial;
 
-    public AudioSource telescope;
-    public AudioSource main;
+    //public AudioSource telescope;
+    //public AudioSource main;
     public List<Transform> observatoryPoints;
     public List<bool> unlockedConstellations;
     public List<ObservatoryPlanetSpot> currentChapterSpots;
@@ -38,6 +38,9 @@ public class ObservatoryMaster : MonoBehaviour
     public int currentChapterIndex;
     public float zPos = -80f;
 
+    public AK.Wwise.Event obsEvent;
+    public AK.Wwise.Event farmEvent;
+
     public enum Direction
     {
         Left,
@@ -52,25 +55,21 @@ public class ObservatoryMaster : MonoBehaviour
             playerCam.GetComponent<Cinemachine.CinemachineFreeLook>().enabled = false;
             inObservatoryView = true;
             TutorialManagerScript.instance.Unlock("The Telescope");
-            main.Stop();
-            telescope.Play();
             foreach (Transform observatory in observatoryPoints)
             {
                 observatory.gameObject.SetActive(true);
             }
-            //main.mute = true;
+            obsEvent.Post(gameObject);
         }
         else
         {
             playerCam.GetComponent<Cinemachine.CinemachineFreeLook>().enabled = true;
             inObservatoryView = false;
-            telescope.Stop();
-            main.Play();
             foreach (Transform observatory in observatoryPoints)
             {
                 observatory.gameObject.SetActive(false);
             }
-            //main.mute = false;
+            farmEvent.Post(gameObject);
         }
     }
 
