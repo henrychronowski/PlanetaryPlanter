@@ -38,6 +38,9 @@ public class ObservatoryMaster : MonoBehaviour
     public int currentChapterIndex;
     public float zPos = -80f;
 
+    public AK.Wwise.Event observatoryEvent;
+    public AK.Wwise.Event farmEvent;
+
     public enum Direction
     {
         Left,
@@ -58,7 +61,7 @@ public class ObservatoryMaster : MonoBehaviour
             {
                 observatory.gameObject.SetActive(true);
             }
-            //main.mute = true;
+            observatoryEvent.Post(gameObject);
         }
         else
         {
@@ -70,7 +73,7 @@ public class ObservatoryMaster : MonoBehaviour
             {
                 observatory.gameObject.SetActive(false);
             }
-            //main.mute = false;
+            farmEvent.Post(gameObject);
         }
     }
 
