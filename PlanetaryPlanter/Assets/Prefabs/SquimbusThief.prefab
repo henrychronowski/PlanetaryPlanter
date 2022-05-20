@@ -387,10 +387,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec61fb8f93284a4885efbea4ab8afea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRoll: 100
+  maxRoll: 200
   squimbusRoll: 0
   squimbus: {fileID: 6987023735247302171}
   goldMat: {fileID: 2100000, guid: 107f50ce7ee986d4b870fa7a2cccf1bc, type: 2}
+  goldParticles: {fileID: 7365456089763390105, guid: f041ee36a4f53414d973cb8742e9898a, type: 3}
 --- !u!82 &3826098185636134619
 AudioSource:
   m_ObjectHideFlags: 0
@@ -575,7 +576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d0198c36412f2349beafb7af105b913, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.135
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d0198c36412f2349beafb7af105b913, type: 3}
       propertyPath: m_LocalPosition.z

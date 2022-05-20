@@ -10,6 +10,7 @@ public class GoldSquimbusRoll : MonoBehaviour
 
     public Renderer squimbus;
     public Material goldMat;
+    public GameObject goldParticles;
    
     //Generate random number to determine if golden
     void Start()
@@ -23,5 +24,6 @@ public class GoldSquimbusRoll : MonoBehaviour
     void CreateGolden()
     {
        squimbus.material = goldMat;
+       Instantiate(goldParticles, gameObject.transform);
     }
 }
