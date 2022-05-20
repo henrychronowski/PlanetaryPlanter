@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 4561994369857662722}
   - component: {fileID: 7670041011787455248}
   - component: {fileID: 7670041011858042869}
+  - component: {fileID: 8250938061354356251}
   m_Layer: 11
   m_Name: SquimbusThief
   m_TagString: Squimbus
@@ -354,11 +355,13 @@ MonoBehaviour:
   movementRadius: {fileID: 0}
   dropItemTime: 120
   stealCooldownTime: 2
+  stuckCountdown: 0
   stolenObject: {fileID: 0}
   knockback: 35
   knockbackAngle: 70
   itemIcon: {fileID: 5533132542817580012}
   squimbusAnimator: {fileID: 7670041013368759540}
+  stunCountdown: 0
 --- !u!135 &7670041011858042869
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -372,6 +375,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: -0.5, z: 0}
+--- !u!114 &8250938061354356251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4561994369857662728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec61fb8f93284a4885efbea4ab8afea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRoll: 100
+  squimbusRoll: 0
+  squimbus: {fileID: 6987023735247302171}
+  goldMat: {fileID: 2100000, guid: 107f50ce7ee986d4b870fa7a2cccf1bc, type: 2}
 --- !u!82 &3826098185636134619
 AudioSource:
   m_ObjectHideFlags: 0
@@ -616,5 +635,10 @@ GameObject:
 --- !u!4 &7925153183057321706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4d0198c36412f2349beafb7af105b913, type: 3}
+  m_PrefabInstance: {fileID: 7670041012656240897}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &6987023735247302171 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 758734183604295450, guid: 4d0198c36412f2349beafb7af105b913, type: 3}
   m_PrefabInstance: {fileID: 7670041012656240897}
   m_PrefabAsset: {fileID: 0}
