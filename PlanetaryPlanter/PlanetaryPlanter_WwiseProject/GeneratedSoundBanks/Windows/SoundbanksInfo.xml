@@ -11,25 +11,145 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3690994985">
+		<SoundBank Id="702482391" Language="SFX" Hash="3073553409">
+			<ObjectPath>\SoundBanks\Default Work Unit\Game</ObjectPath>
+			<ShortName>Game</ShortName>
+			<Path>Game.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2908637162" Name="Cold_Event" ObjectPath="\Events\Default Work Unit\Cold_Event" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
+					<ActionSetState>
+						<ActionSetStateEntry Id="2908637162" Name="Cold_Event" ObjectPath="\States\Default Work Unit\Game_Music\Cold_Event"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="3903779180" Name="Farm_Event" ObjectPath="\Events\Default Work Unit\Farm_Event" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
+					<ActionSetState>
+						<ActionSetStateEntry Id="3903779180" Name="Farm_Event" ObjectPath="\States\Default Work Unit\Game_Music\Farm_Event"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="1452920491" Name="Hot_Event" ObjectPath="\Events\Default Work Unit\Hot_Event" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
+					<ActionSetState>
+						<ActionSetStateEntry Id="1452920491" Name="Hot_Event" ObjectPath="\States\Default Work Unit\Game_Music\Hot_Event"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="3226024329" Name="Main_Menu_Event" ObjectPath="\Events\Default Work Unit\Main_Menu_Event" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="198259022" Language="SFX">
+							<ShortName>HotBiome_Theme.wav</ShortName>
+							<Path>SFX\HotBiome_Theme_D79FB2B7.wem</Path>
+						</File>
+						<File Id="230285942" Language="SFX">
+							<ShortName>Observatory_Theme.wav</ShortName>
+							<Path>SFX\Observatory_Theme_D79FB2B7.wem</Path>
+						</File>
+						<File Id="430297133" Language="SFX">
+							<ShortName>Transition.wav</ShortName>
+							<Path>SFX\Transition_D79FB2B7.wem</Path>
+						</File>
+						<File Id="478795473" Language="SFX">
+							<ShortName>ColdBiome_Theme.wav</ShortName>
+							<Path>SFX\ColdBiome_Theme_D79FB2B7.wem</Path>
+						</File>
+						<File Id="520289474" Language="SFX">
+							<ShortName>Farm_Theme.wav</ShortName>
+							<Path>SFX\Farm_Theme_D79FB2B7.wem</Path>
+						</File>
+						<File Id="622696845" Language="SFX">
+							<ShortName>TemperateBiome_Theme.wav</ShortName>
+							<Path>SFX\TemperateBiome_Theme_D79FB2B7.wem</Path>
+						</File>
+						<File Id="849382052" Language="SFX">
+							<ShortName>MainMenu_Theme.wav</ShortName>
+							<Path>SFX\MainMenu_Theme_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{3293D283-C9F4-43C0-BD57-CA3357AEF3C7}">
+							<Media>
+								<File Id="849382052"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{03D43B69-D0D2-4C3B-944B-C6FC0A0DA0B2}">
+							<Media>
+								<File Id="622696845"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{F70825C8-8022-4E96-9730-3002E1B1B65E}">
+							<Media>
+								<File Id="478795473"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{11A137B0-D9DA-40EA-9BDE-405B8BD1CD51}">
+							<Media>
+								<File Id="198259022"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{D5B59F7E-89D9-478D-82BD-90FA964FAFCD}">
+							<Media>
+								<File Id="520289474"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{DE4A13C1-EB34-4E8B-9432-B1948BD01737}">
+							<Media>
+								<File Id="230285942"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{00D5DBDA-0F0C-4015-A527-E4763F64AE0F}">
+							<Media>
+								<File Id="849382052"/>
+							</Media>
+						</SwitchContainer>
+					</SwitchContainers>
+					<ActionSetState>
+						<ActionSetStateEntry Id="3604647259" Name="MainMenu" ObjectPath="\States\Default Work Unit\Game_Music\MainMenu"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="1433622322" Name="Observatory_Event" ObjectPath="\Events\Default Work Unit\Observatory_Event" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
+					<ActionSetState>
+						<ActionSetStateEntry Id="1433622322" Name="Observatory_Event" ObjectPath="\States\Default Work Unit\Game_Music\Observatory_Event"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="3434144131" Name="Temperate_Event" ObjectPath="\Events\Default Work Unit\Temperate_Event" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
+					<ActionSetState>
+						<ActionSetStateEntry Id="3434144131" Name="Temperate_Event" ObjectPath="\States\Default Work Unit\Game_Music\Temperate_Event"/>
+					</ActionSetState>
+				</Event>
+			</IncludedEvents>
+			<StateGroups>
+				<StateGroup Id="258110631" Name="Game_Music" ObjectPath="\States\Default Work Unit\Game_Music" GUID="{3293D283-C9F4-43C0-BD57-CA3357AEF3C7}">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\Game_Music\None" GUID="{471A8ABC-1D1D-45EA-B3F6-1CD0CB7D4CEE}"/>
+						<State Id="3434144131" Name="Temperate_Event" ObjectPath="\States\Default Work Unit\Game_Music\Temperate_Event" GUID="{03D43B69-D0D2-4C3B-944B-C6FC0A0DA0B2}"/>
+						<State Id="2908637162" Name="Cold_Event" ObjectPath="\States\Default Work Unit\Game_Music\Cold_Event" GUID="{F70825C8-8022-4E96-9730-3002E1B1B65E}"/>
+						<State Id="1452920491" Name="Hot_Event" ObjectPath="\States\Default Work Unit\Game_Music\Hot_Event" GUID="{11A137B0-D9DA-40EA-9BDE-405B8BD1CD51}"/>
+						<State Id="1433622322" Name="Observatory_Event" ObjectPath="\States\Default Work Unit\Game_Music\Observatory_Event" GUID="{DE4A13C1-EB34-4E8B-9432-B1948BD01737}"/>
+						<State Id="3903779180" Name="Farm_Event" ObjectPath="\States\Default Work Unit\Game_Music\Farm_Event" GUID="{D5B59F7E-89D9-478D-82BD-90FA964FAFCD}"/>
+						<State Id="3604647259" Name="MainMenu" ObjectPath="\States\Default Work Unit\Game_Music\MainMenu" GUID="{00D5DBDA-0F0C-4015-A527-E4763F64AE0F}"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="1433622322" Name="Observatory_Event" ObjectPath="\States\Default Work Unit\Game_Music\Observatory_Event" GUID="{DE4A13C1-EB34-4E8B-9432-B1948BD01737}">
+					<States/>
+				</StateGroup>
+				<StateGroup Id="1452920491" Name="Hot_Event" ObjectPath="\States\Default Work Unit\Game_Music\Hot_Event" GUID="{11A137B0-D9DA-40EA-9BDE-405B8BD1CD51}">
+					<States/>
+				</StateGroup>
+				<StateGroup Id="2908637162" Name="Cold_Event" ObjectPath="\States\Default Work Unit\Game_Music\Cold_Event" GUID="{F70825C8-8022-4E96-9730-3002E1B1B65E}">
+					<States/>
+				</StateGroup>
+				<StateGroup Id="3434144131" Name="Temperate_Event" ObjectPath="\States\Default Work Unit\Game_Music\Temperate_Event" GUID="{03D43B69-D0D2-4C3B-944B-C6FC0A0DA0B2}">
+					<States/>
+				</StateGroup>
+				<StateGroup Id="3604647259" Name="MainMenu" ObjectPath="\States\Default Work Unit\Game_Music\MainMenu" GUID="{00D5DBDA-0F0C-4015-A527-E4763F64AE0F}">
+					<States/>
+				</StateGroup>
+				<StateGroup Id="3903779180" Name="Farm_Event" ObjectPath="\States\Default Work Unit\Game_Music\Farm_Event" GUID="{D5B59F7E-89D9-478D-82BD-90FA964FAFCD}">
+					<States/>
+				</StateGroup>
+			</StateGroups>
+		</SoundBank>
+		<SoundBank Id="1355168291" Language="SFX" Hash="3327201945">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
-		</SoundBank>
-		<SoundBank Id="2005704188" Language="SFX" Hash="1041756680">
-			<ObjectPath>\SoundBanks\Default Work Unit\Main_Menu</ObjectPath>
-			<ShortName>Main_Menu</ShortName>
-			<Path>Main_Menu.bnk</Path>
-			<IncludedEvents>
-				<Event Id="3226024329" Name="Main_Menu_Event" ObjectPath="\Events\Default Work Unit\Main_Menu_Event" DurationType="OneShot" DurationMin="99.590736" DurationMax="99.590736">
-					<IncludedMemoryFiles>
-						<File Id="264208222" Language="SFX">
-							<ShortName>MainMenu.wav</ShortName>
-							<Path>SFX\MainMenu_3E7FC443.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-			</IncludedEvents>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

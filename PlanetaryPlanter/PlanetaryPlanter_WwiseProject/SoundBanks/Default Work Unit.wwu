@@ -3,8 +3,13 @@
 	<SoundBanks>
 		<WorkUnit Name="Default Work Unit" ID="{A37883DE-8F47-4411-B9CE-136D18230594}" PersistMode="Standalone">
 			<ChildrenList>
-				<SoundBank Name="Main_Menu" ID="{254A1344-26FD-45C1-8B7C-04E80283A399}">
+				<SoundBank Name="Game" ID="{B57DAE41-DDE3-437B-81D0-FC047409A728}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Observatory_Event" ID="{AE1DCF19-124D-402B-85E8-7BCA5F26C853}" WorkUnitID="{4873F100-2662-4601-ABFA-5650B10E15D6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Temperate_Event" ID="{4740BD09-468C-42EA-96B3-107ED562F831}" WorkUnitID="{4873F100-2662-4601-ABFA-5650B10E15D6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Cold_Event" ID="{2609EB0D-2508-43B4-BB07-34C9F4969B95}" WorkUnitID="{4873F100-2662-4601-ABFA-5650B10E15D6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Farm_Event" ID="{B48DBEB9-DA8C-46F4-A289-C55BA320B9D9}" WorkUnitID="{4873F100-2662-4601-ABFA-5650B10E15D6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Hot_Event" ID="{B141D07C-8583-47C2-9337-7DF78319BCAE}" WorkUnitID="{4873F100-2662-4601-ABFA-5650B10E15D6}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Main_Menu_Event" ID="{4D6CF813-5AE1-4C49-8870-8D02035F4759}" WorkUnitID="{4873F100-2662-4601-ABFA-5650B10E15D6}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

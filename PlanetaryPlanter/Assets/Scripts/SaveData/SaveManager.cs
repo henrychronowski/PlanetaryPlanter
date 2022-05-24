@@ -160,6 +160,8 @@ public class SaveManager : MonoBehaviour
         if(SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 2)
         {
             Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 1;
+            Time.fixedDeltaTime = 0.02f;
         }
         if (SceneManager.GetActiveScene().buildIndex == activeSceneIndex)
         {

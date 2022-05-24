@@ -74,7 +74,7 @@ public class UnlockSystem : MonoBehaviour
                     //set all bouncy plants to active
                     bounceblooms.SetActive(true);
 
-                    if (showTutorial) TutorialManagerScript.instance.Unlock("Bouncebloom");
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("Bounceblooms!");
                     break;
                 }
             case 4:
@@ -88,7 +88,7 @@ public class UnlockSystem : MonoBehaviour
                 {
                     silo2.SetActive(true);
                     if (showTutorial) TutorialManagerScript.instance.Unlock("New Silo Again");
-                    actManager.Unlock("Act 1");
+                    if (showTutorial) actManager.Unlock("Act 1");
                     break;
                 }
             case 6:
@@ -101,8 +101,8 @@ public class UnlockSystem : MonoBehaviour
             case 7:
                 {
                     GameObject.FindObjectOfType<CharacterMovement>().canGlide = true;
-                    if (showTutorial) TutorialManagerScript.instance.Unlock("Melmee");
-                    actManager.Unlock("Act 2");
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("Melmee!");
+                    if (showTutorial) actManager.Unlock("Act 2");
 
                     //glider
                     break;
@@ -119,7 +119,7 @@ public class UnlockSystem : MonoBehaviour
             case 10:
                 {
                     goldSquimbus.SetActive(true);
-                    actManager.Unlock("Act 3");
+                    if (showTutorial) actManager.Unlock("Act 3");
                     break;
                 }
         }
@@ -141,7 +141,7 @@ public class UnlockSystem : MonoBehaviour
                 {
                     GameObject.FindObjectOfType<AttackHitbox>().canBreakRocks = true;
                     if (showTutorial) TutorialManagerScript.instance.Unlock("Stallanovium Trowel");
-                    ActManagerScript.instance.Unlock("The Prologue");
+                    if (showTutorial) ActManagerScript.instance.Unlock("The Prologue");
                     break;
                 }
             case 3:
@@ -149,6 +149,9 @@ public class UnlockSystem : MonoBehaviour
                     //glider
                     GameObject.FindObjectOfType<CharacterMovement>().canGlide = true;
                     if (showTutorial) TutorialManagerScript.instance.Unlock("Melmee!");
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("Demo Over!");
+                    goldSquimbus.SetActive(true);
+
                     break;
                 }
             case 4:
@@ -164,7 +167,7 @@ public class UnlockSystem : MonoBehaviour
                     //new planters
                     planterSet1.SetActive(true);
                     if (showTutorial) TutorialManagerScript.instance.Unlock("New Planters");
-                    actManager.Unlock("Act 1");
+                    if (showTutorial) actManager.Unlock("Act 1");
                     break;
                 }
             case 6:
@@ -178,7 +181,7 @@ public class UnlockSystem : MonoBehaviour
                 {
                     planterSet2.SetActive(true);
                     if (showTutorial) TutorialManagerScript.instance.Unlock("New Planters 2");
-                    actManager.Unlock("Act 2");
+                    if (showTutorial) actManager.Unlock("Act 2");
                     break;
                 }
             case 8:
@@ -194,7 +197,7 @@ public class UnlockSystem : MonoBehaviour
                 {
                     goldSquimbus.SetActive(true);
                     if (showTutorial) TutorialManagerScript.instance.Unlock("Credits");
-                    actManager.Unlock("Act 3");
+                    if (showTutorial) actManager.Unlock("Act 3");
                     break;
                 }
         }

@@ -26,16 +26,16 @@ public class AttackHitbox : MonoBehaviour
         if(other.tag == "Squimbus")
         {
             Debug.Log("Hit Squimbus");
-            bonk.RecoverStolenItemWithBonk(other.gameObject);
              switch (Random.Range(0, 3))
         {
-            case 0: soundManager.PlaySound("SquimWh1"); break;
-            case 1: soundManager.PlaySound("SquimWh2"); break;
-            case 2: soundManager.PlaySound("SquimWh3"); break;
-            case 3: soundManager.PlaySound("SquimWh4"); break;
+            case 0: soundManager.PlaySoundAtLocation("SquimWh1", other.transform.position); break;
+            case 1: soundManager.PlaySoundAtLocation("SquimWh2", other.transform.position); break;
+            case 2: soundManager.PlaySoundAtLocation("SquimWh3", other.transform.position); break;
+            case 3: soundManager.PlaySoundAtLocation("SquimWh4", other.transform.position); break;
             
         }
-            soundManager.PlaySound("HitSquim");
+            soundManager.PlaySoundAtLocation("HitSquim", transform.position);
+            bonk.RecoverStolenItemWithBonk(other.gameObject);
         }
     }
     // Start is called before the first frame update

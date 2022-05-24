@@ -15,21 +15,21 @@ public class DevSpotsEnabler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            if(Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.U) && Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.B))
-            {
-                container.SetActive(true);
-            cheatsOn = true;
-            }
-        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.B))
-        {
-            container.SetActive(true);
-            cheatsOn = true;
+        //    if(Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.U) && Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.B))
+        //    {
+        //        container.SetActive(true);
+        //    cheatsOn = true;
+        //    }
+        //if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.B))
+        //{
+        //    container.SetActive(true);
+        //    cheatsOn = true;
             
-        }
-        if (Input.GetKey(KeyCode.F) && Input.GetKey(KeyCode.L) && Input.GetKey(KeyCode.Y))
-        {
-            FindObjectOfType<UnlockSystem>().UnlockChapters(10);
-            cheatsOn = true;
-        }
+        //}
+        //if (Input.GetKey(KeyCode.F) && Input.GetKey(KeyCode.L) && Input.GetKey(KeyCode.Y))
+        //{
+        //    FindObjectOfType<UnlockSystem>().UnlockChapters(10);
+        //    cheatsOn = true;
+        //}
     }
 }
