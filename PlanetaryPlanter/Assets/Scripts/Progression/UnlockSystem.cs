@@ -74,7 +74,7 @@ public class UnlockSystem : MonoBehaviour
                     //set all bouncy plants to active
                     bounceblooms.SetActive(true);
 
-                    if (showTutorial) TutorialManagerScript.instance.Unlock("Bouncebloom");
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("Bounceblooms!");
                     break;
                 }
             case 4:
@@ -101,7 +101,7 @@ public class UnlockSystem : MonoBehaviour
             case 7:
                 {
                     GameObject.FindObjectOfType<CharacterMovement>().canGlide = true;
-                    if (showTutorial) TutorialManagerScript.instance.Unlock("Melmee");
+                    if (showTutorial) TutorialManagerScript.instance.Unlock("Melmee!");
                     if (showTutorial) actManager.Unlock("Act 2");
 
                     //glider
