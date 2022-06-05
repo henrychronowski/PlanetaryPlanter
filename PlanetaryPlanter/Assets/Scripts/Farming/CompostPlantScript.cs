@@ -12,7 +12,6 @@ public class CompostPlantScript : MonoBehaviour
     float distanceFromCompostBin;
 
     public bool canCompost;
-    bool hasComposted;
 
     //Counts how many plants you've composted
     public int currentCompost;
@@ -38,7 +37,6 @@ public class CompostPlantScript : MonoBehaviour
     void Start()
     {
         canCompost = false;
-        hasComposted = false;
         inventory = FindObjectOfType<NewInventory>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -52,7 +50,6 @@ public class CompostPlantScript : MonoBehaviour
     void Update()
     {
         CheckDistanceFromPlayer();
-        hasComposted = false;
         UpdateFillProgress();
 
         interactable.interactText = InteractText();
@@ -67,11 +64,10 @@ public class CompostPlantScript : MonoBehaviour
                     soundManager.PlaySound("Composting");
                     inventory.PopItem();
                     currentCompost++;
-                    hasComposted = true;
                 }
             }
 
-            if (inventory.SpacesAvailable() > 0 && currentCompost >= minUntilFertilizer && !hasComposted)
+            if (inventory.SpacesAvailable() > 0 && currentCompost >= minUntilFertilizer)
             {
                 currentCompost -= minUntilFertilizer;
                 inventory.AddItem(fertilizer);
