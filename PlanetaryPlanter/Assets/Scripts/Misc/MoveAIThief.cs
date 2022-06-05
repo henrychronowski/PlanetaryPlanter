@@ -230,11 +230,19 @@ public class MoveAIThief : MonoBehaviour
         InventorySpace[] filledSpaces;
 
         int attemptsToSteal = 0;
+        int inventorySpotsOpen = 0;
 
         filledSpaces = inventory.GetComponent<NewInventory>().GetFilledSpaces();
+        inventorySpotsOpen = inventory.GetComponent<NewInventory>().SpacesAvailable();
+
+        if (inventorySpotsOpen == 10)
+        {
+            playerSpotted = false;
+            newDestinationNeeded = true;
+        }
 
         //could be this or a collider contact
-        if (itemSpotFull == false)
+        if (itemSpotFull == false && inventorySpotsOpen != 10)
         {
             randItem = Random.Range(0, filledSpaces.Length);
 
@@ -325,5 +333,10 @@ public class MoveAIThief : MonoBehaviour
         {
             stunned = false;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
     }
 }
