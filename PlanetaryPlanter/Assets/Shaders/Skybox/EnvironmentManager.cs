@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnvironmentManager : MonoBehaviour
 {
@@ -41,6 +42,10 @@ public class EnvironmentManager : MonoBehaviour
     private void Start()
     {
         skybox = RenderSettings.skybox;
+        if(skybox == null) //This is to allow additive scene loading to still get the skybox
+        {
+            skybox = Camera.main.gameObject.GetComponent<Skybox>().material;
+        }
         Current = EnvironmentType.Temperate;
         Environments = new SkyboxParams[] {ColdParams, TemperateParams, HotParams};
         SetParameters(Environments[((int)Current)]);

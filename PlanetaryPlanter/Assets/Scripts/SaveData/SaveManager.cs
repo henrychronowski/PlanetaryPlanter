@@ -68,7 +68,12 @@ public class SaveManager : MonoBehaviour
     public bool loadingStarted;
     public bool loadDataIntended;
 
-    
+    AsyncOperation loadOperation;
+
+    [SerializeField] LoadingScreenManager loadingScreenManager;
+
+    [SerializeField] GameObject mainMenu;
+
 
     private void Awake()
     {
@@ -139,13 +144,21 @@ public class SaveManager : MonoBehaviour
         loadDataIntended = true;
         dataLoaded = false;
         loadingStarted = false;
-        SceneManager.LoadScene(activeSceneIndex);
+
+        loadingScreenManager.group.alpha = 1;
+        
+        //loadingScreenManager.NewOperation(SceneManager.UnloadSceneAsync(0));
+        loadingScreenManager.NewOperation(SceneManager.LoadSceneAsync(activeSceneIndex, LoadSceneMode.Additive));
+        mainMenu.SetActive(false);
+
     }
 
     public void NewGame()
     {
-        SceneManager.LoadScene(activeSceneIndex);
-
+        loadingScreenManager.group.alpha = 1;
+        //loadingScreenManager.NewOperation(SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene()));
+        loadingScreenManager.NewOperation(SceneManager.LoadSceneAsync(activeSceneIndex, LoadSceneMode.Additive));
+        mainMenu.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -157,12 +170,14 @@ public class SaveManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        // Ensures the cursor isn't locked ever in the title screen and credits
         if(SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 2)
         {
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 1;
             Time.fixedDeltaTime = 0.02f;
         }
+        // Autosaves only in main scene
         if (SceneManager.GetActiveScene().buildIndex == activeSceneIndex)
         {
             timeSinceLastSave += Time.deltaTime;
