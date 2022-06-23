@@ -21,7 +21,7 @@ public class SkyboxParams : ScriptableObject
     public Color SunSpotColor;
     [Range(0f, 1f)]
     public float SunSpotOpacity = 0.5f;
-    [Range(0f, 0.1f)]
+    [Range(0f, 5.0f)]
     public float WindSpeed = 0.05f;
     //public Texture2D CloudTexture;
     public float CloudHeight;

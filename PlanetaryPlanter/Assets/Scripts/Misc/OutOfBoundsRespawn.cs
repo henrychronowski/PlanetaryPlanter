@@ -7,6 +7,16 @@ public class OutOfBoundsRespawn : MonoBehaviour
     CharacterMovement player;
     [SerializeField] Transform spawn;
     // Start is called before the first frame update
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            player.Teleport(spawn.position);
+            Debug.Log("Out of bounds!");
+        }
+    }
+
     void Start()
     {
         player = FindObjectOfType<CharacterMovement>();
