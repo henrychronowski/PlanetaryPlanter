@@ -19,6 +19,7 @@ public class SunRotationScript : MonoBehaviour
     public Text DayCounter;
     public Text HourCounter;
     public int totalElapsedTime;
+    public bool timeStopped = false;
 
     private void Awake()
     {
@@ -46,6 +47,10 @@ public class SunRotationScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(timeStopped)
+        {
+            return;
+        }
         Rotation();
         CheckDay();
         CheckHour();

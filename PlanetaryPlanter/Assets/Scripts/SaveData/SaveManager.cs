@@ -67,7 +67,7 @@ public class SaveManager : MonoBehaviour
     public bool dataLoaded;
     public bool loadingStarted;
     public bool loadDataIntended;
-
+    public bool canSave;
     
 
     private void Awake()
@@ -162,11 +162,12 @@ public class SaveManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 1;
             Time.fixedDeltaTime = 0.02f;
+            canSave = true;
         }
         if (SceneManager.GetActiveScene().buildIndex == activeSceneIndex)
         {
             timeSinceLastSave += Time.deltaTime;
-            if(timeSinceLastSave > timeBetweenSaves)
+            if(timeSinceLastSave > timeBetweenSaves && canSave)
             {
                 SaveData();
                 timeSinceLastSave = 0;
