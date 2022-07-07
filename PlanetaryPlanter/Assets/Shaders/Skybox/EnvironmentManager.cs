@@ -104,6 +104,28 @@ public class EnvironmentManager : MonoBehaviour
         skybox.SetFloat("HorizonOffset", input.HorizonOffset);
     }
 
+    public void TransitionToBiome(PortalFoundScript.Biome biome)
+    {
+        switch(biome)
+        {
+            case PortalFoundScript.Biome.Temperate:
+                {
+                    TransitionToTemperate();
+                    break;
+                }
+            case PortalFoundScript.Biome.Cold:
+                {
+                    TransitionToCold();
+                    break;
+                }
+            case PortalFoundScript.Biome.Hot:
+                {
+                    TransitionToHot();
+                    break;
+                }
+        }
+    }
+
     public void TransitionToHot()
     {
         Target = EnvironmentType.Hot;
