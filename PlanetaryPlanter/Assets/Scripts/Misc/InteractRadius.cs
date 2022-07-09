@@ -55,7 +55,11 @@ public class InteractRadius : MonoBehaviour
             highlight.SetActive(true);
             interactSprite.gameObject.SetActive(true);
             
-            
+            if(closestInteractable == null) // Prevents frame drops when destroying interactables
+            {
+                inRange = false;
+                return;
+            }
             highlight.transform.position = closestInteractable.transform.position;
             highlight.transform.rotation = closestInteractable.transform.rotation;
             highlight.transform.Rotate(90, 0, 0);

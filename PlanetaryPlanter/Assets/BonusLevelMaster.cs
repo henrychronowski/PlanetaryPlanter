@@ -74,7 +74,7 @@ public class BonusLevelMaster : MonoBehaviour
             if(completed)
             {
                 NewInventory.instance.AddItem(currentLevel.completeReward);
-                PopUpController.instance.NewPopUp(failurePopupMessage, failurePopupSprite);
+                PopUpController.instance.NewPopUp(successPopupMessage, successPopupSprite);
 
             }
             else

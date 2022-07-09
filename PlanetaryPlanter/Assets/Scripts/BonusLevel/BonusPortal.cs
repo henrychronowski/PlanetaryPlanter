@@ -12,6 +12,7 @@ public class BonusPortal : MonoBehaviour
     BonusLevel level;
     BonusLevelMaster levelMaster;
     PortalFoundScript.Biome biome;
+    public bool completed;
     public void Interact()
     {
         
