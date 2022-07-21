@@ -30,7 +30,12 @@
 							<Position X="4" Y="1"/>
 						</Module>
 					</ModuleList>
-					<RTPCValueList ShowAll="true"/>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="MusicVolume" ID="{32272EF0-35CA-4181-916D-7414E8749DE0}"/>
+							<Value>75</Value>
+						</RTPCValue>
+					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
 						<CurrentStateRef Name="MainMenu" ID="{00D5DBDA-0F0C-4015-A527-E4763F64AE0F}"/>
 					</CurrentStateList>

@@ -21,8 +21,11 @@ public class EnvironmentManager : MonoBehaviour
     [SerializeField] private SkyboxParams ColdParams;
     [SerializeField] private SkyboxParams TemperateParams;
     [SerializeField] private SkyboxParams HotParams;
+    [SerializeField] private SkyboxParams BonusParams;
+
 
     [SerializeField] private float TransitionTime = 1f;
+
 
     private bool IsLerping;
     private float LerpTime;
@@ -32,7 +35,7 @@ public class EnvironmentManager : MonoBehaviour
 
     public enum EnvironmentType
     {
-        Cold = 0, Temperate, Hot
+        Cold = 0, Temperate, Hot, Bonus
     }
 
     private EnvironmentType Current;
@@ -42,7 +45,7 @@ public class EnvironmentManager : MonoBehaviour
     {
         skybox = RenderSettings.skybox;
         Current = EnvironmentType.Temperate;
-        Environments = new SkyboxParams[] {ColdParams, TemperateParams, HotParams};
+        Environments = new SkyboxParams[] {ColdParams, TemperateParams, HotParams, BonusParams};
         SetParameters(Environments[((int)Current)]);
         if (SystemInfo.supportsAsyncGPUReadback)
                 {
@@ -101,6 +104,28 @@ public class EnvironmentManager : MonoBehaviour
         skybox.SetFloat("HorizonOffset", input.HorizonOffset);
     }
 
+    public void TransitionToBiome(PortalFoundScript.Biome biome)
+    {
+        switch(biome)
+        {
+            case PortalFoundScript.Biome.Temperate:
+                {
+                    TransitionToTemperate();
+                    break;
+                }
+            case PortalFoundScript.Biome.Cold:
+                {
+                    TransitionToCold();
+                    break;
+                }
+            case PortalFoundScript.Biome.Hot:
+                {
+                    TransitionToHot();
+                    break;
+                }
+        }
+    }
+
     public void TransitionToHot()
     {
         Target = EnvironmentType.Hot;
@@ -125,6 +150,16 @@ public class EnvironmentManager : MonoBehaviour
     {
         Target = EnvironmentType.Cold;
         if(!IsLerping)
+        {
+            IsLerping = true;
+            LerpTime = 0f;
+        }
+    }
+
+    public void TransitionToBonus()
+    {
+        Target = EnvironmentType.Bonus;
+        if (!IsLerping)
         {
             IsLerping = true;
             LerpTime = 0f;
